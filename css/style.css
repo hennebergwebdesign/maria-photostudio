@@ -249,8 +249,10 @@ main p a:hover,
   right: 0;
   z-index: var(--z-nav);
   color: var(--on-dark);
-  transition: background var(--dur-slow), border-color var(--dur-slow), color var(--dur-slow);
-  border-bottom: 1px solid transparent;
+  background: rgba(26, 21, 16, 0.92);
+  backdrop-filter: blur(12px);
+  transition: background var(--dur-slow), border-color var(--dur-slow), box-shadow var(--dur-slow);
+  border-bottom: 1px solid rgba(244, 236, 224, 0.1);
 }
 
 .nav .nav__links a { color: var(--on-dark-dim); }
@@ -259,20 +261,14 @@ main p a:hover,
 .nav .nav__burger span { background: var(--on-dark); }
 
 /* Das geöffnete Menü ist immer cremefarben – das X-Icon braucht dann
-   dunkle Balken, unabhängig vom (transparenten) Nav-Zustand dahinter. */
+   dunkle Balken, unabhängig vom Nav-Zustand dahinter. */
 .nav .nav__burger[aria-expanded="true"] span { background: var(--text); }
 
 .nav.is-scrolled {
-  background: rgba(252, 246, 240, 0.86);
-  backdrop-filter: blur(12px);
-  border-bottom-color: var(--line);
-  color: var(--text);
+  background: rgba(26, 21, 16, 0.97);
+  border-bottom-color: rgba(244, 236, 224, 0.16);
+  box-shadow: var(--elev-2);
 }
-
-.nav.is-scrolled .nav__links a { color: var(--text-dim); }
-.nav.is-scrolled .nav__links a:hover,
-.nav.is-scrolled .nav__links a.is-current { color: var(--text); }
-.nav.is-scrolled .nav__burger span { background: var(--text); }
 
 .nav__inner {
   display: flex;
@@ -365,7 +361,7 @@ main p a:hover,
 
 /* ---------- Hero ---------- */
 .hero {
-  min-height: 100svh;
+  height: 100svh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -611,12 +607,14 @@ body.is-ready .hero__title .line:nth-child(2) span { transition-delay: 80ms; }
 .hero__marquee-track {
   display: flex;
   white-space: nowrap;
-  animation: marquee 28s linear infinite;
+  animation: marquee 22s linear infinite;
   color: var(--text-dim);
   text-transform: uppercase;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.06em;
   font-size: var(--fs-sm);
 }
+
+.hero__marquee-track span { flex: none; }
 
 @keyframes marquee {
   to { transform: translateX(-50%); }
@@ -829,21 +827,48 @@ body.is-ready .hero__title .line:nth-child(2) span { transition-delay: 80ms; }
 }
 
 .service {
+  height: 320px;
+  perspective: 1400px;
+  cursor: pointer;
+  transition: transform var(--dur-slow) var(--ease-out);
+}
+
+.service:hover { transform: translateY(-3px); }
+.service:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+
+.service__inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform var(--dur-slow) var(--ease);
+}
+
+/* Desktop: Karte dreht sich beim Hover/Fokus um */
+@media (hover: hover) and (pointer: fine) {
+  .service:hover .service__inner,
+  .service:focus-within .service__inner { transform: rotateY(180deg); }
+}
+
+/* Touch: Karte dreht sich per Klick um (JS setzt is-flipped) */
+.service.is-flipped .service__inner { transform: rotateY(180deg); }
+
+.service__face {
+  position: absolute;
+  inset: 0;
   display: flex;
-  gap: var(--sp-4);
+  flex-direction: column;
   padding: var(--sp-8) var(--sp-6);
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--r-md);
   box-shadow: var(--elev-1);
-  transition: border-color var(--dur), transform var(--dur-slow) var(--ease-out),
-              box-shadow var(--dur-slow);
+  backface-visibility: hidden;
 }
 
-.service:hover {
-  border-color: var(--line-strong);
-  transform: translateY(-3px);
-  box-shadow: var(--elev-2);
+.service__face--back {
+  transform: rotateY(180deg);
+  overflow-y: auto;
 }
 
 .service__num {
@@ -857,10 +882,33 @@ body.is-ready .hero__title .line:nth-child(2) span { transition-delay: 80ms; }
   color: var(--accent);
   font-weight: 800;
   font-size: var(--fs-sm);
+  margin-bottom: var(--sp-4);
+}
+
+.service__icon {
+  position: absolute;
+  top: var(--sp-8);
+  right: var(--sp-6);
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--r-full);
+  background: var(--gold-soft);
+  color: var(--gold);
 }
 
 .service h3 { font-size: var(--fs-lg); font-weight: 700; margin-bottom: var(--sp-2); }
+.service__face--front h3 { max-width: calc(100% - 60px); }
 .service p { color: var(--text-dim); font-size: var(--fs-base); max-width: 62ch; }
+
+.service__hint {
+  margin-top: auto;
+  padding-top: var(--sp-4);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--accent);
+}
 
 /* ---------- Ablauf: vertikaler Pfad ---------- */
 .process__path {
@@ -1521,13 +1569,10 @@ body.is-ready .hero__title .line:nth-child(2) span { transition-delay: 80ms; }
   }
 
   /* Das Overlay-Menü ist immer cremefarben – Linktext bleibt dunkel,
-     unabhängig vom transparenten/hellen Zustand der Nav dahinter. */
-  .nav .nav__links a,
-  .nav.is-scrolled .nav__links a { color: var(--text-dim); }
+     unabhängig vom Zustand der Nav dahinter. */
+  .nav .nav__links a { color: var(--text-dim); }
   .nav .nav__links a:hover,
-  .nav .nav__links a.is-current,
-  .nav.is-scrolled .nav__links a:hover,
-  .nav.is-scrolled .nav__links a.is-current { color: var(--text); }
+  .nav .nav__links a.is-current { color: var(--text); }
 
   .nav__links a.is-current:not(.nav__cta)::after { bottom: 0.6rem; }
 
@@ -1551,7 +1596,7 @@ body.is-ready .hero__title .line:nth-child(2) span { transition-delay: 80ms; }
 
   .hero__media .photo--sm { left: -6%; bottom: -8%; }
 
-  .hero { min-height: 0; }
+  .hero { height: auto; min-height: 100svh; }
 
   .faq__grid { grid-template-columns: 1fr; }
 
@@ -1577,7 +1622,7 @@ body.is-ready .hero__title .line:nth-child(2) span { transition-delay: 80ms; }
 
   .hero__marquee { display: none; }
 
-  .hero { padding-block: 7rem var(--sp-8); min-height: 0; }
+  .hero { padding-block: 7rem var(--sp-8); height: auto; min-height: 100svh; }
 
   .services__list,
   .usp__grid { grid-template-columns: 1fr; }

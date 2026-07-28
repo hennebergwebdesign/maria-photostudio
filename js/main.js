@@ -181,6 +181,29 @@
     revealEls.forEach(function (el) { el.classList.add("is-in"); });
   }
 
+  /* ---------- Leistungen: Flipbox ---------- */
+  var serviceCards = document.querySelectorAll(".service");
+  var hoverQuery = window.matchMedia("(hover: hover) and (pointer: fine)");
+
+  function toggleFlip(card) {
+    var flipped = card.classList.toggle("is-flipped");
+    card.setAttribute("aria-pressed", String(flipped));
+  }
+
+  serviceCards.forEach(function (card) {
+    card.addEventListener("click", function () {
+      if (hoverQuery.matches) return; // Desktop dreht per Hover
+      toggleFlip(card);
+    });
+
+    card.addEventListener("keydown", function (e) {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        toggleFlip(card);
+      }
+    });
+  });
+
   /* ---------- Portfolio-Filter ---------- */
   var chips = document.querySelectorAll(".chip");
   var cards = document.querySelectorAll(".card");
