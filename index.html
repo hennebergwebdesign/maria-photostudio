@@ -84,6 +84,13 @@
       <path d="M11.5 10 14 5h4l-2.5 5"/>
       <path d="M3 10h18"/>
     </symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8Z"/>
+    </symbol>
+    <symbol id="i-tag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12.6 2H4a2 2 0 0 0-2 2v8.6a2 2 0 0 0 .59 1.41l9.4 9.4a2 2 0 0 0 2.82 0l7.6-7.6a2 2 0 0 0 0-2.82l-9.4-9.4A2 2 0 0 0 12.6 2Z"/>
+      <circle cx="7.5" cy="7.5" r="1.5"/>
+    </symbol>
   </svg>
 
 
@@ -179,6 +186,8 @@
       <div class="hero__marquee-track">
         <span>Porträt&nbsp;·&nbsp;Hochzeit&nbsp;·&nbsp;Imagefilm&nbsp;·&nbsp;Event&nbsp;·&nbsp;Produkt&nbsp;·&nbsp;Social&nbsp;Media&nbsp;·&nbsp;</span>
         <span>Porträt&nbsp;·&nbsp;Hochzeit&nbsp;·&nbsp;Imagefilm&nbsp;·&nbsp;Event&nbsp;·&nbsp;Produkt&nbsp;·&nbsp;Social&nbsp;Media&nbsp;·&nbsp;</span>
+        <span>Porträt&nbsp;·&nbsp;Hochzeit&nbsp;·&nbsp;Imagefilm&nbsp;·&nbsp;Event&nbsp;·&nbsp;Produkt&nbsp;·&nbsp;Social&nbsp;Media&nbsp;·&nbsp;</span>
+        <span>Porträt&nbsp;·&nbsp;Hochzeit&nbsp;·&nbsp;Imagefilm&nbsp;·&nbsp;Event&nbsp;·&nbsp;Produkt&nbsp;·&nbsp;Social&nbsp;Media&nbsp;·&nbsp;</span>
       </div>
     </div>
 
@@ -202,72 +211,114 @@
           </figure>
         </div>
         <div class="services__list">
-          <article class="service reveal">
-            <span class="service__num">01</span>
-            <div>
-              <h3>Businessfotografie &amp; Bewerbungsfotos</h3>
-              <p>
-                Porträts, bei denen Sie aussehen wie an einem guten Tag – nicht wie im
-                Passbildautomaten. Für Website, LinkedIn und Bewerbung, im Studio in
-                Sassenberg oder bei Ihnen im Betrieb. Ergebnis: 8–15 finale Bilder,
-                freigestellt und webfertig.
-              </p>
+          <article class="service reveal" tabindex="0" role="button" aria-pressed="false">
+            <div class="service__inner">
+              <div class="service__face service__face--front">
+                <span class="service__num">01</span>
+                <span class="service__icon"><svg width="28" height="28" aria-hidden="true"><use href="#i-camera"></use></svg></span>
+                <h3>Businessfotografie &amp; Bewerbungsfotos</h3>
+                <span class="service__hint">Mehr erfahren</span>
+              </div>
+              <div class="service__face service__face--back">
+                <h3>Businessfotografie &amp; Bewerbungsfotos</h3>
+                <p>
+                  Porträts, bei denen Sie aussehen wie an einem guten Tag – nicht wie im
+                  Passbildautomaten. Für Website, LinkedIn und Bewerbung, im Studio in
+                  Sassenberg oder bei Ihnen im Betrieb. Ergebnis: 8–15 finale Bilder,
+                  freigestellt und webfertig.
+                </p>
+              </div>
             </div>
           </article>
-          <article class="service reveal">
-            <span class="service__num">02</span>
-            <div>
-              <h3>Hochzeitsfotografie im Münsterland</h3>
-              <p>
-                Ich begleite Ihren Tag unaufdringlich – vom Getting-ready bis zum
-                letzten Tanz. Sie posieren nicht stundenlang, sondern feiern; ich fange
-                dazwischen die echten Momente ein. Vorab besprechen wir Ablauf und
-                Wunschmotive, damit am Tag niemand improvisieren muss.
-              </p>
+          <article class="service reveal" tabindex="0" role="button" aria-pressed="false">
+            <div class="service__inner">
+              <div class="service__face service__face--front">
+                <span class="service__num">02</span>
+                <span class="service__icon"><svg width="28" height="28" aria-hidden="true"><use href="#i-heart"></use></svg></span>
+                <h3>Hochzeitsfotografie im Münsterland</h3>
+                <span class="service__hint">Mehr erfahren</span>
+              </div>
+              <div class="service__face service__face--back">
+                <h3>Hochzeitsfotografie im Münsterland</h3>
+                <p>
+                  Ich begleite Ihren Tag unaufdringlich – vom Getting-ready bis zum
+                  letzten Tanz. Sie posieren nicht stundenlang, sondern feiern; ich fange
+                  dazwischen die echten Momente ein. Vorab besprechen wir Ablauf und
+                  Wunschmotive, damit am Tag niemand improvisieren muss.
+                </p>
+              </div>
             </div>
           </article>
-          <article class="service reveal">
-            <span class="service__num">03</span>
-            <div>
-              <h3>Imagefilme für Handwerk &amp; Mittelstand</h3>
-              <p>
-                Ein Film, der zeigt, wer bei Ihnen arbeitet und warum Kunden bleiben.
-                Konzept, Dreh und Schnitt aus einer Hand, in der Regel ein Drehtag.
-                Sie bekommen die Langfassung plus Social-Cuts im Hochformat.
-              </p>
+          <article class="service reveal" tabindex="0" role="button" aria-pressed="false">
+            <div class="service__inner">
+              <div class="service__face service__face--front">
+                <span class="service__num">03</span>
+                <span class="service__icon"><svg width="28" height="28" aria-hidden="true"><use href="#i-clapper"></use></svg></span>
+                <h3>Imagefilme für Handwerk &amp; Mittelstand</h3>
+                <span class="service__hint">Mehr erfahren</span>
+              </div>
+              <div class="service__face service__face--back">
+                <h3>Imagefilme für Handwerk &amp; Mittelstand</h3>
+                <p>
+                  Ein Film, der zeigt, wer bei Ihnen arbeitet und warum Kunden bleiben.
+                  Konzept, Dreh und Schnitt aus einer Hand, in der Regel ein Drehtag.
+                  Sie bekommen die Langfassung plus Social-Cuts im Hochformat.
+                </p>
+              </div>
             </div>
           </article>
-          <article class="service reveal">
-            <span class="service__num">04</span>
-            <div>
-              <h3>Produkt- &amp; Werbefotografie</h3>
-              <p>
-                Freigestellte Shopbilder oder inszenierte Werbemotive für Katalog und
-                Kampagne. Gleichbleibendes Licht und gleicher Bildschnitt – auch wenn
-                Sie in sechs Monaten nachbestellen.
-              </p>
+          <article class="service reveal" tabindex="0" role="button" aria-pressed="false">
+            <div class="service__inner">
+              <div class="service__face service__face--front">
+                <span class="service__num">04</span>
+                <span class="service__icon"><svg width="28" height="28" aria-hidden="true"><use href="#i-tag"></use></svg></span>
+                <h3>Produkt- &amp; Werbefotografie</h3>
+                <span class="service__hint">Mehr erfahren</span>
+              </div>
+              <div class="service__face service__face--back">
+                <h3>Produkt- &amp; Werbefotografie</h3>
+                <p>
+                  Freigestellte Shopbilder oder inszenierte Werbemotive für Katalog und
+                  Kampagne. Gleichbleibendes Licht und gleicher Bildschnitt – auch wenn
+                  Sie in sechs Monaten nachbestellen.
+                </p>
+              </div>
             </div>
           </article>
-          <article class="service reveal">
-            <span class="service__num">05</span>
-            <div>
-              <h3>Social-Media-Content &amp; Recruiting-Clips</h3>
-              <p>
-                Ein Drehtag, aus dem ein Monat Content wird: Kurzvideos im 9:16-Format,
-                Bildpakete und Untertitel. Besonders gefragt bei Betrieben aus dem Kreis
-                Warendorf, die Auszubildende und Fachkräfte suchen.
-              </p>
+          <article class="service reveal" tabindex="0" role="button" aria-pressed="false">
+            <div class="service__inner">
+              <div class="service__face service__face--front">
+                <span class="service__num">05</span>
+                <span class="service__icon"><svg width="28" height="28" aria-hidden="true"><use href="#i-message"></use></svg></span>
+                <h3>Social-Media-Content &amp; Recruiting-Clips</h3>
+                <span class="service__hint">Mehr erfahren</span>
+              </div>
+              <div class="service__face service__face--back">
+                <h3>Social-Media-Content &amp; Recruiting-Clips</h3>
+                <p>
+                  Ein Drehtag, aus dem ein Monat Content wird: Kurzvideos im 9:16-Format,
+                  Bildpakete und Untertitel. Besonders gefragt bei Betrieben aus dem Kreis
+                  Warendorf, die Auszubildende und Fachkräfte suchen.
+                </p>
+              </div>
             </div>
           </article>
-          <article class="service reveal">
-            <span class="service__num">06</span>
-            <div>
-              <h3>Postproduktion &amp; Bildpflege</h3>
-              <p>
-                Farblook, Retusche, Schnitt und Tonmischung – der Feinschliff, der den
-                Unterschied macht. Auf Wunsch archiviere ich Ihre Bilddaten, damit Sie
-                Jahre später noch an die Originale kommen.
-              </p>
+          <article class="service reveal" tabindex="0" role="button" aria-pressed="false">
+            <div class="service__inner">
+              <div class="service__face service__face--front">
+                <span class="service__num">06</span>
+                <span class="service__icon"><svg width="28" height="28" aria-hidden="true"><use href="#i-aperture"></use></svg></span>
+                <h3>Postproduktion &amp; Bildpflege</h3>
+                <span class="service__hint">Mehr erfahren</span>
+              </div>
+              <div class="service__face service__face--back">
+                <h3>Postproduktion &amp; Bildpflege</h3>
+                <p>
+                  Farblook, Retusche, Schnitt und Tonmischung – der Feinschliff, der den
+                  Unterschied macht. Auf Wunsch archiviere ich Ihre Bilddaten, damit Sie
+                  Jahre später noch an die Originale kommen.
+                </p>
+              </div>
             </div>
           </article>
         </div>
