@@ -54,7 +54,7 @@ wrangler pages deploy . --project-name=maria-photostudio --branch=main
 
 | Datei              | Zweck                                                                 |
 | ------------------ | --------------------------------------------------------------------- |
-| `_headers`         | Security-Header (CSP, HSTS, nosniff …) und Cache-Zeiten pro Verzeichnis |
+| `_headers`         | Security-Header (CSP, HSTS, nosniff …) und Cache-Zeiten pro Verzeichnis; die CSP erlaubt nur eigene Skripte, deshalb liegt GSAP unter `js/vendor/` |
 | `_redirects`       | 301-Weiterleitungen (`/index.html` → `/`, alte Pfade auf Sprungmarken)  |
 | `404.html`         | Eigene Fehlerseite im Seitendesign, `noindex`                          |
 | `robots.txt`       | Freigabe für Suchmaschinen + Sitemap-Verweis                           |
@@ -77,15 +77,17 @@ wrangler pages deploy . --project-name=maria-photostudio --branch=main
 8. **FAQ** (`#faq`) – 10 Fragen, die Einwände vorwegnehmen (Preis, Termin, Rechte …)
 9. **Kontakt** (`#kontakt`) – NAP-Daten, Erreichbarkeit, Formular
 
-- `css/style.css` – dunkles, bildzentriertes Design
+- `css/style.css` – helles, bildzentriertes Design (Design-Tokens, siehe unten)
 - `css/fonts.css` + `fonts/` – Manrope selbst gehostet (Variable Font)
-- `js/main.js` – Eingangsanimation, Scroll-Reveals, Portfolio-Filter, Lightbox, Formular
+- `js/main.js` – Zustand: Menü, Filter, Lightbox, Formular
+- `js/animations.js` + `js/vendor/` – Bewegung mit GSAP, ScrollTrigger und Flip
 
 ### Eingangsanimation
 
 Beim Laden blitzen mehrere Portfolio-Bilder im Vollbild schnell hintereinander auf.
-Das letzte Bild skaliert herunter und gibt die Startseite frei. Bei aktivierter
-Systemeinstellung „Bewegung reduzieren“ wird die Animation übersprungen.
+Das letzte Bild skaliert herunter und gibt die Startseite frei. Die Sequenz ist
+jederzeit überspringbar (Button, Klick, Escape, Scrollen) und bei aktivierter
+Systemeinstellung „Bewegung reduzieren“ wird sie komplett ausgelassen.
 
 ---
 
@@ -141,18 +143,18 @@ in den Komponenten stehen keine rohen Hex-Werte, Pixelgrößen oder Zeiten mehr.
 
 | Token-Gruppe | Werte |
 | --- | --- |
-| Farben | `--bg` `--bg-soft` `--surface` `--line` `--line-strong` `--text` `--text-dim` `--accent` `--on-accent` `--danger` |
+| Farben | `--bg` `--bg-soft` `--surface` `--line` `--line-strong` `--text` `--text-dim` `--accent` `--on-accent` `--sage` `--danger` `--scrim` |
 | Typo | `--fs-label` 12 px · `--fs-sm` 14 px · `--fs-base` **16 px** · `--fs-lg` 18 px |
 | Abstände | 4-pt-Raster: `--sp-1` … `--sp-16` |
 | Radien | `--r-sm` 8 · `--r-md` 12 · `--r-lg` 16 · `--r-full` |
 | Elevation | `--elev-1/2/3` – eine Schattenskala für Karten, Bilder, Overlays |
-| Motion | `--dur-fast` 150 ms · `--dur` 220 ms · `--dur-slow` 320 ms · `--dur-reveal` 400 ms · `--ease-out` für Eintritte |
+| Motion | `--dur-fast` 150 ms · `--dur` 220 ms · `--dur-slow` 320 ms · `--ease-out` für Eintritte (CSS-Mikrointeraktionen; Sequenzen laufen über GSAP) |
 | Ebenen | `--z-nav` 100 · `--z-menu` 200 · `--z-lightbox` 500 · `--z-loader` 1000 · `--z-skip` 1100 |
 
 **Was daraus folgte:**
 
-- **Kontrast (WCAG AAA):** `--text-dim` von `#9a978f` auf `#a7a49c` angehoben →
-  7,8:1 statt 6,7:1. Alle Text/Hintergrund-Paare liegen jetzt über 7:1.
+- **Kontrast:** jedes Text/Hintergrund-Paar wurde nachgerechnet; nach dem
+  Farbwechsel liegen alle über 4,5:1, Fließtext über 7:1 (Werte siehe Tabelle).
 - **Touch-Ziele ≥ 44 px:** Navigationslinks, Filter-Chips, Fußzeilen- und
   Kontaktlinks, Burger, Lightbox-Buttons und Formularfelder (48 px).
 - **Schriftgröße:** Fließtext durchgehend 16 px (vorher 13–15 px), Zeilenlänge
@@ -172,8 +174,62 @@ in den Komponenten stehen keine rohen Hex-Werte, Pixelgrößen oder Zeiten mehr.
 - **Breakpoints:** systematisch 1440 / 1024 / 768 / 480. Ab 1024 px Overlay-Menü,
   ab 768 px einspaltig, auf Mobil wandern die Lightbox-Pfeile in die Daumenzone.
 
-Die Seite ist bewusst nur im dunklen Look angelegt (Bilder sollen wirken) – es
-gibt daher keine Light-Mode-Variante.
+Die Seite ist bewusst auf einen hellen, warmen Look festgelegt – es gibt
+daher keine Dark-Mode-Variante.
+
+### Farbwelt
+
+Die Palette orientiert sich am Model-Aushang (warme Creme-, Blush- und
+Terrakotta-Töne, Weiß für die Polaroid-Kanten, das Grün der Wiese als
+dekorativer Zweitton). Die Seite ist damit hell statt dunkel:
+
+| Rolle | Wert | Kontrast |
+| --- | --- | --- |
+| `--bg` Creme | `#fcf6f0` | – |
+| `--bg-soft` Blush | `#f4e5dc` | – |
+| `--surface` Karten | `#ffffff` | – |
+| `--text` Dunkelbraun | `#45352f` | 10.9:1 |
+| `--text-dim` | `#645047` | 7.0:1 |
+| `--accent` Terrakotta | `#9c5049` | 5.4:1 |
+| `--on-accent` | `#fffaf6` | 5.7:1 auf `--accent` |
+| `--sage` (nur Dekor) | `#6e7f5c` | – |
+
+Fotos brauchen weiterhin einen dunklen Verlauf, damit die Bildunterschrift
+lesbar bleibt – dafür gibt es `--scrim` und `--on-scrim`.
+
+### Bewegung (GSAP)
+
+GSAP 3.15 liegt selbst gehostet unter `js/vendor/` – die CSP in `_headers`
+erlaubt nur `script-src 'self'`, ein CDN wäre blockiert. `js/animations.js`
+enthält ausschließlich Motion, `js/main.js` nur Zustand und Bedienung; beide
+sprechen über CustomEvents (`maria:filter`, `maria:lightbox-open`, …)
+miteinander. Läuft GSAP nicht, greifen die CSS-Fallbacks.
+
+| Element | Animation |
+| --- | --- |
+| Intro | Timeline statt `setTimeout`-Kette; Überspringen beschleunigt die Timeline (`timeScale`), statt sie abzuschneiden |
+| Hero | Zeilen laufen aus der Maske ein, danach gestaffelt Text, Buttons, Vertrauenszeile |
+| Abschnitte | `ScrollTrigger.batch()` blendet je Sichtbarkeits-Gruppe gestaffelt ein |
+| Portfolio | leichter Parallax im Bildausschnitt (nur ab 769 px) |
+| Kennzahlen | zählen beim Erscheinen hoch |
+| Laufband | Tempo und Richtung folgen der Scrollgeschwindigkeit, Hover bremst |
+| Filter | `Flip` sortiert das Raster um, die Rasterhöhe wird mitanimiert |
+| Lightbox | wächst aus der angeklickten Karte heraus |
+| FAQ | Höhe wird weich auf- und zugeklappt |
+| Mobilmenü | Links laufen gestaffelt ein |
+
+`prefers-reduced-motion` läuft über `gsap.matchMedia()`. Wichtig dabei: die
+Bedingungen müssen so gewählt sein, dass **immer** eine zutrifft – sonst wird
+der Handler nie ausgeführt. Deshalb stehen `reduce` und `no-preference` beide
+in der Abfrage. Interaktionen, die `document`-Listener registrieren, liegen
+außerhalb von `matchMedia`, sonst gäbe es nach jedem Breakpoint-Wechsel
+doppelte Handler.
+
+Die GSAP-Skills liegen unter `.claude/skills/gsap-*`:
+
+```bash
+npx skills add https://github.com/greensock/gsap-skills
+```
 
 ### Der Skill im Projekt
 

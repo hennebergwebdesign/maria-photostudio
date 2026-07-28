@@ -14,7 +14,7 @@
   <link rel="canonical" href="https://www.maria-photostudio.de/">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <meta name="author" content="Maria Photostudio">
-  <meta name="theme-color" content="#0d0d0f">
+  <meta name="theme-color" content="#fcf6f0">
 
   <!-- Lokale Signale (Standort 48336 Sassenberg, Kreis Warendorf, Münsterland) -->
   <meta name="geo.region" content="DE-NW">
@@ -48,6 +48,7 @@
   <link rel="preload" href="img/work-01-800.webp" as="image" type="image/webp" fetchpriority="high">
   <link rel="stylesheet" href="css/fonts.css">
   <link rel="stylesheet" href="css/style.css">
+  <noscript><style>.loader { display: none; } .reveal { opacity: 1; transform: none; }</style></noscript>
 </head>
 <body>
 
@@ -100,6 +101,7 @@
 
     <!-- ======================= HERO ======================= -->
     <section class="hero" id="inhalt" aria-labelledby="hero-title">
+      <div class="hero__wash" aria-hidden="true"></div>
       <div class="container">
         <p class="hero__kicker reveal">Fotografie &amp; Videografie · 48336 Sassenberg · Münsterland</p>
         <h1 class="hero__title" id="hero-title">
@@ -835,6 +837,11 @@
   }
   </script>
 
+  <!-- GSAP selbst gehostet – die CSP in _headers erlaubt nur script-src 'self' -->
+  <script src="js/vendor/gsap.min.js" defer></script>
+  <script src="js/vendor/ScrollTrigger.min.js" defer></script>
+  <script src="js/vendor/Flip.min.js" defer></script>
+  <script src="js/animations.js" defer></script>
   <script src="js/main.js" defer></script>
 </body>
 </html>

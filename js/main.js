@@ -15,6 +15,14 @@
   var prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var body = document.body;
 
+  // Läuft GSAP? Dann übernimmt js/animations.js sämtliche Bewegung und
+  // diese Datei kümmert sich nur noch um Zustand und Bedienung.
+  var hasGsap = document.documentElement.classList.contains("gsap");
+
+  function emit(name, detail) {
+    document.dispatchEvent(new CustomEvent(name, { detail: detail || null }));
+  }
+
   /* ---------- Alte Sprungmarken auf neue umleiten (Links von außen bleiben gültig) ---------- */
   var legacyHashes = {
     "#arbeiten": "#portfolio",
@@ -42,7 +50,7 @@
     }, 500);
   }
 
-  if (loader && !prefersReducedMotion) {
+  if (loader && !hasGsap && !prefersReducedMotion) {
     body.classList.add("is-locked");
     var images = loader.querySelectorAll(".loader__img");
     var index = 0;
@@ -86,7 +94,7 @@
     });
     window.addEventListener("wheel", finishLoader, { once: true, passive: true });
     window.addEventListener("touchmove", finishLoader, { once: true, passive: true });
-  } else {
+  } else if (!hasGsap) {
     if (loader) loader.classList.add("is-done");
     body.classList.add("is-ready");
   }
@@ -105,6 +113,7 @@
     burger.setAttribute("aria-expanded", "false");
     burger.setAttribute("aria-label", "Menü öffnen");
     body.classList.remove("is-locked");
+    emit("maria:menu-close");
   }
 
   if (burger) {
@@ -113,6 +122,7 @@
       burger.setAttribute("aria-expanded", String(open));
       burger.setAttribute("aria-label", open ? "Menü schließen" : "Menü öffnen");
       body.classList.toggle("is-locked", open);
+      emit(open ? "maria:menu-open" : "maria:menu-close");
     });
 
     navLinks.addEventListener("click", function (e) {
@@ -154,7 +164,9 @@
   /* ---------- Scroll-Reveal mit Staffelung ---------- */
   var revealEls = document.querySelectorAll(".reveal");
 
-  if ("IntersectionObserver" in window && !prefersReducedMotion) {
+  if (hasGsap) {
+    // GSAP/ScrollTrigger übernimmt die Eintritte
+  } else if ("IntersectionObserver" in window && !prefersReducedMotion) {
     var io = new IntersectionObserver(function (entries) {
       // Gleichzeitig sichtbare Elemente um je 40 ms versetzt einblenden
       var visible = entries.filter(function (e) { return e.isIntersecting; });
@@ -181,11 +193,16 @@
       });
       chip.classList.add("is-active");
       chip.setAttribute("aria-pressed", "true");
+
+      emit("maria:filter-before");
+
       var filter = chip.dataset.filter;
       cards.forEach(function (card) {
         var show = filter === "all" || card.dataset.type === filter;
         card.classList.toggle("is-hidden", !show);
       });
+
+      emit("maria:filter", { filter: filter });
     });
   });
 
@@ -213,6 +230,7 @@
     lightbox.classList.add("is-open");
     lightbox.setAttribute("aria-hidden", "false");
     body.classList.add("is-locked");
+    emit("maria:lightbox-open", { card: card });
     lightboxClose.focus();
   }
 
@@ -227,6 +245,7 @@
     lightbox.classList.remove("is-open");
     lightbox.setAttribute("aria-hidden", "true");
     body.classList.remove("is-locked");
+    emit("maria:lightbox-close");
     if (lastFocused && typeof lastFocused.focus === "function") lastFocused.focus();
   }
 
