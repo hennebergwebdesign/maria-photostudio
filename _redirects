@@ -1,0 +1,10 @@
+# Cloudflare Pages – Weiterleitungen (301 = dauerhaft, Ranking bleibt erhalten)
+# Doku: https://developers.cloudflare.com/pages/configuration/redirects/
+
+/index.html   /   301
+/home         /   301
+/startseite   /   301
+/kontakt      /#kontakt      301
+/leistungen   /#leistungen   301
+/portfolio    /#portfolio    301
+/faq          /#faq          301

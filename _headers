@@ -1,0 +1,32 @@
+# Cloudflare Pages – Header-Regeln
+# Doku: https://developers.cloudflare.com/pages/configuration/headers/
+
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), microphone=(), camera=(), payment=(), usb=()
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+  Content-Security-Policy: default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; font-src 'self'; connect-src 'self'; form-action 'self'; base-uri 'self'; frame-ancestors 'self'; object-src 'none'; upgrade-insecure-requests
+
+# HTML immer frisch ausliefern (Cloudflare-CDN cached weiterhin am Edge)
+/
+  Cache-Control: public, max-age=0, must-revalidate
+
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+# Schriften ändern sich nie
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Bilder: 30 Tage
+/img/*
+  Cache-Control: public, max-age=2592000
+
+# CSS/JS: 7 Tage (bei Änderungen ggf. Dateinamen versionieren)
+/css/*
+  Cache-Control: public, max-age=604800
+
+/js/*
+  Cache-Control: public, max-age=604800

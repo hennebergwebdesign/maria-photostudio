@@ -1,0 +1,5 @@
+# robots.txt – Maria Photostudio, 48336 Sassenberg
+User-agent: *
+Allow: /
+
+Sitemap: https://www.maria-photostudio.de/sitemap.xml
