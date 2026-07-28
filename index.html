@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maria Photostudio — Fotografie &amp; Videografie</title>
+  <meta name="description" content="Maria Photostudio – Fotografie und Videografie mit Charakter. Portfolio, Leistungen und Kontakt.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ======================= PRELOADER (Bild-Flash-Sequenz) ======================= -->
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader__stack" id="loaderStack">
+      <img class="loader__img" src="img/work-01.jpg" alt="">
+      <img class="loader__img" src="img/work-02.jpg" alt="">
+      <img class="loader__img" src="img/work-03.jpg" alt="">
+      <img class="loader__img" src="img/work-04.jpg" alt="">
+      <img class="loader__img" src="img/work-05.jpg" alt="">
+      <img class="loader__img" src="img/work-06.jpg" alt="">
+    </div>
+    <div class="loader__fade"></div>
+  </div>
+
+  <!-- ======================= NAVIGATION ======================= -->
+  <header class="nav" id="nav">
+    <div class="nav__inner container">
+      <a href="#top" class="nav__logo">MARIA<span>.</span></a>
+      <nav class="nav__links" id="navLinks" aria-label="Hauptnavigation">
+        <a href="#arbeiten">Arbeiten</a>
+        <a href="#leistungen">Leistungen</a>
+        <a href="#ueber">Über mich</a>
+        <a href="#kontakt" class="nav__cta">Kontakt</a>
+      </nav>
+      <button class="nav__burger" id="navBurger" aria-label="Menü öffnen" aria-expanded="false">
+        <span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ======================= HERO ======================= -->
+    <section class="hero">
+      <div class="container">
+        <p class="hero__kicker reveal">Fotografie &amp; Videografie</p>
+        <h1 class="hero__title">
+          <span class="line"><span>Momente, die</span></span>
+          <span class="line"><span>bleiben.</span></span>
+        </h1>
+        <p class="hero__sub reveal">
+          Ich erzähle Geschichten in Bildern und Bewegtbild – ehrlich, nahbar und
+          mit einem Blick für das Besondere. Von Porträts über Hochzeiten bis zu
+          Imagefilmen für Unternehmen.
+        </p>
+        <div class="hero__actions reveal">
+          <a href="#arbeiten" class="btn btn--primary">Arbeiten ansehen</a>
+          <a href="#kontakt" class="btn btn--ghost">Projekt anfragen</a>
+        </div>
+      </div>
+      <div class="hero__marquee" aria-hidden="true">
+        <div class="hero__marquee-track">
+          <span>Porträt&nbsp;·&nbsp;Hochzeit&nbsp;·&nbsp;Imagefilm&nbsp;·&nbsp;Event&nbsp;·&nbsp;Produkt&nbsp;·&nbsp;Social&nbsp;Media&nbsp;·&nbsp;</span>
+          <span>Porträt&nbsp;·&nbsp;Hochzeit&nbsp;·&nbsp;Imagefilm&nbsp;·&nbsp;Event&nbsp;·&nbsp;Produkt&nbsp;·&nbsp;Social&nbsp;Media&nbsp;·&nbsp;</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================= PORTFOLIO ======================= -->
+    <section class="work section" id="arbeiten">
+      <div class="container">
+        <div class="section__head reveal">
+          <p class="section__kicker">01 — Portfolio</p>
+          <h2 class="section__title">Ausgewählte Arbeiten</h2>
+        </div>
+        <div class="work__filter reveal" role="tablist" aria-label="Portfolio filtern">
+          <button class="chip is-active" data-filter="all">Alle</button>
+          <button class="chip" data-filter="foto">Fotografie</button>
+          <button class="chip" data-filter="video">Videografie</button>
+        </div>
+        <div class="work__grid" id="workGrid">
+          <a class="card reveal" data-type="foto" href="img/work-01.jpg" data-title="Porträtserie „Nordlicht“" data-cat="Fotografie · Porträt">
+            <img src="img/work-01.jpg" alt="Porträtserie Nordlicht" loading="lazy">
+            <div class="card__meta"><h3>Porträtserie „Nordlicht“</h3><p>Fotografie · Porträt</p></div>
+          </a>
+          <a class="card card--video reveal" data-type="video" href="img/work-02.jpg" data-title="Imagefilm Tischlerei Brandt" data-cat="Videografie · Imagefilm">
+            <img src="img/work-02.jpg" alt="Imagefilm Tischlerei Brandt" loading="lazy">
+            <span class="card__play" aria-hidden="true">▶</span>
+            <div class="card__meta"><h3>Imagefilm Tischlerei Brandt</h3><p>Videografie · Imagefilm</p></div>
+          </a>
+          <a class="card reveal" data-type="foto" href="img/work-03.jpg" data-title="Hochzeit am See" data-cat="Fotografie · Hochzeit">
+            <img src="img/work-03.jpg" alt="Hochzeitsreportage am See" loading="lazy">
+            <div class="card__meta"><h3>Hochzeit am See</h3><p>Fotografie · Hochzeit</p></div>
+          </a>
+          <a class="card card--video reveal" data-type="video" href="img/work-04.jpg" data-title="Aftermovie Stadtfest" data-cat="Videografie · Event">
+            <img src="img/work-04.jpg" alt="Aftermovie Stadtfest" loading="lazy">
+            <span class="card__play" aria-hidden="true">▶</span>
+            <div class="card__meta"><h3>Aftermovie Stadtfest</h3><p>Videografie · Event</p></div>
+          </a>
+          <a class="card reveal" data-type="foto" href="img/work-05.jpg" data-title="Produktshooting Manufaktur" data-cat="Fotografie · Produkt">
+            <img src="img/work-05.jpg" alt="Produktshooting Manufaktur" loading="lazy">
+            <div class="card__meta"><h3>Produktshooting Manufaktur</h3><p>Fotografie · Produkt</p></div>
+          </a>
+          <a class="card card--video reveal" data-type="video" href="img/work-06.jpg" data-title="Recruiting-Clip Pflegeteam" data-cat="Videografie · Social Media">
+            <img src="img/work-06.jpg" alt="Recruiting-Clip Pflegeteam" loading="lazy">
+            <span class="card__play" aria-hidden="true">▶</span>
+            <div class="card__meta"><h3>Recruiting-Clip Pflegeteam</h3><p>Videografie · Social Media</p></div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================= LEISTUNGEN ======================= -->
+    <section class="services section" id="leistungen">
+      <div class="container">
+        <div class="section__head reveal">
+          <p class="section__kicker">02 — Leistungen</p>
+          <h2 class="section__title">Was ich für Sie tun kann</h2>
+        </div>
+        <div class="services__list">
+          <article class="service reveal">
+            <span class="service__num">01</span>
+            <div><h3>Porträt- &amp; Businessfotografie</h3>
+            <p>Authentische Porträts für Bewerbung, Website und Social Media – im Studio oder on location.</p></div>
+          </article>
+          <article class="service reveal">
+            <span class="service__num">02</span>
+            <div><h3>Hochzeits- &amp; Eventreportagen</h3>
+            <p>Unaufdringliche Begleitung Ihres großen Tages oder Events – vom ersten Moment bis zum letzten Tanz.</p></div>
+          </article>
+          <article class="service reveal">
+            <span class="service__num">03</span>
+            <div><h3>Imagefilme</h3>
+            <p>Filme, die zeigen, wer Sie sind: Konzept, Dreh und Schnitt aus einer Hand.</p></div>
+          </article>
+          <article class="service reveal">
+            <span class="service__num">04</span>
+            <div><h3>Produkt- &amp; Werbefotografie</h3>
+            <p>Klare, hochwertige Aufnahmen Ihrer Produkte für Shop, Katalog und Kampagne.</p></div>
+          </article>
+          <article class="service reveal">
+            <span class="service__num">05</span>
+            <div><h3>Social-Media-Content</h3>
+            <p>Kurzvideos und Bildpakete im richtigen Format – geplant, produziert und einsatzbereit.</p></div>
+          </article>
+          <article class="service reveal">
+            <span class="service__num">06</span>
+            <div><h3>Postproduktion</h3>
+            <p>Farblook, Retusche, Schnitt und Tonmischung – der Feinschliff, der den Unterschied macht.</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================= ÜBER MICH ======================= -->
+    <section class="about section" id="ueber">
+      <div class="container about__grid">
+        <div class="about__img reveal">
+          <img src="img/portrait.jpg" alt="Porträt von Maria" loading="lazy">
+        </div>
+        <div class="about__text">
+          <p class="section__kicker reveal">03 — Über mich</p>
+          <h2 class="section__title reveal">Hinter der Kamera: Maria</h2>
+          <p class="reveal">
+            Seit über zehn Jahren halte ich Menschen, Marken und Momente fest.
+            Was mich antreibt, ist die Suche nach dem echten Augenblick – dem
+            kurzen Lächeln zwischen zwei Posen, dem Licht, das nur eine Minute
+            so fällt.
+          </p>
+          <p class="reveal">
+            Ob Foto oder Film: Ich arbeite ruhig, vorbereitet und mit viel
+            Gespür für die Menschen vor der Linse. Das Ergebnis sind Bilder,
+            in denen Sie sich wiedererkennen.
+          </p>
+          <div class="about__facts reveal">
+            <div><strong>10+</strong><span>Jahre Erfahrung</span></div>
+            <div><strong>250+</strong><span>Projekte</span></div>
+            <div><strong>Foto &amp; Video</strong><span>aus einer Hand</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================= KONTAKT ======================= -->
+    <section class="contact section" id="kontakt">
+      <div class="container contact__grid">
+        <div class="contact__intro">
+          <p class="section__kicker reveal">04 — Kontakt</p>
+          <h2 class="section__title reveal">Lassen Sie uns über Ihr Projekt sprechen</h2>
+          <p class="reveal">
+            Erzählen Sie mir kurz, was Sie vorhaben – ich melde mich in der
+            Regel innerhalb von 24 Stunden zurück.
+          </p>
+          <ul class="contact__details reveal">
+            <li><span>E-Mail</span><a href="mailto:hallo@maria-photostudio.de">hallo@maria-photostudio.de</a></li>
+            <li><span>Telefon</span><a href="tel:+491701234567">+49 170 1234567</a></li>
+            <li><span>Studio</span>Musterstraße 12, 12345 Musterstadt</li>
+          </ul>
+        </div>
+        <form class="contact__form reveal" id="contactForm" novalidate>
+          <label>Name
+            <input type="text" name="name" required autocomplete="name" placeholder="Ihr Name">
+          </label>
+          <label>E-Mail
+            <input type="email" name="email" required autocomplete="email" placeholder="ihre@mail.de">
+          </label>
+          <label>Nachricht
+            <textarea name="message" rows="5" required placeholder="Worum geht es?"></textarea>
+          </label>
+          <button type="submit" class="btn btn--primary">Nachricht senden</button>
+          <p class="contact__status" id="formStatus" role="status"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ======================= FOOTER ======================= -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <a href="#top" class="nav__logo">MARIA<span>.</span></a>
+      <nav class="footer__links" aria-label="Fußzeile">
+        <a href="#arbeiten">Arbeiten</a>
+        <a href="#leistungen">Leistungen</a>
+        <a href="#ueber">Über mich</a>
+        <a href="#kontakt">Kontakt</a>
+      </nav>
+      <div class="footer__social">
+        <a href="#" aria-label="Instagram">Instagram</a>
+        <a href="#" aria-label="YouTube">YouTube</a>
+      </div>
+    </div>
+    <div class="container footer__meta">
+      <p>© 2026 Maria Photostudio</p>
+      <p><a href="#">Impressum</a> · <a href="#">Datenschutz</a></p>
+    </div>
+  </footer>
+
+  <!-- ======================= LIGHTBOX ======================= -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="lightbox__close" id="lightboxClose" aria-label="Schließen">×</button>
+    <button class="lightbox__arrow lightbox__arrow--prev" id="lightboxPrev" aria-label="Vorheriges">‹</button>
+    <figure class="lightbox__figure">
+      <img id="lightboxImg" src="" alt="">
+      <figcaption id="lightboxCaption"></figcaption>
+    </figure>
+    <button class="lightbox__arrow lightbox__arrow--next" id="lightboxNext" aria-label="Nächstes">›</button>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
