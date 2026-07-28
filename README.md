@@ -37,16 +37,18 @@ wrangler pages deploy . --project-name=maria-photostudio --branch=main
 
 ### Nach dem ersten Deploy
 
-1. **Custom Domain** verbinden: Pages-Projekt → *Custom domains* → `maria-photostudio.de`
-   und `www.maria-photostudio.de` hinzufügen. Eine Variante als Hauptdomain festlegen
+1. **Custom Domain** verbinden: Pages-Projekt → *Custom domains* → `mariavisuals.de`
+   und `www.mariavisuals.de` hinzufügen. Eine Variante als Hauptdomain festlegen
    und die andere per Cloudflare-**Redirect Rule** (301) darauf weiterleiten – sonst
    bewertet Google zwei identische Seiten (Duplicate Content).
-2. **Domain überall eintragen**: die Platzhalter-Domain `https://www.maria-photostudio.de/`
-   steht in `index.html` (Canonical, Open Graph, JSON-LD), `robots.txt` und `sitemap.xml`.
+2. **Domain prüfen**: eingetragen ist `https://mariavisuals.de/` in `index.html`
+   (Canonical, Open Graph, JSON-LD), `robots.txt` und `sitemap.xml`. Falls die
+   Hauptdomain `www.mariavisuals.de` sein soll, an allen drei Stellen umstellen –
+   ein Canonical auf die falsche Variante kostet Rankings.
 3. **Cloudflare-Optimierungen** (Dashboard → Speed / Caching):
    *Auto Minify*, *Brotli*, *Early Hints*, bei Pro-Plan zusätzlich *Polish (WebP)*.
 4. **sitemap.xml** in der Google Search Console einreichen:
-   `https://www.maria-photostudio.de/sitemap.xml`
+   `https://mariavisuals.de/sitemap.xml`
 5. **Google Unternehmensprofil** (früher Google My Business) für Sassenberg anlegen –
    für lokale Sichtbarkeit ist das der stärkste einzelne Hebel neben der Startseite.
 
@@ -54,7 +56,7 @@ wrangler pages deploy . --project-name=maria-photostudio --branch=main
 
 | Datei              | Zweck                                                                 |
 | ------------------ | --------------------------------------------------------------------- |
-| `_headers`         | Security-Header (CSP, HSTS, nosniff …) und Cache-Zeiten pro Verzeichnis; die CSP erlaubt nur eigene Skripte, deshalb liegt GSAP unter `js/vendor/` |
+| `_headers`         | Security-Header (CSP, HSTS, nosniff …) und Cache-Zeiten; die CSP erlaubt nur eigene Skripte, deshalb liegt GSAP unter `js/vendor/`. **CSS und JS werden bei jedem Aufruf revalidiert** – lange Browser-Caches führten dazu, dass nach einem Deploy neues HTML auf altes CSS traf |
 | `_redirects`       | 301-Weiterleitungen (`/index.html` → `/`, alte Pfade auf Sprungmarken)  |
 | `404.html`         | Eigene Fehlerseite im Seitendesign, `noindex`                          |
 | `robots.txt`       | Freigabe für Suchmaschinen + Sitemap-Verweis                           |
@@ -78,7 +80,7 @@ wrangler pages deploy . --project-name=maria-photostudio --branch=main
 9. **Kontakt** (`#kontakt`) – NAP-Daten, Erreichbarkeit, Formular
 
 - `css/style.css` – helles, bildzentriertes Design (Design-Tokens, siehe unten)
-- `css/fonts.css` + `fonts/` – Manrope selbst gehostet (Variable Font)
+- `css/fonts.css` + `fonts/` – Manrope und Caveat selbst gehostet (Variable Fonts)
 - `js/main.js` – Zustand: Menü, Filter, Lightbox, Formular
 - `js/animations.js` + `js/vendor/` – Bewegung mit GSAP, ScrollTrigger und Flip
 
@@ -126,7 +128,8 @@ Systemeinstellung „Bewegung reduzieren“ wird sie komplett ausgelassen.
   statt sechs Full-HD-JPEGs – das war der größte LCP-Bremsklotz.
 - Schrift **selbst gehostet** statt Google Fonts: ein Request weniger, kein
   DSGVO-Risiko durch IP-Übertragung an Google, `preload` + `font-display: swap`.
-- `defer` auf dem Skript, lange Cache-Zeiten über `_headers`.
+- `defer` auf allen Skripten; lange Cache-Zeiten für Bilder, Schriften und GSAP,
+  CSS und JS werden dagegen revalidiert (siehe unten).
 
 **Barrierefreiheit**
 
@@ -176,6 +179,35 @@ in den Komponenten stehen keine rohen Hex-Werte, Pixelgrößen oder Zeiten mehr.
 
 Die Seite ist bewusst auf einen hellen, warmen Look festgelegt – es gibt
 daher keine Dark-Mode-Variante.
+
+### Warum die Seite nach dem letzten Deploy kaputt aussah
+
+`_headers` gab CSS und JS sieben Tage Browser-Cache mit. Nach einem Deploy
+holte sich der Browser das neue HTML (kein Cache), behielt aber das alte
+`style.css`. Ergebnis: SVG-Icons ohne Größenangabe wurden bildschirmfüllend,
+das alte `content: "+"` stand zusätzlich neben dem neuen Chevron, und die
+Farben blieben auf dem alten Stand. Zwei Gegenmaßnahmen:
+
+1. CSS und JS werden jetzt bei jedem Aufruf revalidiert (ETag → 304).
+2. Die Verweise tragen einen Versionsstempel (`?v=20260728`) – bei
+   Änderungen an CSS oder JS diesen Stempel hochzählen.
+
+Zusätzlich hat jedes Inline-SVG jetzt `width`/`height` als Attribut. Fehlt das
+CSS einmal, bleibt ein Icon dann trotzdem 16 px groß statt 300 px.
+
+### Editorial-Look
+
+Die Vorlage lebt von Polaroid-Abzügen, handgeschriebenen Notizen und viel Creme.
+Übernommen wurden:
+
+- **Bildstapel im Hero** – zwei Abzüge mit weißem Rand, leicht gedreht. Eine
+  Fotografie-Seite ohne Foto im ersten Bildschirm verschenkt ihr bestes Argument.
+- **Portfolio als Polaroids** statt dunklem Verlauf über dem Bild: weißer Rahmen,
+  Bildunterschrift darunter. Auf hellem Grund wirkt der dunkle Verlauf wie ein Fremdkörper.
+- **Caveat** als Akzentschrift für Bildunterschriften – sparsam, nie im Fließtext.
+- **Karten** für Leistungen, FAQ, Kennzahlen und Formular: weiß auf Creme, ein
+  Rahmen, ein Schatten aus derselben Skala.
+- **Sektionskicker** mit kurzem Akzentstrich.
 
 ### Farbwelt
 
@@ -259,7 +291,9 @@ python3 .claude/skills/ui-ux-pro-max/scripts/search.py "touch target" --domain u
   (Sektion „Kontakt“ **und** im JSON-LD, Feld `address`) sowie die mailto-Adresse in
   `js/main.js`. Die Daten müssen überall identisch sein (NAP-Konsistenz) – auch im
   Google-Unternehmensprofil.
-- **Domain**: `https://www.maria-photostudio.de/` in `index.html`, `robots.txt`, `sitemap.xml`.
+- **E-Mail-Adresse**: es steht noch `hallo@maria-photostudio.de` in `index.html`
+  (Kontakt + JSON-LD) und `js/main.js`. Auf die echte Adresse der Domain
+  `mariavisuals.de` ändern.
 - **Impressum / Datenschutz**: Footer-Links auf echte Seiten führen (in Deutschland Pflicht).
 - **Social-Links**: Instagram/YouTube im Footer, danach als `sameAs` ins JSON-LD aufnehmen.
 - **Preise**: falls Startpreise genannt werden sollen, in die FAQ-Antwort „Was kostet ein
