@@ -3,24 +3,65 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Maria Photostudio — Fotografie &amp; Videografie</title>
-  <meta name="description" content="Maria Photostudio – Fotografie und Videografie mit Charakter. Portfolio, Leistungen und Kontakt.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- ======================= SEO: Meta-Titel & Beschreibung =======================
+       Titel-Formel:        [Hauptkeyword] – [Benefit/USP] | [Marke]        (57 Zeichen)
+       Beschreibungsformel: [Problem] + [3 Benefits mit ✓] + [CTA]          (157 Zeichen)
+  -->
+  <title>Fotograf Sassenberg – Foto &amp; Video aus einer Hand | Maria</title>
+  <meta name="description" content="Bilder, die zu Ihnen passen? ✓ Foto &amp; Video aus einer Hand ✓ Termin in 14 Tagen ✓ Festpreis vorab → Jetzt kostenloses Erstgespräch in Sassenberg sichern">
+
+  <link rel="canonical" href="https://www.maria-photostudio.de/">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="author" content="Maria Photostudio">
+  <meta name="theme-color" content="#0d0d0f">
+
+  <!-- Lokale Signale (Standort 48336 Sassenberg, Kreis Warendorf, Münsterland) -->
+  <meta name="geo.region" content="DE-NW">
+  <meta name="geo.placename" content="Sassenberg">
+  <meta name="geo.position" content="51.9833;8.0333">
+  <meta name="ICBM" content="51.9833, 8.0333">
+
+  <!-- Open Graph / Social -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:site_name" content="Maria Photostudio">
+  <meta property="og:url" content="https://www.maria-photostudio.de/">
+  <meta property="og:title" content="Fotograf Sassenberg – Foto &amp; Video aus einer Hand">
+  <meta property="og:description" content="Foto und Video aus einer Hand für Sassenberg, Warendorf und das Münsterland. Festpreis vorab, Termin in 14 Tagen, Bilder in 10 Werktagen.">
+  <meta property="og:image" content="https://www.maria-photostudio.de/img/og-maria-photostudio.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Fotograf Sassenberg – Arbeitsprobe von Maria Photostudio">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Fotograf Sassenberg – Foto &amp; Video aus einer Hand">
+  <meta name="twitter:description" content="Foto und Video aus einer Hand für Sassenberg, Warendorf und das Münsterland. Festpreis vorab, Termin in 14 Tagen.">
+  <meta name="twitter:image" content="https://www.maria-photostudio.de/img/og-maria-photostudio.jpg">
+
+  <!-- Icons -->
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <!-- Performance: Schrift selbst gehostet (kein Google-Fonts-Request), LCP-Bild vorladen -->
+  <link rel="preload" href="fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="img/work-01-800.webp" as="image" type="image/webp" fetchpriority="high">
+  <link rel="stylesheet" href="css/fonts.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
+  <a class="skip-link" href="#inhalt">Zum Inhalt springen</a>
+
   <!-- ======================= PRELOADER (Bild-Flash-Sequenz) ======================= -->
   <div class="loader" id="loader" aria-hidden="true">
     <div class="loader__stack" id="loaderStack">
-      <img class="loader__img" src="img/work-01.jpg" alt="">
-      <img class="loader__img" src="img/work-02.jpg" alt="">
-      <img class="loader__img" src="img/work-03.jpg" alt="">
-      <img class="loader__img" src="img/work-04.jpg" alt="">
-      <img class="loader__img" src="img/work-05.jpg" alt="">
-      <img class="loader__img" src="img/work-06.jpg" alt="">
+      <img class="loader__img" src="img/work-01-800.webp" alt="" width="800" height="500" fetchpriority="high" decoding="async">
+      <img class="loader__img" src="img/work-02-800.webp" alt="" width="800" height="500" decoding="async">
+      <img class="loader__img" src="img/work-03-800.webp" alt="" width="800" height="500" decoding="async">
+      <img class="loader__img" src="img/work-04-800.webp" alt="" width="800" height="500" decoding="async">
+      <img class="loader__img" src="img/work-05-800.webp" alt="" width="800" height="500" decoding="async">
+      <img class="loader__img" src="img/work-06-800.webp" alt="" width="800" height="500" decoding="async">
     </div>
     <div class="loader__fade"></div>
   </div>
@@ -28,14 +69,16 @@
   <!-- ======================= NAVIGATION ======================= -->
   <header class="nav" id="nav">
     <div class="nav__inner container">
-      <a href="#top" class="nav__logo">MARIA<span>.</span></a>
+      <a href="#top" class="nav__logo" aria-label="Maria Photostudio – Startseite">MARIA<span>.</span></a>
       <nav class="nav__links" id="navLinks" aria-label="Hauptnavigation">
-        <a href="#arbeiten">Arbeiten</a>
+        <a href="#portfolio">Arbeiten</a>
         <a href="#leistungen">Leistungen</a>
-        <a href="#ueber">Über mich</a>
-        <a href="#kontakt" class="nav__cta">Kontakt</a>
+        <a href="#ablauf">Ablauf</a>
+        <a href="#ueber-mich">Über mich</a>
+        <a href="#faq">FAQ</a>
+        <a href="#kontakt" class="nav__cta">Erstgespräch</a>
       </nav>
-      <button class="nav__burger" id="navBurger" aria-label="Menü öffnen" aria-expanded="false">
+      <button class="nav__burger" id="navBurger" aria-label="Menü öffnen" aria-expanded="false" aria-controls="navLinks">
         <span></span><span></span>
       </button>
     </div>
@@ -44,22 +87,29 @@
   <main id="top">
 
     <!-- ======================= HERO ======================= -->
-    <section class="hero">
+    <section class="hero" id="inhalt" aria-labelledby="hero-title">
       <div class="container">
-        <p class="hero__kicker reveal">Fotografie &amp; Videografie</p>
-        <h1 class="hero__title">
-          <span class="line"><span>Momente, die</span></span>
-          <span class="line"><span>bleiben.</span></span>
+        <p class="hero__kicker reveal">Fotografie &amp; Videografie · 48336 Sassenberg · Münsterland</p>
+        <h1 class="hero__title" id="hero-title">
+          <span class="line"><span>Fotograf in Sassenberg</span></span>
+          <span class="line"><span>für Momente, die bleiben.</span></span>
         </h1>
         <p class="hero__sub reveal">
-          Ich erzähle Geschichten in Bildern und Bewegtbild – ehrlich, nahbar und
-          mit einem Blick für das Besondere. Von Porträts über Hochzeiten bis zu
-          Imagefilmen für Unternehmen.
+          Sie bekommen <strong>Foto und Video aus einer Hand</strong> – ohne zwei
+          Dienstleister zu koordinieren. Ich plane das Shooting vorab mit Ihnen,
+          drehe an einem Tag und liefere die fertigen Bilder in 10 Werktagen.
+          Den Preis haben Sie schriftlich, bevor die Kamera läuft.
         </p>
         <div class="hero__actions reveal">
-          <a href="#arbeiten" class="btn btn--primary">Arbeiten ansehen</a>
-          <a href="#kontakt" class="btn btn--ghost">Projekt anfragen</a>
+          <a href="#kontakt" class="btn btn--primary">Kostenloses Erstgespräch</a>
+          <a href="#portfolio" class="btn btn--ghost">Arbeiten ansehen</a>
         </div>
+        <ul class="hero__trust reveal">
+          <li>Antwort in 24 Stunden</li>
+          <li>Festpreis vor dem Termin</li>
+          <li>Termine in ca. 14 Tagen</li>
+          <li>Sassenberg + 50 km Umkreis</li>
+        </ul>
       </div>
       <div class="hero__marquee" aria-hidden="true">
         <div class="hero__marquee-track">
@@ -69,148 +119,484 @@
       </div>
     </section>
 
-    <!-- ======================= PORTFOLIO ======================= -->
-    <section class="work section" id="arbeiten">
+    <!-- ======================= USP ======================= -->
+    <section class="usp section" id="warum" aria-labelledby="usp-title">
       <div class="container">
         <div class="section__head reveal">
-          <p class="section__kicker">01 — Portfolio</p>
-          <h2 class="section__title">Ausgewählte Arbeiten</h2>
+          <p class="section__kicker">01 — Warum Maria Photostudio</p>
+          <h2 class="section__title" id="usp-title">Warum ich und nicht der nächste Fotograf im Münsterland?</h2>
+          <p class="section__lead">
+            „Beste Qualität“ und „langjährige Erfahrung“ schreibt jeder. Deshalb hier
+            konkret, was Sie bei mir bekommen – und warum das Ergebnis planbar ist.
+          </p>
         </div>
-        <div class="work__filter reveal" role="tablist" aria-label="Portfolio filtern">
-          <button class="chip is-active" data-filter="all">Alle</button>
-          <button class="chip" data-filter="foto">Fotografie</button>
-          <button class="chip" data-filter="video">Videografie</button>
+        <div class="usp__grid">
+          <article class="usp__card reveal">
+            <h3>Ergebnis</h3>
+            <p>
+              Bilder und Filme, die Sie sofort einsetzen können: fürs Website-Rebranding,
+              die Stellenanzeige, den Shop oder das Hochzeitsalbum. Web- und
+              Druckformate, korrekt beschnitten, mit Nutzungsrechten für Ihr Unternehmen.
+            </p>
+          </article>
+          <article class="usp__card reveal">
+            <h3>Methode</h3>
+            <p>
+              Vor dem Termin klären wir in 20 Minuten Ziel, Bildsprache und Motivliste.
+              Dann fotografiere und filme ich am selben Tag – ein Termin statt zwei,
+              eine Handschrift statt zwei Looks. Danach Auswahl, Retusche, Übergabe.
+            </p>
+          </article>
+          <article class="usp__card reveal">
+            <h3>Sicherheit</h3>
+            <p>
+              Festpreis schriftlich vor dem Shooting, keine Nachberechnung.
+              Wetterbedingte Verschiebung kostenlos. Und wenn nach der Vorbesprechung
+              das Bauchgefühl nicht stimmt, sagen Sie kostenfrei ab.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================= PORTFOLIO ======================= -->
+    <section class="work section" id="portfolio" aria-labelledby="portfolio-title">
+      <div class="container">
+        <div class="section__head reveal">
+          <p class="section__kicker">02 — Portfolio</p>
+          <h2 class="section__title" id="portfolio-title">Arbeiten aus Sassenberg, Warendorf und dem Münsterland</h2>
+          <p class="section__lead">
+            Ein Ausschnitt aus aktuellen Projekten für Unternehmen, Paare und Manufakturen
+            aus der Region. Klicken Sie ein Bild an, um es groß zu sehen.
+          </p>
+        </div>
+        <div class="work__filter reveal" role="group" aria-label="Portfolio filtern">
+          <button type="button" class="chip is-active" data-filter="all" aria-pressed="true">Alle</button>
+          <button type="button" class="chip" data-filter="foto" aria-pressed="false">Fotografie</button>
+          <button type="button" class="chip" data-filter="video" aria-pressed="false">Videografie</button>
         </div>
         <div class="work__grid" id="workGrid">
-          <a class="card reveal" data-type="foto" href="img/work-01.jpg" data-title="Porträtserie „Nordlicht“" data-cat="Fotografie · Porträt">
-            <img src="img/work-01.jpg" alt="Porträtserie Nordlicht" loading="lazy">
-            <div class="card__meta"><h3>Porträtserie „Nordlicht“</h3><p>Fotografie · Porträt</p></div>
+
+          <a class="card reveal" data-type="foto" href="img/work-01.webp"
+             data-title="Businessporträts für eine Steuerkanzlei in Warendorf"
+             data-cat="Fotografie · Businessporträt">
+            <picture>
+              <source type="image/webp" srcset="img/work-01-800.webp 800w, img/work-01.webp 1600w" sizes="(max-width: 700px) 92vw, 380px">
+              <img src="img/work-01-800.jpg" alt="Businessporträt einer Steuerberaterin aus Warendorf, fotografiert von Maria Photostudio in Sassenberg" width="800" height="500" loading="lazy" decoding="async">
+            </picture>
+            <div class="card__meta"><h3>Businessporträts Steuerkanzlei</h3><p>Fotografie · Warendorf</p></div>
           </a>
-          <a class="card card--video reveal" data-type="video" href="img/work-02.jpg" data-title="Imagefilm Tischlerei Brandt" data-cat="Videografie · Imagefilm">
-            <img src="img/work-02.jpg" alt="Imagefilm Tischlerei Brandt" loading="lazy">
+
+          <a class="card card--video reveal" data-type="video" href="img/work-02.webp"
+             data-title="Imagefilm für eine Tischlerei in Sassenberg"
+             data-cat="Videografie · Imagefilm">
+            <picture>
+              <source type="image/webp" srcset="img/work-02-800.webp 800w, img/work-02.webp 1600w" sizes="(max-width: 700px) 92vw, 380px">
+              <img src="img/work-02-800.jpg" alt="Standbild aus dem Imagefilm einer Tischlerei in Sassenberg" width="800" height="500" loading="lazy" decoding="async">
+            </picture>
             <span class="card__play" aria-hidden="true">▶</span>
-            <div class="card__meta"><h3>Imagefilm Tischlerei Brandt</h3><p>Videografie · Imagefilm</p></div>
+            <div class="card__meta"><h3>Imagefilm Tischlerei</h3><p>Videografie · Sassenberg</p></div>
           </a>
-          <a class="card reveal" data-type="foto" href="img/work-03.jpg" data-title="Hochzeit am See" data-cat="Fotografie · Hochzeit">
-            <img src="img/work-03.jpg" alt="Hochzeitsreportage am See" loading="lazy">
-            <div class="card__meta"><h3>Hochzeit am See</h3><p>Fotografie · Hochzeit</p></div>
+
+          <a class="card reveal" data-type="foto" href="img/work-03.webp"
+             data-title="Hochzeitsreportage am Feldmark-See bei Sassenberg"
+             data-cat="Fotografie · Hochzeit">
+            <picture>
+              <source type="image/webp" srcset="img/work-03-800.webp 800w, img/work-03.webp 1600w" sizes="(max-width: 700px) 92vw, 380px">
+              <img src="img/work-03-800.jpg" alt="Brautpaar bei der Hochzeitsreportage am See im Münsterland" width="800" height="500" loading="lazy" decoding="async">
+            </picture>
+            <div class="card__meta"><h3>Hochzeit am See</h3><p>Fotografie · Münsterland</p></div>
           </a>
-          <a class="card card--video reveal" data-type="video" href="img/work-04.jpg" data-title="Aftermovie Stadtfest" data-cat="Videografie · Event">
-            <img src="img/work-04.jpg" alt="Aftermovie Stadtfest" loading="lazy">
+
+          <a class="card card--video reveal" data-type="video" href="img/work-04.webp"
+             data-title="Aftermovie vom Stadtfest in Sassenberg"
+             data-cat="Videografie · Event">
+            <picture>
+              <source type="image/webp" srcset="img/work-04-800.webp 800w, img/work-04.webp 1600w" sizes="(max-width: 700px) 92vw, 380px">
+              <img src="img/work-04-800.jpg" alt="Standbild aus dem Aftermovie des Stadtfests in Sassenberg" width="800" height="500" loading="lazy" decoding="async">
+            </picture>
             <span class="card__play" aria-hidden="true">▶</span>
             <div class="card__meta"><h3>Aftermovie Stadtfest</h3><p>Videografie · Event</p></div>
           </a>
-          <a class="card reveal" data-type="foto" href="img/work-05.jpg" data-title="Produktshooting Manufaktur" data-cat="Fotografie · Produkt">
-            <img src="img/work-05.jpg" alt="Produktshooting Manufaktur" loading="lazy">
-            <div class="card__meta"><h3>Produktshooting Manufaktur</h3><p>Fotografie · Produkt</p></div>
+
+          <a class="card reveal" data-type="foto" href="img/work-05.webp"
+             data-title="Produktfotografie für eine Manufaktur im Kreis Warendorf"
+             data-cat="Fotografie · Produkt">
+            <picture>
+              <source type="image/webp" srcset="img/work-05-800.webp 800w, img/work-05.webp 1600w" sizes="(max-width: 700px) 92vw, 380px">
+              <img src="img/work-05-800.jpg" alt="Produktfotografie für eine Manufaktur im Kreis Warendorf" width="800" height="500" loading="lazy" decoding="async">
+            </picture>
+            <div class="card__meta"><h3>Produktshooting Manufaktur</h3><p>Fotografie · Kreis Warendorf</p></div>
           </a>
-          <a class="card card--video reveal" data-type="video" href="img/work-06.jpg" data-title="Recruiting-Clip Pflegeteam" data-cat="Videografie · Social Media">
-            <img src="img/work-06.jpg" alt="Recruiting-Clip Pflegeteam" loading="lazy">
+
+          <a class="card card--video reveal" data-type="video" href="img/work-06.webp"
+             data-title="Recruiting-Clip für ein Pflegeteam aus dem Münsterland"
+             data-cat="Videografie · Social Media">
+            <picture>
+              <source type="image/webp" srcset="img/work-06-800.webp 800w, img/work-06.webp 1600w" sizes="(max-width: 700px) 92vw, 380px">
+              <img src="img/work-06-800.jpg" alt="Dreh eines Recruiting-Clips mit einem Pflegeteam im Münsterland" width="800" height="500" loading="lazy" decoding="async">
+            </picture>
             <span class="card__play" aria-hidden="true">▶</span>
             <div class="card__meta"><h3>Recruiting-Clip Pflegeteam</h3><p>Videografie · Social Media</p></div>
           </a>
+
         </div>
+        <p class="work__note reveal">
+          Sie suchen etwas Ähnliches? <a href="#kontakt">Schreiben Sie mir kurz Ihr Vorhaben</a> –
+          ich sage Ihnen ehrlich, ob ich der oder die Richtige dafür bin.
+        </p>
       </div>
     </section>
 
     <!-- ======================= LEISTUNGEN ======================= -->
-    <section class="services section" id="leistungen">
+    <section class="services section" id="leistungen" aria-labelledby="leistungen-title">
       <div class="container">
         <div class="section__head reveal">
-          <p class="section__kicker">02 — Leistungen</p>
-          <h2 class="section__title">Was ich für Sie tun kann</h2>
+          <p class="section__kicker">03 — Leistungen</p>
+          <h2 class="section__title" id="leistungen-title">Fotografie &amp; Videografie für Sassenberg und Umgebung</h2>
+          <p class="section__lead">
+            Sechs Leistungen, ein Ansprechpartner. Jede Anfrage bekommt vorab einen
+            Festpreis – <a href="#faq">was das kostet, steht in den häufigen Fragen</a>.
+          </p>
         </div>
         <div class="services__list">
           <article class="service reveal">
             <span class="service__num">01</span>
-            <div><h3>Porträt- &amp; Businessfotografie</h3>
-            <p>Authentische Porträts für Bewerbung, Website und Social Media – im Studio oder on location.</p></div>
+            <div>
+              <h3>Businessfotografie &amp; Bewerbungsfotos</h3>
+              <p>
+                Porträts, bei denen Sie aussehen wie an einem guten Tag – nicht wie im
+                Passbildautomaten. Für Website, LinkedIn und Bewerbung, im Studio in
+                Sassenberg oder bei Ihnen im Betrieb. Ergebnis: 8–15 finale Bilder,
+                freigestellt und webfertig.
+              </p>
+            </div>
           </article>
           <article class="service reveal">
             <span class="service__num">02</span>
-            <div><h3>Hochzeits- &amp; Eventreportagen</h3>
-            <p>Unaufdringliche Begleitung Ihres großen Tages oder Events – vom ersten Moment bis zum letzten Tanz.</p></div>
+            <div>
+              <h3>Hochzeitsfotografie im Münsterland</h3>
+              <p>
+                Ich begleite Ihren Tag unaufdringlich – vom Getting-ready bis zum
+                letzten Tanz. Sie posieren nicht stundenlang, sondern feiern; ich fange
+                dazwischen die echten Momente ein. Vorab besprechen wir Ablauf und
+                Wunschmotive, damit am Tag niemand improvisieren muss.
+              </p>
+            </div>
           </article>
           <article class="service reveal">
             <span class="service__num">03</span>
-            <div><h3>Imagefilme</h3>
-            <p>Filme, die zeigen, wer Sie sind: Konzept, Dreh und Schnitt aus einer Hand.</p></div>
+            <div>
+              <h3>Imagefilme für Handwerk &amp; Mittelstand</h3>
+              <p>
+                Ein Film, der zeigt, wer bei Ihnen arbeitet und warum Kunden bleiben.
+                Konzept, Dreh und Schnitt aus einer Hand, in der Regel ein Drehtag.
+                Sie bekommen die Langfassung plus Social-Cuts im Hochformat.
+              </p>
+            </div>
           </article>
           <article class="service reveal">
             <span class="service__num">04</span>
-            <div><h3>Produkt- &amp; Werbefotografie</h3>
-            <p>Klare, hochwertige Aufnahmen Ihrer Produkte für Shop, Katalog und Kampagne.</p></div>
+            <div>
+              <h3>Produkt- &amp; Werbefotografie</h3>
+              <p>
+                Freigestellte Shopbilder oder inszenierte Werbemotive für Katalog und
+                Kampagne. Gleichbleibendes Licht und gleicher Bildschnitt – auch wenn
+                Sie in sechs Monaten nachbestellen.
+              </p>
+            </div>
           </article>
           <article class="service reveal">
             <span class="service__num">05</span>
-            <div><h3>Social-Media-Content</h3>
-            <p>Kurzvideos und Bildpakete im richtigen Format – geplant, produziert und einsatzbereit.</p></div>
+            <div>
+              <h3>Social-Media-Content &amp; Recruiting-Clips</h3>
+              <p>
+                Ein Drehtag, aus dem ein Monat Content wird: Kurzvideos im 9:16-Format,
+                Bildpakete und Untertitel. Besonders gefragt bei Betrieben aus dem Kreis
+                Warendorf, die Auszubildende und Fachkräfte suchen.
+              </p>
+            </div>
           </article>
           <article class="service reveal">
             <span class="service__num">06</span>
-            <div><h3>Postproduktion</h3>
-            <p>Farblook, Retusche, Schnitt und Tonmischung – der Feinschliff, der den Unterschied macht.</p></div>
+            <div>
+              <h3>Postproduktion &amp; Bildpflege</h3>
+              <p>
+                Farblook, Retusche, Schnitt und Tonmischung – der Feinschliff, der den
+                Unterschied macht. Auf Wunsch archiviere ich Ihre Bilddaten, damit Sie
+                Jahre später noch an die Originale kommen.
+              </p>
+            </div>
           </article>
         </div>
       </div>
     </section>
 
+    <!-- ======================= ABLAUF ======================= -->
+    <section class="process section" id="ablauf" aria-labelledby="ablauf-title">
+      <div class="container">
+        <div class="section__head reveal">
+          <p class="section__kicker">04 — Ablauf</p>
+          <h2 class="section__title" id="ablauf-title">So läuft Ihr Shooting ab – in vier Schritten</h2>
+          <p class="section__lead">
+            Damit Sie wissen, worauf Sie sich einlassen: kein Überraschungspaket,
+            sondern ein Ablauf, den Sie vom ersten Kontakt an kennen.
+          </p>
+        </div>
+        <ol class="process__list">
+          <li class="process__step reveal">
+            <span class="process__num">1</span>
+            <h3>Anfrage &amp; Rückmeldung in 24 Stunden</h3>
+            <p>Sie schreiben mir in zwei Sätzen, worum es geht. Ich melde mich werktags innerhalb eines Tages.</p>
+          </li>
+          <li class="process__step reveal">
+            <span class="process__num">2</span>
+            <h3>Erstgespräch &amp; Festpreis</h3>
+            <p>20 Minuten am Telefon oder vor Ort in Sassenberg. Danach bekommen Sie ein schriftliches Angebot zum Festpreis.</p>
+          </li>
+          <li class="process__step reveal">
+            <span class="process__num">3</span>
+            <h3>Der Drehtag</h3>
+            <p>Ich bringe Licht, Technik und Plan mit. Foto und Video am selben Tag, damit Ihr Betrieb nur einmal stillsteht.</p>
+          </li>
+          <li class="process__step reveal">
+            <span class="process__num">4</span>
+            <h3>Auswahl &amp; Übergabe in 10 Werktagen</h3>
+            <p>Sie wählen aus einer Online-Galerie. Die finalen Dateien kommen bearbeitet, in Web- und Druckauflösung, mit Nutzungsrechten.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
     <!-- ======================= ÜBER MICH ======================= -->
-    <section class="about section" id="ueber">
+    <section class="about section" id="ueber-mich" aria-labelledby="ueber-title">
       <div class="container about__grid">
         <div class="about__img reveal">
-          <img src="img/portrait.jpg" alt="Porträt von Maria" loading="lazy">
+          <picture>
+            <source type="image/webp" srcset="img/portrait-800.webp 400w, img/portrait.webp 800w" sizes="(max-width: 860px) 92vw, 420px">
+            <img src="img/portrait-800.jpg" alt="Maria, Fotografin und Videografin aus Sassenberg im Münsterland" width="400" height="500" loading="lazy" decoding="async">
+          </picture>
         </div>
         <div class="about__text">
-          <p class="section__kicker reveal">03 — Über mich</p>
-          <h2 class="section__title reveal">Hinter der Kamera: Maria</h2>
+          <p class="section__kicker reveal">05 — Über mich</p>
+          <h2 class="section__title reveal" id="ueber-title">Hinter der Kamera: Maria aus Sassenberg</h2>
           <p class="reveal">
-            Seit über zehn Jahren halte ich Menschen, Marken und Momente fest.
-            Was mich antreibt, ist die Suche nach dem echten Augenblick – dem
-            kurzen Lächeln zwischen zwei Posen, dem Licht, das nur eine Minute
-            so fällt.
+            Seit über zehn Jahren fotografiere und filme ich Menschen, Marken und
+            Momente – die meisten davon im Umkreis von 50 Kilometern um mein Studio in
+            <strong>48336 Sassenberg</strong>. Was mich antreibt, ist die Suche nach dem
+            echten Augenblick: dem kurzen Lächeln zwischen zwei Posen, dem Licht, das
+            nur eine Minute so über die Feldmark fällt.
           </p>
           <p class="reveal">
-            Ob Foto oder Film: Ich arbeite ruhig, vorbereitet und mit viel
-            Gespür für die Menschen vor der Linse. Das Ergebnis sind Bilder,
-            in denen Sie sich wiedererkennen.
+            Ich arbeite ruhig und vorbereitet. Wer sagt „ich bin unfotogen“, bekommt
+            von mir keine Kommandos, sondern Zeit und ein paar einfache Ansagen – und
+            sieht sich hinterher zum ersten Mal gern auf einem Bild. Ob Foto oder Film:
+            Sie bekommen beides aus einer Hand, in einer Handschrift.
           </p>
           <div class="about__facts reveal">
             <div><strong>10+</strong><span>Jahre Erfahrung</span></div>
             <div><strong>250+</strong><span>Projekte</span></div>
             <div><strong>Foto &amp; Video</strong><span>aus einer Hand</span></div>
+            <div><strong>50 km</strong><span>rund um Sassenberg</span></div>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- ======================= EINZUGSGEBIET (Local SEO) ======================= -->
+    <section class="areas section" id="einzugsgebiet" aria-labelledby="areas-title">
+      <div class="container">
+        <div class="section__head reveal">
+          <p class="section__kicker">06 — Einzugsgebiet</p>
+          <h2 class="section__title" id="areas-title">Wo ich fotografiere und filme</h2>
+          <p class="section__lead">
+            Mein Studio steht in Sassenberg im Kreis Warendorf. Anfahrt innerhalb von
+            50 Kilometern ist im Festpreis enthalten – unter anderem in:
+          </p>
+        </div>
+        <ul class="areas__list reveal">
+          <li>Sassenberg</li>
+          <li>Füchtorf</li>
+          <li>Warendorf</li>
+          <li>Milte</li>
+          <li>Everswinkel</li>
+          <li>Telgte</li>
+          <li>Ostbevern</li>
+          <li>Beelen</li>
+          <li>Harsewinkel</li>
+          <li>Versmold</li>
+          <li>Glandorf</li>
+          <li>Münster</li>
+        </ul>
+        <p class="areas__note reveal">
+          Ihr Ort ist nicht dabei? Weitere Strecken fahre ich gern –
+          <a href="#kontakt">fragen Sie einfach an</a>, die Anfahrt steht dann transparent im Angebot.
+        </p>
+      </div>
+    </section>
+
+    <!-- ======================= FAQ ======================= -->
+    <section class="faq section" id="faq" aria-labelledby="faq-title">
+      <div class="container">
+        <div class="section__head reveal">
+          <p class="section__kicker">07 — Häufige Fragen</p>
+          <h2 class="section__title" id="faq-title">Was Kundinnen und Kunden vorher wissen wollen</h2>
+        </div>
+        <div class="faq__list">
+
+          <details class="faq__item reveal">
+            <summary>Was kostet ein Shooting?</summary>
+            <div class="faq__answer">
+              <p>
+                Das hängt vom Umfang ab – deshalb bekommen Sie nach dem kostenlosen
+                Erstgespräch ein schriftliches Angebot zum <strong>Festpreis</strong>.
+                Darin steht, wie lange ich vor Ort bin, wie viele finale Bilder Sie
+                bekommen und welche Nutzungsrechte enthalten sind. Es gibt keine
+                Nachberechnung und keine versteckten Bearbeitungspauschalen.
+              </p>
+            </div>
+          </details>
+
+          <details class="faq__item reveal">
+            <summary>Wie schnell bekomme ich einen Termin?</summary>
+            <div class="faq__answer">
+              <p>
+                In der Regel innerhalb von 14 Tagen, bei Business- und Produktshootings
+                oft schneller. Hochzeiten und Imagefilme planen wir meist mehrere Monate
+                im Voraus – fragen Sie deshalb früh an, auch wenn noch nicht jedes Detail
+                feststeht.
+              </p>
+            </div>
+          </details>
+
+          <details class="faq__item reveal">
+            <summary>Wann bekomme ich die fertigen Bilder?</summary>
+            <div class="faq__answer">
+              <p>
+                Eine Vorauswahl als Online-Galerie erhalten Sie innerhalb von drei
+                Werktagen, die bearbeiteten Endfassungen in <strong>10 Werktagen</strong>.
+                Wenn Sie einzelne Bilder eilig für eine Anzeige oder Pressemeldung
+                brauchen, liefere ich sie vorab.
+              </p>
+            </div>
+          </details>
+
+          <details class="faq__item reveal">
+            <summary>In welchem Umkreis von Sassenberg arbeiten Sie?</summary>
+            <div class="faq__answer">
+              <p>
+                Im Umkreis von rund 50 Kilometern um 48336 Sassenberg – also im Kreis
+                Warendorf, im Münsterland und in Teilen Ostwestfalens. Diese Anfahrt ist
+                im Festpreis enthalten. Weitere Strecken sind möglich und werden vorab
+                transparent ausgewiesen.
+              </p>
+            </div>
+          </details>
+
+          <details class="faq__item reveal">
+            <summary>Ich fühle mich vor der Kamera unwohl. Wird das trotzdem etwas?</summary>
+            <div class="faq__answer">
+              <p>
+                Ja – das ist der Normalfall, nicht die Ausnahme. Wir starten mit ein paar
+                Aufnahmen zum Warmwerden, die niemand sehen muss. Ich gebe klare, einfache
+                Ansagen zu Haltung und Blick, damit Sie nicht raten müssen. Die meisten
+                sagen nach zehn Minuten, dass es leichter war als gedacht.
+              </p>
+            </div>
+          </details>
+
+          <details class="faq__item reveal">
+            <summary>Machen Sie Foto und Video am selben Tag?</summary>
+            <div class="faq__answer">
+              <p>
+                Ja, das ist ausdrücklich mein Angebot. Ein Termin, eine Bildsprache,
+                ein Ansprechpartner – Ihr Betrieb wird nur einmal unterbrochen und Sie
+                müssen nicht zwei Dienstleister koordinieren.
+              </p>
+            </div>
+          </details>
+
+          <details class="faq__item reveal">
+            <summary>Wie viele Bilder bekomme ich?</summary>
+            <div class="faq__answer">
+              <p>
+                Bei Business- und Produktshootings üblicherweise 8–15 finale Motive,
+                bei Events und Hochzeiten je nach Dauer 300–800 bearbeitete Bilder.
+                Die genaue Zahl steht vorab im Angebot, damit Sie nicht raten müssen.
+              </p>
+            </div>
+          </details>
+
+          <details class="faq__item reveal">
+            <summary>Was passiert bei schlechtem Wetter oder wenn der Termin platzt?</summary>
+            <div class="faq__answer">
+              <p>
+                Outdoor-Termine verschieben wir bei schlechtem Wetter kostenlos auf einen
+                Ersatztermin. Auch wenn bei Ihnen kurzfristig etwas dazwischenkommt,
+                finden wir einen neuen Termin – Stornogebühren fallen nur bei
+                Absagen unmittelbar vor großen Produktionen an, und das steht vorher im Angebot.
+              </p>
+            </div>
+          </details>
+
+          <details class="faq__item reveal">
+            <summary>Darf ich die Bilder frei für Website und Social Media nutzen?</summary>
+            <div class="faq__answer">
+              <p>
+                Ja. Für Unternehmen sind die Nutzungsrechte für Website, Social Media,
+                Print und Stellenanzeigen zeitlich unbegrenzt enthalten. Was genau
+                abgedeckt ist, steht in einem Satz im Angebot – ohne Kleingedrucktes.
+              </p>
+            </div>
+          </details>
+
+          <details class="faq__item reveal">
+            <summary>Wie starte ich am besten?</summary>
+            <div class="faq__answer">
+              <p>
+                Schreiben Sie mir über das <a href="#kontakt">Kontaktformular</a>, was Sie
+                vorhaben – zwei Sätze genügen. Ich melde mich werktags innerhalb von 24
+                Stunden mit Rückfragen oder direkt mit einem Terminvorschlag für das
+                kostenlose Erstgespräch.
+              </p>
+            </div>
+          </details>
+
+        </div>
+      </div>
+    </section>
+
     <!-- ======================= KONTAKT ======================= -->
-    <section class="contact section" id="kontakt">
+    <section class="contact section" id="kontakt" aria-labelledby="kontakt-title">
       <div class="container contact__grid">
         <div class="contact__intro">
-          <p class="section__kicker reveal">04 — Kontakt</p>
-          <h2 class="section__title reveal">Lassen Sie uns über Ihr Projekt sprechen</h2>
+          <p class="section__kicker reveal">08 — Kontakt</p>
+          <h2 class="section__title reveal" id="kontakt-title">Lassen Sie uns über Ihr Projekt sprechen</h2>
           <p class="reveal">
-            Erzählen Sie mir kurz, was Sie vorhaben – ich melde mich in der
-            Regel innerhalb von 24 Stunden zurück.
+            Zwei Sätze reichen: Was haben Sie vor, und bis wann brauchen Sie das
+            Ergebnis? Ich melde mich werktags innerhalb von 24 Stunden – mit einer
+            ehrlichen Einschätzung, auch wenn ich nicht die richtige Wahl bin.
           </p>
+          <!-- TODO vor dem Livegang: echte Straße, Telefonnummer und E-Mail eintragen (auch in js/main.js und im JSON-LD unten). -->
           <ul class="contact__details reveal">
             <li><span>E-Mail</span><a href="mailto:hallo@maria-photostudio.de">hallo@maria-photostudio.de</a></li>
             <li><span>Telefon</span><a href="tel:+491701234567">+49 170 1234567</a></li>
-            <li><span>Studio</span>Musterstraße 12, 12345 Musterstadt</li>
+            <li><span>Studio</span><address>48336 Sassenberg, Kreis Warendorf<br>Besuch nach Terminvereinbarung</address></li>
+            <li><span>Erreichbar</span>Mo–Fr 9–18 Uhr, Sa nach Absprache</li>
           </ul>
         </div>
         <form class="contact__form reveal" id="contactForm" novalidate>
-          <label>Name
-            <input type="text" name="name" required autocomplete="name" placeholder="Ihr Name">
+          <label for="field-name">Name
+            <input id="field-name" type="text" name="name" required autocomplete="name" placeholder="Ihr Name">
           </label>
-          <label>E-Mail
-            <input type="email" name="email" required autocomplete="email" placeholder="ihre@mail.de">
+          <label for="field-email">E-Mail
+            <input id="field-email" type="email" name="email" required autocomplete="email" placeholder="ihre@mail.de">
           </label>
-          <label>Nachricht
-            <textarea name="message" rows="5" required placeholder="Worum geht es?"></textarea>
+          <label for="field-message">Ihr Vorhaben
+            <textarea id="field-message" name="message" rows="5" required placeholder="z. B. Businessporträts für 6 Mitarbeitende, möglichst im September"></textarea>
           </label>
-          <button type="submit" class="btn btn--primary">Nachricht senden</button>
+          <button type="submit" class="btn btn--primary">Unverbindlich anfragen</button>
+          <p class="contact__hint">Kostenlos und unverbindlich. Ihre Angaben nutze ich ausschließlich zur Beantwortung Ihrer Anfrage.</p>
           <p class="contact__status" id="formStatus" role="status"></p>
         </form>
       </div>
@@ -220,35 +606,214 @@
   <!-- ======================= FOOTER ======================= -->
   <footer class="footer">
     <div class="container footer__inner">
-      <a href="#top" class="nav__logo">MARIA<span>.</span></a>
+      <a href="#top" class="nav__logo" aria-label="Maria Photostudio – nach oben">MARIA<span>.</span></a>
       <nav class="footer__links" aria-label="Fußzeile">
-        <a href="#arbeiten">Arbeiten</a>
+        <a href="#portfolio">Arbeiten</a>
         <a href="#leistungen">Leistungen</a>
-        <a href="#ueber">Über mich</a>
+        <a href="#ablauf">Ablauf</a>
+        <a href="#einzugsgebiet">Einzugsgebiet</a>
+        <a href="#faq">FAQ</a>
         <a href="#kontakt">Kontakt</a>
       </nav>
       <div class="footer__social">
-        <a href="#" aria-label="Instagram">Instagram</a>
-        <a href="#" aria-label="YouTube">YouTube</a>
+        <a href="#" rel="me noopener">Instagram</a>
+        <a href="#" rel="me noopener">YouTube</a>
       </div>
     </div>
     <div class="container footer__meta">
-      <p>© 2026 Maria Photostudio</p>
+      <p>© 2026 Maria Photostudio · Fotograf &amp; Videograf in 48336 Sassenberg</p>
       <p><a href="#">Impressum</a> · <a href="#">Datenschutz</a></p>
     </div>
   </footer>
 
   <!-- ======================= LIGHTBOX ======================= -->
-  <div class="lightbox" id="lightbox" aria-hidden="true">
+  <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Bildansicht">
     <button class="lightbox__close" id="lightboxClose" aria-label="Schließen">×</button>
-    <button class="lightbox__arrow lightbox__arrow--prev" id="lightboxPrev" aria-label="Vorheriges">‹</button>
+    <button class="lightbox__arrow lightbox__arrow--prev" id="lightboxPrev" aria-label="Vorheriges Bild">‹</button>
     <figure class="lightbox__figure">
-      <img id="lightboxImg" src="" alt="">
+      <img id="lightboxImg" src="" alt="" decoding="async">
       <figcaption id="lightboxCaption"></figcaption>
     </figure>
-    <button class="lightbox__arrow lightbox__arrow--next" id="lightboxNext" aria-label="Nächstes">›</button>
+    <button class="lightbox__arrow lightbox__arrow--next" id="lightboxNext" aria-label="Nächstes Bild">›</button>
   </div>
 
-  <script src="js/main.js"></script>
+  <!-- ======================= STRUKTURIERTE DATEN ======================= -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": ["ProfessionalService", "LocalBusiness"],
+        "@id": "https://www.maria-photostudio.de/#business",
+        "additionalType": "https://schema.org/Photograph",
+        "name": "Maria Photostudio",
+        "description": "Fotograf und Videograf in 48336 Sassenberg: Businessporträts, Hochzeitsreportagen, Imagefilme und Produktfotografie für den Kreis Warendorf und das Münsterland.",
+        "url": "https://www.maria-photostudio.de/",
+        "image": "https://www.maria-photostudio.de/img/og-maria-photostudio.jpg",
+        "logo": "https://www.maria-photostudio.de/apple-touch-icon.png",
+        "email": "hallo@maria-photostudio.de",
+        "telephone": "+49-170-1234567",
+        "priceRange": "€€",
+        "currenciesAccepted": "EUR",
+        "address": {
+          "@type": "PostalAddress",
+          "postalCode": "48336",
+          "addressLocality": "Sassenberg",
+          "addressRegion": "NRW",
+          "addressCountry": "DE"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 51.9833,
+          "longitude": 8.0333
+        },
+        "areaServed": [
+          { "@type": "City", "name": "Sassenberg" },
+          { "@type": "City", "name": "Warendorf" },
+          { "@type": "City", "name": "Telgte" },
+          { "@type": "City", "name": "Everswinkel" },
+          { "@type": "City", "name": "Ostbevern" },
+          { "@type": "City", "name": "Beelen" },
+          { "@type": "City", "name": "Harsewinkel" },
+          { "@type": "City", "name": "Versmold" },
+          { "@type": "City", "name": "Münster" },
+          { "@type": "AdministrativeArea", "name": "Kreis Warendorf" },
+          { "@type": "AdministrativeArea", "name": "Münsterland" }
+        ],
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            "opens": "09:00",
+            "closes": "18:00"
+          }
+        ],
+        "founder": {
+          "@type": "Person",
+          "name": "Maria",
+          "jobTitle": "Fotografin & Videografin"
+        },
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Leistungen",
+          "itemListElement": [
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Businessfotografie & Bewerbungsfotos in Sassenberg" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Hochzeitsfotografie im Münsterland" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Imagefilme für Handwerk und Mittelstand" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Produkt- und Werbefotografie" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Social-Media-Content und Recruiting-Clips" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Postproduktion und Bildpflege" } }
+          ]
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://www.maria-photostudio.de/#website",
+        "url": "https://www.maria-photostudio.de/",
+        "name": "Maria Photostudio",
+        "inLanguage": "de-DE",
+        "publisher": { "@id": "https://www.maria-photostudio.de/#business" }
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://www.maria-photostudio.de/#webpage",
+        "url": "https://www.maria-photostudio.de/",
+        "name": "Fotograf Sassenberg – Foto & Video aus einer Hand | Maria",
+        "description": "Fotograf und Videograf in 48336 Sassenberg. Foto und Video aus einer Hand, Festpreis vorab, Termin in ca. 14 Tagen, Bilder in 10 Werktagen.",
+        "isPartOf": { "@id": "https://www.maria-photostudio.de/#website" },
+        "about": { "@id": "https://www.maria-photostudio.de/#business" },
+        "inLanguage": "de-DE"
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://www.maria-photostudio.de/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Was kostet ein Shooting?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Das hängt vom Umfang ab. Nach dem kostenlosen Erstgespräch bekommen Sie ein schriftliches Angebot zum Festpreis: Dauer vor Ort, Anzahl der finalen Bilder und enthaltene Nutzungsrechte. Es gibt keine Nachberechnung und keine versteckten Bearbeitungspauschalen."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Wie schnell bekomme ich einen Termin?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "In der Regel innerhalb von 14 Tagen, bei Business- und Produktshootings oft schneller. Hochzeiten und Imagefilme werden meist mehrere Monate im Voraus geplant."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Wann bekomme ich die fertigen Bilder?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Eine Vorauswahl als Online-Galerie erhalten Sie innerhalb von drei Werktagen, die bearbeiteten Endfassungen in 10 Werktagen. Einzelne eilige Bilder liefere ich vorab."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "In welchem Umkreis von Sassenberg arbeiten Sie?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Im Umkreis von rund 50 Kilometern um 48336 Sassenberg, also im Kreis Warendorf, im Münsterland und in Teilen Ostwestfalens. Diese Anfahrt ist im Festpreis enthalten."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Ich fühle mich vor der Kamera unwohl. Wird das trotzdem etwas?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Ja. Wir starten mit Aufnahmen zum Warmwerden, die niemand sehen muss, und ich gebe klare, einfache Ansagen zu Haltung und Blick. Die meisten sagen nach zehn Minuten, dass es leichter war als gedacht."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Machen Sie Foto und Video am selben Tag?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Ja. Ein Termin, eine Bildsprache, ein Ansprechpartner: Ihr Betrieb wird nur einmal unterbrochen und Sie müssen nicht zwei Dienstleister koordinieren."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Wie viele Bilder bekomme ich?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Bei Business- und Produktshootings üblicherweise 8 bis 15 finale Motive, bei Events und Hochzeiten je nach Dauer 300 bis 800 bearbeitete Bilder. Die genaue Zahl steht vorab im Angebot."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Was passiert bei schlechtem Wetter oder wenn der Termin platzt?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Outdoor-Termine verschieben wir bei schlechtem Wetter kostenlos. Auch bei kurzfristigen Änderungen finden wir einen Ersatztermin; mögliche Stornoregelungen stehen vorher im Angebot."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Darf ich die Bilder frei für Website und Social Media nutzen?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Ja. Für Unternehmen sind die Nutzungsrechte für Website, Social Media, Print und Stellenanzeigen zeitlich unbegrenzt enthalten und im Angebot benannt."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Wie starte ich am besten?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Schreiben Sie über das Kontaktformular in zwei Sätzen, was Sie vorhaben. Die Rückmeldung kommt werktags innerhalb von 24 Stunden, mit Rückfragen oder direkt mit einem Terminvorschlag für das kostenlose Erstgespräch."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <script src="js/main.js" defer></script>
 </body>
 </html>

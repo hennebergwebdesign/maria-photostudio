@@ -7,6 +7,19 @@
 
   var prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  /* ---------- Alte Sprungmarken auf neue umleiten (Links von außen bleiben gültig) ---------- */
+  var legacyHashes = {
+    "#arbeiten": "#portfolio",
+    "#ueber": "#ueber-mich",
+    "#about": "#ueber-mich",
+    "#services": "#leistungen",
+    "#contact": "#kontakt"
+  };
+
+  if (legacyHashes[window.location.hash]) {
+    window.location.replace(legacyHashes[window.location.hash]);
+  }
+
   /* ---------- Preloader: Bild-Flash-Sequenz ---------- */
   var loader = document.getElementById("loader");
   var body = document.body;
@@ -106,8 +119,12 @@
 
   chips.forEach(function (chip) {
     chip.addEventListener("click", function () {
-      chips.forEach(function (c) { c.classList.remove("is-active"); });
+      chips.forEach(function (c) {
+        c.classList.remove("is-active");
+        c.setAttribute("aria-pressed", "false");
+      });
       chip.classList.add("is-active");
+      chip.setAttribute("aria-pressed", "true");
       var filter = chip.dataset.filter;
       cards.forEach(function (card) {
         var show = filter === "all" || card.dataset.type === filter;
@@ -121,6 +138,7 @@
   var lightboxImg = document.getElementById("lightboxImg");
   var lightboxCaption = document.getElementById("lightboxCaption");
   var currentIndex = 0;
+  var lastFocused = null;
 
   function visibleCards() {
     return Array.prototype.filter.call(cards, function (c) {
@@ -130,11 +148,13 @@
 
   function openLightbox(card) {
     var list = visibleCards();
+    lastFocused = document.activeElement;
     currentIndex = list.indexOf(card);
     showLightbox(list[currentIndex]);
     lightbox.classList.add("is-open");
     lightbox.setAttribute("aria-hidden", "false");
     body.classList.add("is-locked");
+    document.getElementById("lightboxClose").focus();
   }
 
   function showLightbox(card) {
@@ -147,6 +167,7 @@
     lightbox.classList.remove("is-open");
     lightbox.setAttribute("aria-hidden", "true");
     body.classList.remove("is-locked");
+    if (lastFocused && typeof lastFocused.focus === "function") lastFocused.focus();
   }
 
   function stepLightbox(dir) {
