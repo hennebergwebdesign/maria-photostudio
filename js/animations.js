@@ -255,6 +255,42 @@
   }
 
   /* ============================================================
+     6b. Ablauf – Pfad füllt sich beim Scrollen, Schritte werden aktiv
+     ============================================================ */
+  function processPath(reduceMotion) {
+    var path = document.querySelector(".process__path");
+    var fill = document.querySelector(".process__line-fill");
+    var steps = gsap.utils.toArray(".process__step");
+    if (!path || !fill || !steps.length) return;
+
+    if (reduceMotion) {
+      gsap.set(fill, { scaleY: 1 });
+      steps.forEach(function (step) { step.classList.add("is-active"); });
+      return;
+    }
+
+    gsap.set(fill, { scaleY: 0 });
+    gsap.to(fill, {
+      scaleY: 1,
+      ease: "none",
+      scrollTrigger: {
+        trigger: path,
+        start: "top 65%",
+        end: "bottom 65%",
+        scrub: true
+      }
+    });
+
+    steps.forEach(function (step) {
+      ScrollTrigger.create({
+        trigger: step,
+        start: "top 65%",
+        toggleClass: { targets: step, className: "is-active" }
+      });
+    });
+  }
+
+  /* ============================================================
      7. FAQ – Höhe weich auf- und zuklappen
      ============================================================ */
   function faq() {
@@ -470,6 +506,7 @@
 
       reveals(reduce);
       counters(reduce);
+      processPath(reduce);
 
       // Parallax und Laufband nur dort, wo genug Platz und Leistung ist
       if (desktop && !reduce) {
