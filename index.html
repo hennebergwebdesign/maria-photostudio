@@ -46,6 +46,7 @@
   <!-- Performance: Schrift selbst gehostet (kein Google-Fonts-Request), LCP-Bild vorladen -->
   <link rel="preload" href="fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="img/work-01-800.webp" as="image" type="image/webp" fetchpriority="high">
+  <link rel="preload" href="img/hero-lake-800.webp" as="image" type="image/webp" fetchpriority="high">
   <link rel="stylesheet" href="css/fonts.css?v=20260728">
   <link rel="stylesheet" href="css/style.css?v=20260728">
   <noscript><style>.loader { display: none; } .reveal { opacity: 1; transform: none; }</style></noscript>
@@ -123,8 +124,8 @@
     <!-- ======================= HERO ======================= -->
     <section class="hero" id="inhalt" aria-labelledby="hero-title">
       <picture class="hero__bg" aria-hidden="true">
-        <source type="image/webp" srcset="img/work-03-800.webp 800w, img/work-03.webp 1600w" sizes="100vw">
-        <img src="img/work-03-800.jpg" alt="" fetchpriority="high" decoding="async">
+        <source type="image/webp" srcset="img/hero-lake-800.webp 800w, img/hero-lake.webp 2000w" sizes="100vw">
+        <img src="img/hero-lake-800.jpg" srcset="img/hero-lake-800.jpg 800w, img/hero-lake.jpg 2000w" sizes="100vw" alt="" fetchpriority="high" decoding="async">
       </picture>
       <div class="hero__wash" aria-hidden="true"></div>
       <div class="container hero__grid">
