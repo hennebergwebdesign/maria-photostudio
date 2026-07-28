@@ -249,10 +249,10 @@ main p a:hover,
   right: 0;
   z-index: var(--z-nav);
   color: var(--on-dark);
-  background: rgba(26, 21, 16, 0.92);
-  backdrop-filter: blur(12px);
-  transition: background var(--dur-slow), border-color var(--dur-slow), box-shadow var(--dur-slow);
-  border-bottom: 1px solid rgba(244, 236, 224, 0.1);
+  background: transparent;
+  transition: background var(--dur-slow), backdrop-filter var(--dur-slow),
+              border-color var(--dur-slow), box-shadow var(--dur-slow);
+  border-bottom: 1px solid transparent;
 }
 
 .nav .nav__links a { color: var(--on-dark-dim); }
@@ -265,7 +265,8 @@ main p a:hover,
 .nav .nav__burger[aria-expanded="true"] span { background: var(--text); }
 
 .nav.is-scrolled {
-  background: rgba(26, 21, 16, 0.97);
+  background: rgba(26, 21, 16, 0.92);
+  backdrop-filter: blur(12px);
   border-bottom-color: rgba(244, 236, 224, 0.16);
   box-shadow: var(--elev-2);
 }
@@ -523,13 +524,16 @@ body.is-ready .hero__title .line:nth-child(2) span { transition-delay: 80ms; }
 }
 
 /* Dunkler Verlauf über dem Hintergrundfoto – sorgt für Lesbarkeit des
-   hellen Textes, dunkelste Stelle links, wo der Fließtext steht. */
+   hellen Textes, dunkelste Stelle links, wo der Fließtext steht. Die dritte
+   Ebene dunkelt zusätzlich den oberen Rand über die volle Breite ab, damit
+   die transparente Nav auch über hellen Bildstellen lesbar bleibt. */
 .hero__wash {
   position: absolute;
   inset: 0;
   z-index: -1;
   pointer-events: none;
   background:
+    linear-gradient(180deg, rgba(20, 16, 12, 0.7) 0%, rgba(20, 16, 12, 0) 16%),
     linear-gradient(100deg, rgba(20, 16, 12, 0.86) 0%, rgba(20, 16, 12, 0.62) 42%, rgba(20, 16, 12, 0.24) 68%, rgba(20, 16, 12, 0.05) 100%),
     linear-gradient(0deg, rgba(20, 16, 12, 0.55), transparent 32%);
 }
