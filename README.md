@@ -133,6 +133,65 @@ Systemeinstellung „Bewegung reduzieren“ wird die Animation übersprungen.
 
 ---
 
+## Designsystem
+
+Die Seite folgt den Regeln des Skills **UI/UX Pro Max** (installiert unter
+`.claude/skills/`, siehe unten). Alle Werte kommen aus Tokens in `css/style.css`;
+in den Komponenten stehen keine rohen Hex-Werte, Pixelgrößen oder Zeiten mehr.
+
+| Token-Gruppe | Werte |
+| --- | --- |
+| Farben | `--bg` `--bg-soft` `--surface` `--line` `--line-strong` `--text` `--text-dim` `--accent` `--on-accent` `--danger` |
+| Typo | `--fs-label` 12 px · `--fs-sm` 14 px · `--fs-base` **16 px** · `--fs-lg` 18 px |
+| Abstände | 4-pt-Raster: `--sp-1` … `--sp-16` |
+| Radien | `--r-sm` 8 · `--r-md` 12 · `--r-lg` 16 · `--r-full` |
+| Elevation | `--elev-1/2/3` – eine Schattenskala für Karten, Bilder, Overlays |
+| Motion | `--dur-fast` 150 ms · `--dur` 220 ms · `--dur-slow` 320 ms · `--dur-reveal` 400 ms · `--ease-out` für Eintritte |
+| Ebenen | `--z-nav` 100 · `--z-menu` 200 · `--z-lightbox` 500 · `--z-loader` 1000 · `--z-skip` 1100 |
+
+**Was daraus folgte:**
+
+- **Kontrast (WCAG AAA):** `--text-dim` von `#9a978f` auf `#a7a49c` angehoben →
+  7,8:1 statt 6,7:1. Alle Text/Hintergrund-Paare liegen jetzt über 7:1.
+- **Touch-Ziele ≥ 44 px:** Navigationslinks, Filter-Chips, Fußzeilen- und
+  Kontaktlinks, Burger, Lightbox-Buttons und Formularfelder (48 px).
+- **Schriftgröße:** Fließtext durchgehend 16 px (vorher 13–15 px), Zeilenlänge
+  auf 60–75 Zeichen begrenzt (`max-width` in `ch` statt `rem`).
+- **Icons als SVG statt Textzeichen:** `▶ × ‹ › + ✓` sind durch ein
+  Inline-Sprite im Lucide-Stil ersetzt (ein Strichgewicht, `currentColor`).
+- **Motion:** Eintritte 400 ms mit `ease-out` und 40 ms Staffelung je Element
+  statt 800 ms gleichzeitig; Druckfeedback (`:active { scale }`) auf allen
+  Schaltflächen und Karten; `touch-action: manipulation` gegen die 300-ms-Verzögerung.
+- **Intro ist überspringbar:** Button, Klick, Escape oder Scrollversuch beenden
+  die Bildsequenz sofort; sie dauert maximal 4 s statt 6 s.
+- **Navigation:** aktiver Abschnitt wird markiert (Scroll-Spy), `scroll-margin-top`
+  verhindert, dass Sprungziele unter der fixierten Kopfzeile landen.
+- **Formular:** Fehlermeldungen stehen am Feld (`role="alert"`, `aria-invalid`),
+  Prüfung beim Verlassen des Feldes statt bei jedem Tastendruck, Pflichtfelder
+  markiert, Fokus springt zum ersten Fehler.
+- **Breakpoints:** systematisch 1440 / 1024 / 768 / 480. Ab 1024 px Overlay-Menü,
+  ab 768 px einspaltig, auf Mobil wandern die Lightbox-Pfeile in die Daumenzone.
+
+Die Seite ist bewusst nur im dunklen Look angelegt (Bilder sollen wirken) – es
+gibt daher keine Light-Mode-Variante.
+
+### Der Skill im Projekt
+
+```bash
+npx ui-ux-pro-max-cli init --ai claude     # installiert nach .claude/skills/
+```
+
+Der Ordner `.claude/` ist reines Werkzeug und gehört nicht zur Website;
+`_redirects` liefert für `/.claude/*` eine 404 aus. Nachschlagen lässt sich
+darin z. B. so:
+
+```bash
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "photography portfolio" --design-system
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "touch target" --domain ux
+```
+
+---
+
 ## Vor dem Livegang ersetzen
 
 - **Bilder**: alle Dateien in `img/` sind Platzhalter. Eigene Fotos in gleicher Größe

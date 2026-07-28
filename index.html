@@ -53,6 +53,17 @@
 
   <a class="skip-link" href="#inhalt">Zum Inhalt springen</a>
 
+  <!-- ======================= ICON-SPRITE (Lucide-Stil, ein Strichgewicht) ======================= -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true" focusable="false">
+    <symbol id="i-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.14v13.72a1 1 0 0 0 1.5.86l11-6.86a1 1 0 0 0 0-1.72l-11-6.86A1 1 0 0 0 8 5.14Z"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+    <symbol id="i-chevron-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></symbol>
+    <symbol id="i-chevron-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></symbol>
+    <symbol id="i-chevron-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></symbol>
+  </svg>
+
+
   <!-- ======================= PRELOADER (Bild-Flash-Sequenz) ======================= -->
   <div class="loader" id="loader" aria-hidden="true">
     <div class="loader__stack" id="loaderStack">
@@ -64,6 +75,7 @@
       <img class="loader__img" src="img/work-06-800.webp" alt="" width="800" height="500" decoding="async">
     </div>
     <div class="loader__fade"></div>
+    <button class="loader__skip" id="loaderSkip" type="button">Intro überspringen</button>
   </div>
 
   <!-- ======================= NAVIGATION ======================= -->
@@ -105,10 +117,10 @@
           <a href="#portfolio" class="btn btn--ghost">Arbeiten ansehen</a>
         </div>
         <ul class="hero__trust reveal">
-          <li>Antwort in 24 Stunden</li>
-          <li>Festpreis vor dem Termin</li>
-          <li>Termine in ca. 14 Tagen</li>
-          <li>Sassenberg + 50 km Umkreis</li>
+          <li><svg class="icon-check" aria-hidden="true"><use href="#i-check"></use></svg>Antwort in 24 Stunden</li>
+          <li><svg class="icon-check" aria-hidden="true"><use href="#i-check"></use></svg>Festpreis vor dem Termin</li>
+          <li><svg class="icon-check" aria-hidden="true"><use href="#i-check"></use></svg>Termine in ca. 14 Tagen</li>
+          <li><svg class="icon-check" aria-hidden="true"><use href="#i-check"></use></svg>Sassenberg + 50 km Umkreis</li>
         </ul>
       </div>
       <div class="hero__marquee" aria-hidden="true">
@@ -194,7 +206,7 @@
               <source type="image/webp" srcset="img/work-02-800.webp 800w, img/work-02.webp 1600w" sizes="(max-width: 700px) 92vw, 380px">
               <img src="img/work-02-800.jpg" alt="Standbild aus dem Imagefilm einer Tischlerei in Sassenberg" width="800" height="500" loading="lazy" decoding="async">
             </picture>
-            <span class="card__play" aria-hidden="true">▶</span>
+            <span class="card__play" aria-hidden="true"><svg><use href="#i-play"></use></svg></span>
             <div class="card__meta"><h3>Imagefilm Tischlerei</h3><p>Videografie · Sassenberg</p></div>
           </a>
 
@@ -215,7 +227,7 @@
               <source type="image/webp" srcset="img/work-04-800.webp 800w, img/work-04.webp 1600w" sizes="(max-width: 700px) 92vw, 380px">
               <img src="img/work-04-800.jpg" alt="Standbild aus dem Aftermovie des Stadtfests in Sassenberg" width="800" height="500" loading="lazy" decoding="async">
             </picture>
-            <span class="card__play" aria-hidden="true">▶</span>
+            <span class="card__play" aria-hidden="true"><svg><use href="#i-play"></use></svg></span>
             <div class="card__meta"><h3>Aftermovie Stadtfest</h3><p>Videografie · Event</p></div>
           </a>
 
@@ -236,7 +248,7 @@
               <source type="image/webp" srcset="img/work-06-800.webp 800w, img/work-06.webp 1600w" sizes="(max-width: 700px) 92vw, 380px">
               <img src="img/work-06-800.jpg" alt="Dreh eines Recruiting-Clips mit einem Pflegeteam im Münsterland" width="800" height="500" loading="lazy" decoding="async">
             </picture>
-            <span class="card__play" aria-hidden="true">▶</span>
+            <span class="card__play" aria-hidden="true"><svg><use href="#i-play"></use></svg></span>
             <div class="card__meta"><h3>Recruiting-Clip Pflegeteam</h3><p>Videografie · Social Media</p></div>
           </a>
 
@@ -445,7 +457,7 @@
         <div class="faq__list">
 
           <details class="faq__item reveal">
-            <summary>Was kostet ein Shooting?</summary>
+            <summary>Was kostet ein Shooting?<svg class="faq__icon" aria-hidden="true"><use href="#i-chevron-down"></use></svg></summary>
             <div class="faq__answer">
               <p>
                 Das hängt vom Umfang ab – deshalb bekommen Sie nach dem kostenlosen
@@ -458,7 +470,7 @@
           </details>
 
           <details class="faq__item reveal">
-            <summary>Wie schnell bekomme ich einen Termin?</summary>
+            <summary>Wie schnell bekomme ich einen Termin?<svg class="faq__icon" aria-hidden="true"><use href="#i-chevron-down"></use></svg></summary>
             <div class="faq__answer">
               <p>
                 In der Regel innerhalb von 14 Tagen, bei Business- und Produktshootings
@@ -470,7 +482,7 @@
           </details>
 
           <details class="faq__item reveal">
-            <summary>Wann bekomme ich die fertigen Bilder?</summary>
+            <summary>Wann bekomme ich die fertigen Bilder?<svg class="faq__icon" aria-hidden="true"><use href="#i-chevron-down"></use></svg></summary>
             <div class="faq__answer">
               <p>
                 Eine Vorauswahl als Online-Galerie erhalten Sie innerhalb von drei
@@ -482,7 +494,7 @@
           </details>
 
           <details class="faq__item reveal">
-            <summary>In welchem Umkreis von Sassenberg arbeiten Sie?</summary>
+            <summary>In welchem Umkreis von Sassenberg arbeiten Sie?<svg class="faq__icon" aria-hidden="true"><use href="#i-chevron-down"></use></svg></summary>
             <div class="faq__answer">
               <p>
                 Im Umkreis von rund 50 Kilometern um 48336 Sassenberg – also im Kreis
@@ -494,7 +506,7 @@
           </details>
 
           <details class="faq__item reveal">
-            <summary>Ich fühle mich vor der Kamera unwohl. Wird das trotzdem etwas?</summary>
+            <summary>Ich fühle mich vor der Kamera unwohl. Wird das trotzdem etwas?<svg class="faq__icon" aria-hidden="true"><use href="#i-chevron-down"></use></svg></summary>
             <div class="faq__answer">
               <p>
                 Ja – das ist der Normalfall, nicht die Ausnahme. Wir starten mit ein paar
@@ -506,7 +518,7 @@
           </details>
 
           <details class="faq__item reveal">
-            <summary>Machen Sie Foto und Video am selben Tag?</summary>
+            <summary>Machen Sie Foto und Video am selben Tag?<svg class="faq__icon" aria-hidden="true"><use href="#i-chevron-down"></use></svg></summary>
             <div class="faq__answer">
               <p>
                 Ja, das ist ausdrücklich mein Angebot. Ein Termin, eine Bildsprache,
@@ -517,7 +529,7 @@
           </details>
 
           <details class="faq__item reveal">
-            <summary>Wie viele Bilder bekomme ich?</summary>
+            <summary>Wie viele Bilder bekomme ich?<svg class="faq__icon" aria-hidden="true"><use href="#i-chevron-down"></use></svg></summary>
             <div class="faq__answer">
               <p>
                 Bei Business- und Produktshootings üblicherweise 8–15 finale Motive,
@@ -528,7 +540,7 @@
           </details>
 
           <details class="faq__item reveal">
-            <summary>Was passiert bei schlechtem Wetter oder wenn der Termin platzt?</summary>
+            <summary>Was passiert bei schlechtem Wetter oder wenn der Termin platzt?<svg class="faq__icon" aria-hidden="true"><use href="#i-chevron-down"></use></svg></summary>
             <div class="faq__answer">
               <p>
                 Outdoor-Termine verschieben wir bei schlechtem Wetter kostenlos auf einen
@@ -540,7 +552,7 @@
           </details>
 
           <details class="faq__item reveal">
-            <summary>Darf ich die Bilder frei für Website und Social Media nutzen?</summary>
+            <summary>Darf ich die Bilder frei für Website und Social Media nutzen?<svg class="faq__icon" aria-hidden="true"><use href="#i-chevron-down"></use></svg></summary>
             <div class="faq__answer">
               <p>
                 Ja. Für Unternehmen sind die Nutzungsrechte für Website, Social Media,
@@ -551,7 +563,7 @@
           </details>
 
           <details class="faq__item reveal">
-            <summary>Wie starte ich am besten?</summary>
+            <summary>Wie starte ich am besten?<svg class="faq__icon" aria-hidden="true"><use href="#i-chevron-down"></use></svg></summary>
             <div class="faq__answer">
               <p>
                 Schreiben Sie mir über das <a href="#kontakt">Kontaktformular</a>, was Sie
@@ -586,14 +598,23 @@
           </ul>
         </div>
         <form class="contact__form reveal" id="contactForm" novalidate>
-          <label for="field-name">Name
-            <input id="field-name" type="text" name="name" required autocomplete="name" placeholder="Ihr Name">
+          <p class="form__note">Felder mit <span aria-hidden="true">*</span> sind Pflichtfelder.</p>
+          <label for="field-name">Name <span class="req" aria-hidden="true">*</span>
+            <input id="field-name" type="text" name="name" required autocomplete="name"
+                   placeholder="Ihr Name" aria-describedby="err-name">
+            <span class="field__error" id="err-name" role="alert"></span>
           </label>
-          <label for="field-email">E-Mail
-            <input id="field-email" type="email" name="email" required autocomplete="email" placeholder="ihre@mail.de">
+          <label for="field-email">E-Mail <span class="req" aria-hidden="true">*</span>
+            <input id="field-email" type="email" name="email" required autocomplete="email"
+                   inputmode="email" placeholder="ihre@mail.de" aria-describedby="err-email">
+            <span class="field__error" id="err-email" role="alert"></span>
           </label>
-          <label for="field-message">Ihr Vorhaben
-            <textarea id="field-message" name="message" rows="5" required placeholder="z. B. Businessporträts für 6 Mitarbeitende, möglichst im September"></textarea>
+          <label for="field-message">Ihr Vorhaben <span class="req" aria-hidden="true">*</span>
+            <textarea id="field-message" name="message" rows="5" required
+                      placeholder="z. B. Businessporträts für 6 Mitarbeitende, möglichst im September"
+                      aria-describedby="hint-message err-message"></textarea>
+            <span class="field__hint" id="hint-message">Zwei Sätze genügen: Anlass und Wunschzeitraum.</span>
+            <span class="field__error" id="err-message" role="alert"></span>
           </label>
           <button type="submit" class="btn btn--primary">Unverbindlich anfragen</button>
           <p class="contact__hint">Kostenlos und unverbindlich. Ihre Angaben nutze ich ausschließlich zur Beantwortung Ihrer Anfrage.</p>
@@ -628,13 +649,13 @@
 
   <!-- ======================= LIGHTBOX ======================= -->
   <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Bildansicht">
-    <button class="lightbox__close" id="lightboxClose" aria-label="Schließen">×</button>
-    <button class="lightbox__arrow lightbox__arrow--prev" id="lightboxPrev" aria-label="Vorheriges Bild">‹</button>
+    <button class="lightbox__close" id="lightboxClose" type="button" aria-label="Bildansicht schließen"><svg aria-hidden="true"><use href="#i-close"></use></svg></button>
+    <button class="lightbox__arrow lightbox__arrow--prev" id="lightboxPrev" type="button" aria-label="Vorheriges Bild"><svg aria-hidden="true"><use href="#i-chevron-left"></use></svg></button>
     <figure class="lightbox__figure">
       <img id="lightboxImg" src="" alt="" decoding="async">
       <figcaption id="lightboxCaption"></figcaption>
     </figure>
-    <button class="lightbox__arrow lightbox__arrow--next" id="lightboxNext" aria-label="Nächstes Bild">›</button>
+    <button class="lightbox__arrow lightbox__arrow--next" id="lightboxNext" type="button" aria-label="Nächstes Bild"><svg aria-hidden="true"><use href="#i-chevron-right"></use></svg></button>
   </div>
 
   <!-- ======================= STRUKTURIERTE DATEN ======================= -->
