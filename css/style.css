@@ -26,9 +26,22 @@
   --sage: #6e7f5c;          /* Grün der Vorlage, nur dekorativ */
   --danger: #a3342b;        /*  6.4:1 auf --bg                 */
 
+  /* --- Gold & Dunkel: Zweitpalette aus der Visitenkarte, für Footer,
+         Hero-Overlay und Akzent-Details --- */
+  --gold: #b8924f;
+  --gold-hover: #a17c3d;
+  --gold-soft: rgba(184, 146, 79, 0.16);
+  --dark: #1a1510;          /* warmes Beinahe-Schwarz der Karte  */
+  --dark-soft: #241d16;
+  --on-dark: #f4ece0;       /* Creme auf --dark, 15.4:1          */
+  --on-dark-dim: #cabcaa;   /*  9.1:1 auf --dark                 */
+
   /* --- Typo-Skala (Basis 16 px, Faktor ~1.2) --- */
   --font: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-script: "Caveat", "Segoe Script", cursive;
+  /* Serifenschrift wie auf der Visitenkarte – bewusst Systemschrift,
+     kein weiterer Font-Download (CSP erlaubt nur font-src 'self'). */
+  --font-display: Georgia, "Iowan Old Style", "Times New Roman", serif;
   --fs-label: 0.75rem;      /* 12 px – nur Versal-Labels       */
   --fs-sm: 0.875rem;        /* 14 px – Meta, Fußzeile          */
   --fs-base: 1rem;          /* 16 px – Fließtext (Minimum!)    */
@@ -147,8 +160,10 @@ main p a:hover,
 }
 
 .container {
-  width: min(var(--container), 92vw);
-  margin-inline: auto;
+  width: 100%;
+  max-width: none;
+  padding-inline: 10%;
+  margin-inline: 0;
 }
 
 .section { padding: clamp(5rem, 10vw, 8.5rem) 0; }
@@ -233,15 +248,31 @@ main p a:hover,
   left: 0;
   right: 0;
   z-index: var(--z-nav);
-  transition: background var(--dur-slow), border-color var(--dur-slow);
+  color: var(--on-dark);
+  transition: background var(--dur-slow), border-color var(--dur-slow), color var(--dur-slow);
   border-bottom: 1px solid transparent;
 }
+
+.nav .nav__links a { color: var(--on-dark-dim); }
+.nav .nav__links a:hover,
+.nav .nav__links a.is-current { color: var(--on-dark); }
+.nav .nav__burger span { background: var(--on-dark); }
+
+/* Das geöffnete Menü ist immer cremefarben – das X-Icon braucht dann
+   dunkle Balken, unabhängig vom (transparenten) Nav-Zustand dahinter. */
+.nav .nav__burger[aria-expanded="true"] span { background: var(--text); }
 
 .nav.is-scrolled {
   background: rgba(252, 246, 240, 0.86);
   backdrop-filter: blur(12px);
   border-bottom-color: var(--line);
+  color: var(--text);
 }
+
+.nav.is-scrolled .nav__links a { color: var(--text-dim); }
+.nav.is-scrolled .nav__links a:hover,
+.nav.is-scrolled .nav__links a.is-current { color: var(--text); }
+.nav.is-scrolled .nav__burger span { background: var(--text); }
 
 .nav__inner {
   display: flex;
@@ -254,12 +285,13 @@ main p a:hover,
   display: flex;
   align-items: center;
   min-height: 44px;
-  font-weight: 800;
-  font-size: 1.35rem;
-  letter-spacing: 0.06em;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: 0.08em;
 }
 
-.nav__logo span { color: var(--accent); }
+.nav__logo span { color: var(--gold); }
 
 .nav__links {
   display: flex;
@@ -340,6 +372,21 @@ main p a:hover,
   padding-top: calc(var(--nav-h) + var(--sp-10));
   padding-bottom: var(--sp-10);
   position: relative;
+  color: var(--on-dark);
+  overflow: hidden;
+}
+
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+}
+
+.hero__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 38%;
 }
 
 .hero__grid {
@@ -387,6 +434,33 @@ main p a:hover,
 
 .hero__media .photo--lg { transform: rotate(2deg); }
 
+/* Sucher-Ecken – vier Winkel wie im Kamera-Fokusrahmen, rein dekorativ.
+   Eine einzige Hintergrund-Deklaration mit acht Verläufen statt
+   zusätzlicher Markup-Elemente pro Ecke. */
+.viewfinder { position: relative; }
+
+.viewfinder::after {
+  content: "";
+  position: absolute;
+  inset: 10px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--dur-slow);
+  background:
+    linear-gradient(to right, var(--gold) 2px, transparent 2px) top left / 16px 2px no-repeat,
+    linear-gradient(to bottom, var(--gold) 2px, transparent 2px) top left / 2px 16px no-repeat,
+    linear-gradient(to left, var(--gold) 2px, transparent 2px) top right / 16px 2px no-repeat,
+    linear-gradient(to bottom, var(--gold) 2px, transparent 2px) top right / 2px 16px no-repeat,
+    linear-gradient(to right, var(--gold) 2px, transparent 2px) bottom left / 16px 2px no-repeat,
+    linear-gradient(to top, var(--gold) 2px, transparent 2px) bottom left / 2px 16px no-repeat,
+    linear-gradient(to left, var(--gold) 2px, transparent 2px) bottom right / 16px 2px no-repeat,
+    linear-gradient(to top, var(--gold) 2px, transparent 2px) bottom right / 2px 16px no-repeat;
+}
+
+.viewfinder:hover::after,
+.card:hover .viewfinder::after { opacity: 1; }
+.viewfinder--static::after { opacity: 0.85; }
+
 .hero__media .photo--sm {
   position: absolute;
   left: -6%;
@@ -403,7 +477,7 @@ main p a:hover,
 .section__kicker {
   display: flex;
   align-items: center;
-  gap: var(--sp-3);
+  gap: var(--sp-2);
   text-transform: uppercase;
   letter-spacing: 0.18em;
   font-size: var(--fs-label);
@@ -412,23 +486,21 @@ main p a:hover,
   margin-bottom: var(--sp-4);
 }
 
-.hero__kicker::before,
-.section__kicker::before {
-  content: "";
-  width: 28px;
-  height: 2px;
+.kicker-icon {
+  width: 18px;
+  height: 18px;
   flex: none;
-  border-radius: var(--r-full);
-  background: var(--accent);
+  color: var(--gold);
 }
 
 .hero__title {
   /* Die Textspalte ist im zweispaltigen Hero schmaler – die Größe muss
      dazu passen, sonst bricht die Überschrift auf vier Zeilen um. */
+  font-family: var(--font-display);
   font-size: clamp(2.1rem, 3.7vw, 3.5rem);
-  font-weight: 800;
-  line-height: 1.05;
-  letter-spacing: -0.02em;
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.01em;
   margin-bottom: var(--sp-6);
   max-width: 20ch;
 }
@@ -454,19 +526,37 @@ body.is-ready .hero__title .line:nth-child(2) span { transition-delay: 80ms; }
   margin-bottom: var(--sp-8);
 }
 
-/* Weicher Farbschleier im Hero – Creme, Blush und das Grün der Vorlage */
+/* Dunkler Verlauf über dem Hintergrundfoto – sorgt für Lesbarkeit des
+   hellen Textes, dunkelste Stelle links, wo der Fließtext steht. */
 .hero__wash {
   position: absolute;
   inset: 0;
   z-index: -1;
   pointer-events: none;
   background:
-    radial-gradient(48rem 32rem at 88% 12%, rgba(156, 80, 73, 0.14), transparent 65%),
-    radial-gradient(38rem 28rem at 6% 78%, rgba(110, 127, 92, 0.12), transparent 62%),
-    radial-gradient(52rem 34rem at 50% 0%, var(--bg-soft), transparent 70%);
+    linear-gradient(100deg, rgba(20, 16, 12, 0.86) 0%, rgba(20, 16, 12, 0.62) 42%, rgba(20, 16, 12, 0.24) 68%, rgba(20, 16, 12, 0.05) 100%),
+    linear-gradient(0deg, rgba(20, 16, 12, 0.55), transparent 32%);
 }
 
-.hero__sub strong { color: var(--text); font-weight: 700; }
+.hero__sub strong { color: var(--on-dark); font-weight: 700; }
+.hero__sub { color: var(--on-dark-dim); }
+.hero__trust { color: var(--on-dark-dim); }
+.hero__kicker { color: var(--gold); }
+.hero__kicker::before { background: var(--gold); }
+.hero__trust .icon-check { color: var(--gold); }
+
+.hero .btn--ghost {
+  border-color: rgba(244, 236, 224, 0.45);
+  color: var(--on-dark);
+  background: rgba(244, 236, 224, 0.08);
+  backdrop-filter: blur(6px);
+}
+
+.hero .btn--ghost:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+  background: rgba(244, 236, 224, 0.14);
+}
 
 .hero__actions { display: flex; gap: 1rem; flex-wrap: wrap; }
 
@@ -535,10 +625,37 @@ body.is-ready .hero__title .line:nth-child(2) span { transition-delay: 80ms; }
 /* ---------- Sektionen ---------- */
 .section__head { margin-bottom: 3rem; }
 
+.section__head--media {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: clamp(2rem, 5vw, 4rem);
+}
+
+/* Schräge Bildkarten wie im Hero – als wiederkehrendes Motiv in den
+   Sektions-Köpfen, statt nur einmalig im Hero aufzutauchen. */
+.tilt-photo {
+  flex: none;
+  width: clamp(140px, 16vw, 200px);
+  background: var(--surface);
+  padding: 8px 8px 0;
+  border-radius: 6px;
+  box-shadow: var(--elev-2);
+  transition: transform var(--dur-slow) var(--ease-out);
+}
+
+.tilt-photo img { width: 100%; height: auto; border-radius: 2px; }
+
+.tilt-photo--right { transform: rotate(4deg); }
+.tilt-photo--right:hover { transform: rotate(1deg) translateY(-4px); }
+.tilt-photo--left { transform: rotate(-4deg); }
+.tilt-photo--left:hover { transform: rotate(-1deg) translateY(-4px); }
+
 .section__title {
+  font-family: var(--font-display);
   font-size: clamp(1.75rem, 3.4vw, 2.5rem);
-  font-weight: 800;
-  letter-spacing: -0.01em;
+  font-weight: 700;
+  letter-spacing: -0.005em;
   line-height: var(--lh-tight);
   margin-bottom: var(--sp-4);
   max-width: 24ch;
@@ -858,8 +975,40 @@ body.is-ready .hero__title .line:nth-child(2) span { transition-delay: 80ms; }
   color: var(--text-dim);
 }
 
+.areas__globe {
+  fill: none;
+  stroke: var(--line-strong);
+  stroke-width: 1;
+  opacity: 0.5;
+}
+
 .areas__zone { fill: var(--bg-soft); stroke: none; }
 .areas__ring { fill: none; stroke: var(--line-strong); stroke-dasharray: 4 6; }
+
+.areas__zoom-line {
+  stroke: var(--gold);
+  stroke-width: 1.5;
+  stroke-dasharray: 3 5;
+  opacity: 0.7;
+}
+
+.areas__zoom-badge circle:first-child {
+  fill: var(--surface);
+  stroke: var(--gold);
+  stroke-width: 1.5;
+}
+
+.areas__zoom-badge path { fill: var(--bg-soft); stroke: var(--line-strong); stroke-width: 1; }
+.areas__zoom-dot { fill: var(--accent); }
+
+.areas__zoom-badge text {
+  fill: var(--text-dim);
+  font-size: 11px;
+  font-weight: 600;
+  font-family: var(--font);
+  letter-spacing: 0.04em;
+  text-anchor: middle;
+}
 
 .areas__ring-label {
   fill: var(--text-dim);
@@ -910,13 +1059,35 @@ body.is-ready .hero__title .line:nth-child(2) span { transition-delay: 80ms; }
 .areas__note { color: var(--text-dim); font-size: var(--fs-base); }
 
 /* ---------- FAQ ---------- */
+.faq__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(220px, 320px);
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: start;
+}
+
 .faq__list {
-  max-width: 52rem;
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--r-md);
   box-shadow: var(--elev-1);
   padding: 0 var(--sp-6);
+}
+
+.tilt-photo--faq {
+  width: 100%;
+  padding: 10px 10px 0;
+  position: sticky;
+  top: calc(var(--nav-h) + var(--sp-8));
+}
+
+.tilt-photo--faq figcaption {
+  font-family: var(--font-script);
+  font-size: 1.3rem;
+  line-height: 1.2;
+  color: var(--text-dim);
+  text-align: center;
+  padding: var(--sp-2) 0 var(--sp-3);
 }
 
 .faq__item + .faq__item { border-top: 1px solid var(--line); }
@@ -1140,12 +1311,41 @@ body.is-ready .hero__title .line:nth-child(2) span { transition-delay: 80ms; }
 
 .contact__status { font-size: var(--fs-base); color: var(--accent); min-height: 1.4em; }
 
+/* ---------- Filmstreifen: Sektionstrenner mit Perforation ---------- */
+.filmstrip {
+  height: 22px;
+  background: var(--dark);
+  position: relative;
+  overflow: hidden;
+}
+
+.filmstrip::before,
+.filmstrip::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background-image: repeating-linear-gradient(
+    to right,
+    var(--on-dark-dim) 0, var(--on-dark-dim) 10px,
+    transparent 10px, transparent 22px
+  );
+  opacity: 0.55;
+  border-radius: 2px;
+}
+
+.filmstrip::before { top: 4px; }
+.filmstrip::after { bottom: 4px; }
+
 /* ---------- Footer ---------- */
 .footer {
-  border-top: 1px solid var(--line);
-  background: var(--bg-soft);
+  background: var(--dark);
+  color: var(--on-dark-dim);
   padding: var(--sp-12) 0 var(--sp-6);
 }
+
+.footer .nav__logo.footer__logo { color: var(--on-dark); }
 
 .footer__inner {
   display: flex;
@@ -1154,7 +1354,7 @@ body.is-ready .hero__title .line:nth-child(2) span { transition-delay: 80ms; }
   gap: 1.5rem;
   flex-wrap: wrap;
   padding-bottom: 1.5rem;
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid var(--dark-soft);
 }
 
 .footer__links,
@@ -1165,12 +1365,12 @@ body.is-ready .hero__title .line:nth-child(2) span { transition-delay: 80ms; }
   display: inline-flex;
   align-items: center;
   min-height: 44px;
-  color: var(--text-dim);
+  color: var(--on-dark-dim);
   transition: color var(--dur);
 }
 
 .footer__links a:hover,
-.footer__social a:hover { color: var(--text); }
+.footer__social a:hover { color: var(--gold); }
 
 .footer__meta {
   display: flex;
@@ -1179,10 +1379,10 @@ body.is-ready .hero__title .line:nth-child(2) span { transition-delay: 80ms; }
   flex-wrap: wrap;
   padding-top: var(--sp-4);
   font-size: var(--fs-sm);
-  color: var(--text-dim);
+  color: var(--on-dark-dim);
 }
 
-.footer__meta a:hover { color: var(--text); }
+.footer__meta a:hover { color: var(--gold); }
 
 /* ---------- Lightbox ---------- */
 .lightbox {
@@ -1320,6 +1520,15 @@ body.is-ready .hero__title .line:nth-child(2) span { transition-delay: 80ms; }
     width: min(320px, 80vw);
   }
 
+  /* Das Overlay-Menü ist immer cremefarben – Linktext bleibt dunkel,
+     unabhängig vom transparenten/hellen Zustand der Nav dahinter. */
+  .nav .nav__links a,
+  .nav.is-scrolled .nav__links a { color: var(--text-dim); }
+  .nav .nav__links a:hover,
+  .nav .nav__links a.is-current,
+  .nav.is-scrolled .nav__links a:hover,
+  .nav.is-scrolled .nav__links a.is-current { color: var(--text); }
+
   .nav__links a.is-current:not(.nav__cta)::after { bottom: 0.6rem; }
 
   .nav__burger { display: flex; z-index: 10; }
@@ -1343,12 +1552,28 @@ body.is-ready .hero__title .line:nth-child(2) span { transition-delay: 80ms; }
   .hero__media .photo--sm { left: -6%; bottom: -8%; }
 
   .hero { min-height: 0; }
+
+  .faq__grid { grid-template-columns: 1fr; }
+
+  .tilt-photo--faq {
+    position: static;
+    width: min(280px, 60vw);
+    margin: 0 auto;
+    order: -1;
+  }
 }
 
 /* ≤ 768 px: einspaltiges Layout */
 @media (max-width: 768px) {
   .about__grid,
   .contact__grid { grid-template-columns: 1fr; }
+
+  .section__head--media {
+    grid-template-columns: 1fr;
+    justify-items: start;
+  }
+
+  .tilt-photo { width: 130px; margin-top: var(--sp-4); }
 
   .hero__marquee { display: none; }
 

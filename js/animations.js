@@ -218,7 +218,9 @@
   }
 
   /* ============================================================
-     6. Laufband – Tempo folgt der Scrollrichtung
+     6. Laufband – läuft immer mit konstantem Tempo vollständig durch,
+        pausiert oder wechselt nie die Richtung (auch nicht bei Hover
+        oder Scroll-Stillstand).
      ============================================================ */
   function marquee(reduceMotion) {
     var track = document.querySelector(".hero__marquee-track");
@@ -227,30 +229,11 @@
     // CSS-Animation abschalten, GSAP übernimmt die Kontrolle
     track.style.animation = "none";
 
-    var tween = gsap.to(track, {
+    gsap.to(track, {
       xPercent: -50,
       repeat: -1,
-      duration: 26,
+      duration: 22,
       ease: "none"
-    });
-
-    ScrollTrigger.create({
-      onUpdate: function (self) {
-        var speed = gsap.utils.clamp(0.4, 4, Math.abs(self.getVelocity()) / 400);
-        gsap.to(tween, {
-          timeScale: Math.max(speed, 0.4) * (self.direction === -1 ? -1 : 1),
-          duration: 0.4,
-          overwrite: true
-        });
-      }
-    });
-
-    var marqueeEl = document.querySelector(".hero__marquee");
-    marqueeEl.addEventListener("pointerenter", function () {
-      gsap.to(tween, { timeScale: 0.2, duration: 0.3, overwrite: true });
-    });
-    marqueeEl.addEventListener("pointerleave", function () {
-      gsap.to(tween, { timeScale: 1, duration: 0.3, overwrite: true });
     });
   }
 
