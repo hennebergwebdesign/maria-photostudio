@@ -24,9 +24,18 @@
 /img/*
   Cache-Control: public, max-age=2592000
 
-# CSS/JS: 7 Tage (bei Änderungen ggf. Dateinamen versionieren)
+# CSS/JS: der Browser fragt jedes Mal kurz nach (ETag → 304, wenige Byte).
+# Vorher standen hier 7 Tage – nach einem Deploy sahen Besucher tagelang
+# neues HTML mit altem CSS, und die Seite fiel auseinander.
 /css/*
-  Cache-Control: public, max-age=604800
+  Cache-Control: public, max-age=0, must-revalidate
 
-/js/*
-  Cache-Control: public, max-age=604800
+/js/main.js
+  Cache-Control: public, max-age=0, must-revalidate
+
+/js/animations.js
+  Cache-Control: public, max-age=0, must-revalidate
+
+# Die GSAP-Dateien sind versioniert und ändern sich nie
+/js/vendor/*
+  Cache-Control: public, max-age=31536000, immutable

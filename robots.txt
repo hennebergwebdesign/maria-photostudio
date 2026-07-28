@@ -2,4 +2,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.maria-photostudio.de/sitemap.xml
+Sitemap: https://mariavisuals.de/sitemap.xml
