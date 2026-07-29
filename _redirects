@@ -11,5 +11,7 @@
 /leistungen   /#leistungen   301
 /portfolio    /#portfolio    301
 /faq          /#faq          301
-/impressum    /impressum.html   301
-/datenschutz  /datenschutz.html 301
+# /impressum und /datenschutz braucht KEINE Regel: Cloudflare Pages
+# liefert bei extensionslosen URLs automatisch die passende .html aus.
+# Eigene Regeln würden mit dieser Pretty-URL-Weiterleitung kollidieren
+# (ERR_TOO_MANY_REDIRECTS).
