@@ -1606,8 +1606,24 @@ body.is-ready .hero__title .line:nth-child(2) span { transition-delay: 80ms; }
 
 /* ---------- Responsive: systematische Breakpoints 1440 / 1024 / 768 / 480 ---------- */
 
+/* Der In-Menü-CTA ist nur im Overlay sichtbar (Mobile). */
+.nav__cta--menu { display: none; }
+
 /* ≤ 1024 px: Menü wandert in die Overlay-Navigation */
 @media (max-width: 1024px) {
+  /* Header-CTA aus dem Kopfbereich in das Off-Canvas-Menü verlagern. */
+  .nav__cta--header { display: none; }
+  .nav__cta--menu { display: inline-flex; margin-top: var(--sp-4); }
+
+  /* Burger rechtsbündig, Logo links, keine zentrale Spalte mehr nötig. */
+  .nav__inner { grid-template-columns: auto 1fr auto; }
+  .nav__links { justify-self: end; }
+  .nav__actions { justify-self: end; }
+
+  /* Logo deutlicher lesbar auf schmalen Screens: etwas breiter/höher. */
+  .nav__logo img { height: 60px; }
+  .nav.is-scrolled .nav__logo img { height: 52px; }
+
   /* Achtung: .nav bekommt beim Scrollen backdrop-filter und wird damit zum
      Bezugsrahmen für position:fixed. Deshalb hier feste Viewport-Maße statt
      inset:0 – sonst hängt das geschlossene Menü in der Seite. */
@@ -1675,10 +1691,20 @@ body.is-ready .hero__title .line:nth-child(2) span { transition-delay: 80ms; }
 
   .tilt-photo--faq {
     position: static;
-    width: min(280px, 60vw);
+    width: min(420px, 82vw);
     margin: 0 auto;
     order: -1;
   }
+}
+
+/* ≤ 768 px: Kopf-Bilder in Leistungen und "Warum" auf schmalen Screens
+   ausblenden – dort dominiert der Text, das schräge Beiwerk verkleinert
+   sich sonst zur Briefmarke. Das FAQ-Bild bleibt und wird großzügig. */
+@media (max-width: 768px) {
+  #leistungen .section__head--media .tilt-photo,
+  #warum .section__head--media .tilt-photo { display: none; }
+
+  .tilt-photo--faq { width: min(460px, 88vw); }
 }
 
 /* ≤ 768 px: einspaltiges Layout */
