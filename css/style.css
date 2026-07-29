@@ -585,7 +585,6 @@ body.is-ready .hero__title .line:nth-child(2) span { transition-delay: 80ms; }
 
 .hero__sub strong { color: var(--on-dark); font-weight: 700; }
 .hero__sub { color: var(--on-dark-dim); }
-.hero__trust { color: var(--on-dark-dim); }
 .hero__kicker { color: var(--gold); }
 .hero__kicker::before { background: var(--gold); }
 .hero__trust .icon-check { color: var(--gold); }
@@ -612,7 +611,9 @@ body.is-ready .hero__title .line:nth-child(2) span { transition-delay: 80ms; }
   gap: var(--sp-2) var(--sp-6);
   margin-top: var(--sp-8);
   font-size: var(--fs-sm);
-  color: var(--text-dim);
+  font-weight: 500;
+  color: var(--on-dark);
+  text-shadow: 0 1px 3px rgba(20, 16, 12, 0.55);
 }
 
 .hero__trust li { display: flex; align-items: center; gap: var(--sp-2); }
