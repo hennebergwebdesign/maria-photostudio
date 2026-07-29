@@ -1996,3 +1996,424 @@ body.is-ready .hero__title .line:nth-child(2) span { transition-delay: 80ms; }
 
 /* Persona kicker on dark bg */
 .persona .kicker-icon { color: var(--gold); }
+
+/* ============================================================
+   Redesign 2026-07 — Header-Fix, Leistungen (editorial),
+   Warum-Maria (chapter rows), Ablauf (alternierender Zeitstrahl)
+   ============================================================ */
+
+/* --- Header/Top-Bar: eigener Stacking-Context, damit hero__bg (z-index:-2)
+   und hero__wash (z-index:-1) sichtbar bleiben und der Nav-Text nicht
+   auf blankem Creme-Body schwebt --- */
+.hero { isolation: isolate; }
+
+/* Nav bekommt ab dem ersten Pixel eine dezente Absicherung, damit das
+   Logo auch dann lesbar bleibt, wenn Hero-Bilder noch nicht geladen sind. */
+.nav {
+  background: linear-gradient(to bottom, rgba(20,16,12,0.55), rgba(20,16,12,0) 100%);
+}
+.nav.is-scrolled {
+  background: rgba(26, 21, 16, 0.94);
+}
+/* Logo sichtbar halten */
+.nav__logo img {
+  filter: drop-shadow(0 1px 3px rgba(20,16,12,0.35));
+}
+
+/* --- Leistungen: editoriale Karten mit Zahlen im Hintergrund --- */
+.services--editorial {
+  position: relative;
+  overflow: hidden;
+  background: var(--bg-soft);
+}
+.services__ambient {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--accent);
+  opacity: 0.05;
+  overflow: hidden;
+}
+.services__ambient-word {
+  position: absolute;
+  font-size: clamp(10rem, 22vw, 26rem);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  top: -3rem;
+  left: -2rem;
+}
+.services__ambient-word--alt {
+  top: auto;
+  left: auto;
+  bottom: -4rem;
+  right: -3rem;
+  color: var(--gold);
+  opacity: 0.06;
+}
+
+.svc-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--sp-6);
+}
+
+.svc {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  padding: var(--sp-8) var(--sp-6) var(--sp-8) var(--sp-8);
+  background: var(--surface);
+  border-radius: var(--r-md);
+  box-shadow: var(--elev-1);
+  overflow: hidden;
+  transition: transform var(--dur-slow) var(--ease-out),
+              box-shadow var(--dur-slow), border-color var(--dur);
+  border: 1px solid var(--line);
+}
+.svc:hover { transform: translateY(-4px); box-shadow: var(--elev-2); border-color: var(--accent-hover); }
+
+.svc__num {
+  position: absolute;
+  top: -0.6rem;
+  right: 0.9rem;
+  font-family: var(--font-display);
+  font-size: 5.5rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--accent);
+  opacity: 0.08;
+  transition: opacity var(--dur), transform var(--dur-slow) var(--ease-out);
+  pointer-events: none;
+}
+.svc:hover .svc__num {
+  opacity: 0.18;
+  transform: translateY(-4px) rotate(-2deg);
+}
+
+.svc__icon {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--gold-soft);
+  color: var(--gold);
+  transition: background var(--dur), color var(--dur), transform var(--dur);
+}
+.svc:hover .svc__icon {
+  background: var(--accent);
+  color: var(--on-accent);
+  transform: rotate(-8deg) scale(1.05);
+}
+
+.svc h3 {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  line-height: 1.25;
+  color: var(--text);
+  margin-top: var(--sp-2);
+}
+.svc p { color: var(--text-dim); font-size: var(--fs-base); }
+.svc__tag {
+  margin-top: auto;
+  font-size: var(--fs-label);
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.svc__bar {
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 4px;
+  background: linear-gradient(to bottom, var(--accent), var(--gold));
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.45s var(--ease-out);
+}
+.svc:hover .svc__bar,
+.svc:focus-within .svc__bar { transform: scaleY(1); }
+
+@media (max-width: 640px) {
+  .svc { padding: var(--sp-6); }
+  .svc__num { font-size: 4rem; right: 0.5rem; }
+}
+
+/* --- Warum Maria: „Chapter-Rows" mit riesigen Ziffern --- */
+.usp--editorial { background: var(--bg); }
+.usp--editorial .usp__grid { display: none; }
+.why-list {
+  display: grid;
+  gap: clamp(2rem, 4vw, 3rem);
+  counter-reset: why;
+}
+.why {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 220px) 1fr;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: center;
+  padding: clamp(1.8rem, 3vw, 2.6rem);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  box-shadow: var(--elev-1);
+  overflow: hidden;
+  transition: transform var(--dur-slow) var(--ease-out),
+              box-shadow var(--dur-slow), border-color var(--dur);
+}
+.why::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, rgba(184,146,79,0.06) 0%, transparent 40%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--dur-slow);
+}
+.why:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent);
+  box-shadow: var(--elev-2);
+}
+.why:hover::before { opacity: 1; }
+
+.why--reverse {
+  grid-template-columns: 1fr minmax(0, 220px);
+}
+.why--reverse .why__index { order: 2; text-align: left; }
+.why--reverse .why__body { order: 1; text-align: right; }
+.why--reverse .why__tags { justify-content: flex-end; }
+
+.why__index {
+  font-family: var(--font-display);
+  font-size: clamp(6rem, 12vw, 11rem);
+  font-weight: 700;
+  line-height: 0.85;
+  letter-spacing: -0.03em;
+  color: transparent;
+  -webkit-text-stroke: 2px var(--accent);
+  text-align: right;
+  padding-right: 0.4rem;
+  transition: color var(--dur-slow), transform var(--dur-slow) var(--ease-out);
+}
+.why:hover .why__index {
+  color: var(--accent);
+  transform: translateY(-4px);
+}
+.why__body { display: flex; flex-direction: column; gap: var(--sp-3); }
+.why__label {
+  font-size: var(--fs-label);
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.why__body h3 {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.6vw, 2rem);
+  line-height: 1.2;
+  color: var(--text);
+}
+.why__body p { color: var(--text-dim); font-size: var(--fs-lg); max-width: 60ch; }
+.why__tags {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: var(--sp-2);
+}
+.why__tags li {
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--accent);
+  padding: 0.3rem 0.75rem;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-full);
+  background: var(--bg);
+}
+
+@media (max-width: 780px) {
+  .why, .why--reverse {
+    grid-template-columns: 1fr;
+    text-align: left;
+  }
+  .why--reverse .why__index,
+  .why__index { order: 0; text-align: left; padding-right: 0; font-size: 5rem; }
+  .why--reverse .why__body { order: 0; text-align: left; }
+  .why--reverse .why__tags { justify-content: flex-start; }
+}
+
+/* --- Ablauf: alternierende Timeline mit zentralem Strang --- */
+.process__path--split {
+  position: relative;
+  max-width: none;
+  margin-inline: auto;
+  padding-block: var(--sp-8);
+}
+.process__spine {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 3px;
+  transform: translateX(-50%);
+  background: var(--line);
+  border-radius: var(--r-full);
+  overflow: hidden;
+}
+.process__spine-fill {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, var(--accent), var(--gold));
+  transform: scaleY(0);
+  transform-origin: top;
+}
+.process__list--alt {
+  list-style: none;
+  display: grid;
+  gap: clamp(2rem, 5vw, 4.5rem);
+  padding: 0;
+  margin: 0;
+}
+.process__list--alt .process__step {
+  display: grid;
+  grid-template-columns: 1fr 72px 1fr;
+  align-items: center;
+  gap: var(--sp-4);
+  position: relative;
+}
+.process__list--alt .process__step .process__marker {
+  grid-column: 2;
+  justify-self: center;
+  z-index: 2;
+  width: 64px;
+  height: 64px;
+}
+.process__list--alt .process__step .process__marker .process__icon {
+  width: 64px; height: 64px;
+  border: 3px solid var(--line-strong);
+  background: var(--surface);
+}
+.process__list--alt .process__step.is-active .process__icon {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--on-accent);
+  transform: scale(1.08);
+  box-shadow: 0 0 0 6px var(--accent-soft), var(--elev-2);
+}
+.process__list--alt .process__step .process__num {
+  right: -6px; bottom: -6px;
+  width: 26px; height: 26px;
+  font-size: 0.75rem;
+}
+
+.process__card {
+  position: relative;
+  padding: var(--sp-6) var(--sp-8);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  box-shadow: var(--elev-1);
+  transition: transform var(--dur-slow) var(--ease-out), box-shadow var(--dur-slow), border-color var(--dur);
+}
+.process__card::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 20px;
+  height: 2px;
+  background: var(--line-strong);
+  transform: translateY(-50%);
+}
+.process__step--left .process__card {
+  grid-column: 1;
+  text-align: right;
+}
+.process__step--left .process__card::after { right: -20px; }
+.process__step--right .process__card {
+  grid-column: 3;
+  text-align: left;
+}
+.process__step--right .process__card::after { left: -20px; }
+.process__card:hover { transform: translateY(-3px); border-color: var(--accent); box-shadow: var(--elev-2); }
+.process__card h3 {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  line-height: 1.25;
+  margin-bottom: var(--sp-2);
+}
+.process__meta {
+  display: inline-block;
+  margin-bottom: var(--sp-2);
+  font-size: var(--fs-label);
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.process__card p { color: var(--text-dim); font-size: var(--fs-base); max-width: 44ch; }
+.process__step--left .process__card p { margin-left: auto; }
+
+/* Eintritts-Zustand für die Scroll-Animation der Schritte.
+   Nur aktiv, wenn GSAP tatsächlich läuft – ohne JS bleibt alles sichtbar. */
+.gsap .process__list--alt .process__step .process__card {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.65s var(--ease-out), transform 0.65s var(--ease-out);
+}
+.gsap .process__list--alt .process__step--right .process__card {
+  transform: translateX(40px);
+}
+.gsap .process__list--alt .process__step.is-in .process__card {
+  opacity: 1;
+  transform: translateX(0);
+}
+.gsap .process__list--alt .process__step .process__marker {
+  opacity: 0;
+  transform: scale(0.6);
+  transition: opacity 0.5s var(--ease-out), transform 0.5s var(--ease-out);
+}
+.gsap .process__list--alt .process__step.is-in .process__marker {
+  opacity: 1;
+  transform: scale(1);
+}
+
+@media (max-width: 780px) {
+  .process__spine { left: 32px; }
+  .process__list--alt .process__step {
+    grid-template-columns: 64px 1fr;
+    align-items: flex-start;
+  }
+  .process__list--alt .process__step .process__marker {
+    grid-column: 1;
+    justify-self: start;
+  }
+  .process__step--left .process__card,
+  .process__step--right .process__card {
+    grid-column: 2;
+    text-align: left;
+  }
+  .process__step--left .process__card::after,
+  .process__step--right .process__card::after {
+    left: -20px; right: auto;
+  }
+  .process__list--alt .process__step .process__card,
+  .process__list--alt .process__step--right .process__card {
+    transform: translateX(-30px);
+  }
+  .process__list--alt .process__step.is-in .process__card { transform: translateX(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .process__list--alt .process__step .process__card,
+  .process__list--alt .process__step .process__marker { opacity: 1; transform: none; }
+  .process__spine-fill { transform: scaleY(1); }
+}
+
+/* Alte Einzugsgebiets-Navi-Marker im Footer entfernt: kein Layout-Impact */
