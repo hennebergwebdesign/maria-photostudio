@@ -388,6 +388,7 @@ main p a:hover,
   position: absolute;
   inset: 0;
   z-index: -2;
+  background: #14100c;
 }
 
 .hero__bg img {
@@ -395,11 +396,12 @@ main p a:hover,
   height: 100%;
   object-fit: cover;
   object-position: center 38%;
+  display: block;
 }
 
 .hero__grid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(280px, 440px);
+  grid-template-columns: minmax(0, 1fr) minmax(220px, 340px);
   gap: clamp(2rem, 5vw, 4.5rem);
   align-items: center;
 }
@@ -437,7 +439,7 @@ main p a:hover,
   position: relative;
   justify-self: end;
   width: 100%;
-  max-width: 440px;
+  max-width: 340px;
 }
 
 .hero__media .photo--lg { transform: rotate(2deg); }
