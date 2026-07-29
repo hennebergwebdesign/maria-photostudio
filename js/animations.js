@@ -34,75 +34,13 @@
   function reduced() { return reduceQuery.matches; }
 
   /* ============================================================
-     1. Preloader – Bildsequenz als Timeline statt setTimeout-Kette
+     1. Seiteneinstieg – Preloader ist entfernt, Hero startet direkt
      ============================================================ */
-  var loader = document.getElementById("loader");
-  var loaderSkip = document.getElementById("loaderSkip");
-  var introDone = false;
-
   function releasePage() {
-    if (introDone) return;
-    introDone = true;
     body.classList.add("is-ready");
     body.classList.remove("is-locked");
-    if (loader) loader.classList.add("is-done");
     document.dispatchEvent(new CustomEvent("maria:intro-done"));
     ScrollTrigger.refresh();
-  }
-
-  function buildLoader(reduceMotion) {
-    if (!loader || introDone) return null;
-
-    if (reduceMotion) {
-      gsap.set(loader, { autoAlpha: 0, display: "none" });
-      releasePage();
-      return null;
-    }
-
-    body.classList.add("is-locked");
-
-    var imgs = gsap.utils.toArray(".loader__img");
-    var stack = document.getElementById("loaderStack");
-
-    var tl = gsap.timeline({ onComplete: releasePage });
-
-    // Bilder blitzen nacheinander auf
-    imgs.forEach(function (img, i) {
-      tl.set(img, { autoAlpha: 1 }, i * 0.16)
-        .set(img, { autoAlpha: 0 }, (i + 1) * 0.16);
-    });
-
-    // Letztes Bild bleibt stehen, skaliert herunter und gibt die Seite frei
-    tl.set(imgs[imgs.length - 1], { autoAlpha: 1 }, imgs.length * 0.16)
-      .to(stack, {
-        scale: 0.32,
-        borderRadius: 16,
-        duration: 0.7,
-        ease: "power3.inOut"
-      }, ">+=0.15")
-      .to(".loader__fade", { autoAlpha: 0.35, duration: 0.4 }, "<")
-      .to(loader, { autoAlpha: 0, duration: 0.4 }, "-=0.25")
-      .to(loaderSkip, { autoAlpha: 0, duration: 0.2 }, "<");
-
-    // Überspringen: die Timeline wird beschleunigt, nicht abgeschnitten –
-    // so bleibt die Bewegung nachvollziehbar und ist trotzdem sofort vorbei.
-    var skip = function () {
-      if (tl.timeScale() > 1) return;
-      gsap.to(tl, { timeScale: 8, duration: 0.2, overwrite: true });
-    };
-
-    if (loaderSkip) loaderSkip.addEventListener("click", skip);
-    loader.addEventListener("click", skip);
-    window.addEventListener("wheel", skip, { passive: true });
-    window.addEventListener("touchmove", skip, { passive: true });
-    document.addEventListener("keydown", function (e) {
-      if (e.key === "Escape" || e.key === " " || e.key === "Enter") skip();
-    });
-
-    // Sicherheitsnetz: nach 5 s ist die Seite in jedem Fall frei
-    gsap.delayedCall(5, function () { tl.progress(1); });
-
-    return tl;
   }
 
   /* ============================================================
@@ -134,7 +72,7 @@
       .from(".hero__wash", { scale: 1.15, duration: 1.4, ease: "none" }, 0);
 
     document.addEventListener("maria:intro-done", function () { tl.play(); }, { once: true });
-    if (introDone) tl.play();
+    if (body.classList.contains("is-ready")) tl.play();
   }
 
   /* ============================================================
@@ -587,8 +525,8 @@
     });
   }
 
-  buildLoader(reduced());
   heroIntro(reduced());
+  releasePage();
   faq();
   filterFlip();
   lightbox();
