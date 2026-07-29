@@ -279,12 +279,7 @@
     showLightbox(list[currentIndex]);
   }
 
-  cards.forEach(function (card) {
-    card.addEventListener("click", function (e) {
-      e.preventDefault();
-      openLightbox(card);
-    });
-  });
+  // Portfolio-Karten verlinken direkt auf YouTube – keine Lightbox mehr abfangen.
 
   lightboxClose.addEventListener("click", closeLightbox);
   lightboxPrev.addEventListener("click", function () { stepLightbox(-1); });
