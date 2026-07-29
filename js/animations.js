@@ -470,6 +470,113 @@
      Wichtig: die Bedingungen müssen so gewählt sein, dass immer
      mindestens eine zutrifft – sonst läuft der Handler nie.
      ============================================================ */
+  /* ============================================================
+     11. Story – gepinnte Bild-Erzählung mit Frame-Wechsel
+     ============================================================ */
+  function storyStage(reduceMotion) {
+    var stage = document.getElementById("storyStage");
+    if (!stage) return;
+    var frames = gsap.utils.toArray(".story__frame");
+    var panels = gsap.utils.toArray(".story__panel");
+    if (!frames.length || !panels.length) return;
+
+    if (reduceMotion) {
+      frames.forEach(function (f, i) { f.classList.toggle("is-active", i === 0); });
+      return;
+    }
+
+    panels.forEach(function (panel, i) {
+      ScrollTrigger.create({
+        trigger: panel,
+        start: "top 60%",
+        end: "bottom 40%",
+        onEnter: function () { activate(i); },
+        onEnterBack: function () { activate(i); }
+      });
+    });
+
+    function activate(idx) {
+      frames.forEach(function (f, i) { f.classList.toggle("is-active", i === idx); });
+    }
+  }
+
+  /* ============================================================
+     12. Nav-Fortschrittsbalken
+     ============================================================ */
+  function navProgress(reduceMotion) {
+    var fill = document.getElementById("navProgressFill");
+    if (!fill || reduceMotion) return;
+    gsap.to(fill, {
+      width: "100%",
+      ease: "none",
+      scrollTrigger: {
+        start: 0,
+        end: function () { return document.documentElement.scrollHeight - window.innerHeight; },
+        scrub: 0.3
+      }
+    });
+  }
+
+  /* ============================================================
+     13. CTA-Banner – sanfter Ken-Burns-Parallax
+     ============================================================ */
+  function ctaParallax(reduceMotion) {
+    var bg = document.querySelector(".cta-banner__bg img");
+    if (!bg || reduceMotion) return;
+    gsap.fromTo(bg,
+      { yPercent: -8, scale: 1.08 },
+      {
+        yPercent: 8,
+        scale: 1.02,
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".cta-banner",
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true
+        }
+      }
+    );
+  }
+
+  /* ============================================================
+     14. Collage – gestaffelter Eintritt der Bilder
+     ============================================================ */
+  function collageIn(reduceMotion) {
+    var items = gsap.utils.toArray(".collage figure");
+    if (!items.length || reduceMotion) return;
+    gsap.set(items, { autoAlpha: 0, y: 40, scale: 0.94 });
+    ScrollTrigger.batch(items, {
+      start: "top 92%",
+      once: true,
+      onEnter: function (batch) {
+        gsap.to(batch, {
+          autoAlpha: 1, y: 0, scale: 1,
+          duration: 0.7, stagger: 0.08, ease: "power3.out"
+        });
+      }
+    });
+  }
+
+  /* ============================================================
+     15. Persona-Karten – Tilt beim Hover
+     ============================================================ */
+  function personaTilt(reduceMotion) {
+    if (reduceMotion) return;
+    var cards = gsap.utils.toArray(".persona__card");
+    cards.forEach(function (card) {
+      card.addEventListener("mousemove", function (e) {
+        var r = card.getBoundingClientRect();
+        var rx = ((e.clientY - r.top) / r.height - 0.5) * -6;
+        var ry = ((e.clientX - r.left) / r.width - 0.5) * 6;
+        gsap.to(card, { rotateX: rx, rotateY: ry, transformPerspective: 900, duration: 0.4, ease: "power2.out" });
+      });
+      card.addEventListener("mouseleave", function () {
+        gsap.to(card, { rotateX: 0, rotateY: 0, duration: 0.5, ease: "power2.out" });
+      });
+    });
+  }
+
   buildLoader(reduced());
   heroIntro(reduced());
   faq();
@@ -490,11 +597,16 @@
       reveals(reduce);
       counters(reduce);
       processPath(reduce);
+      storyStage(reduce);
+      navProgress(reduce);
+      ctaParallax(reduce);
+      collageIn(reduce);
 
       // Parallax und Laufband nur dort, wo genug Platz und Leistung ist
       if (desktop && !reduce) {
         cardParallax();
         marquee(reduce);
+        personaTilt(reduce);
       }
     }
   );
