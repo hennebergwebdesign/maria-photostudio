@@ -2052,7 +2052,27 @@ body.is-ready .hero__title .line:nth-child(2) span { transition-delay: 80ms; }
 /* Nav bekommt ab dem ersten Pixel eine dezente Absicherung, damit das
    Logo auch dann lesbar bleibt, wenn Hero-Bilder noch nicht geladen sind. */
 .nav {
-  background: linear-gradient(to bottom, rgba(20,16,12,0.55), rgba(20,16,12,0) 100%);
+  /* Oben nahezu vollflächig deckend, damit unter der Nav garantiert nichts
+     Helles durchscheint (Himmel im Hero-Bild, HTML-Grundton etc.). Erst
+     zur Nav-Unterkante hin läuft es weich ins Transparente aus. */
+  background: linear-gradient(to bottom,
+    rgba(20,16,12,0.98) 0%,
+    rgba(20,16,12,0.90) 55%,
+    rgba(20,16,12,0.55) 85%,
+    rgba(20,16,12,0) 100%);
+}
+/* Zusätzlicher opaker Streifen fest oben, unabhängig von der Nav-Höhe.
+   Belt-and-suspenders gegen jeden hellen Randpixel. */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background: #14100c;
+  z-index: 9999;
+  pointer-events: none;
 }
 .nav.is-scrolled {
   background: rgba(26, 21, 16, 0.94);
