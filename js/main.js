@@ -36,68 +36,8 @@
     window.location.replace(legacyHashes[window.location.hash]);
   }
 
-  /* ---------- Preloader: Bild-Flash-Sequenz ---------- */
-  var loader = document.getElementById("loader");
-  var loaderSkip = document.getElementById("loaderSkip");
-
-  function finishLoader() {
-    if (!loader || loader.classList.contains("is-done")) return;
-    loader.classList.add("is-shrinking");
-    window.setTimeout(function () {
-      loader.classList.add("is-done");
-      body.classList.add("is-ready");
-      body.classList.remove("is-locked");
-    }, 500);
-  }
-
-  if (loader && !hasGsap && !prefersReducedMotion) {
-    body.classList.add("is-locked");
-    var images = loader.querySelectorAll(".loader__img");
-    var index = 0;
-    var flashDelay = 160;
-
-    var flash = function () {
-      if (loader.classList.contains("is-shrinking")) return;
-      if (index > 0) images[index - 1].classList.remove("is-visible");
-      if (index < images.length) {
-        images[index].classList.add("is-visible");
-        index++;
-        window.setTimeout(flash, flashDelay);
-      } else {
-        images[images.length - 1].classList.add("is-visible");
-        window.setTimeout(finishLoader, 250);
-      }
-    };
-
-    // Start, sobald das erste Bild geladen ist – spätestens nach 1 s
-    var started = false;
-    var start = function () {
-      if (started) return;
-      started = true;
-      flash();
-    };
-    if (images.length && images[0].complete) {
-      start();
-    } else if (images.length) {
-      images[0].addEventListener("load", start);
-      images[0].addEventListener("error", start);
-    }
-    window.setTimeout(start, 1000);
-    // Sicherheitsnetz: Loader nie länger als 4 s zeigen
-    window.setTimeout(finishLoader, 4000);
-
-    // Jederzeit überspringbar – per Button, Klick, Escape oder Scrollversuch
-    if (loaderSkip) loaderSkip.addEventListener("click", finishLoader);
-    loader.addEventListener("click", finishLoader);
-    document.addEventListener("keydown", function (e) {
-      if (e.key === "Escape" || e.key === " " || e.key === "Enter") finishLoader();
-    });
-    window.addEventListener("wheel", finishLoader, { once: true, passive: true });
-    window.addEventListener("touchmove", finishLoader, { once: true, passive: true });
-  } else if (!hasGsap) {
-    if (loader) loader.classList.add("is-done");
-    body.classList.add("is-ready");
-  }
+  /* ---------- Direkter Seiteneinstieg (kein Preloader mehr) ---------- */
+  if (!hasGsap) body.classList.add("is-ready");
 
   /* ---------- Navigation ---------- */
   var nav = document.getElementById("nav");
