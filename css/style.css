@@ -377,7 +377,7 @@ main p a:hover,
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-top: calc(var(--nav-h) + var(--sp-6));
+  padding-top: 0;
   padding-bottom: var(--sp-8);
   position: relative;
   color: var(--on-dark);
