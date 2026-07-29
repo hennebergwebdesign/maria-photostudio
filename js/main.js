@@ -177,6 +177,7 @@
   var lightboxPrev = document.getElementById("lightboxPrev");
   var lightboxNext = document.getElementById("lightboxNext");
   var currentIndex = 0;
+  var currentGroup = [];
   var lastFocused = null;
 
   function visibleCards() {
@@ -185,11 +186,20 @@
     });
   }
 
+  // Alle weiteren Lightbox-Bilder außerhalb des Portfolios (Über-mich, Collage)
+  // werden über die Klasse .lb-item eingebunden. Jede Sektion bleibt eine
+  // eigene Blätter-Gruppe, damit die Pfeiltasten sinnvoll navigieren.
+  function groupForItem(item) {
+    if (item.classList.contains("card")) return visibleCards();
+    var container = item.closest(".collage, .about, section") || document.body;
+    return Array.prototype.slice.call(container.querySelectorAll(".lb-item"));
+  }
+
   function openLightbox(card) {
-    var list = visibleCards();
+    currentGroup = groupForItem(card);
     lastFocused = document.activeElement;
-    currentIndex = list.indexOf(card);
-    showLightbox(list[currentIndex]);
+    currentIndex = currentGroup.indexOf(card);
+    showLightbox(currentGroup[currentIndex]);
     lightbox.classList.add("is-open");
     lightbox.setAttribute("aria-hidden", "false");
     body.classList.add("is-locked");
@@ -213,16 +223,17 @@
   }
 
   function stepLightbox(dir) {
-    var list = visibleCards();
+    var list = currentGroup && currentGroup.length ? currentGroup : visibleCards();
     if (!list.length) return;
     currentIndex = (currentIndex + dir + list.length) % list.length;
     showLightbox(list[currentIndex]);
   }
 
-  cards.forEach(function (card) {
-    card.addEventListener("click", function (e) {
+  var lightboxItems = document.querySelectorAll(".card, .lb-item");
+  lightboxItems.forEach(function (item) {
+    item.addEventListener("click", function (e) {
       e.preventDefault();
-      openLightbox(card);
+      openLightbox(item);
     });
   });
 
