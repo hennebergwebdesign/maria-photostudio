@@ -242,13 +242,16 @@
      ============================================================ */
   function processPath(reduceMotion) {
     var path = document.querySelector(".process__path");
-    var fill = document.querySelector(".process__line-fill");
+    var fill = document.querySelector(".process__spine-fill, .process__line-fill");
     var steps = gsap.utils.toArray(".process__step");
     if (!path || !fill || !steps.length) return;
 
     if (reduceMotion) {
       gsap.set(fill, { scaleY: 1 });
-      steps.forEach(function (step) { step.classList.add("is-active"); });
+      steps.forEach(function (step) {
+        step.classList.add("is-active");
+        step.classList.add("is-in");
+      });
       return;
     }
 
@@ -258,8 +261,8 @@
       ease: "none",
       scrollTrigger: {
         trigger: path,
-        start: "top 65%",
-        end: "bottom 65%",
+        start: "top 70%",
+        end: "bottom 60%",
         scrub: true
       }
     });
@@ -267,8 +270,15 @@
     steps.forEach(function (step) {
       ScrollTrigger.create({
         trigger: step,
-        start: "top 65%",
-        toggleClass: { targets: step, className: "is-active" }
+        start: "top 78%",
+        onEnter: function () {
+          step.classList.add("is-in");
+          step.classList.add("is-active");
+        },
+        onLeaveBack: function () {
+          step.classList.remove("is-in");
+          step.classList.remove("is-active");
+        }
       });
     });
   }
