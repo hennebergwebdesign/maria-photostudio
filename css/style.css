@@ -702,9 +702,14 @@ body.is-ready .hero__title .line:nth-child(2) span { transition-delay: 80ms; }
   letter-spacing: -0.005em;
   line-height: var(--lh-tight);
   margin-bottom: var(--sp-4);
-  max-width: 24ch;
+  max-width: 32ch;
   text-wrap: balance;
 }
+
+/* Portfolio bekommt mehr Breite, damit „Arbeiten aus Sassenberg,
+   Warendorf und dem Münsterland" nicht dreizeilig umbricht. */
+.work .section__title { max-width: 48ch; }
+.work .section__lead { max-width: 72ch; }
 
 .section__lead {
   color: var(--text-dim);
