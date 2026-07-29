@@ -364,17 +364,20 @@ main p a:hover,
 
 .nav__links a { position: relative; }
 
-.nav__cta {
-  color: var(--on-accent) !important;
+.nav__cta,
+.nav__cta:link,
+.nav__cta:visited {
+  color: #ffffff !important;
   background: var(--accent);
   padding: 0.55rem 1.4rem;
   min-height: 40px;
   line-height: 1;
   border-radius: var(--r-full);
+  text-decoration: none;
   transition: background var(--dur), transform var(--dur-fast);
 }
 
-.nav__cta:hover { background: var(--accent-hover); }
+.nav__cta:hover { background: var(--accent-hover); color: #ffffff !important; }
 .nav__cta:active { transform: scale(0.97); }
 
 .nav__burger {
@@ -1606,14 +1609,16 @@ body.is-ready .hero__title .line:nth-child(2) span { transition-delay: 80ms; }
 
 /* ---------- Responsive: systematische Breakpoints 1440 / 1024 / 768 / 480 ---------- */
 
-/* Der In-Menü-CTA ist nur im Overlay sichtbar (Mobile). */
-.nav__cta--menu { display: none; }
+/* Der In-Menü-CTA ist nur im Overlay sichtbar (Mobile).
+   Die Spezifität muss `.nav__links a { display: flex }` schlagen,
+   sonst taucht der Button auf dem Desktop doppelt im Header auf. */
+.nav__links a.nav__cta--menu { display: none; }
 
 /* ≤ 1024 px: Menü wandert in die Overlay-Navigation */
 @media (max-width: 1024px) {
   /* Header-CTA aus dem Kopfbereich in das Off-Canvas-Menü verlagern. */
   .nav__cta--header { display: none; }
-  .nav__cta--menu { display: inline-flex; margin-top: var(--sp-4); }
+  .nav__links a.nav__cta--menu { display: inline-flex; margin-top: var(--sp-4); }
 
   /* Burger rechtsbündig, Logo links, keine zentrale Spalte mehr nötig. */
   .nav__inner { grid-template-columns: auto 1fr auto; }
