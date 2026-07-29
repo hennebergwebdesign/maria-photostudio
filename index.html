@@ -45,10 +45,10 @@
 
   <!-- Performance: Schrift selbst gehostet (kein Google-Fonts-Request), LCP-Bild vorladen -->
   <link rel="preload" href="fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="img/work-01-800.webp" as="image" type="image/webp" fetchpriority="high">
-  <link rel="preload" href="img/hero-lake-800.webp" as="image" type="image/webp" fetchpriority="high">
-  <link rel="stylesheet" href="css/fonts.css?v=20260728b">
-  <link rel="stylesheet" href="css/style.css?v=20260728b">
+  <link rel="preload" href="sonnenuntergang-shooting-strohballen-feld.jpeg" as="image" fetchpriority="high">
+  <link rel="preload" href="Maria-Visuals-Logo-1.png" as="image">
+  <link rel="stylesheet" href="css/fonts.css?v=20260729a">
+  <link rel="stylesheet" href="css/style.css?v=20260729a">
   <noscript><style>.loader { display: none; } .reveal { opacity: 1; transform: none; }</style></noscript>
 </head>
 <body>
@@ -97,12 +97,12 @@
   <!-- ======================= PRELOADER (Bild-Flash-Sequenz) ======================= -->
   <div class="loader" id="loader" aria-hidden="true">
     <div class="loader__stack" id="loaderStack">
-      <img class="loader__img" src="img/work-01-800.webp" alt="" width="800" height="500" fetchpriority="high" decoding="async">
-      <img class="loader__img" src="img/work-02-800.webp" alt="" width="800" height="500" decoding="async">
-      <img class="loader__img" src="img/work-03-800.webp" alt="" width="800" height="500" decoding="async">
-      <img class="loader__img" src="img/work-04-800.webp" alt="" width="800" height="500" decoding="async">
-      <img class="loader__img" src="img/work-05-800.webp" alt="" width="800" height="500" decoding="async">
-      <img class="loader__img" src="img/work-06-800.webp" alt="" width="800" height="500" decoding="async">
+      <img class="loader__img" src="portraet-goldene-stunde-strohballen.jpeg" alt="" width="1200" height="800" fetchpriority="high" decoding="async">
+      <img class="loader__img" src="naturportraet-getreideaehren.jpeg" alt="" width="1200" height="800" decoding="async">
+      <img class="loader__img" src="blaue-stunde-shooting-strohballen.jpeg" alt="" width="1200" height="800" decoding="async">
+      <img class="loader__img" src="portraet-glyzinie-fruehlin.jpeg" alt="" width="1200" height="800" decoding="async">
+      <img class="loader__img" src="sommershooting-getreidefeld-lachen.jpeg" alt="" width="1200" height="800" decoding="async">
+      <img class="loader__img" src="studio-portraet-ledersessel.jpeg" alt="" width="1200" height="800" decoding="async">
     </div>
     <div class="loader__fade"></div>
     <button class="loader__skip" id="loaderSkip" type="button">Intro überspringen</button>
@@ -111,19 +111,22 @@
   <!-- ======================= NAVIGATION ======================= -->
   <header class="nav" id="nav">
     <div class="nav__inner container">
-      <a href="#top" class="nav__logo" aria-label="Maria Photostudio – Startseite">MARIA<span>.</span></a>
+      <a href="#top" class="nav__logo" aria-label="Maria Visuals – Startseite">
+        <img src="Maria-Visuals-Logo-1.png" alt="Maria Visuals" width="200" height="72" id="navLogo" decoding="async">
+      </a>
       <nav class="nav__links" id="navLinks" aria-label="Hauptnavigation">
+        <a href="#fuer-wen">Für wen</a>
         <a href="#leistungen">Leistungen</a>
         <a href="#portfolio">Arbeiten</a>
         <a href="#ablauf">Ablauf</a>
         <a href="#ueber-mich">Über mich</a>
-        <a href="#faq">FAQ</a>
         <a href="#kontakt" class="nav__cta">Erstgespräch</a>
       </nav>
       <button class="nav__burger" id="navBurger" aria-label="Menü öffnen" aria-expanded="false" aria-controls="navLinks">
         <span></span><span></span>
       </button>
     </div>
+    <div class="nav__progress" aria-hidden="true"><span id="navProgressFill"></span></div>
   </header>
 
   <main id="top">
@@ -131,26 +134,25 @@
     <!-- ======================= HERO ======================= -->
     <section class="hero" id="inhalt" aria-labelledby="hero-title">
       <picture class="hero__bg" aria-hidden="true">
-        <source type="image/webp" srcset="img/hero-lake-800.webp 800w, img/hero-lake.webp 2000w" sizes="100vw">
-        <img src="img/hero-lake-800.jpg" srcset="img/hero-lake-800.jpg 800w, img/hero-lake.jpg 2000w" sizes="100vw" alt="" fetchpriority="high" decoding="async">
+        <img src="sonnenuntergang-shooting-strohballen-feld.jpeg" alt="" fetchpriority="high" decoding="async">
       </picture>
       <div class="hero__wash" aria-hidden="true"></div>
       <div class="container hero__grid">
         <div class="hero__text">
-          <p class="hero__kicker reveal"><svg class="kicker-icon" width="18" height="18" aria-hidden="true"><use href="#i-aperture"></use></svg>Fotografie &amp; Videografie · 48336 Sassenberg · Münsterland</p>
+          <p class="hero__kicker reveal"><svg class="kicker-icon" width="18" height="18" aria-hidden="true"><use href="#i-aperture"></use></svg>Portrait · Natur · Studio · 48336 Sassenberg</p>
           <h1 class="hero__title" id="hero-title">
-            <span class="line"><span>Fotograf in Sassenberg</span></span>
-            <span class="line"><span>für Momente, die bleiben.</span></span>
+            <span class="line"><span>Bilder, in denen</span></span>
+            <span class="line"><span>Sie sich wiedererkennen.</span></span>
           </h1>
           <p class="hero__sub reveal">
-            Sie bekommen <strong>Foto und Video aus einer Hand</strong> – ohne zwei
-            Dienstleister zu koordinieren. Ich plane das Shooting vorab mit Ihnen,
-            drehe an einem Tag und liefere die fertigen Bilder in 10 Werktagen.
-            Den Preis haben Sie schriftlich, bevor die Kamera läuft.
+            Ich bin <strong>Maria</strong> – Fotografin für Menschen, die eigentlich
+            <em>nicht gern</em> fotografiert werden. Wir treffen uns im goldenen Licht der
+            Feldmark oder im ruhigen Studio, und Sie gehen mit Bildern nach Hause,
+            die aussehen wie Sie an einem guten Tag – nicht wie eine Pose.
           </p>
           <div class="hero__actions reveal">
             <a href="#kontakt" class="btn btn--primary">Kostenloses Erstgespräch</a>
-            <a href="#portfolio" class="btn btn--ghost">Arbeiten ansehen</a>
+            <a href="#portfolio" class="btn btn--ghost">Portfolio ansehen</a>
           </div>
           <ul class="hero__trust reveal">
             <li><svg class="icon-check" width="16" height="16" aria-hidden="true"><use href="#i-check"></use></svg>Antwort in 24 Stunden</li>
@@ -160,36 +162,96 @@
           </ul>
         </div>
 
-        <!-- Bildstapel im Polaroid-Look – eine Fotografie-Seite ohne Foto
-             im ersten Bildschirm verschenkt ihr wichtigstes Argument. -->
+        <!-- Bildstapel im Polaroid-Look -->
         <div class="hero__media" aria-hidden="true">
           <figure class="photo photo--lg viewfinder viewfinder--static">
-            <picture>
-              <source type="image/webp" srcset="img/work-03-800.webp 800w, img/work-03.webp 1600w" sizes="(max-width: 1024px) 80vw, 420px">
-              <img src="img/work-03-800.jpg" alt="" width="800" height="500" loading="eager" decoding="async">
-            </picture>
-            <figcaption>Momente, die bleiben</figcaption>
+            <img src="portraet-goldene-stunde-strohballen.jpeg" alt="" width="800" height="1000" loading="eager" decoding="async">
+            <figcaption>Goldene Stunde, Feldmark</figcaption>
           </figure>
-          <!-- Ohne Bildunterschrift: der kleine Abzug liegt über dem großen,
-               zwei Unterschriften würden sich überlagern. -->
           <figure class="photo photo--sm">
-            <picture>
-              <source type="image/webp" srcset="img/portrait-800.webp 400w" sizes="200px">
-              <img src="img/portrait-800.jpg" alt="" width="400" height="500" loading="lazy" decoding="async">
-            </picture>
+            <img src="studio-portraet-ledersessel.jpeg" alt="" width="400" height="500" loading="lazy" decoding="async">
           </figure>
         </div>
       </div>
+      <span class="scroll-cue" aria-hidden="true">Scroll · Erzählung</span>
+      <a class="hero__badge" href="#fuer-wen" aria-label="Ist das ein Shooting für mich?">
+        <span class="dot"></span> Ist das ein Shooting für mich?
+      </a>
     </section>
 
     <div class="hero__marquee" aria-hidden="true">
       <div class="hero__marquee-track">
-        <span>Porträt&nbsp;·&nbsp;Hochzeit&nbsp;·&nbsp;Imagefilm&nbsp;·&nbsp;Event&nbsp;·&nbsp;Produkt&nbsp;·&nbsp;Social&nbsp;Media&nbsp;·&nbsp;</span>
-        <span>Porträt&nbsp;·&nbsp;Hochzeit&nbsp;·&nbsp;Imagefilm&nbsp;·&nbsp;Event&nbsp;·&nbsp;Produkt&nbsp;·&nbsp;Social&nbsp;Media&nbsp;·&nbsp;</span>
-        <span>Porträt&nbsp;·&nbsp;Hochzeit&nbsp;·&nbsp;Imagefilm&nbsp;·&nbsp;Event&nbsp;·&nbsp;Produkt&nbsp;·&nbsp;Social&nbsp;Media&nbsp;·&nbsp;</span>
-        <span>Porträt&nbsp;·&nbsp;Hochzeit&nbsp;·&nbsp;Imagefilm&nbsp;·&nbsp;Event&nbsp;·&nbsp;Produkt&nbsp;·&nbsp;Social&nbsp;Media&nbsp;·&nbsp;</span>
+        <span>Naturportrait&nbsp;·&nbsp;Studio&nbsp;·&nbsp;Familie&nbsp;·&nbsp;Business&nbsp;·&nbsp;Hochzeit&nbsp;·&nbsp;Goldene&nbsp;Stunde&nbsp;·&nbsp;Kornfeld&nbsp;·&nbsp;Blaue&nbsp;Stunde&nbsp;·&nbsp;</span>
+        <span>Naturportrait&nbsp;·&nbsp;Studio&nbsp;·&nbsp;Familie&nbsp;·&nbsp;Business&nbsp;·&nbsp;Hochzeit&nbsp;·&nbsp;Goldene&nbsp;Stunde&nbsp;·&nbsp;Kornfeld&nbsp;·&nbsp;Blaue&nbsp;Stunde&nbsp;·&nbsp;</span>
+        <span>Naturportrait&nbsp;·&nbsp;Studio&nbsp;·&nbsp;Familie&nbsp;·&nbsp;Business&nbsp;·&nbsp;Hochzeit&nbsp;·&nbsp;Goldene&nbsp;Stunde&nbsp;·&nbsp;Kornfeld&nbsp;·&nbsp;Blaue&nbsp;Stunde&nbsp;·&nbsp;</span>
+        <span>Naturportrait&nbsp;·&nbsp;Studio&nbsp;·&nbsp;Familie&nbsp;·&nbsp;Business&nbsp;·&nbsp;Hochzeit&nbsp;·&nbsp;Goldene&nbsp;Stunde&nbsp;·&nbsp;Kornfeld&nbsp;·&nbsp;Blaue&nbsp;Stunde&nbsp;·&nbsp;</span>
       </div>
     </div>
+
+    <!-- ======================= PERSONA / FÜR WEN ======================= -->
+    <section class="persona section" id="fuer-wen" aria-labelledby="persona-title">
+      <div class="container">
+        <div class="section__head reveal">
+          <p class="section__kicker"><svg class="kicker-icon" width="18" height="18" aria-hidden="true"><use href="#i-aperture"></use></svg>Für wen ich fotografiere</p>
+          <h2 class="section__title" id="persona-title">Vielleicht erkennen Sie sich hier wieder.</h2>
+          <p class="section__lead">
+            Ich arbeite am liebsten mit Menschen, die nicht wegen des perfekten Winkels
+            zum Shooting kommen – sondern weil sie ein ehrliches Bild von sich brauchen.
+            Für Website, Bewerbung, das eigene Wohnzimmer, oder einfach als Erinnerung.
+          </p>
+        </div>
+        <div class="persona__grid">
+          <article class="persona__card reveal">
+            <span class="persona__num">01</span>
+            <h3>Sie starten neu.</h3>
+            <p>Neue Position, neuer Auftritt, neuer Lebensabschnitt. Sie brauchen Bilder, die zeigen, wer Sie <em>heute</em> sind – nicht die 5 Jahre alten aus dem Handy.</p>
+          </article>
+          <article class="persona__card reveal">
+            <span class="persona__num">02</span>
+            <h3>Sie haben Angst vor der Kamera.</h3>
+            <p>„Ich bin so unfotogen.“ Höre ich täglich. Nach zehn Minuten ist die Kamera vergessen – und Sie sehen ein Bild von sich, das Sie tatsächlich mögen.</p>
+          </article>
+          <article class="persona__card reveal">
+            <span class="persona__num">03</span>
+            <h3>Sie wollen ein Andenken.</h3>
+            <p>An diese Lebensphase. An Ihr Kind, das nächste Jahr schon anders aussieht. An das Paar, das Sie gerade sind. Bilder, die man einrahmt.</p>
+          </article>
+          <article class="persona__card reveal">
+            <span class="persona__num">04</span>
+            <h3>Sie sind Unternehmerin.</h3>
+            <p>Sie brauchen Bilder mit Handschrift statt Stockfotos: für Ihre Website, für LinkedIn, für die eigene Marke – konsistent, in Ihrer Farbwelt.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================= STORY: gepinnte Bild-Erzählung ======================= -->
+    <section class="story" id="story" aria-label="Bildwelten">
+      <div class="story__stage" id="storyStage">
+        <div class="story__sticky" aria-hidden="true">
+          <div class="story__frame is-active" data-frame="1"><img src="portraet-goldene-stunde-strohballen.jpeg" alt=""></div>
+          <div class="story__frame" data-frame="2"><img src="studio-fashion-shooting-weiss.jpeg" alt=""></div>
+          <div class="story__frame" data-frame="3"><img src="familienshooting-sonnenuntergang-see.jpeg" alt=""></div>
+        </div>
+        <div class="story__panels">
+          <div class="story__panel" data-panel="1">
+            <span class="num">Draußen</span>
+            <h3>Wo das Licht die Regie führt.</h3>
+            <p>Kornfeld, Strohballen, Glyzinie, blaue Stunde am See. Wir warten kurz auf den Moment, in dem die Sonne alles weich macht – und drücken dann ab.</p>
+          </div>
+          <div class="story__panel" data-panel="2">
+            <span class="num">Studio</span>
+            <h3>Wenn es klar &amp; kontrolliert sein soll.</h3>
+            <p>Für Businessporträts, Fashion, editorial. Neutrale Rückwand, geführtes Licht, wiederholbare Qualität – auch wenn Sie in einem Jahr noch ein Bild nachbestellen.</p>
+          </div>
+          <div class="story__panel" data-panel="3">
+            <span class="num">Zusammen</span>
+            <h3>Familie, Paar, Freundinnen.</h3>
+            <p>Kein steifes Aufstellen. Wir gehen los, unterhalten uns, ich fotografiere dazwischen. Die schönsten Bilder entstehen, wenn niemand mehr „posiert“.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- ======================= LEISTUNGEN ======================= -->
     <section class="services section" id="leistungen" aria-labelledby="leistungen-title">
@@ -204,10 +266,7 @@
             </p>
           </div>
           <figure class="tilt-photo tilt-photo--right reveal" aria-hidden="true">
-            <picture>
-              <source type="image/webp" srcset="img/work-05-800.webp 800w">
-              <img src="img/work-05-800.jpg" alt="" width="800" height="500" loading="lazy" decoding="async">
-            </picture>
+            <img src="portraet-glyzinie-fruehlin.jpeg" alt="" width="800" height="1000" loading="lazy" decoding="async">
           </figure>
         </div>
         <div class="services__list">
@@ -338,10 +397,7 @@
             </p>
           </div>
           <figure class="tilt-photo tilt-photo--left reveal" aria-hidden="true">
-            <picture>
-              <source type="image/webp" srcset="img/work-06-800.webp 800w">
-              <img src="img/work-06-800.jpg" alt="" width="800" height="500" loading="lazy" decoding="async">
-            </picture>
+            <img src="schwarzweiss-portraet-strohballen.jpeg" alt="" width="800" height="1000" loading="lazy" decoding="async">
           </figure>
         </div>
         <div class="usp__grid">
@@ -386,72 +442,91 @@
         </div>
         <div class="work__filter reveal" role="group" aria-label="Portfolio filtern">
           <button type="button" class="chip is-active" data-filter="all" aria-pressed="true">Alle</button>
-          <button type="button" class="chip" data-filter="foto" aria-pressed="false">Fotografie</button>
-          <button type="button" class="chip" data-filter="video" aria-pressed="false">Videografie</button>
+          <button type="button" class="chip" data-filter="natur" aria-pressed="false">Natur &amp; Feld</button>
+          <button type="button" class="chip" data-filter="studio" aria-pressed="false">Studio</button>
+          <button type="button" class="chip" data-filter="familie" aria-pressed="false">Familie &amp; Paar</button>
         </div>
         <div class="work__grid" id="workGrid">
 
-          <a class="card reveal" data-type="foto" href="img/work-01.webp"
-             data-title="Businessporträts für eine Steuerkanzlei in Warendorf"
-             data-cat="Fotografie · Businessporträt">
+          <a class="card reveal" data-type="natur" href="portraet-goldene-stunde-strohballen.jpeg"
+             data-title="Naturportrait in der goldenen Stunde"
+             data-cat="Naturportrait · Strohballen">
             <picture class="viewfinder">
-              <source type="image/webp" srcset="img/work-01-800.webp 800w, img/work-01.webp 1600w" sizes="(max-width: 700px) 92vw, 380px">
-              <img src="img/work-01-800.jpg" alt="Businessporträt einer Steuerberaterin aus Warendorf, fotografiert von Maria Photostudio in Sassenberg" width="800" height="500" loading="lazy" decoding="async">
+              <img src="portraet-goldene-stunde-strohballen.jpeg" alt="Naturportrait auf dem Feld in der goldenen Stunde" width="800" height="1000" loading="lazy" decoding="async">
             </picture>
-            <div class="card__meta"><h3>Businessporträts Steuerkanzlei</h3><p>Fotografie · Warendorf</p></div>
+            <div class="card__meta"><h3>Goldene Stunde</h3><p>Naturportrait · Strohballen</p></div>
           </a>
 
-          <a class="card card--video reveal" data-type="video" href="img/work-02.webp"
-             data-title="Imagefilm für eine Tischlerei in Sassenberg"
-             data-cat="Videografie · Imagefilm">
+          <a class="card reveal" data-type="natur" href="cowgirl-shooting-strohballen-feld.jpeg"
+             data-title="Cowgirl-Shooting am Strohballenfeld"
+             data-cat="Kreativshooting · Cowgirl">
             <picture class="viewfinder">
-              <source type="image/webp" srcset="img/work-02-800.webp 800w, img/work-02.webp 1600w" sizes="(max-width: 700px) 92vw, 380px">
-              <img src="img/work-02-800.jpg" alt="Standbild aus dem Imagefilm einer Tischlerei in Sassenberg" width="800" height="500" loading="lazy" decoding="async">
+              <img src="cowgirl-shooting-strohballen-feld.jpeg" alt="Cowgirl-Shooting im Strohballenfeld" width="800" height="1000" loading="lazy" decoding="async">
             </picture>
-            <span class="card__play" aria-hidden="true"><svg width="22" height="22"><use href="#i-play"></use></svg></span>
-            <div class="card__meta"><h3>Imagefilm Tischlerei</h3><p>Videografie · Sassenberg</p></div>
+            <div class="card__meta"><h3>Cowgirl im Feld</h3><p>Kreativshooting · Sassenberg</p></div>
           </a>
 
-          <a class="card reveal" data-type="foto" href="img/work-03.webp"
-             data-title="Hochzeitsreportage am Feldmark-See bei Sassenberg"
-             data-cat="Fotografie · Hochzeit">
+          <a class="card reveal" data-type="studio" href="studio-portraet-ledersessel.jpeg"
+             data-title="Studioporträt auf Ledersessel"
+             data-cat="Studio · Editorial">
             <picture class="viewfinder">
-              <source type="image/webp" srcset="img/work-03-800.webp 800w, img/work-03.webp 1600w" sizes="(max-width: 700px) 92vw, 380px">
-              <img src="img/work-03-800.jpg" alt="Brautpaar bei der Hochzeitsreportage am See im Münsterland" width="800" height="500" loading="lazy" decoding="async">
+              <img src="studio-portraet-ledersessel.jpeg" alt="Studioporträt auf Ledersessel" width="800" height="1000" loading="lazy" decoding="async">
             </picture>
-            <div class="card__meta"><h3>Hochzeit am See</h3><p>Fotografie · Münsterland</p></div>
+            <div class="card__meta"><h3>Editorial im Studio</h3><p>Studio · Sassenberg</p></div>
           </a>
 
-          <a class="card card--video reveal" data-type="video" href="img/work-04.webp"
-             data-title="Aftermovie vom Stadtfest in Sassenberg"
-             data-cat="Videografie · Event">
+          <a class="card reveal" data-type="familie" href="familienshooting-sonnenuntergang-see.jpeg"
+             data-title="Familienshooting am See im Sonnenuntergang"
+             data-cat="Familie · See">
             <picture class="viewfinder">
-              <source type="image/webp" srcset="img/work-04-800.webp 800w, img/work-04.webp 1600w" sizes="(max-width: 700px) 92vw, 380px">
-              <img src="img/work-04-800.jpg" alt="Standbild aus dem Aftermovie des Stadtfests in Sassenberg" width="800" height="500" loading="lazy" decoding="async">
+              <img src="familienshooting-sonnenuntergang-see.jpeg" alt="Familienshooting am See im Sonnenuntergang" width="800" height="1000" loading="lazy" decoding="async">
             </picture>
-            <span class="card__play" aria-hidden="true"><svg width="22" height="22"><use href="#i-play"></use></svg></span>
-            <div class="card__meta"><h3>Aftermovie Stadtfest</h3><p>Videografie · Event</p></div>
+            <div class="card__meta"><h3>Familie am See</h3><p>Familie · Münsterland</p></div>
           </a>
 
-          <a class="card reveal" data-type="foto" href="img/work-05.webp"
-             data-title="Produktfotografie für eine Manufaktur im Kreis Warendorf"
-             data-cat="Fotografie · Produkt">
+          <a class="card reveal" data-type="natur" href="blaue-stunde-shooting-strohballen.jpeg"
+             data-title="Blaue Stunde am Strohballenfeld"
+             data-cat="Naturportrait · Blaue Stunde">
             <picture class="viewfinder">
-              <source type="image/webp" srcset="img/work-05-800.webp 800w, img/work-05.webp 1600w" sizes="(max-width: 700px) 92vw, 380px">
-              <img src="img/work-05-800.jpg" alt="Produktfotografie für eine Manufaktur im Kreis Warendorf" width="800" height="500" loading="lazy" decoding="async">
+              <img src="blaue-stunde-shooting-strohballen.jpeg" alt="Portrait in der blauen Stunde am Strohballen" width="800" height="1000" loading="lazy" decoding="async">
             </picture>
-            <div class="card__meta"><h3>Produktshooting Manufaktur</h3><p>Fotografie · Kreis Warendorf</p></div>
+            <div class="card__meta"><h3>Blaue Stunde</h3><p>Naturportrait · Strohballen</p></div>
           </a>
 
-          <a class="card card--video reveal" data-type="video" href="img/work-06.webp"
-             data-title="Recruiting-Clip für ein Pflegeteam aus dem Münsterland"
-             data-cat="Videografie · Social Media">
+          <a class="card reveal" data-type="natur" href="portraetshooting-rapsfeld.jpeg"
+             data-title="Portraitshooting im Rapsfeld"
+             data-cat="Naturportrait · Rapsfeld">
             <picture class="viewfinder">
-              <source type="image/webp" srcset="img/work-06-800.webp 800w, img/work-06.webp 1600w" sizes="(max-width: 700px) 92vw, 380px">
-              <img src="img/work-06-800.jpg" alt="Dreh eines Recruiting-Clips mit einem Pflegeteam im Münsterland" width="800" height="500" loading="lazy" decoding="async">
+              <img src="portraetshooting-rapsfeld.jpeg" alt="Portraitshooting im leuchtend gelben Rapsfeld" width="800" height="1000" loading="lazy" decoding="async">
             </picture>
-            <span class="card__play" aria-hidden="true"><svg width="22" height="22"><use href="#i-play"></use></svg></span>
-            <div class="card__meta"><h3>Recruiting-Clip Pflegeteam</h3><p>Videografie · Social Media</p></div>
+            <div class="card__meta"><h3>Rapsfeld</h3><p>Naturportrait · Frühling</p></div>
+          </a>
+
+          <a class="card reveal" data-type="studio" href="studio-fashion-shooting-weiss.jpeg"
+             data-title="Fashion-Shooting im Studio auf Weiß"
+             data-cat="Studio · Fashion">
+            <picture class="viewfinder">
+              <img src="studio-fashion-shooting-weiss.jpeg" alt="Fashion-Shooting im Studio auf Weiß" width="800" height="1000" loading="lazy" decoding="async">
+            </picture>
+            <div class="card__meta"><h3>Fashion auf Weiß</h3><p>Studio · Sassenberg</p></div>
+          </a>
+
+          <a class="card reveal" data-type="natur" href="sommershooting-getreidefeld-lachen.jpeg"
+             data-title="Sommershooting im Getreidefeld"
+             data-cat="Naturportrait · Sommer">
+            <picture class="viewfinder">
+              <img src="sommershooting-getreidefeld-lachen.jpeg" alt="Lachendes Sommershooting im Getreidefeld" width="800" height="1000" loading="lazy" decoding="async">
+            </picture>
+            <div class="card__meta"><h3>Sommer, laut</h3><p>Naturportrait · Getreidefeld</p></div>
+          </a>
+
+          <a class="card reveal" data-type="natur" href="schwarzweiss-shooting-feld-portraet.jpeg"
+             data-title="Schwarz-Weiß-Portrait am Feld"
+             data-cat="Naturportrait · Schwarz-Weiß">
+            <picture class="viewfinder">
+              <img src="schwarzweiss-shooting-feld-portraet.jpeg" alt="Schwarz-Weiß-Portrait am Feld" width="800" height="1000" loading="lazy" decoding="async">
+            </picture>
+            <div class="card__meta"><h3>Schwarz &amp; Weiß</h3><p>Naturportrait · Feldmark</p></div>
           </a>
 
         </div>
@@ -521,14 +596,44 @@
       </div>
     </section>
 
+    <!-- ======================= TESTIMONIAL ======================= -->
+    <section class="quote section" aria-label="Kundenstimme">
+      <div class="container quote__wrap">
+        <figure class="quote__photo reveal" aria-hidden="true">
+          <img src="nahportraet-getreidefeld.jpeg" alt="" width="600" height="800" loading="lazy" decoding="async">
+          <figcaption>Anna, Kundin aus Warendorf</figcaption>
+        </figure>
+        <div class="quote__text reveal">
+          <span class="quote__mark" aria-hidden="true">“</span>
+          <blockquote>
+            Ich hatte mich zehn Jahre nicht fotografieren lassen. Nach zwanzig Minuten
+            mit Maria habe ich zum ersten Mal seit langem Bilder von mir, die ich
+            wirklich mag – und die jetzt in meinem Flur hängen.
+          </blockquote>
+          <p class="quote__cite"><strong>Anna R.</strong> · Portraitshooting im Kornfeld · Warendorf</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================= CTA BANNER ======================= -->
+    <section class="cta-banner" aria-labelledby="cta-mid-title">
+      <div class="cta-banner__bg" aria-hidden="true">
+        <img src="fotoshooting-strohballen-sonnenuntergang.jpeg" alt="" loading="lazy" decoding="async">
+      </div>
+      <div class="container cta-banner__inner">
+        <div class="reveal">
+          <h2 id="cta-mid-title">Bereit für Ihr Shooting im Münsterland?</h2>
+          <p>Zwei Sätze, was Sie vorhaben, reichen. Ich melde mich innerhalb von 24 Stunden – kostenlos, unverbindlich, ehrlich.</p>
+        </div>
+        <a href="#kontakt" class="btn btn--primary reveal">Erstgespräch sichern →</a>
+      </div>
+    </section>
+
     <!-- ======================= ÜBER MICH ======================= -->
     <section class="about section" id="ueber-mich" aria-labelledby="ueber-title">
       <div class="container about__grid">
         <div class="about__img reveal viewfinder viewfinder--static">
-          <picture>
-            <source type="image/webp" srcset="img/portrait-800.webp 400w, img/portrait.webp 800w" sizes="(max-width: 860px) 92vw, 420px">
-            <img src="img/portrait-800.jpg" alt="Maria, Fotografin und Videografin aus Sassenberg im Münsterland" width="400" height="500" loading="lazy" decoding="async">
-          </picture>
+          <img src="studio-portraetshooting-braun.jpeg" alt="Maria, Fotografin aus Sassenberg im Münsterland" width="500" height="625" loading="lazy" decoding="async">
         </div>
         <div class="about__text">
           <p class="section__kicker reveal"><svg class="kicker-icon" width="18" height="18" aria-hidden="true"><use href="#i-aperture"></use></svg>05 — Über mich</p>
@@ -552,6 +657,20 @@
             <div><strong>Foto &amp; Video</strong><span>aus einer Hand</span></div>
             <div><strong>50 km</strong><span>rund um Sassenberg</span></div>
           </div>
+          <span class="about__sign reveal">— Maria</span>
+        </div>
+      </div>
+
+      <!-- Kleine Bildwand aus neuen Arbeiten -->
+      <div class="container">
+        <div class="collage reveal" aria-hidden="true">
+          <figure><img src="portraetshooting-strohballen-abendlicht.jpeg" alt="" loading="lazy" decoding="async"></figure>
+          <figure><img src="naturshooting-blumenwiese-portraet.jpeg" alt="" loading="lazy" decoding="async"></figure>
+          <figure><img src="kreatives-shooting-cowboyhut-stroh.jpeg" alt="" loading="lazy" decoding="async"></figure>
+          <figure><img src="fotoshooting-cowgirl-stroh.jpeg" alt="" loading="lazy" decoding="async"></figure>
+          <figure><img src="portraetshooting-kornfeld-cowboyhut.jpeg" alt="" loading="lazy" decoding="async"></figure>
+          <figure><img src="naturshooting-strohballen-nachdenklich.jpeg" alt="" loading="lazy" decoding="async"></figure>
+          <figure><img src="fotoshooting-strohballen-rollen.jpeg" alt="" loading="lazy" decoding="async"></figure>
         </div>
       </div>
     </section>
@@ -774,10 +893,7 @@
         </div>
 
           <figure class="tilt-photo tilt-photo--faq tilt-photo--right reveal" aria-hidden="true">
-            <picture>
-              <source type="image/webp" srcset="img/work-01-800.webp 800w, img/work-01.webp 1600w" sizes="(max-width: 1024px) 60vw, 320px">
-              <img src="img/work-01-800.jpg" alt="" width="800" height="500" loading="lazy" decoding="async">
-            </picture>
+            <img src="naturshooting-strohballen-nachdenklich.jpeg" alt="" width="800" height="1000" loading="lazy" decoding="async">
             <figcaption>Fragen? Wir klären das vorab.</figcaption>
           </figure>
         </div>
@@ -834,7 +950,9 @@
   <div class="filmstrip" aria-hidden="true"></div>
   <footer class="footer">
     <div class="container footer__inner">
-      <a href="#top" class="nav__logo footer__logo" aria-label="Maria Photostudio – nach oben">MARIA<span>.</span></a>
+      <a href="#top" class="nav__logo footer__logo" aria-label="Maria Visuals – nach oben">
+        <img src="Maria-Visuals-Logo-1.png" alt="Maria Visuals" width="240" height="86" decoding="async">
+      </a>
       <nav class="footer__links" aria-label="Fußzeile">
         <a href="#leistungen">Leistungen</a>
         <a href="#portfolio">Arbeiten</a>
@@ -1046,7 +1164,7 @@
   <script src="js/vendor/gsap.min.js" defer></script>
   <script src="js/vendor/ScrollTrigger.min.js" defer></script>
   <script src="js/vendor/Flip.min.js" defer></script>
-  <script src="js/animations.js?v=20260728b" defer></script>
-  <script src="js/main.js?v=20260728b" defer></script>
+  <script src="js/animations.js?v=20260729a" defer></script>
+  <script src="js/main.js?v=20260729a" defer></script>
 </body>
 </html>
