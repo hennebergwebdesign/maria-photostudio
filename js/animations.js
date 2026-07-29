@@ -131,7 +131,7 @@
       .to(".hero__sub", { autoAlpha: 1, y: 0 }, "-=0.4")
       .to(".hero__actions", { autoAlpha: 1, y: 0 }, "-=0.45")
       .to(".hero__trust li", { autoAlpha: 1, y: 0, stagger: 0.06, duration: 0.45 }, "-=0.4")
-      .from(".hero__wash", { autoAlpha: 0, scale: 1.15, duration: 1.4, ease: "none" }, 0);
+      .from(".hero__wash", { scale: 1.15, duration: 1.4, ease: "none" }, 0);
 
     document.addEventListener("maria:intro-done", function () { tl.play(); }, { once: true });
     if (introDone) tl.play();
