@@ -267,10 +267,9 @@ main p a:hover,
   right: 0;
   z-index: var(--z-nav);
   color: var(--on-dark);
-  background: transparent;
-  transition: background var(--dur-slow), backdrop-filter var(--dur-slow),
-              border-color var(--dur-slow), box-shadow var(--dur-slow);
-  border-bottom: 1px solid transparent;
+  background: #14100c;
+  transition: box-shadow var(--dur-slow);
+  border-bottom: 1px solid rgba(244, 236, 224, 0.08);
 }
 
 .nav .nav__links a { color: var(--on-dark-dim); }
@@ -283,8 +282,6 @@ main p a:hover,
 .nav .nav__burger[aria-expanded="true"] span { background: var(--text); }
 
 .nav.is-scrolled {
-  background: rgba(26, 21, 16, 0.92);
-  backdrop-filter: blur(12px);
   border-bottom-color: rgba(244, 236, 224, 0.16);
   box-shadow: var(--elev-2);
 }
@@ -392,11 +389,12 @@ main p a:hover,
 
 /* ---------- Hero ---------- */
 .hero {
-  min-height: 100svh;
+  min-height: 100vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-top: 0;
+  padding-top: var(--nav-h);
   padding-bottom: var(--sp-8);
   position: relative;
   color: var(--on-dark);
@@ -2052,30 +2050,10 @@ body.is-ready .hero__title .line:nth-child(2) span { transition-delay: 80ms; }
 /* Nav bekommt ab dem ersten Pixel eine dezente Absicherung, damit das
    Logo auch dann lesbar bleibt, wenn Hero-Bilder noch nicht geladen sind. */
 .nav {
-  /* Oben nahezu vollflächig deckend, damit unter der Nav garantiert nichts
-     Helles durchscheint (Himmel im Hero-Bild, HTML-Grundton etc.). Erst
-     zur Nav-Unterkante hin läuft es weich ins Transparente aus. */
-  background: linear-gradient(to bottom,
-    rgba(20,16,12,0.98) 0%,
-    rgba(20,16,12,0.90) 55%,
-    rgba(20,16,12,0.55) 85%,
-    rgba(20,16,12,0) 100%);
-}
-/* Zusätzlicher opaker Streifen fest oben, unabhängig von der Nav-Höhe.
-   Belt-and-suspenders gegen jeden hellen Randpixel. */
-body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 8px;
+  /* Vollflächig deckend – keine Transparenz mehr. Damit ist unter der Nav
+     garantiert nichts sichtbar und es kann kein heller Rand entstehen. */
   background: #14100c;
-  z-index: 9999;
-  pointer-events: none;
-}
-.nav.is-scrolled {
-  background: rgba(26, 21, 16, 0.94);
+  border-bottom: 1px solid rgba(244, 236, 224, 0.08);
 }
 /* Logo sichtbar halten */
 .nav__logo img {
