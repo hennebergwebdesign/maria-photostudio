@@ -93,7 +93,7 @@
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; background: #14100c; }
 
 body {
   background: var(--bg);
@@ -121,6 +121,23 @@ a, button, summary, .chip, .card { touch-action: manipulation; }
 .service__num { font-variant-numeric: tabular-nums; }
 
 img { display: block; max-width: 100%; }
+
+/* Sanfter Hover-Effekt auf allen inhaltlichen Bildern.
+   Icons in der Navigation, Logos und dekorative Micro-SVGs sind ausgenommen. */
+main img,
+.footer img {
+  transition: transform 500ms var(--ease-out), filter 500ms var(--ease-out);
+  will-change: transform;
+}
+main a:hover img,
+main figure:hover img,
+main picture:hover img,
+main .photo:hover img,
+main .tilt-photo:hover img,
+.footer a:hover img {
+  transform: scale(1.03);
+  filter: brightness(1.04);
+}
 
 a { color: inherit; text-decoration: none; }
 
@@ -342,7 +359,9 @@ main p a:hover,
 .nav__cta {
   color: var(--on-accent) !important;
   background: var(--accent);
-  padding-inline: var(--sp-6);
+  padding: 0.55rem 1.4rem;
+  min-height: 40px;
+  line-height: 1;
   border-radius: var(--r-full);
   transition: background var(--dur), transform var(--dur-fast);
 }
@@ -401,7 +420,7 @@ main p a:hover,
 
 .hero__grid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(180px, 260px);
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 340px);
   gap: clamp(2rem, 5vw, 4.5rem);
   align-items: center;
 }
@@ -439,10 +458,11 @@ main p a:hover,
   position: relative;
   justify-self: end;
   width: 100%;
-  max-width: 260px;
+  max-width: 340px;
+  padding-bottom: 22%;
 }
 
-.hero__media .photo--lg { transform: rotate(2deg); }
+.hero__media .photo--lg { transform: rotate(2deg); width: 80%; margin-left: auto; }
 
 /* Sucher-Ecken – vier Winkel wie im Kamera-Fokusrahmen, rein dekorativ.
    Eine einzige Hintergrund-Deklaration mit acht Verläufen statt
@@ -473,9 +493,9 @@ main p a:hover,
 
 .hero__media .photo--sm {
   position: absolute;
-  left: -6%;
-  bottom: -8%;
-  width: 40%;
+  left: -8%;
+  bottom: 0;
+  width: 62%;
   padding-bottom: 12px;
   transform: rotate(-5deg);
 }
@@ -1134,7 +1154,13 @@ body.is-ready .hero__title .line:nth-child(2) span { transition-delay: 80ms; }
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(220px, 320px);
   gap: clamp(2rem, 5vw, 4rem);
-  align-items: start;
+  align-items: stretch;
+}
+
+.faq__left {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-6);
 }
 
 .faq__list {
@@ -1148,8 +1174,16 @@ body.is-ready .hero__title .line:nth-child(2) span { transition-delay: 80ms; }
 .tilt-photo--faq {
   width: 100%;
   padding: 10px 10px 0;
-  position: sticky;
-  top: calc(var(--nav-h) + var(--sp-8));
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+}
+.tilt-photo--faq img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  flex: 1 1 auto;
+  min-height: 0;
 }
 
 .tilt-photo--faq figcaption {
@@ -2049,7 +2083,7 @@ body.is-ready .hero__title .line:nth-child(2) span { transition-delay: 80ms; }
   font-size: clamp(10rem, 22vw, 26rem);
   line-height: 1;
   letter-spacing: -0.04em;
-  top: -3rem;
+  top: 6rem;
   left: -2rem;
 }
 .services__ambient-word--alt {
