@@ -2471,3 +2471,94 @@ body.is-ready .hero__title .line:nth-child(2) span { transition-delay: 80ms; }
 }
 
 /* Alte Einzugsgebiets-Navi-Marker im Footer entfernt: kein Layout-Impact */
+
+/* ============================================================
+   Rechtstexte (Impressum, Datenschutz) – schmale Lesespalte,
+   klare Hierarchie, gleiche Typografie wie die Startseite.
+   ============================================================ */
+.legal {
+  padding-top: calc(var(--nav-h) + var(--sp-8));
+  padding-bottom: var(--sp-12);
+  background: var(--bg);
+  min-height: 100vh;
+}
+.legal__wrap {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 0 var(--sp-6);
+}
+.legal__kicker {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: var(--fs-label);
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: var(--sp-4);
+}
+.legal h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.5vw, 3.2rem);
+  line-height: 1.1;
+  margin-bottom: var(--sp-6);
+  color: var(--text);
+}
+.legal h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 2vw, 1.6rem);
+  line-height: 1.25;
+  margin-top: var(--sp-10);
+  margin-bottom: var(--sp-3);
+  color: var(--text);
+}
+.legal h3 {
+  font-family: var(--font);
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-top: var(--sp-6);
+  margin-bottom: var(--sp-2);
+  color: var(--text);
+}
+.legal p,
+.legal li {
+  color: var(--text-dim);
+  line-height: 1.65;
+}
+.legal p + p { margin-top: var(--sp-3); }
+.legal ul {
+  margin: var(--sp-3) 0;
+  padding-left: 1.4em;
+  list-style: disc;
+}
+.legal ul li + li { margin-top: var(--sp-1); }
+.legal a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+.legal a:hover { color: var(--accent-hover); }
+.legal address {
+  font-style: normal;
+  color: var(--text);
+  padding: var(--sp-4) var(--sp-6);
+  background: var(--bg-soft);
+  border-left: 3px solid var(--accent);
+  border-radius: 4px;
+  margin: var(--sp-3) 0;
+}
+.legal__lead {
+  font-size: 1.1rem;
+  color: var(--text);
+  margin-bottom: var(--sp-6);
+}
+.legal__back {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  margin-top: var(--sp-10);
+  padding: 0.7rem 1.4rem;
+  border-radius: var(--r-full);
+  background: var(--accent);
+  color: var(--on-accent);
+  font-weight: 500;
+  transition: background var(--dur);
+}
+.legal__back:hover { background: var(--accent-hover); color: var(--on-accent); }
