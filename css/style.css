@@ -2263,6 +2263,7 @@ body.is-ready .hero__title .line:nth-child(2) span { transition-delay: 80ms; }
   gap: clamp(2rem, 4vw, 3rem);
   counter-reset: why;
 }
+.usp--editorial .section__cta { margin-top: clamp(2rem, 4vw, 3rem); }
 .why {
   position: relative;
   display: grid;
@@ -2394,11 +2395,9 @@ body.is-ready .hero__title .line:nth-child(2) span { transition-delay: 80ms; }
   margin: 0;
 }
 .process__cta {
-  position: relative;
-  z-index: 2;
   display: flex;
   justify-content: center;
-  margin-top: clamp(2.5rem, 6vw, 4rem);
+  margin-top: clamp(1.5rem, 4vw, 2.5rem);
 }
 .process__list--alt .process__step {
   display: grid;
