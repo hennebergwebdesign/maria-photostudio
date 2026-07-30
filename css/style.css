@@ -28,9 +28,9 @@
 
   /* --- Gold & Dunkel: Zweitpalette aus der Visitenkarte, für Footer,
          Hero-Overlay und Akzent-Details --- */
-  --gold: #b8924f;
-  --gold-hover: #a17c3d;
-  --gold-soft: rgba(184, 146, 79, 0.16);
+  --gold: #e1b074;
+  --gold-hover: #b8905f;
+  --gold-soft: rgba(225, 176, 116, 0.16);
   --dark: #1a1510;          /* warmes Beinahe-Schwarz der Karte  */
   --dark-soft: #241d16;
   --on-dark: #f4ece0;       /* Creme auf --dark, 15.4:1          */
@@ -39,9 +39,9 @@
   /* --- Typo-Skala (Basis 16 px, Faktor ~1.2) --- */
   --font: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-script: "Caveat", "Segoe Script", cursive;
-  /* Serifenschrift wie auf der Visitenkarte – bewusst Systemschrift,
-     kein weiterer Font-Download (CSP erlaubt nur font-src 'self'). */
-  --font-display: Georgia, "Iowan Old Style", "Times New Roman", serif;
+  /* Display-Serif für Überschriften, selbst gehostet (CSP erlaubt nur
+     font-src 'self'), Fallback auf Systemschriften. */
+  --font-display: "Cormorant Garamond", Georgia, "Iowan Old Style", "Times New Roman", serif;
   --fs-label: 0.75rem;      /* 12 px – nur Versal-Labels       */
   --fs-sm: 0.875rem;        /* 14 px – Meta, Fußzeile          */
   --fs-base: 1rem;          /* 16 px – Fließtext (Minimum!)    */
@@ -105,6 +105,8 @@ body {
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
+
+h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); }
 
 body.is-locked { overflow: hidden; }
 
@@ -2568,7 +2570,6 @@ body.is-ready .hero__title .line:nth-child(2) span { transition-delay: 80ms; }
   color: var(--text);
 }
 .legal h3 {
-  font-family: var(--font);
   font-size: 1.05rem;
   font-weight: 700;
   margin-top: var(--sp-6);
