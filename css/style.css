@@ -880,9 +880,19 @@ body.is-ready .hero__title .line:nth-child(2) span { transition-delay: 80ms; }
 
 .work__note {
   margin-top: var(--sp-8);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-4);
+  text-align: center;
+  max-width: 68ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.work__note p {
   color: var(--text-dim);
   font-size: var(--fs-base);
-  max-width: 68ch;
 }
 
 /* ---------- Leistungen ---------- */
