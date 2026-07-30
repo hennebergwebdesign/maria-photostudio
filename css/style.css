@@ -1576,19 +1576,6 @@ body.is-ready .hero__title .line:nth-child(2) span { transition-delay: 80ms; }
 
 .footer__meta a:hover { color: var(--gold); }
 
-.footer__cookie-link {
-  font: inherit;
-  font-size: var(--fs-sm);
-  color: var(--on-dark-dim);
-  text-decoration: underline;
-  text-underline-offset: 2px;
-  cursor: pointer;
-  min-height: 44px;
-  padding: 0;
-}
-
-.footer__cookie-link:hover { color: var(--gold); }
-
 /* ---------- Lightbox ---------- */
 .lightbox {
   position: fixed;
