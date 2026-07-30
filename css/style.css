@@ -2290,12 +2290,6 @@ body.is-ready .hero__title .line:nth-child(2) span { transition-delay: 80ms; }
 }
 .why:hover::before { opacity: 1; }
 
-.why--reverse {
-  grid-template-columns: 1fr minmax(0, 220px);
-}
-.why--reverse .why__index { order: 2; text-align: left; }
-.why--reverse .why__body { order: 1; text-align: left; }
-.why--reverse .why__tags { justify-content: flex-start; }
 
 .why__index {
   font-family: var(--font-display);
