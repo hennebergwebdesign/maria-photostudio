@@ -499,33 +499,35 @@ main p a:hover,
   align-items: center;
 }
 
-/* ---------- Polaroid ---------- */
+/* ---------- Hero-Fotos (ohne Polaroid-Rahmen: Bild + dezenter Schatten) ---------- */
 .photo {
-  background: var(--surface);
-  padding: 12px 12px 0;
-  border-radius: 6px;
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
   box-shadow: var(--elev-2);
   transition: transform var(--dur-slow) var(--ease-out), box-shadow var(--dur-slow);
 }
 
 .photo img {
+  display: block;
   width: 100%;
   height: auto;
-  border-radius: 2px;
 }
 
+/* Bildunterschrift schwebt als kleines Label über dem Foto, statt in
+   einem weißen Rahmen darunter zu stehen (kein Polaroid-Rand mehr). */
 .photo figcaption {
+  position: absolute;
+  right: var(--sp-3);
+  bottom: var(--sp-3);
   font-family: var(--font-script);
-  font-size: 1.35rem;
+  font-size: 1.2rem;
   line-height: 1.2;
-  color: var(--text-dim);
-  text-align: center;
-  padding: var(--sp-2) 0 var(--sp-3);
-}
-
-.hero__media .photo--lg figcaption {
-  text-align: right;
-  padding-right: var(--sp-3);
+  color: var(--on-dark);
+  background: rgba(20, 16, 12, 0.55);
+  padding: 0.2rem 0.7rem;
+  border-radius: var(--r-full);
+  backdrop-filter: blur(6px);
 }
 
 .hero__media {
@@ -1781,6 +1783,18 @@ body.is-ready .hero__title .line:nth-child(2) span { transition-delay: 80ms; }
   .tilt-photo--faq { display: none; }
 }
 
+/* ≤ 640 px: Bildstapel etwas höher setzen und den überstehenden
+   Abzug (.photo--sm) näher an den Stapel heranziehen, damit er sich
+   nicht mit dem "Ist das ein Shooting für mich?"-Badge darunter
+   überlappt. Der Abstand zum Text darüber bleibt erhalten. */
+@media (max-width: 640px) {
+  .hero__media { transform: translateY(-1rem); }
+
+  .hero__media .photo--sm { left: -6%; bottom: 6%; }
+
+  .hero__badge { bottom: var(--sp-6); }
+}
+
 /* ≤ 768 px: Kopf-Bilder in Leistungen und "Warum" auf schmalen Screens
    ausblenden – dort dominiert der Text, das schräge Beiwerk verkleinert
    sich sonst zur Briefmarke. */
@@ -2786,7 +2800,7 @@ body.is-ready .hero__title .line:nth-child(2) span { transition-delay: 80ms; }
 .cookie-widget:active { transform: scale(0.94); }
 
 @media (max-width: 640px) {
-  .cookie-widget { left: var(--sp-3); bottom: var(--sp-3); width: 44px; height: 44px; }
+  .cookie-widget { left: auto; right: var(--sp-3); bottom: var(--sp-3); width: 44px; height: 44px; }
 }
 
 /* ---------- Einstellungen-Dialog (2. Ebene) ---------- */
