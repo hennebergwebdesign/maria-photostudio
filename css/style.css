@@ -879,15 +879,14 @@ body.is-ready .hero__title .line:nth-child(2) span { transition-delay: 80ms; }
 }
 
 .work__note {
-  margin-top: var(--sp-8);
+  margin: var(--sp-8) auto 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--sp-4);
+  gap: var(--sp-6);
   text-align: center;
   max-width: 68ch;
-  margin-left: auto;
-  margin-right: auto;
+  width: 100%;
 }
 
 .work__note p {
