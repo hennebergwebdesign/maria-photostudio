@@ -1806,6 +1806,10 @@ body.is-ready .hero__title .line:nth-child(2) span { transition-delay: 80ms; }
 
   .hero { padding-block: 7rem var(--sp-8); height: auto; min-height: 100svh; }
 
+  /* Bildunterschrift im Hero-Bildstapel nimmt auf schmalen Screens zu viel
+     Platz vom Motiv weg – dort blenden wir sie aus. */
+  .hero__media figcaption { display: none; }
+
   .services__list,
   .usp__grid { grid-template-columns: 1fr; }
 
