@@ -51,6 +51,11 @@
   <link rel="stylesheet" href="css/fonts.css?v=20260730b">
   <link rel="stylesheet" href="css/style.css?v=20260730b">
   <noscript><style>.reveal { opacity: 1; transform: none; }</style></noscript>
+
+  <!-- Consent Mode v2 Default + Cookie-Banner: bewusst so früh wie möglich
+       geladen, damit der "denied"-Default steht, bevor irgendein anderes
+       Skript ausgeführt wird (siehe js/consent.js). -->
+  <script src="js/consent.js?v=20260730a" defer></script>
 </head>
 <body>
 
@@ -796,7 +801,11 @@
     </div>
     <div class="container footer__meta">
       <p>© 2026 Maria Visuals. Alle Rechte vorbehalten.</p>
-      <p><a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></p>
+      <p>
+        <a href="/impressum.html">Impressum</a> ·
+        <a href="/datenschutz.html">Datenschutz</a> ·
+        <button type="button" class="footer__cookie-link" data-cookie-settings>Cookie-Einstellungen</button>
+      </p>
     </div>
   </footer>
 

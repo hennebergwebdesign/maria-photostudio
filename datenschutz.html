@@ -17,6 +17,7 @@
   <link rel="preload" href="fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/fonts.css?v=20260729k">
   <link rel="stylesheet" href="css/style.css?v=20260729k">
+  <script src="js/consent.js?v=20260730a" defer></script>
 </head>
 <body>
 
@@ -118,13 +119,46 @@
         Aufbewahrungsfristen (§ 147 AO, § 257 HGB) bleiben unberührt.
       </p>
 
-      <h2>3. Cookies und Tracking</h2>
+      <h2>3. Cookies, Consent-Management und Tracking</h2>
       <p>
         Diese Website setzt <strong>keine Analyse-, Marketing- oder
         Tracking-Cookies</strong> ein. Es findet <strong>keine Reichweitenmessung</strong>
         über Google Analytics, Facebook Pixel oder vergleichbare Dienste statt.
         Es werden lediglich technisch notwendige Ressourcen (Schriften, Bilder,
         JavaScript) von der eigenen Domain geladen.
+      </p>
+      <p>
+        Damit optionale Kategorien (Funktionale Dienste, Statistik und
+        Analyse, Marketing, Externe Medien) erst nach Ihrer aktiven
+        Zustimmung geladen werden können, sobald solche Dienste künftig
+        hinzukommen, ist bereits jetzt ein Cookie-Einwilligungs-Werkzeug
+        eingebunden. Ihre Auswahl wird ausschließlich lokal in Ihrem
+        Browser gespeichert (localStorage-Eintrag „mv_consent_v1“ auf
+        dieser Domain, keine Übermittlung an Dritte) und enthält lediglich:
+      </p>
+      <ul>
+        <li>die von Ihnen ausgewählten Kategorien</li>
+        <li>den Zeitpunkt Ihrer Entscheidung</li>
+        <li>die Version der Einwilligungstexte</li>
+        <li>die verwendete Sprache (Deutsch)</li>
+      </ul>
+      <p>
+        Diese Auswahl gilt für 180 Tage oder bis Sie sie widerrufen bzw.
+        ändern. Sie können Ihre Einwilligung jederzeit über den Link
+        „Cookie-Einstellungen“ im Footer jeder Seite oder über das runde
+        Symbol unten links erneut öffnen und anpassen. Solange keine
+        optionale Kategorie aktiv zugestimmt wurde, bleiben alle
+        entsprechenden Dienste technisch blockiert (Google Consent Mode v2
+        mit Standardwert „denied“ für <code>ad_storage</code>,
+        <code>ad_user_data</code>, <code>ad_personalization</code> und
+        <code>analytics_storage</code>).
+      </p>
+      <p>
+        <strong>Hinweis:</strong> Aktuell sind auf dieser Website keine
+        Dienste in den optionalen Kategorien eingebunden. Diese Seite wird
+        aktualisiert, sobald sich das ändert (z. B. bei Einbindung von
+        Google Analytics, Google Ads, Google Maps, Calendly oder einem
+        WhatsApp-Widget).
       </p>
 
       <h2>4. Schriftarten und Skripte</h2>
@@ -221,7 +255,11 @@
     </div>
     <div class="container footer__meta">
       <p>© 2026 Maria Visuals. Alle Rechte vorbehalten.</p>
-      <p><a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></p>
+      <p>
+        <a href="/impressum.html">Impressum</a> ·
+        <a href="/datenschutz.html">Datenschutz</a> ·
+        <button type="button" class="footer__cookie-link" data-cookie-settings>Cookie-Einstellungen</button>
+      </p>
     </div>
   </footer>
 </body>
