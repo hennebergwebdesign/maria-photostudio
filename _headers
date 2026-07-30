@@ -1,5 +1,24 @@
 # Cloudflare Pages – Header-Regeln
 # Doku: https://developers.cloudflare.com/pages/configuration/headers/
+#
+# Cookie-/Consent-Management (js/consent.js): Aktuell sind keine
+# Drittanbieter (Google Tag Manager/Analytics/Ads, Google Maps, Calendly,
+# WhatsApp) eingebunden, daher bleibt die CSP unten bewusst eng
+# ("script-src 'self'", "connect-src 'self'"). Sobald ein solcher Dienst
+# NACH aktiver Einwilligung tatsächlich geladen werden soll, MUSS die CSP
+# gezielt um genau die benötigten Domains erweitert werden, z. B.
+# (MANUELL PRÜFEN – nur bei tatsächlichem Bedarf ergänzen, keine
+# pauschalen Wildcards):
+#   Google Tag Manager/Analytics: script-src https://www.googletagmanager.com;
+#     connect-src https://www.google-analytics.com https://analytics.google.com;
+#     img-src https://www.googletagmanager.com
+#   Google Ads: connect-src https://googleads.g.doubleclick.net
+#   Google Maps: script-src https://maps.googleapis.com;
+#     frame-src https://www.google.com/maps/; img-src https://maps.gstatic.com
+#   Calendly: script-src https://assets.calendly.com;
+#     frame-src https://calendly.com; connect-src https://calendly.com
+#   WhatsApp-Widget (falls kein reiner wa.me-Link): frame-src/connect-src
+#     entsprechend der eingesetzten Widget-Domain
 
 /*
   X-Content-Type-Options: nosniff
@@ -34,6 +53,9 @@
   Cache-Control: public, max-age=0, must-revalidate
 
 /js/animations.js
+  Cache-Control: public, max-age=0, must-revalidate
+
+/js/consent.js
   Cache-Control: public, max-age=0, must-revalidate
 
 # Die GSAP-Dateien sind versioniert und ändern sich nie
