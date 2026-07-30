@@ -186,6 +186,13 @@ main p a:hover,
 
 .section { padding: clamp(5rem, 10vw, 8.5rem) 0; }
 
+/* ---------- Section-CTA: Abschluss-Button am Ende eines Abschnitts ---------- */
+.section__cta {
+  display: flex;
+  justify-content: center;
+  margin-top: clamp(2.5rem, 6vw, 4rem);
+}
+
 /* ---------- Preloader: Bild-Flash-Sequenz ---------- */
 .loader {
   position: fixed;
@@ -1926,9 +1933,23 @@ body.is-ready .hero__title .line:nth-child(2) span { transition-delay: 80ms; }
   line-height: 1.2;
 }
 .story__panel p { color: var(--text-dim); font-size: var(--fs-lg); max-width: 40ch; }
+.story__panel-img { display: none; }
 @media (max-width: 900px) {
   .story__stage { grid-template-columns: 1fr; }
   .story__sticky { position: relative; height: 60svh; }
+  .story__panel-img {
+    display: block;
+    margin-top: var(--sp-6);
+    border-radius: var(--r-md);
+    overflow: hidden;
+    box-shadow: var(--elev-1);
+  }
+  .story__panel-img img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    display: block;
+  }
 }
 
 /* Testimonial */
@@ -2371,6 +2392,13 @@ body.is-ready .hero__title .line:nth-child(2) span { transition-delay: 80ms; }
   gap: clamp(2rem, 5vw, 4.5rem);
   padding: 0;
   margin: 0;
+}
+.process__cta {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  margin-top: clamp(2.5rem, 6vw, 4rem);
 }
 .process__list--alt .process__step {
   display: grid;
