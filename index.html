@@ -43,11 +43,14 @@
   <link rel="apple-touch-icon" href="/Maria-Visuals-Favicon.png?v=2">
   <link rel="manifest" href="/site.webmanifest">
 
-  <!-- Performance: Schrift selbst gehostet (kein Google-Fonts-Request), LCP-Bild vorladen -->
+  <!-- Performance: Schrift selbst gehostet (kein Google-Fonts-Request), LCP-Bild vorladen.
+       Das Logo wird bewusst NICHT vorgeladen, damit es nicht mit dem
+       LCP-Bild um Bandbreite konkurriert (siehe LCP-Analyse). -->
   <link rel="preload" href="fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/cormorant-garamond-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="sonnenuntergang-shooting-strohballen-feld.jpeg" as="image" fetchpriority="high">
-  <link rel="preload" href="Maria-Visuals-Logo-1.png" as="image">
+  <link rel="preload" as="image" type="image/webp" fetchpriority="high"
+        imagesrcset="sonnenuntergang-shooting-strohballen-feld-900.webp 900w, sonnenuntergang-shooting-strohballen-feld.webp 1536w"
+        imagesizes="100vw">
   <link rel="stylesheet" href="css/fonts.css?v=20260730b">
   <link rel="stylesheet" href="css/style.css?v=20260730b">
   <noscript><style>.reveal { opacity: 1; transform: none; }</style></noscript>
@@ -104,7 +107,7 @@
   <header class="nav" id="nav">
     <div class="nav__inner container">
       <a href="#top" class="nav__logo" aria-label="Maria Visuals – Startseite">
-        <img src="Maria-Visuals-Logo-1.png" alt="Maria Visuals" width="200" height="72" id="navLogo" decoding="async">
+        <img src="Maria-Visuals-Logo-1-480.png" alt="Maria Visuals" width="200" height="72" id="navLogo" decoding="async">
       </a>
       <nav class="nav__links" id="navLinks" aria-label="Hauptnavigation">
         <a href="#top">Home</a>
@@ -130,7 +133,13 @@
     <!-- ======================= HERO ======================= -->
     <section class="hero" id="inhalt" aria-labelledby="hero-title">
       <picture class="hero__bg" aria-hidden="true">
-        <img src="sonnenuntergang-shooting-strohballen-feld.jpeg" alt="" fetchpriority="high" decoding="async">
+        <source type="image/webp"
+                srcset="sonnenuntergang-shooting-strohballen-feld-900.webp 900w, sonnenuntergang-shooting-strohballen-feld.webp 1536w"
+                sizes="100vw">
+        <img src="sonnenuntergang-shooting-strohballen-feld.jpeg"
+             srcset="sonnenuntergang-shooting-strohballen-feld-900.jpg 900w, sonnenuntergang-shooting-strohballen-feld.jpeg 1536w"
+             sizes="100vw"
+             alt="" fetchpriority="high" decoding="async">
       </picture>
       <div class="hero__wash" aria-hidden="true"></div>
       <div class="container hero__grid">
@@ -609,7 +618,10 @@
     <!-- ======================= CTA BANNER ======================= -->
     <section class="cta-banner" aria-labelledby="cta-mid-title">
       <div class="cta-banner__bg" aria-hidden="true">
-        <img src="fotoshooting-strohballen-sonnenuntergang.jpeg" alt="" loading="lazy" decoding="async">
+        <picture>
+          <source type="image/webp" srcset="fotoshooting-strohballen-sonnenuntergang-800.webp">
+          <img src="fotoshooting-strohballen-sonnenuntergang-800.jpg" alt="" loading="lazy" decoding="async">
+        </picture>
       </div>
       <div class="container cta-banner__inner">
         <div class="reveal">
@@ -814,7 +826,7 @@
   <footer class="footer">
     <div class="container footer__inner">
       <a href="#top" class="nav__logo footer__logo" aria-label="Maria Visuals – nach oben">
-        <img src="Maria-Visuals-Logo-1.png" alt="Maria Visuals" width="240" height="86" decoding="async">
+        <img src="Maria-Visuals-Logo-1-480.png" alt="Maria Visuals" width="240" height="86" decoding="async">
       </a>
       <nav class="footer__links" aria-label="Fußzeile">
         <a href="#leistungen">Leistungen</a>
