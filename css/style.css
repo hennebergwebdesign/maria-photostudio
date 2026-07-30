@@ -2014,7 +2014,7 @@ body.is-ready .hero__title .line:nth-child(2) span { transition-delay: 80ms; }
 .cta-banner::before {
   content: ""; position: absolute; inset: 0; z-index: -1;
   background:
-    linear-gradient(90deg, rgba(20,16,12,0.9) 0%, rgba(20,16,12,0.6) 45%, rgba(20,16,12,0.15) 100%);
+    linear-gradient(90deg, rgba(20,16,12,0.15) 0%, rgba(20,16,12,0.6) 55%, rgba(20,16,12,0.9) 100%);
 }
 .cta-banner__inner {
   display: grid;
