@@ -2010,11 +2010,12 @@ body.is-ready .hero__title .line:nth-child(2) span { transition-delay: 80ms; }
 }
 .cta-banner__bg img {
   width: 100%; height: 100%; object-fit: cover; object-position: center 35%;
+  transition: none;
 }
 .cta-banner::before {
   content: ""; position: absolute; inset: 0; z-index: -1;
   background:
-    linear-gradient(90deg, rgba(20,16,12,0.15) 0%, rgba(20,16,12,0.6) 55%, rgba(20,16,12,0.9) 100%);
+    linear-gradient(90deg, rgba(20,16,12,0.9) 0%, rgba(20,16,12,0.6) 100%);
 }
 .cta-banner__inner {
   display: grid;
@@ -2035,6 +2036,10 @@ body.is-ready .hero__title .line:nth-child(2) span { transition-delay: 80ms; }
 .cta-banner .btn--primary:hover { background: var(--gold-hover); color: var(--dark); }
 @media (max-width: 768px) {
   .cta-banner__inner { grid-template-columns: 1fr; }
+  .cta-banner::before {
+    background:
+      linear-gradient(90deg, rgba(20,16,12,0.9) 0%, rgba(20,16,12,0.15) 100%);
+  }
 }
 
 /* Gallery collage (neue Bildwand) */
