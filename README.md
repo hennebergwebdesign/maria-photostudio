@@ -1,4 +1,4 @@
-# Maria Photostudio
+# Maria Visuals
 
 One-Page-Website für Fotografie & Videografie in **48336 Sassenberg** (Kreis Warendorf, Münsterland).
 Statisches HTML/CSS/JS ohne Build-Schritt – gehostet auf **Cloudflare Pages**.

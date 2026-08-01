@@ -1,5 +1,5 @@
 /* ============================================================
-   Maria Photostudio — Fotografie & Videografie
+   Maria Visuals — Fotografie & Videografie
 
    Hinweis: enthält die früher separate fonts.css (zusammengeführt,
    damit die Seite nur noch ein render-blockierendes Stylesheet statt
@@ -787,8 +787,7 @@ body.is-ready .hero__title .line:nth-child(2) span { transition-delay: 80ms; }
   text-wrap: balance;
 }
 
-/* Portfolio bekommt mehr Breite, damit „Arbeiten aus Sassenberg,
-   Warendorf und dem Münsterland" nicht dreizeilig umbricht. */
+/* Portfolio bekommt mehr Breite fuer die Ueberschrift. */
 .work .section__title { max-width: 48ch; }
 .work .section__lead { max-width: 72ch; }
 
@@ -1354,7 +1353,7 @@ body.is-ready .hero__title .line:nth-child(2) span { transition-delay: 80ms; }
 .about__img img { border-radius: 0; width: 100%; height: auto; }
 
 .about__img::after {
-  content: "Studio Sassenberg";
+  content: "Im Studio";
   display: block;
   font-family: var(--font-script);
   font-size: 1.35rem;

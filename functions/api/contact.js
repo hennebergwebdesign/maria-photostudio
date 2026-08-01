@@ -153,7 +153,7 @@ export async function onRequestPost({ request, env }) {
     (message ? `\nIhre Nachricht:\n${message}\n` : "") +
     `\nSie können mich zwischendurch jederzeit direkt erreichen unter ` +
     `${to}.\n\n` +
-    `Herzliche Grüße\nMaria\nMaria Visuals · Sassenberg\n`;
+    `Herzliche Grüße\nMaria\nMaria Visuals · Fotografie & Videografie\n`;
   const customerHtml =
     `<div style="font-family:Georgia,serif;max-width:560px;color:#2a2018;line-height:1.55">` +
     `<h2 style="color:#a67a3a;margin:0 0 12px;font-weight:normal">Vielen Dank für Ihre Anfrage, ${safe.name}!</h2>` +
@@ -180,7 +180,7 @@ export async function onRequestPost({ request, env }) {
       : "") +
     `<p style="margin-top:28px;font-family:Georgia,serif;font-style:italic;color:#55442f">— Herzliche Grüße, Maria</p>` +
     `<p style="margin-top:24px;font-family:Arial,sans-serif;font-size:13px;color:#55442f">` +
-    `Maria Visuals · 48336 Sassenberg<br>` +
+    `Maria Visuals · Fotografie & Videografie<br>` +
     `E-Mail: <a href="mailto:${to}" style="color:#a67a3a">${to}</a>` +
     `</p>` +
     `</div>`;
