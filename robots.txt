@@ -1,4 +1,4 @@
-# robots.txt – Maria Photostudio, 48336 Sassenberg
+# robots.txt – Maria Visuals
 User-agent: *
 Allow: /
 
