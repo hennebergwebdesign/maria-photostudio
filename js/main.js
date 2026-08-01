@@ -321,7 +321,7 @@
         data.get("message") + "\n\n— " + data.get("name") + " (" + data.get("email") + ")"
       );
       window.location.href =
-        "mailto:hallo@maria-photostudio.de?subject=" + subject + "&body=" + bodyText;
+        "mailto:henneberg883@gmail.com?subject=" + subject + "&body=" + bodyText;
       status.textContent = "Ihr E-Mail-Programm öffnet sich – vielen Dank!";
     });
   }
