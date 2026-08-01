@@ -3097,3 +3097,13 @@ body.is-ready .hero__title .line:nth-child(2) span { transition-delay: 80ms; }
 }
 .card:hover { box-shadow: none; }
 .card picture { border-radius: 0; }
+
+/* Honeypot-Feld für Bots – für Menschen unsichtbar, aber im DOM. */
+.hp-field {
+  position: absolute !important;
+  left: -10000px !important;
+  top: auto !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+}
