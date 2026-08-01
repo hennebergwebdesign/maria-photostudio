@@ -429,17 +429,17 @@ main p a:hover,
 .nav__cta,
 .nav__cta:link,
 .nav__cta:visited {
-  color: #ffffff !important;
-  background: var(--accent);
+  color: var(--dark) !important;
+  background: var(--gold);
   padding: 0.55rem 1.4rem;
   min-height: 40px;
   line-height: 1;
-  border-radius: var(--r-full);
+  border-radius: 0;
   text-decoration: none;
   transition: background var(--dur), transform var(--dur-fast);
 }
 
-.nav__cta:hover { background: var(--accent-hover); color: #ffffff !important; }
+.nav__cta:hover { background: var(--gold-hover); color: var(--dark) !important; }
 .nav__cta:active { transform: scale(0.97); }
 
 .nav__burger {
