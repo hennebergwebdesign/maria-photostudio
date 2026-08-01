@@ -63,31 +63,34 @@
    ============================================================ */
 
 :root {
-  /* --- Farben: warme Creme-/Terrakotta-Palette (Vorlage: Model-Aushang)
-         Alle Text/Hintergrund-Paare erfüllen mindestens WCAG AA (4.5:1) --- */
-  --bg: #fcf6f0;            /* Creme, Seitenhintergrund        */
-  --bg-soft: #f4e5dc;       /* Blush, abgesetzte Sektion       */
-  --surface: #ffffff;       /* Karten, Polaroid-Weiß           */
-  --line: #ecdbd0;          /* dezente Trennlinie              */
-  --line-strong: #d8b9ab;   /* Rahmen interaktiver Elemente    */
-  --text: #45352f;          /* warmes Dunkelbraun, 10.9:1      */
-  --text-dim: #645047;      /*  7.0:1 auf --bg                 */
-  --accent: #9c5049;        /* Terrakotta-Rosé, 5.4:1          */
-  --accent-hover: #83403a;
-  --accent-soft: rgba(156, 80, 73, 0.08);
-  --on-accent: #fffaf6;     /*  5.7:1 auf --accent             */
-  --sage: #6e7f5c;          /* Grün der Vorlage, nur dekorativ */
-  --danger: #a3342b;        /*  6.4:1 auf --bg                 */
+  /* --- Farben: reine Gold-Palette. Alle Text/Hintergrund-Paare
+         erfüllen mindestens WCAG AA (4.5:1). --- */
+  --bg: #faf3e8;            /* Sand, sehr helle Basis           */
+  --bg-soft: #f0e2c9;       /* Champagner, weicher Abschnitt    */
+  --bg-warm: #e9d3ac;       /* wärmerer Gold-Sand, Akzentflaeche*/
+  --bg-cream: #fdf9f1;      /* fast weißes Creme, oberste Ebene */
+  --surface: #ffffff;       /* Karten                           */
+  --line: #ead8b8;           /* dezente Trennlinie, gold-getönt */
+  --line-strong: #c9a672;    /* Rahmen interaktiver Elemente    */
+  --text: #2a2018;          /* warmes Dunkelbraun               */
+  --text-dim: #55442f;      /*                                  */
+  --accent: #a67a3a;         /* tiefes Gold, 4.7:1 auf --bg     */
+  --accent-hover: #7d5a2a;
+  --accent-soft: rgba(225, 176, 116, 0.14);
+  --on-accent: #1a1510;      /* dunkel auf Gold                 */
+  --sage: #6e7f5c;
+  --danger: #a3342b;
 
-  /* --- Gold & Dunkel: Zweitpalette aus der Visitenkarte, für Footer,
-         Hero-Overlay und Akzent-Details --- */
+  /* --- Gold & Dunkel: Vollständige Skala für Buttons, Highlights,
+         dunkle Sektionen --- */
   --gold: #e1b074;
   --gold-hover: #b8905f;
-  --gold-soft: rgba(225, 176, 116, 0.16);
-  --dark: #1a1510;          /* warmes Beinahe-Schwarz der Karte  */
+  --gold-deep: #8a6b41;
+  --gold-soft: rgba(225, 176, 116, 0.18);
+  --dark: #1a1510;
   --dark-soft: #241d16;
-  --on-dark: #f4ece0;       /* Creme auf --dark, 15.4:1          */
-  --on-dark-dim: #cabcaa;   /*  9.1:1 auf --dark                 */
+  --on-dark: #f4ece0;
+  --on-dark-dim: #cabcaa;
 
   /* --- Typo-Skala (Basis 16 px, Faktor ~1.2) --- */
   --font: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -112,11 +115,11 @@
   --sp-12: 3rem;
   --sp-16: 4rem;
 
-  /* --- Radien --- */
-  --r-sm: 8px;
-  --r-md: 12px;
-  --r-lg: 16px;
-  --r-full: 999px;
+  /* --- Radien: komplett kantig --- */
+  --r-sm: 0;
+  --r-md: 0;
+  --r-lg: 0;
+  --r-full: 0;
 
   /* --- Elevation (eine Skala für alle erhabenen Flächen) --- */
   --elev-1: 0 1px 2px rgba(94, 58, 47, 0.08), 0 2px 6px rgba(94, 58, 47, 0.05);
@@ -210,7 +213,7 @@ main p a:hover,
 :where(a, button, summary, input, textarea):focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
-  border-radius: 4px;
+  border-radius: 0;
 }
 
 /* Sprunglink für Tastatur- und Screenreader-Nutzung */
@@ -271,7 +274,7 @@ main p a:hover,
 
 .loader.is-shrinking .loader__stack {
   transform: scale(0.32);
-  border-radius: 12px;
+  border-radius: 0;
 }
 
 .loader__img {
@@ -502,7 +505,7 @@ main p a:hover,
 /* ---------- Hero-Fotos (ohne Polaroid-Rahmen: Bild + dezenter Schatten) ---------- */
 .photo {
   position: relative;
-  border-radius: 8px;
+  border-radius: 0;
   overflow: hidden;
   box-shadow: var(--elev-2);
   transition: transform var(--dur-slow) var(--ease-out), box-shadow var(--dur-slow);
@@ -751,12 +754,12 @@ body.is-ready .hero__title .line:nth-child(2) span { transition-delay: 80ms; }
   width: clamp(140px, 16vw, 200px);
   background: var(--surface);
   padding: 8px 8px 0;
-  border-radius: 6px;
+  border-radius: 0;
   box-shadow: var(--elev-2);
   transition: transform var(--dur-slow) var(--ease-out);
 }
 
-.tilt-photo img { width: 100%; height: auto; border-radius: 2px; }
+.tilt-photo img { width: 100%; height: auto; border-radius: 0; }
 
 .tilt-photo--right { transform: rotate(4deg); }
 .tilt-photo--right:hover { transform: rotate(1deg) translateY(-4px); }
@@ -766,11 +769,11 @@ body.is-ready .hero__title .line:nth-child(2) span { transition-delay: 80ms; }
 .tilt-photo--flat {
   background: none;
   padding: 0;
-  border-radius: 8px;
+  border-radius: 0;
   box-shadow: none;
   transform: none;
 }
-.tilt-photo--flat img { border-radius: 8px; }
+.tilt-photo--flat img { border-radius: 0; }
 .tilt-photo--flat:hover { transform: translateY(-4px); }
 
 .section__title {
@@ -874,7 +877,7 @@ body.is-ready .hero__title .line:nth-child(2) span { transition-delay: 80ms; }
 .card {
   position: relative;
   display: block;
-  border-radius: 6px;
+  border-radius: 0;
   background: var(--surface);
   padding: 12px 12px 0;
   box-shadow: var(--elev-1);
@@ -891,7 +894,7 @@ body.is-ready .hero__title .line:nth-child(2) span { transition-delay: 80ms; }
   position: relative;
   display: block;
   overflow: hidden;
-  border-radius: 2px;
+  border-radius: 0;
   background: var(--bg-soft);
 }
 
@@ -1339,7 +1342,7 @@ body.is-ready .hero__title .line:nth-child(2) span { transition-delay: 80ms; }
   display: block;
   background: var(--surface);
   padding: 14px 14px 0;
-  border-radius: 6px;
+  border-radius: 0;
   box-shadow: var(--elev-2);
   transform: rotate(-1.5deg);
   transition: transform var(--dur-slow) var(--ease-out);
@@ -1348,7 +1351,7 @@ body.is-ready .hero__title .line:nth-child(2) span { transition-delay: 80ms; }
 
 .about__img:hover { transform: rotate(0deg); }
 
-.about__img img { border-radius: 2px; width: 100%; height: auto; }
+.about__img img { border-radius: 0; width: 100%; height: auto; }
 
 .about__img::after {
   content: "Studio Sassenberg";
@@ -1453,6 +1456,7 @@ body.is-ready .hero__title .line:nth-child(2) span { transition-delay: 80ms; }
 }
 
 .contact__form input,
+.contact__form select,
 .contact__form textarea {
   font: inherit;
   font-size: var(--fs-base);   /* 16 px verhindert Auto-Zoom auf iOS */
@@ -1468,8 +1472,19 @@ body.is-ready .hero__title .line:nth-child(2) span { transition-delay: 80ms; }
 }
 
 .contact__form input[aria-invalid="true"],
+.contact__form select[aria-invalid="true"],
 .contact__form textarea[aria-invalid="true"] {
   border-color: var(--danger);
+}
+
+.contact__form select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, var(--accent) 50%), linear-gradient(135deg, var(--accent) 50%, transparent 50%);
+  background-position: calc(100% - 20px) 55%, calc(100% - 14px) 55%;
+  background-size: 6px 6px, 6px 6px;
+  background-repeat: no-repeat;
+  padding-right: 2.5rem;
 }
 
 .field__error {
@@ -1524,7 +1539,7 @@ body.is-ready .hero__title .line:nth-child(2) span { transition-delay: 80ms; }
     transparent 10px, transparent 22px
   );
   opacity: 0.55;
-  border-radius: 2px;
+  border-radius: 0;
 }
 
 .filmstrip::before { top: 4px; }
@@ -2037,11 +2052,11 @@ body.is-ready .hero__title .line:nth-child(2) span { transition-delay: 80ms; }
 .quote__photo {
   background: var(--surface);
   padding: 14px 14px 0;
-  border-radius: 6px;
+  border-radius: 0;
   box-shadow: var(--elev-2);
   transform: rotate(-2.5deg);
 }
-.quote__photo img { width: 100%; height: auto; border-radius: 2px; }
+.quote__photo img { width: 100%; height: auto; border-radius: 0; }
 .quote__photo figcaption {
   font-family: var(--font-script);
   color: var(--text-dim);
@@ -2678,7 +2693,7 @@ body.is-ready .hero__title .line:nth-child(2) span { transition-delay: 80ms; }
   padding: var(--sp-4) var(--sp-6);
   background: var(--bg-soft);
   border-left: 3px solid var(--accent);
-  border-radius: 4px;
+  border-radius: 0;
   margin: var(--sp-3) 0;
 }
 .legal__lead {
@@ -3107,3 +3122,33 @@ body.is-ready .hero__title .line:nth-child(2) span { transition-delay: 80ms; }
   height: 1px !important;
   overflow: hidden !important;
 }
+
+/* ============================================================
+   Abschnittshintergründe in der Gold-Palette – alterniert
+   zwischen Sand, Champagner, Creme und dunklen Sektionen
+   für einen ruhigen, aber sichtbaren Rhythmus.
+   ============================================================ */
+.services { background: var(--bg-soft); }
+.usp,
+.usp--editorial { background: var(--bg); }
+.work { background: var(--bg-warm); }
+.quote { background: var(--bg-cream); }
+.about { background: var(--bg-soft); }
+.faq { background: var(--bg); }
+.contact { background: var(--bg-warm); }
+
+.section + .section,
+section + section { border-top: 1px solid var(--line); }
+
+/* Weiche Übergänge zwischen aufeinanderfolgenden Sektionen. */
+.services { background-image: linear-gradient(180deg, var(--bg) 0, var(--bg-soft) 3rem); }
+.usp--editorial { background-image: linear-gradient(180deg, var(--bg-soft) 0, var(--bg) 3rem); }
+.work { background-image: linear-gradient(180deg, var(--bg) 0, var(--bg-warm) 3rem); }
+.quote { background-image: linear-gradient(180deg, var(--bg-warm) 0, var(--bg-cream) 3rem); }
+.about { background-image: linear-gradient(180deg, var(--bg-cream) 0, var(--bg-soft) 3rem); }
+.faq { background-image: linear-gradient(180deg, var(--bg-soft) 0, var(--bg) 3rem); }
+.contact { background-image: linear-gradient(180deg, var(--bg) 0, var(--bg-warm) 3rem); }
+
+/* Der Marquee-Streifen zwischen Hero und Persona bekommt Gold-Ton. */
+.hero__marquee { background: var(--bg-soft); border-color: var(--line-strong); }
+.hero__marquee-track { color: var(--accent-hover); }

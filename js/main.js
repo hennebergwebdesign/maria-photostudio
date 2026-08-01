@@ -273,13 +273,15 @@
 
   if (form) {
     var fields = Array.prototype.slice.call(
-      form.querySelectorAll("input[required], textarea[required]")
+      form.querySelectorAll("input[required], select[required], textarea[required]")
     );
 
     var messages = {
-      name: "Bitte tragen Sie Ihren Namen ein, damit ich Sie ansprechen kann.",
+      name: "Bitte tragen Sie Ihren vollen Namen ein.",
       email: "Bitte prüfen Sie die E-Mail-Adresse – ohne sie kann ich nicht antworten.",
-      message: "Beschreiben Sie kurz Ihr Vorhaben, zwei Sätze genügen."
+      phone: "Bitte tragen Sie eine Telefonnummer ein, unter der ich Sie erreichen kann.",
+      topic: "Bitte wählen Sie einen Anlass aus.",
+      message: "Bitte beschreiben Sie kurz Ihr Vorhaben."
     };
 
     function errorBox(field) {
@@ -322,7 +324,9 @@
       var payload = {
         name: data.get("name"),
         email: data.get("email"),
-        message: data.get("message"),
+        phone: data.get("phone"),
+        topic: data.get("topic"),
+        message: data.get("message") || "",
         website: data.get("website") || "",
         ts: formOpenedAt
       };

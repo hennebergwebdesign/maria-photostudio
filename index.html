@@ -51,7 +51,7 @@
   <link rel="preload" as="image" type="image/webp" fetchpriority="high"
         imagesrcset="sonnenuntergang-shooting-strohballen-feld-900.webp 900w, sonnenuntergang-shooting-strohballen-feld.webp 1536w"
         imagesizes="100vw">
-  <link rel="stylesheet" href="css/style.min.css?v=20260801d">
+  <link rel="stylesheet" href="css/style.min.css?v=20260801e">
   <noscript><style>.reveal { opacity: 1; transform: none; }</style></noscript>
 
   <!-- Consent Mode v2 Default + Cookie-Banner: bewusst so früh wie möglich
@@ -186,10 +186,10 @@
 
     <div class="hero__marquee" aria-hidden="true">
       <div class="hero__marquee-track">
-        <span>Naturportrait&nbsp;·&nbsp;Studio&nbsp;·&nbsp;Familie&nbsp;·&nbsp;Hochzeit&nbsp;·&nbsp;Goldene&nbsp;Stunde&nbsp;·&nbsp;Kornfeld&nbsp;·&nbsp;Blaue&nbsp;Stunde&nbsp;·&nbsp;</span>
-        <span>Naturportrait&nbsp;·&nbsp;Studio&nbsp;·&nbsp;Familie&nbsp;·&nbsp;Hochzeit&nbsp;·&nbsp;Goldene&nbsp;Stunde&nbsp;·&nbsp;Kornfeld&nbsp;·&nbsp;Blaue&nbsp;Stunde&nbsp;·&nbsp;</span>
-        <span>Naturportrait&nbsp;·&nbsp;Studio&nbsp;·&nbsp;Familie&nbsp;·&nbsp;Hochzeit&nbsp;·&nbsp;Goldene&nbsp;Stunde&nbsp;·&nbsp;Kornfeld&nbsp;·&nbsp;Blaue&nbsp;Stunde&nbsp;·&nbsp;</span>
-        <span>Naturportrait&nbsp;·&nbsp;Studio&nbsp;·&nbsp;Familie&nbsp;·&nbsp;Hochzeit&nbsp;·&nbsp;Goldene&nbsp;Stunde&nbsp;·&nbsp;Kornfeld&nbsp;·&nbsp;Blaue&nbsp;Stunde&nbsp;·&nbsp;</span>
+        <span>Portraitfotografie&nbsp;·&nbsp;Hochzeitsfotografie&nbsp;·&nbsp;Familienfotografie&nbsp;·&nbsp;Babyfotografie&nbsp;·&nbsp;Schwangerschaftsfotografie&nbsp;·&nbsp;Businessfotografie&nbsp;·&nbsp;Studiofotografie&nbsp;·&nbsp;Videografie&nbsp;·&nbsp;Reportage&nbsp;·&nbsp;</span>
+        <span>Portraitfotografie&nbsp;·&nbsp;Hochzeitsfotografie&nbsp;·&nbsp;Familienfotografie&nbsp;·&nbsp;Babyfotografie&nbsp;·&nbsp;Schwangerschaftsfotografie&nbsp;·&nbsp;Businessfotografie&nbsp;·&nbsp;Studiofotografie&nbsp;·&nbsp;Videografie&nbsp;·&nbsp;Reportage&nbsp;·&nbsp;</span>
+        <span>Portraitfotografie&nbsp;·&nbsp;Hochzeitsfotografie&nbsp;·&nbsp;Familienfotografie&nbsp;·&nbsp;Babyfotografie&nbsp;·&nbsp;Schwangerschaftsfotografie&nbsp;·&nbsp;Businessfotografie&nbsp;·&nbsp;Studiofotografie&nbsp;·&nbsp;Videografie&nbsp;·&nbsp;Reportage&nbsp;·&nbsp;</span>
+        <span>Portraitfotografie&nbsp;·&nbsp;Hochzeitsfotografie&nbsp;·&nbsp;Familienfotografie&nbsp;·&nbsp;Babyfotografie&nbsp;·&nbsp;Schwangerschaftsfotografie&nbsp;·&nbsp;Businessfotografie&nbsp;·&nbsp;Studiofotografie&nbsp;·&nbsp;Videografie&nbsp;·&nbsp;Reportage&nbsp;·&nbsp;</span>
       </div>
     </div>
 
@@ -783,9 +783,9 @@
             <label for="field-website">Website (bitte freilassen)</label>
             <input id="field-website" type="text" name="website" tabindex="-1" autocomplete="off">
           </div>
-          <label for="field-name"><span class="field__label">Name <span class="req" aria-hidden="true">*</span></span>
+          <label for="field-name"><span class="field__label">Voller Name <span class="req" aria-hidden="true">*</span></span>
             <input id="field-name" type="text" name="name" required autocomplete="name"
-                   placeholder="Ihr Name" aria-describedby="err-name">
+                   placeholder="Vor- und Nachname" aria-describedby="err-name">
             <span class="field__error" id="err-name" role="alert"></span>
           </label>
           <label for="field-email"><span class="field__label">E-Mail <span class="req" aria-hidden="true">*</span></span>
@@ -793,11 +793,27 @@
                    inputmode="email" placeholder="ihre@mail.de" aria-describedby="err-email">
             <span class="field__error" id="err-email" role="alert"></span>
           </label>
-          <label for="field-message"><span class="field__label">Ihr Vorhaben <span class="req" aria-hidden="true">*</span></span>
-            <textarea id="field-message" name="message" rows="5" required
-                      placeholder="z. B. Familienshooting für uns zu dritt, möglichst im September"
+          <label for="field-phone"><span class="field__label">Telefonnummer <span class="req" aria-hidden="true">*</span></span>
+            <input id="field-phone" type="tel" name="phone" required autocomplete="tel"
+                   inputmode="tel" placeholder="+49 …" aria-describedby="err-phone">
+            <span class="field__error" id="err-phone" role="alert"></span>
+          </label>
+          <label for="field-topic"><span class="field__label">Anlass <span class="req" aria-hidden="true">*</span></span>
+            <select id="field-topic" name="topic" required aria-describedby="err-topic">
+              <option value="" disabled selected>Bitte auswählen</option>
+              <option value="Baby">Baby</option>
+              <option value="Familie">Familie</option>
+              <option value="Portrait">Portrait</option>
+              <option value="Schwangerschaft">Schwangerschaft</option>
+              <option value="Hochzeit">Hochzeit</option>
+            </select>
+            <span class="field__error" id="err-topic" role="alert"></span>
+          </label>
+          <label for="field-message"><span class="field__label">Ihre Nachricht an mich</span>
+            <textarea id="field-message" name="message" rows="5"
+                      placeholder="Optional: Wunschzeitraum, Ort, Ideen – alles, was ich vorab wissen sollte."
                       aria-describedby="hint-message err-message"></textarea>
-            <span class="field__hint" id="hint-message">Zwei Sätze genügen: Anlass und Wunschzeitraum.</span>
+            <span class="field__hint" id="hint-message">Freiwillig – Sie können auch nur die Pflichtfelder ausfüllen.</span>
             <span class="field__error" id="err-message" role="alert"></span>
           </label>
           <button type="submit" class="btn btn--primary">Unverbindlich anfragen</button>
@@ -986,6 +1002,6 @@
   <script src="js/vendor/ScrollTrigger.min.js" defer></script>
   <script src="js/vendor/Flip.min.js" defer></script>
   <script src="js/animations.js?v=20260729l" defer></script>
-  <script src="js/main.js?v=20260801c" defer></script>
+  <script src="js/main.js?v=20260801e" defer></script>
 </body>
 </html>
