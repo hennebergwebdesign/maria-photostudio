@@ -576,8 +576,18 @@ main p a:hover,
   transform: rotate(-5deg);
 }
 
+.hero__media .photo--xs {
+  position: absolute;
+  right: -10%;
+  top: -6%;
+  width: 50%;
+  transform: rotate(7deg);
+  z-index: -1;
+}
+
 .hero__media:hover .photo--lg { transform: rotate(1deg) translateY(-4px); }
 .hero__media:hover .photo--sm { transform: rotate(-4deg) translateY(-4px); }
+.hero__media:hover .photo--xs { transform: rotate(5deg) translateY(-4px); }
 
 .hero__kicker,
 .section__kicker {
