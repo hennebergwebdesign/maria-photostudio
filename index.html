@@ -51,7 +51,7 @@
   <link rel="preload" as="image" type="image/webp" fetchpriority="high"
         imagesrcset="sonnenuntergang-shooting-strohballen-feld-900.webp 900w, sonnenuntergang-shooting-strohballen-feld.webp 1536w"
         imagesizes="100vw">
-  <link rel="stylesheet" href="css/style.min.css?v=20260801a">
+  <link rel="stylesheet" href="css/style.min.css?v=20260801c">
   <noscript><style>.reveal { opacity: 1; transform: none; }</style></noscript>
 
   <!-- Consent Mode v2 Default + Cookie-Banner: bewusst so früh wie möglich
@@ -779,6 +779,10 @@
         </div>
         <form class="contact__form reveal" id="contactForm" novalidate>
           <p class="form__note">Felder mit <span aria-hidden="true">*</span> sind Pflichtfelder.</p>
+          <div class="hp-field" aria-hidden="true">
+            <label for="field-website">Website (bitte freilassen)</label>
+            <input id="field-website" type="text" name="website" tabindex="-1" autocomplete="off">
+          </div>
           <label for="field-name"><span class="field__label">Name <span class="req" aria-hidden="true">*</span></span>
             <input id="field-name" type="text" name="name" required autocomplete="name"
                    placeholder="Ihr Name" aria-describedby="err-name">
@@ -982,6 +986,6 @@
   <script src="js/vendor/ScrollTrigger.min.js" defer></script>
   <script src="js/vendor/Flip.min.js" defer></script>
   <script src="js/animations.js?v=20260729l" defer></script>
-  <script src="js/main.js?v=20260729l" defer></script>
+  <script src="js/main.js?v=20260801c" defer></script>
 </body>
 </html>

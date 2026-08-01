@@ -302,6 +302,9 @@
       });
     });
 
+    var formOpenedAt = Date.now();
+    var submitBtn = form.querySelector("button[type='submit']");
+
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       var firstInvalid = null;
@@ -316,13 +319,40 @@
       }
 
       var data = new FormData(form);
-      var subject = encodeURIComponent("Projektanfrage von " + data.get("name"));
-      var bodyText = encodeURIComponent(
-        data.get("message") + "\n\n— " + data.get("name") + " (" + data.get("email") + ")"
-      );
-      window.location.href =
-        "mailto:henneberg883@gmail.com?subject=" + subject + "&body=" + bodyText;
-      status.textContent = "Ihr E-Mail-Programm öffnet sich – vielen Dank!";
+      var payload = {
+        name: data.get("name"),
+        email: data.get("email"),
+        message: data.get("message"),
+        website: data.get("website") || "",
+        ts: formOpenedAt
+      };
+
+      if (submitBtn) submitBtn.disabled = true;
+      status.textContent = "Anfrage wird gesendet …";
+
+      fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      })
+        .then(function (resp) {
+          return resp.json().then(function (body) { return { ok: resp.ok, body: body }; });
+        })
+        .then(function (result) {
+          if (result.ok && result.body && result.body.ok) {
+            form.reset();
+            formOpenedAt = Date.now();
+            status.textContent = "Vielen Dank! Ihre Anfrage ist eingegangen. Ich melde mich werktags innerhalb von 24 Stunden.";
+          } else {
+            status.textContent = "Das hat leider nicht geklappt. Bitte schreiben Sie mir direkt an henneberg883@gmail.com.";
+          }
+        })
+        .catch(function () {
+          status.textContent = "Das hat leider nicht geklappt. Bitte schreiben Sie mir direkt an henneberg883@gmail.com.";
+        })
+        .then(function () {
+          if (submitBtn) submitBtn.disabled = false;
+        });
     });
   }
 })();
