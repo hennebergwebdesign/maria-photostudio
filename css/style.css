@@ -2992,3 +2992,108 @@ body.is-ready .hero__title .line:nth-child(2) span { transition-delay: 80ms; }
     transition: none;
   }
 }
+
+/* ============================================================
+   Redesign-Overrides:
+   - Buttons in Gold, kantig (ohne Rundungen)
+   - Bilder freistehend ohne Rahmen und ohne Beschreibungen
+   ============================================================ */
+
+.btn,
+.nav__cta,
+.chip,
+.contact__form .btn {
+  border-radius: 0 !important;
+}
+
+.btn--primary,
+.contact__form .btn {
+  background: var(--gold);
+  color: var(--dark);
+  box-shadow: none;
+}
+.btn--primary:hover,
+.contact__form .btn:hover {
+  background: var(--gold-hover);
+  color: var(--dark);
+}
+
+.btn--ghost { border-color: var(--gold); color: var(--text); }
+.btn--ghost:hover { border-color: var(--gold-hover); color: var(--gold-hover); }
+
+.hero .btn--ghost {
+  border-color: var(--gold);
+  color: var(--on-dark);
+  background: rgba(244, 236, 224, 0.08);
+}
+.hero .btn--ghost:hover {
+  border-color: var(--gold-hover);
+  color: var(--gold);
+  background: rgba(244, 236, 224, 0.14);
+}
+
+.nav__cta { background: var(--gold); color: var(--dark) !important; }
+.nav__cta:hover { background: var(--gold-hover); color: var(--dark) !important; }
+
+.chip.is-active { background: var(--gold); border-color: var(--gold); color: var(--dark); }
+
+/* Kein Sucher-Rahmen mehr um Bilder */
+.viewfinder::after { display: none !important; }
+
+/* Bild-Beschreibungen (Card-Meta, Figcaptions) ausblenden */
+.card__meta,
+.photo figcaption,
+.quote__photo figcaption,
+.tilt-photo--faq figcaption,
+.about__img::after,
+.lightbox__figure figcaption {
+  display: none !important;
+}
+
+/* Freistehende Bilder ohne Rahmen/Polaroid-Look */
+.about__img {
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+  box-shadow: none;
+  transform: none;
+}
+.about__img:hover { transform: none; }
+.about__img img { border-radius: 0; }
+
+.quote__photo {
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+  box-shadow: none;
+  transform: none;
+}
+.quote__photo img { border-radius: 0; }
+
+.photo {
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.tilt-photo,
+.tilt-photo--flat,
+.tilt-photo--faq {
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+.tilt-photo img,
+.tilt-photo--flat img,
+.tilt-photo--faq img {
+  border-radius: 0;
+}
+
+.card {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  border-radius: 0;
+}
+.card:hover { box-shadow: none; }
+.card picture { border-radius: 0; }
