@@ -1785,15 +1785,12 @@ body.is-ready .hero__title .line:nth-child(2) span { transition-delay: 80ms; }
 }
 
 /* ≤ 640 px: Bildstapel etwas höher setzen und den überstehenden
-   Abzug (.photo--sm) näher an den Stapel heranziehen, damit er sich
-   nicht mit dem "Ist das ein Shooting für mich?"-Badge darunter
-   überlappt. Der Abstand zum Text darüber bleibt erhalten. */
+   Abzug (.photo--sm) näher an den Stapel heranziehen. Der Abstand zum
+   Text darüber bleibt erhalten. */
 @media (max-width: 640px) {
   .hero__media { transform: translateY(-1rem); }
 
   .hero__media .photo--sm { left: -6%; bottom: 6%; }
-
-  .hero__badge { bottom: var(--sp-6); }
 }
 
 /* ≤ 768 px: Kopf-Bilder in Leistungen und "Warum" auf schmalen Screens
@@ -1885,33 +1882,6 @@ body.is-ready .hero__title .line:nth-child(2) span { transition-delay: 80ms; }
   font-family: var(--font-script);
   color: var(--gold);
   font-size: 1.3rem;
-}
-.hero__badge {
-  position: absolute;
-  bottom: var(--sp-8);
-  left: 50%;
-  transform: translateX(-50%);
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.55rem 1rem;
-  border-radius: var(--r-full);
-  background: rgba(20,16,12,0.55);
-  border: 1px solid rgba(244,236,224,0.28);
-  color: var(--on-dark);
-  font-size: var(--fs-sm);
-  backdrop-filter: blur(8px);
-  z-index: 2;
-}
-.hero__badge .dot {
-  width: 8px; height: 8px; border-radius: 50%;
-  background: var(--gold);
-  box-shadow: 0 0 0 4px rgba(184,146,79,0.25);
-  animation: pulse 2.6s ease-in-out infinite;
-}
-@keyframes pulse {
-  0%,100% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.25); opacity: 0.6; }
 }
 .scroll-cue {
   position: absolute;
@@ -2180,9 +2150,6 @@ body.is-ready .hero__title .line:nth-child(2) span { transition-delay: 80ms; }
   display: inline-block;
   transform: rotate(-2deg);
 }
-
-/* Overrides for the previous hero__badge floating inside the hero container */
-.hero { }
 
 /* Nav scroll progress */
 .nav__progress {
