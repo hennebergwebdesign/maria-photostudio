@@ -2738,7 +2738,7 @@ body.is-ready .hero__title .line:nth-child(2) span { transition-delay: 80ms; }
 /* ---------- Sticky Widget ---------- */
 .cookie-widget {
   position: fixed;
-  left: var(--sp-4);
+  right: var(--sp-4);
   bottom: var(--sp-4);
   z-index: calc(var(--z-cookie) - 1);
   width: 48px;
@@ -2759,7 +2759,7 @@ body.is-ready .hero__title .line:nth-child(2) span { transition-delay: 80ms; }
 .cookie-widget:active { transform: scale(0.94); }
 
 @media (max-width: 640px) {
-  .cookie-widget { left: auto; right: var(--sp-3); bottom: var(--sp-3); width: 44px; height: 44px; }
+  .cookie-widget { right: var(--sp-3); bottom: var(--sp-3); width: 44px; height: 44px; }
 }
 
 /* ---------- Einstellungen-Dialog (2. Ebene) ---------- */
