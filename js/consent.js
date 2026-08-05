@@ -92,7 +92,7 @@ gtag("consent", "default", {
         required: false,
         description:
           "Ermöglichen Komfortfunktionen, die über die reine Darstellung der " +
-          "Seite hinausgehen – zum Beispiel eine aktiv aufgerufene " +
+          "Seite hinausgehen, zum Beispiel eine aktiv aufgerufene " +
           "Terminbuchung oder ein Chat-Widget.",
         // MANUELL PRÜFEN: Aktuell kein Dienst dieser Kategorie in der
         // Codebasis gefunden (kein Calendly-Embed, kein WhatsApp-Widget-
@@ -106,7 +106,7 @@ gtag("consent", "default", {
         required: false,
         description:
           "Helfen zu verstehen, wie die Website genutzt wird, um sie zu " +
-          "verbessern – zum Beispiel mit Google Analytics.",
+          "verbessern, zum Beispiel mit Google Analytics.",
         // MANUELL PRÜFEN: Aktuell keine Analyse-/Statistik-Dienste in der
         // Codebasis gefunden (kein gtag.js, kein GTM-Container).
         services: []
@@ -117,7 +117,7 @@ gtag("consent", "default", {
         required: false,
         description:
           "Werden genutzt, um Besucherinnen und Besuchern relevante Werbung " +
-          "zu zeigen und deren Wirkung zu messen – zum Beispiel Google Ads " +
+          "zu zeigen und deren Wirkung zu messen, zum Beispiel Google Ads " +
           "Conversion-Tracking oder Remarketing.",
         // MANUELL PRÜFEN: Aktuell keine Marketing-/Werbe-Tags in der
         // Codebasis gefunden.
@@ -129,7 +129,7 @@ gtag("consent", "default", {
         required: false,
         description:
           "Binden externe Inhalte ein, die eine Verbindung zu Servern von " +
-          "Drittanbietern herstellen – zum Beispiel eine eingebettete " +
+          "Drittanbietern herstellen, zum Beispiel eine eingebettete " +
           "Google-Maps-Karte oder ein Calendly-Terminkalender.",
         // MANUELL PRÜFEN: Adobe Fonts/Typekit ("The Seasons", Überschriften)
         // wird bewusst NICHT über diese Consent-Kategorie gesteuert, sondern

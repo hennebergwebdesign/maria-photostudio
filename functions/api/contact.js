@@ -159,7 +159,7 @@ export async function onRequestPost({ request, env }) {
     `<h2 style="color:#a67a3a;margin:0 0 12px;font-weight:normal">Vielen Dank für Ihre Anfrage, ${safe.name}!</h2>` +
     `<p style="font-family:Arial,sans-serif;font-size:15px">` +
     `ich habe Ihre Anfrage erhalten und melde mich werktags innerhalb von ` +
-    `<strong>24 Stunden</strong> persönlich bei Ihnen – meist über den Kanal, ` +
+    `<strong>24 Stunden</strong> persönlich bei Ihnen, meist über den Kanal, ` +
     `den Sie hier hinterlassen haben.` +
     `</p>` +
     `<p style="font-family:Arial,sans-serif;font-size:15px">` +
@@ -178,7 +178,7 @@ export async function onRequestPost({ request, env }) {
       ? `<h3 style="margin:24px 0 8px;color:#55442f;font-family:Arial,sans-serif;font-size:13px;letter-spacing:0.1em;text-transform:uppercase">Ihre Nachricht</h3>` +
         `<div style="padding:14px 16px;background:#f0e2c9;border-left:3px solid #a67a3a;font-family:Arial,sans-serif;font-size:15px;line-height:1.55">${safe.message}</div>`
       : "") +
-    `<p style="margin-top:28px;font-family:Georgia,serif;font-style:italic;color:#55442f">— Herzliche Grüße, Maria</p>` +
+    `<p style="margin-top:28px;font-family:Georgia,serif;font-style:italic;color:#55442f">Herzliche Grüße, Maria</p>` +
     `<p style="margin-top:24px;font-family:Arial,sans-serif;font-size:13px;color:#55442f">` +
     `Maria Visuals · Fotografie & Videografie<br>` +
     `E-Mail: <a href="mailto:${to}" style="color:#a67a3a">${to}</a>` +
