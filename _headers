@@ -1,12 +1,17 @@
 # Cloudflare Pages – Header-Regeln
 # Doku: https://developers.cloudflare.com/pages/configuration/headers/
 #
-# Cookie-/Consent-Management (js/consent.js): Aktuell sind keine
+# Cookie-/Consent-Management (js/consent.js): Aktuell ist ein Drittanbieter
+# eingebunden – Adobe Fonts/Typekit für die Überschriften-Schriftart "The
+# Seasons" (use.typekit.net, p.typekit.net in style-src/font-src). Sie wird
+# per js/main.js + ConsentManager.loadStylesheet() erst NACH aktiver
+# Zustimmung zur Kategorie "media" nachgeladen; die CSP darf sie aber
+# grundsätzlich laden dürfen, sobald der Consent das erlaubt. Weitere
 # Drittanbieter (Google Tag Manager/Analytics/Ads, Google Maps, Calendly,
-# WhatsApp) eingebunden, daher bleibt die CSP unten bewusst eng
-# ("script-src 'self'", "connect-src 'self'"). Sobald ein solcher Dienst
-# NACH aktiver Einwilligung tatsächlich geladen werden soll, MUSS die CSP
-# gezielt um genau die benötigten Domains erweitert werden, z. B.
+# WhatsApp) sind NICHT eingebunden, daher bleibt die CSP ansonsten bewusst
+# eng ("script-src 'self'", "connect-src 'self'"). Sobald ein weiterer
+# Dienst NACH aktiver Einwilligung tatsächlich geladen werden soll, MUSS
+# die CSP gezielt um genau die benötigten Domains erweitert werden, z. B.
 # (MANUELL PRÜFEN – nur bei tatsächlichem Bedarf ergänzen, keine
 # pauschalen Wildcards):
 #   Google Tag Manager/Analytics: script-src https://www.googletagmanager.com;
@@ -26,7 +31,7 @@
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: geolocation=(), microphone=(), camera=(), payment=(), usb=()
   Strict-Transport-Security: max-age=31536000; includeSubDomains
-  Content-Security-Policy: default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; font-src 'self'; connect-src 'self'; form-action 'self'; base-uri 'self'; frame-ancestors 'self'; object-src 'none'; upgrade-insecure-requests
+  Content-Security-Policy: default-src 'self'; img-src 'self' data:; style-src 'self' https://use.typekit.net; script-src 'self'; font-src 'self' https://use.typekit.net https://p.typekit.net; connect-src 'self'; form-action 'self'; base-uri 'self'; frame-ancestors 'self'; object-src 'none'; upgrade-insecure-requests
 
 # HTML immer frisch ausliefern (Cloudflare-CDN cached weiterhin am Edge)
 /

@@ -130,10 +130,23 @@ gtag("consent", "default", {
         description:
           "Binden externe Inhalte ein, die eine Verbindung zu Servern von " +
           "Drittanbietern herstellen – zum Beispiel eine eingebettete " +
-          "Google-Maps-Karte oder ein Calendly-Terminkalender.",
-        // MANUELL PRÜFEN: Aktuell kein Maps- oder Calendly-Embed in der
-        // Codebasis gefunden.
-        services: []
+          "Google-Maps-Karte, ein Calendly-Terminkalender oder eine " +
+          "extern nachgeladene Schriftart.",
+        services: [
+          {
+            name: "Adobe Fonts / Typekit (Schriftart „The Seasons“)",
+            provider: "Adobe Inc., 345 Park Avenue, San Jose, CA 95110-2704, USA",
+            purpose:
+              "Lädt die Überschriften-Schriftart „The Seasons“ von Adobes " +
+              "Typekit-Servern nach. Ohne Zustimmung wird stattdessen die " +
+              "selbst gehostete Alternative „Cormorant Garamond“ genutzt.",
+            storage: "Keine Cookies; Verbindung lädt CSS/Font-Dateien direkt von use.typekit.net und p.typekit.net",
+            duration: "Nur für die Dauer der Verbindung beim Laden der Schrift",
+            transfer: "IP-Adresse wird beim Laden an Adobe-Server übermittelt",
+            thirdCountry: "USA (Adobe Inc.) – MANUELL PRÜFEN: Angemessenheitsbeschluss/SCC bei Adobe verifizieren",
+            legalBasis: "Einwilligung, Art. 6 Abs. 1 lit. a DSGVO"
+          }
+        ]
       }
     ]
   };
@@ -610,6 +623,28 @@ gtag("consent", "default", {
         if (opts.id) script.id = opts.id;
         if (typeof opts.onload === "function") script.onload = opts.onload;
         doc.head.appendChild(script);
+      }
+      if (window.ConsentManager.hasConsent(opts.category)) {
+        load();
+      } else {
+        window.ConsentManager.onConsentChange(function () {
+          if (window.ConsentManager.hasConsent(opts.category)) load();
+        });
+      }
+    },
+
+    // Wie loadScript, aber für ein <link rel="stylesheet">, z. B. für
+    // extern nachgeladene Schriftarten (Adobe Fonts/Typekit). Bis zur
+    // Zustimmung greift der in der CSS hinterlegte Font-Fallback.
+    loadStylesheet: function (opts) {
+      if (!opts || !opts.href || !opts.category) return;
+      function load() {
+        if (opts.id && doc.getElementById(opts.id)) return;
+        var link = doc.createElement("link");
+        link.rel = "stylesheet";
+        link.href = opts.href;
+        if (opts.id) link.id = opts.id;
+        doc.head.appendChild(link);
       }
       if (window.ConsentManager.hasConsent(opts.category)) {
         load();
