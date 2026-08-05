@@ -45,13 +45,22 @@
   <link rel="preload" as="image" type="image/webp" fetchpriority="high"
         imagesrcset="sonnenuntergang-shooting-strohballen-feld-900.webp 900w, sonnenuntergang-shooting-strohballen-feld.webp 1536w"
         imagesizes="100vw">
-  <link rel="stylesheet" href="css/style.min.css?v=20260805a">
+
+  <!-- Adobe Fonts/Typekit: Überschriften-Schrift "The Seasons". Lädt bei
+       jedem Seitenaufruf direkt von Adobe (siehe Datenschutzerklärung
+       Abschnitt 4). preconnect verkürzt die Verbindung zu den beiden
+       Typekit-Hosts, bevor das Stylesheet selbst angefragt wird. -->
+  <link rel="preconnect" href="https://use.typekit.net" crossorigin>
+  <link rel="preconnect" href="https://p.typekit.net" crossorigin>
+  <link rel="stylesheet" href="https://use.typekit.net/afi5tod.css">
+
+  <link rel="stylesheet" href="css/style.min.css?v=20260805d">
   <noscript><style>.reveal { opacity: 1; transform: none; }</style></noscript>
 
   <!-- Consent Mode v2 Default + Cookie-Banner: bewusst so früh wie möglich
        geladen, damit der "denied"-Default steht, bevor irgendein anderes
        Skript ausgeführt wird (siehe js/consent.js). -->
-  <script src="js/consent.js?v=20260805a" defer></script>
+  <script src="js/consent.js?v=20260805d" defer></script>
 </head>
 <body>
 
@@ -172,15 +181,14 @@
           </figure>
         </div>
       </div>
-      <span class="scroll-cue" aria-hidden="true">Scroll · Erzählung</span>
     </section>
 
     <div class="hero__marquee" aria-hidden="true">
       <div class="hero__marquee-track">
-        <span>Portraitfotografie&nbsp;·&nbsp;Hochzeitsfotografie&nbsp;·&nbsp;Familienfotografie&nbsp;·&nbsp;Babyfotografie&nbsp;·&nbsp;Schwangerschaftsfotografie&nbsp;·&nbsp;Businessfotografie&nbsp;·&nbsp;Studiofotografie&nbsp;·&nbsp;Videografie&nbsp;·&nbsp;Reportage&nbsp;·&nbsp;</span>
-        <span>Portraitfotografie&nbsp;·&nbsp;Hochzeitsfotografie&nbsp;·&nbsp;Familienfotografie&nbsp;·&nbsp;Babyfotografie&nbsp;·&nbsp;Schwangerschaftsfotografie&nbsp;·&nbsp;Businessfotografie&nbsp;·&nbsp;Studiofotografie&nbsp;·&nbsp;Videografie&nbsp;·&nbsp;Reportage&nbsp;·&nbsp;</span>
-        <span>Portraitfotografie&nbsp;·&nbsp;Hochzeitsfotografie&nbsp;·&nbsp;Familienfotografie&nbsp;·&nbsp;Babyfotografie&nbsp;·&nbsp;Schwangerschaftsfotografie&nbsp;·&nbsp;Businessfotografie&nbsp;·&nbsp;Studiofotografie&nbsp;·&nbsp;Videografie&nbsp;·&nbsp;Reportage&nbsp;·&nbsp;</span>
-        <span>Portraitfotografie&nbsp;·&nbsp;Hochzeitsfotografie&nbsp;·&nbsp;Familienfotografie&nbsp;·&nbsp;Babyfotografie&nbsp;·&nbsp;Schwangerschaftsfotografie&nbsp;·&nbsp;Businessfotografie&nbsp;·&nbsp;Studiofotografie&nbsp;·&nbsp;Videografie&nbsp;·&nbsp;Reportage&nbsp;·&nbsp;</span>
+        <span>Portraitfotografie&nbsp;·&nbsp;Hochzeitsfotografie&nbsp;·&nbsp;Familienfotografie&nbsp;·&nbsp;Babyfotografie&nbsp;·&nbsp;Schwangerschaftsfotografie&nbsp;·&nbsp;Businessfotografie&nbsp;·&nbsp;Studiofotografie&nbsp;·&nbsp;Videografie&nbsp;·&nbsp;Business Shooting&nbsp;·&nbsp;</span>
+        <span>Portraitfotografie&nbsp;·&nbsp;Hochzeitsfotografie&nbsp;·&nbsp;Familienfotografie&nbsp;·&nbsp;Babyfotografie&nbsp;·&nbsp;Schwangerschaftsfotografie&nbsp;·&nbsp;Businessfotografie&nbsp;·&nbsp;Studiofotografie&nbsp;·&nbsp;Videografie&nbsp;·&nbsp;Business Shooting&nbsp;·&nbsp;</span>
+        <span>Portraitfotografie&nbsp;·&nbsp;Hochzeitsfotografie&nbsp;·&nbsp;Familienfotografie&nbsp;·&nbsp;Babyfotografie&nbsp;·&nbsp;Schwangerschaftsfotografie&nbsp;·&nbsp;Businessfotografie&nbsp;·&nbsp;Studiofotografie&nbsp;·&nbsp;Videografie&nbsp;·&nbsp;Business Shooting&nbsp;·&nbsp;</span>
+        <span>Portraitfotografie&nbsp;·&nbsp;Hochzeitsfotografie&nbsp;·&nbsp;Familienfotografie&nbsp;·&nbsp;Babyfotografie&nbsp;·&nbsp;Schwangerschaftsfotografie&nbsp;·&nbsp;Businessfotografie&nbsp;·&nbsp;Studiofotografie&nbsp;·&nbsp;Videografie&nbsp;·&nbsp;Business Shooting&nbsp;·&nbsp;</span>
       </div>
     </div>
 
@@ -721,10 +729,9 @@
             Ergebnis? Ich melde mich werktags so schnell wie möglich mit einer ehrlichen
             Einschätzung und einem passenden Vorschlag für Ihr Vorhaben.
           </p>
-          <!-- TODO vor dem Livegang: echte Straße, Telefonnummer und E-Mail eintragen (auch in js/main.js und im JSON-LD unten). -->
           <ul class="contact__details reveal">
-            <li><span>E-Mail</span><a href="mailto:henneberg883@gmail.com">henneberg883@gmail.com</a></li>
-            <li><span>Telefon</span><a href="tel:+491701234567">+49 170 1234567</a></li>
+            <li><span>E-Mail</span><a href="mailto:henneberg883@icloud.com">henneberg883@icloud.com</a></li>
+            <li><span>Telefon</span><a href="tel:+4917620432296">+49 176 204 32296</a></li>
             <li><span>Erreichbar</span>Mo–Fr 9–18 Uhr, Sa nach Absprache</li>
           </ul>
         </div>
@@ -757,6 +764,7 @@
               <option value="Portrait">Portrait</option>
               <option value="Schwangerschaft">Schwangerschaft</option>
               <option value="Hochzeit">Hochzeit</option>
+              <option value="Business Shooting">Business Shooting</option>
             </select>
             <span class="field__error" id="err-topic" role="alert"></span>
           </label>
@@ -791,7 +799,7 @@
         <a href="/datenschutz.html">Datenschutz</a>
       </nav>
       <div class="footer__social">
-        <a href="#" rel="me noopener">Instagram</a>
+        <a href="https://www.instagram.com/maria_visuals.de" target="_blank" rel="me noopener">Instagram</a>
       </div>
     </div>
     <div class="container footer__meta">
@@ -827,8 +835,9 @@
         "url": "https://mariavisuals.de/",
         "image": "https://mariavisuals.de/img/og-maria-photostudio.jpg",
         "logo": "https://mariavisuals.de/Maria-Visuals-Favicon.png",
-        "email": "henneberg883@gmail.com",
-        "telephone": "+49-170-1234567",
+        "email": "henneberg883@icloud.com",
+        "telephone": "+49-176-20432296",
+        "sameAs": ["https://www.instagram.com/maria_visuals.de"],
         "priceRange": "€€",
         "currenciesAccepted": "EUR",
         "openingHoursSpecification": [
@@ -841,7 +850,7 @@
         ],
         "founder": {
           "@type": "Person",
-          "name": "Maria",
+          "name": "Maria Henneberg",
           "jobTitle": "Fotografin & Videografin"
         },
         "hasOfferCatalog": {
@@ -915,7 +924,7 @@
               "@type": "Answer",
               "text": "Ja, das ist der Normalfall, nicht die Ausnahme. Wir starten mit Aufnahmen zum Warmwerden, die niemand sehen muss, und ich gebe klare, einfache Ansagen zu Haltung und Blick. Damit sind Sie nicht allein – den meisten meiner Kundinnen und Kunden geht es am Anfang genauso."
             }
-          },
+          }
         ]
       }
     ]
@@ -927,6 +936,6 @@
   <script src="js/vendor/ScrollTrigger.min.js" defer></script>
   <script src="js/vendor/Flip.min.js" defer></script>
   <script src="js/animations.js?v=20260729l" defer></script>
-  <script src="js/main.js?v=20260805a" defer></script>
+  <script src="js/main.js?v=20260805d" defer></script>
 </body>
 </html>

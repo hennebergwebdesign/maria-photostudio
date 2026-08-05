@@ -19,17 +19,6 @@
   // diese Datei kümmert sich nur noch um Zustand und Bedienung.
   var hasGsap = document.documentElement.classList.contains("gsap");
 
-  // Überschriften-Schriftart "The Seasons" (Adobe Fonts/Typekit) nur nach
-  // Zustimmung zur Kategorie "media" nachladen; ohne Zustimmung bleibt es
-  // beim selbst gehosteten Cormorant-Garamond-Fallback (siehe --font-display).
-  if (window.ConsentManager) {
-    window.ConsentManager.loadStylesheet({
-      category: "media",
-      href: "https://use.typekit.net/afi5tod.css",
-      id: "adobe-fonts-the-seasons"
-    });
-  }
-
   function emit(name, detail) {
     document.dispatchEvent(new CustomEvent(name, { detail: detail || null }));
   }
@@ -359,11 +348,11 @@
             formOpenedAt = Date.now();
             status.textContent = "Vielen Dank! Ihre Anfrage ist eingegangen. Ich melde mich werktags innerhalb von 24 Stunden.";
           } else {
-            status.textContent = "Das hat leider nicht geklappt. Bitte schreiben Sie mir direkt an henneberg883@gmail.com.";
+            status.textContent = "Das hat leider nicht geklappt. Bitte schreiben Sie mir direkt an henneberg883@icloud.com.";
           }
         })
         .catch(function () {
-          status.textContent = "Das hat leider nicht geklappt. Bitte schreiben Sie mir direkt an henneberg883@gmail.com.";
+          status.textContent = "Das hat leider nicht geklappt. Bitte schreiben Sie mir direkt an henneberg883@icloud.com.";
         })
         .then(function () {
           if (submitBtn) submitBtn.disabled = false;
