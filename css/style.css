@@ -899,11 +899,16 @@ body.is-ready .hero__title .line:nth-child(2) span { transition-delay: 80ms; }
   overflow: hidden;
   border-radius: 0;
   background: var(--bg-soft);
+  aspect-ratio: 4 / 5;
 }
 
 .card img {
+  position: absolute;
+  top: -10%;
+  left: 0;
   width: 100%;
-  height: auto;
+  height: 120%;
+  object-fit: cover;
   display: block;
   transition: transform 600ms var(--ease-out);
 }
@@ -1593,6 +1598,23 @@ body.is-ready .hero__title .line:nth-child(2) span { transition-delay: 80ms; }
 }
 
 .footer__meta a:hover { color: var(--gold); }
+
+.footer__cookie-btn {
+  display: inline-flex;
+  align-items: center;
+  font: inherit;
+  font-size: var(--fs-sm);
+  color: var(--on-dark-dim);
+  background: transparent;
+  border: 1px solid var(--dark-soft);
+  border-radius: var(--r-full);
+  padding: 0.3rem 0.9rem;
+  cursor: pointer;
+  transition: color var(--dur), border-color var(--dur), background var(--dur);
+}
+
+.footer__cookie-btn:hover,
+.footer__cookie-btn:focus-visible { color: var(--gold); border-color: var(--gold); }
 
 /* ---------- Lightbox ---------- */
 .lightbox {
