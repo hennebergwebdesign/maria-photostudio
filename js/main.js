@@ -19,6 +19,17 @@
   // diese Datei kümmert sich nur noch um Zustand und Bedienung.
   var hasGsap = document.documentElement.classList.contains("gsap");
 
+  // Überschriften-Schriftart "The Seasons" (Adobe Fonts/Typekit) nur nach
+  // Zustimmung zur Kategorie "media" nachladen; ohne Zustimmung bleibt es
+  // beim selbst gehosteten Cormorant-Garamond-Fallback (siehe --font-display).
+  if (window.ConsentManager) {
+    window.ConsentManager.loadStylesheet({
+      category: "media",
+      href: "https://use.typekit.net/afi5tod.css",
+      id: "adobe-fonts-the-seasons"
+    });
+  }
+
   function emit(name, detail) {
     document.dispatchEvent(new CustomEvent(name, { detail: detail || null }));
   }

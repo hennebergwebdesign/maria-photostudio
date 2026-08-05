@@ -95,9 +95,13 @@
   /* --- Typo-Skala (Basis 16 px, Faktor ~1.2) --- */
   --font: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-script: "Caveat", "Segoe Script", cursive;
-  /* Display-Serif für Überschriften, selbst gehostet (CSP erlaubt nur
-     font-src 'self'), Fallback auf Systemschriften. */
-  --font-display: "Cormorant Garamond", Georgia, "Iowan Old Style", "Times New Roman", serif;
+  /* Display-Serif für Überschriften. "the-seasons" (Adobe Fonts/Typekit)
+     wird erst nach Zustimmung zur Consent-Kategorie "Externe Medien"
+     per JS nachgeladen (siehe js/main.js + js/consent.js). Ohne
+     Zustimmung – oder solange der Kit noch lädt – greift automatisch
+     der selbst gehostete Cormorant-Garamond-Fallback, da der Browser
+     eine nicht registrierte font-family überspringt. */
+  --font-display: "the-seasons", "Cormorant Garamond", Georgia, "Iowan Old Style", "Times New Roman", serif;
   --fs-label: 0.75rem;      /* 12 px – nur Versal-Labels       */
   --fs-sm: 0.875rem;        /* 14 px – Meta, Fußzeile          */
   --fs-base: 1rem;          /* 16 px – Fließtext (Minimum!)    */
