@@ -348,15 +348,70 @@
             formOpenedAt = Date.now();
             status.textContent = "Vielen Dank! Ihre Anfrage ist eingegangen. Ich melde mich werktags innerhalb von 24 Stunden.";
           } else {
-            status.textContent = "Das hat leider nicht geklappt. Bitte schreiben Sie mir direkt an henneberg883@gmail.com.";
+            status.textContent = "Das hat leider nicht geklappt. Bitte schreiben Sie mir direkt an henneberg883@icloud.com.";
           }
         })
         .catch(function () {
-          status.textContent = "Das hat leider nicht geklappt. Bitte schreiben Sie mir direkt an henneberg883@gmail.com.";
+          status.textContent = "Das hat leider nicht geklappt. Bitte schreiben Sie mir direkt an henneberg883@icloud.com.";
         })
         .then(function () {
           if (submitBtn) submitBtn.disabled = false;
         });
     });
+  }
+
+  /* ---------- Instagram-Feed (Kategorie "media") ---------- */
+  var instagramGrid = document.getElementById("instagramGrid");
+  if (instagramGrid && window.ConsentManager) {
+    var instagramLoaded = false;
+
+    function escapeHtml(str) {
+      return String(str).replace(/[&<>"']/g, function (c) {
+        return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+      });
+    }
+
+    function renderInstagramPosts(posts) {
+      if (!posts.length) {
+        instagramGrid.innerHTML =
+          '<p class="instagram__consent">Aktuell sind keine Beiträge verfügbar. ' +
+          '<a href="https://www.instagram.com/maria_visuals.de" target="_blank" rel="me noopener">Direkt auf Instagram ansehen</a>.</p>';
+        return;
+      }
+      instagramGrid.innerHTML = posts
+        .map(function (post) {
+          return (
+            '<a class="instagram__post" href="' + encodeURI(post.permalink) + '" target="_blank" rel="me noopener">' +
+            '<img src="' + encodeURI(post.imageUrl) + '" alt="' + escapeHtml(post.caption || "Instagram-Beitrag von Maria Visuals") + '" loading="lazy" decoding="async" width="300" height="300">' +
+            "</a>"
+          );
+        })
+        .join("");
+    }
+
+    function loadInstagramFeed() {
+      if (instagramLoaded) return;
+      instagramLoaded = true;
+      instagramGrid.dataset.state = "loading";
+      instagramGrid.innerHTML = '<p class="instagram__consent">Lade Beiträge …</p>';
+      fetch("/api/instagram")
+        .then(function (resp) { return resp.json(); })
+        .then(function (data) {
+          instagramGrid.dataset.state = "loaded";
+          renderInstagramPosts(data && data.ok && data.posts ? data.posts : []);
+        })
+        .catch(function () {
+          instagramGrid.dataset.state = "error";
+          renderInstagramPosts([]);
+        });
+    }
+
+    if (window.ConsentManager.hasConsent("media")) {
+      loadInstagramFeed();
+    } else {
+      window.ConsentManager.onConsentChange(function () {
+        if (window.ConsentManager.hasConsent("media")) loadInstagramFeed();
+      });
+    }
   }
 })();

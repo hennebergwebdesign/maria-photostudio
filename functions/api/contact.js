@@ -6,7 +6,7 @@
 // ausgeliefert.
 
 const MAX_LEN = { name: 120, email: 200, phone: 40, topic: 60, message: 5000 };
-const ALLOWED_TOPICS = ["Baby", "Familie", "Portrait", "Schwangerschaft", "Hochzeit"];
+const ALLOWED_TOPICS = ["Baby", "Familie", "Portrait", "Schwangerschaft", "Hochzeit", "Business Shooting"];
 
 function escapeHtml(str) {
   return String(str).replace(/[&<>"']/g, (c) => ({
@@ -96,7 +96,7 @@ export async function onRequestPost({ request, env }) {
   }
 
   const from = env.MAIL_FROM || "Maria Visuals <kontakt@mariavisuals.de>";
-  const to = env.MAIL_TO || "henneberg883@gmail.com";
+  const to = env.MAIL_TO || "henneberg883@icloud.com";
 
   const safe = {
     name: escapeHtml(name),

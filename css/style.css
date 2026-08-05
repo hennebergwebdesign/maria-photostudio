@@ -1887,25 +1887,6 @@ body.is-ready .hero__title .line:nth-child(2) span { transition-delay: 80ms; }
   color: var(--gold);
   font-size: 1.3rem;
 }
-.scroll-cue {
-  position: absolute;
-  bottom: 1.4rem;
-  right: 1.4rem;
-  color: var(--on-dark-dim);
-  font-size: 0.72rem;
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
-  writing-mode: vertical-rl;
-  z-index: 2;
-}
-.scroll-cue::after {
-  content: "";
-  display: block;
-  width: 1px;
-  height: 40px;
-  margin: 0.5rem auto 0;
-  background: linear-gradient(var(--gold), transparent);
-}
 
 /* Persona / "Für wen" */
 .persona { background: var(--dark); color: var(--on-dark); position: relative; overflow: hidden; }
@@ -2012,6 +1993,31 @@ body.is-ready .hero__title .line:nth-child(2) span { transition-delay: 80ms; }
     object-fit: cover;
     display: block;
   }
+}
+
+/* Instagram-Feed */
+.instagram__grid {
+  margin-top: var(--sp-8);
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: var(--sp-3);
+}
+.instagram__post {
+  display: block;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: var(--bg-soft);
+  transition: opacity var(--dur);
+}
+.instagram__post:hover { opacity: 0.85; }
+.instagram__post img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.instagram__consent {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-4);
+  color: var(--text-dim);
 }
 
 /* Testimonial */
@@ -2679,11 +2685,16 @@ body.is-ready .hero__title .line:nth-child(2) span { transition-delay: 80ms; }
   padding: 0.7rem 1.4rem;
   border-radius: var(--r-full);
   background: var(--accent);
-  color: var(--on-accent);
+  color: #fff;
   font-weight: 500;
-  transition: background var(--dur);
+  transition: background var(--dur), box-shadow var(--dur);
 }
-.legal__back:hover { background: var(--accent-hover); color: var(--on-accent); }
+.legal__back:hover,
+.legal__back:focus-visible {
+  background: var(--accent-hover);
+  color: #fff;
+  box-shadow: var(--elev-2);
+}
 
 /* ============================================================
    Cookie-Consent: Banner, Einstellungen-Dialog, sticky Widget
@@ -2703,14 +2714,15 @@ body.is-ready .hero__title .line:nth-child(2) span { transition-delay: 80ms; }
 /* ---------- Banner (1. Ebene) ---------- */
 .cookie-banner {
   position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  right: var(--sp-6);
+  bottom: var(--sp-6);
+  left: auto;
   z-index: var(--z-cookie);
+  width: min(420px, calc(100vw - 2 * var(--sp-6)));
   background: var(--dark);
   color: var(--on-dark);
   box-shadow: var(--elev-3);
-  padding: var(--sp-6) 10%;
+  padding: var(--sp-6);
   transform: translateY(0);
   transition: transform var(--dur-slow) var(--ease-out);
 }
@@ -2718,13 +2730,10 @@ body.is-ready .hero__title .line:nth-child(2) span { transition-delay: 80ms; }
 .cookie-banner[hidden] { display: none; }
 
 .cookie-banner__inner {
-  max-width: var(--container);
-  margin-inline: auto;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--sp-8);
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--sp-4);
 }
 
 .cookie-banner__title { font-weight: 700; margin-bottom: var(--sp-1); }
@@ -2746,8 +2755,7 @@ body.is-ready .hero__title .line:nth-child(2) span { transition-delay: 80ms; }
 .cookie-banner__actions .btn--ghost:hover { border-color: var(--gold); color: var(--gold); }
 
 @media (max-width: 640px) {
-  .cookie-banner { padding: var(--sp-4) 6%; }
-  .cookie-banner__inner { flex-direction: column; align-items: stretch; }
+  .cookie-banner { right: var(--sp-3); left: var(--sp-3); bottom: var(--sp-3); width: auto; padding: var(--sp-4); }
   .cookie-banner__actions { flex-direction: column; }
   .cookie-banner__actions .btn { width: 100%; }
 }
