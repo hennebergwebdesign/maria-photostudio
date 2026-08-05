@@ -391,7 +391,7 @@ gtag("consent", "default", {
       "notwendig“ ist immer aktiv, alle anderen Kategorien sind bis zu " +
       "Ihrer Zustimmung deaktiviert. Ihre Auswahl können Sie jederzeit über " +
       "den Link „Cookie-Einstellungen“ im Footer oder über das Symbol " +
-      "unten links wieder ändern." +
+      "unten rechts wieder ändern." +
       "</p>" +
       '<div class="cookie-modal__categories">' +
       CONFIG.categories.map(renderCategory).join("") +
