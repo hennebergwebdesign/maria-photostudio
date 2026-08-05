@@ -211,7 +211,7 @@
     lightboxImg.src = card.getAttribute("href");
     lightboxImg.alt = card.dataset.title || "";
     lightboxCaption.textContent =
-      (card.dataset.title || "") + " — " + (card.dataset.cat || "");
+      (card.dataset.title || "") + " · " + (card.dataset.cat || "");
   }
 
   function closeLightbox() {
@@ -278,7 +278,7 @@
 
     var messages = {
       name: "Bitte tragen Sie Ihren vollen Namen ein.",
-      email: "Bitte prüfen Sie die E-Mail-Adresse – ohne sie kann ich nicht antworten.",
+      email: "Bitte prüfen Sie die E-Mail-Adresse, ohne sie kann ich nicht antworten.",
       phone: "Bitte tragen Sie eine Telefonnummer ein, unter der ich Sie erreichen kann.",
       topic: "Bitte wählen Sie einen Anlass aus.",
       message: "Bitte beschreiben Sie kurz Ihr Vorhaben."
