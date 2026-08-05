@@ -2674,7 +2674,7 @@ body.is-ready .hero__title .line:nth-child(2) span { transition-delay: 80ms; }
   color: var(--text);
   margin-bottom: var(--sp-6);
 }
-.legal__back {
+.legal a.legal__back {
   display: inline-flex;
   align-items: center;
   gap: var(--sp-2);
@@ -2684,10 +2684,11 @@ body.is-ready .hero__title .line:nth-child(2) span { transition-delay: 80ms; }
   background: var(--accent);
   color: #fff;
   font-weight: 500;
+  text-decoration: none;
   transition: background var(--dur), box-shadow var(--dur);
 }
-.legal__back:hover,
-.legal__back:focus-visible {
+.legal a.legal__back:hover,
+.legal a.legal__back:focus-visible {
   background: var(--accent-hover);
   color: #fff;
   box-shadow: var(--elev-2);
