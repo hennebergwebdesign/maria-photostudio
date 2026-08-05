@@ -130,28 +130,12 @@ gtag("consent", "default", {
         description:
           "Binden externe Inhalte ein, die eine Verbindung zu Servern von " +
           "Drittanbietern herstellen – zum Beispiel eine eingebettete " +
-          "Google-Maps-Karte, ein Calendly-Terminkalender oder ein " +
-          "Instagram-Beitrags-Feed.",
+          "Google-Maps-Karte oder ein Calendly-Terminkalender.",
         // MANUELL PRÜFEN: Adobe Fonts/Typekit ("The Seasons", Überschriften)
         // wird bewusst NICHT über diese Consent-Kategorie gesteuert, sondern
         // lädt direkt aus <head> von index.html bei jedem Seitenaufruf –
         // siehe Datenschutzerklärung Abschnitt 4 statt hier.
-        services: [
-          {
-            name: "Instagram-Feed (aktuelle Beiträge)",
-            provider: "Meta Platforms Ireland Ltd., 4 Grand Canal Square, Dublin 2, Irland",
-            purpose:
-              "Zeigt die letzten Instagram-Beiträge direkt auf der Website. " +
-              "Die Beitragsdaten werden über eine eigene Cloudflare-Function " +
-              "(/api/instagram) abgerufen; die Bilder selbst lädt Ihr " +
-              "Browser danach direkt von Instagram-Servern.",
-            storage: "Keine Cookies; Bilder werden direkt von Instagram-CDN-Servern geladen",
-            duration: "Nur für die Dauer des Ladevorgangs",
-            transfer: "IP-Adresse wird beim Laden der Bilder an Meta übermittelt",
-            thirdCountry: "USA möglich (Meta-Infrastruktur) – MANUELL PRÜFEN: aktuelle Übermittlungsgrundlage bei Meta verifizieren",
-            legalBasis: "Einwilligung, Art. 6 Abs. 1 lit. a DSGVO"
-          }
-        ]
+        services: []
       }
     ]
   };

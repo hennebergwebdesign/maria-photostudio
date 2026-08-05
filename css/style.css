@@ -1995,31 +1995,6 @@ body.is-ready .hero__title .line:nth-child(2) span { transition-delay: 80ms; }
   }
 }
 
-/* Instagram-Feed */
-.instagram__grid {
-  margin-top: var(--sp-8);
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-  gap: var(--sp-3);
-}
-.instagram__post {
-  display: block;
-  aspect-ratio: 1 / 1;
-  overflow: hidden;
-  background: var(--bg-soft);
-  transition: opacity var(--dur);
-}
-.instagram__post:hover { opacity: 0.85; }
-.instagram__post img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.instagram__consent {
-  grid-column: 1 / -1;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: var(--sp-4);
-  color: var(--text-dim);
-}
-
 /* Testimonial */
 .quote { background: var(--bg-soft); }
 .quote__wrap {
