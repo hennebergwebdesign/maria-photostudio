@@ -54,7 +54,7 @@
   <link rel="preconnect" href="https://p.typekit.net" crossorigin>
   <link rel="stylesheet" href="https://use.typekit.net/afi5tod.css">
 
-  <link rel="stylesheet" href="css/style.min.css?v=20260812a">
+  <link rel="stylesheet" href="css/style.min.css?v=20260812b">
   <noscript><style>.reveal { opacity: 1; transform: none; }
     /* Ohne JS gibt es kein Blättern – dann steht das gesamte Portfolio auf einer Seite. */
     .work__grid .card.is-hidden { display: inline-block; }</style></noscript>
@@ -1092,7 +1092,10 @@
     <button class="lightbox__close" id="lightboxClose" type="button" aria-label="Bildansicht schließen"><svg width="22" height="22" aria-hidden="true"><use href="#i-close"></use></svg></button>
     <button class="lightbox__arrow lightbox__arrow--prev" id="lightboxPrev" type="button" aria-label="Vorheriges Bild"><svg width="22" height="22" aria-hidden="true"><use href="#i-chevron-left"></use></svg></button>
     <figure class="lightbox__figure">
-      <img id="lightboxImg" src="" alt="" decoding="async">
+      <div class="lightbox__stage" id="lightboxStage">
+        <img id="lightboxImg" src="" alt="" decoding="async">
+        <span class="lightbox__spinner" aria-hidden="true"></span>
+      </div>
       <figcaption id="lightboxCaption"></figcaption>
     </figure>
     <button class="lightbox__arrow lightbox__arrow--next" id="lightboxNext" type="button" aria-label="Nächstes Bild"><svg width="22" height="22" aria-hidden="true"><use href="#i-chevron-right"></use></svg></button>
@@ -1211,7 +1214,7 @@
   <script src="js/vendor/gsap.min.js" defer></script>
   <script src="js/vendor/ScrollTrigger.min.js" defer></script>
   <script src="js/vendor/Flip.min.js" defer></script>
-  <script src="js/animations.js?v=20260812a" defer></script>
-  <script src="js/main.js?v=20260812a" defer></script>
+  <script src="js/animations.js?v=20260812b" defer></script>
+  <script src="js/main.js?v=20260812b" defer></script>
 </body>
 </html>

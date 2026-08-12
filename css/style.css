@@ -863,18 +863,39 @@ body.is-ready .hero__title .line:nth-child(2) span { transition-delay: 80ms; }
   border-color: var(--accent);
 }
 
+/* Echtes Raster statt Spaltensatz: column-count füllte erst Spalte eins von
+   oben nach unten, die Lesereihenfolge stimmte also nicht mit der Bildfolge
+   überein. Alle Karten haben dasselbe Seitenverhältnis, ein Grid richtet sie
+   sauber aus und Flip kann beim Filtern verlässlich messen. */
 .work__grid {
   position: relative;   /* Bezug für die Flip-Animation beim Filtern */
-  column-count: 3;
-  column-gap: 1.6rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.6rem;
+  /* Flip stellt die Karten während des Wechsels kurz absolut. Ohne Beschnitt
+     rutschten sie dabei seitlich aus dem Container heraus. Nur waagerecht
+     beschneiden: senkrecht dürfen ausblendende Karten über den Rand
+     hinauslaufen, der Clip-Rand lässt Schatten und Hover-Hub stehen. */
+  overflow-x: clip;
+  overflow-clip-margin: 24px;
 }
-@media (max-width: 900px) { .work__grid { column-count: 2; } }
-@media (max-width: 560px) { .work__grid { column-count: 1; } }
-.work__grid .card {
-  break-inside: avoid;
-  display: inline-block;
-  width: 100%;
-  margin-bottom: 1.6rem;
+
+@media (max-width: 900px) {
+  .work__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.2rem; }
+}
+
+@media (max-width: 520px) {
+  .work__grid { grid-template-columns: minmax(0, 1fr); gap: 1.4rem; }
+}
+
+.work__grid .card { width: 100%; margin: 0; }
+
+/* Warten auf neue Bilder: das Raster tritt kurz zurück, statt leere
+   Kästen zu zeigen. Bedienbar bleibt es, nur der Zeiger meldet Arbeit. */
+.work__grid.is-switching {
+  opacity: 0.45;
+  cursor: progress;
+  transition: opacity var(--dur) var(--ease-out);
 }
 
 .card {
@@ -910,10 +931,51 @@ body.is-ready .hero__title .line:nth-child(2) span { transition-delay: 80ms; }
   height: 120%;
   object-fit: cover;
   display: block;
-  transition: transform 600ms var(--ease-out);
+  transition: opacity 700ms var(--ease-out);
 }
 
-.card:hover img { transform: scale(1.04); }
+/* Ohne GSAP zoomt CSS beim Hover. Läuft GSAP, schreibt der Parallax in jedem
+   Scroll-Frame eine eigene transform auf dasselbe Bild – eine CSS-Transition
+   darauf würde jeden dieser Frames 600 ms lang nachziehen. Dann übernimmt
+   js/animations.js auch den Zoom. */
+html:not(.gsap) .card img {
+  transition: transform 600ms var(--ease-out), opacity 700ms var(--ease-out);
+}
+
+html:not(.gsap) .card:hover img { transform: scale(1.04); }
+
+/* ---------- Ladeübergang der Bilder ----------
+   Die Klassen setzt js/main.js. Ohne JavaScript bleibt alles wie gehabt
+   sichtbar – es gibt keinen Zustand, in dem ein Bild versteckt hängen bleibt. */
+.card picture.is-loading::before,
+.card picture.is-ready::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  /* Erst die einfache Fläche, dann der Verlauf: kennt ein Browser color-mix
+     nicht, bleibt wenigstens der ruhige Platzhalter stehen. */
+  background: var(--bg-soft);
+  background:
+    linear-gradient(100deg,
+      var(--bg-soft) 20%,
+      color-mix(in srgb, var(--gold) 14%, var(--bg-soft)) 38%,
+      var(--bg-soft) 56%) 0 0 / 240% 100%;
+  animation: mediaShimmer 1.6s linear infinite;
+  transition: opacity var(--dur-slow) var(--ease-out);
+}
+
+.card picture.is-ready::before { opacity: 0; animation: none; }
+
+.card picture.is-loading img { opacity: 0; }
+
+.card picture.is-ready img { opacity: 1; }
+
+@keyframes mediaShimmer {
+  from { background-position: 140% 0; }
+  to   { background-position: -40% 0; }
+}
 
 .card__play {
   position: absolute;
@@ -1675,12 +1737,62 @@ body.is-ready .hero__title .line:nth-child(2) span { transition-delay: 80ms; }
   min-width: 0;
 }
 
+/* Bühne für das große Bild. Die Maße kommen über width/height am <img>
+   aus dem bereits geladenen Rasterbild – deshalb steht der Rahmen sofort
+   richtig und springt nicht, wenn die große Datei ankommt. */
+.lightbox__stage {
+  position: relative;
+  display: grid;
+  place-items: center;
+  max-width: 100%;
+  min-width: 0;
+}
+
 .lightbox__figure img {
   max-height: 78dvh;
   max-width: 100%;
+  width: auto;
+  height: auto;
   border-radius: var(--r-sm);
   box-shadow: var(--elev-3);
+  opacity: 0;
+  transition: opacity 400ms var(--ease-out);
 }
+
+.lightbox__stage.is-ready img { opacity: 1; }
+
+/* Unscharfe Vorschau aus dem Rasterbild: der Platz ist ab der ersten
+   Millisekunde gefüllt, das große Bild löst sie danach auf. */
+.lightbox__stage::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--r-sm);
+  background-color: var(--bg-soft);
+  background-image: var(--lb-thumb, none);
+  background-size: cover;
+  background-position: center;
+  filter: blur(14px) saturate(1.05);
+  transform: scale(1.02);
+  transition: opacity 400ms var(--ease-out);
+}
+
+.lightbox__stage.is-ready::before { opacity: 0; }
+
+.lightbox__spinner {
+  position: absolute;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 2px solid color-mix(in srgb, var(--dark) 18%, transparent);
+  border-top-color: var(--gold);
+  animation: lightboxSpin 700ms linear infinite;
+  transition: opacity var(--dur) var(--ease-out);
+}
+
+.lightbox__stage.is-ready .lightbox__spinner { opacity: 0; }
+
+@keyframes lightboxSpin { to { transform: rotate(1turn); } }
 
 .lightbox__figure figcaption { color: var(--text-dim); font-size: var(--fs-base); }
 
@@ -1923,6 +2035,12 @@ body.is-ready .hero__title .line:nth-child(2) span { transition-delay: 80ms; }
   .hero__marquee-track { animation: none; }
 
   .process__line-fill { transform: scaleY(1); }
+
+  /* Platzhalter bleiben, aber ruhig: kein wanderndes Schimmern */
+  .card picture.is-loading::before,
+  .card picture.is-ready::before { animation: none; }
+
+  .lightbox__spinner { animation: none; opacity: 0.5; }
 }
 
 /* ============================================================
