@@ -43,7 +43,7 @@
   <link rel="preload" href="fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/cormorant-garamond-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" as="image" type="image/webp" fetchpriority="high"
-        imagesrcset="sonnenuntergang-shooting-strohballen-feld-900.webp 900w, sonnenuntergang-shooting-strohballen-feld.webp 1536w"
+        imagesrcset="img/sonnenuntergang-shooting-strohballen-feld-900.webp 900w, img/sonnenuntergang-shooting-strohballen-feld.webp 1536w"
         imagesizes="100vw">
 
   <!-- Adobe Fonts/Typekit: Überschriften-Schrift "The Seasons". Lädt bei
@@ -54,7 +54,7 @@
   <link rel="preconnect" href="https://p.typekit.net" crossorigin>
   <link rel="stylesheet" href="https://use.typekit.net/afi5tod.css">
 
-  <link rel="stylesheet" href="css/style.min.css?v=20260812b">
+  <link rel="stylesheet" href="css/style.min.css?v=20260812c">
   <noscript><style>.reveal { opacity: 1; transform: none; }
     /* Ohne JS gibt es kein Blättern – dann steht das gesamte Portfolio auf einer Seite. */
     .work__grid .card.is-hidden { display: inline-block; }</style></noscript>
@@ -111,7 +111,7 @@
   <header class="nav" id="nav">
     <div class="nav__inner container">
       <a href="#top" class="nav__logo" aria-label="Maria Visuals · Startseite">
-        <img src="Maria-Visuals-Logo-1-480.png" alt="Maria Visuals" width="200" height="72" id="navLogo" decoding="async">
+        <img src="img/Maria-Visuals-Logo-1-480.png" alt="Maria Visuals" width="200" height="72" id="navLogo" decoding="async">
       </a>
       <nav class="nav__links" id="navLinks" aria-label="Hauptnavigation">
         <a href="#top">Home</a>
@@ -137,10 +137,10 @@
     <section class="hero" id="inhalt" aria-labelledby="hero-title">
       <picture class="hero__bg" aria-hidden="true">
         <source type="image/webp"
-                srcset="sonnenuntergang-shooting-strohballen-feld-900.webp 900w, sonnenuntergang-shooting-strohballen-feld.webp 1536w"
+                srcset="img/sonnenuntergang-shooting-strohballen-feld-900.webp 900w, img/sonnenuntergang-shooting-strohballen-feld.webp 1536w"
                 sizes="100vw">
-        <img src="sonnenuntergang-shooting-strohballen-feld.jpeg"
-             srcset="sonnenuntergang-shooting-strohballen-feld-900.jpg 900w, sonnenuntergang-shooting-strohballen-feld.jpeg 1536w"
+        <img src="img/sonnenuntergang-shooting-strohballen-feld.jpeg"
+             srcset="img/sonnenuntergang-shooting-strohballen-feld-900.jpg 900w, img/sonnenuntergang-shooting-strohballen-feld.jpeg 1536w"
              sizes="100vw"
              alt="" fetchpriority="high" decoding="async">
       </picture>
@@ -171,14 +171,14 @@
         <div class="hero__media" aria-hidden="true">
           <figure class="photo photo--lg viewfinder viewfinder--static">
             <picture>
-              <source type="image/webp" srcset="portraet-goldene-stunde-strohballen-800.webp">
-              <img src="portraet-goldene-stunde-strohballen-800.jpg" alt="" width="800" height="1000" loading="eager" decoding="async">
+              <source type="image/webp" srcset="img/portraet-goldene-stunde-strohballen-800.webp">
+              <img src="img/portraet-goldene-stunde-strohballen-800.jpg" alt="" width="800" height="1200" loading="eager" decoding="async">
             </picture>
           </figure>
           <figure class="photo photo--sm">
             <picture>
-              <source type="image/webp" srcset="portraetshooting-kornfeld-cowboyhut-800.webp">
-              <img src="portraetshooting-kornfeld-cowboyhut-800.jpg" alt="" width="400" height="500" loading="lazy" decoding="async">
+              <source type="image/webp" srcset="img/portraetshooting-kornfeld-cowboyhut-800.webp">
+              <img src="img/portraetshooting-kornfeld-cowboyhut-800.jpg" alt="" width="800" height="1200" loading="lazy" decoding="async">
             </picture>
           </figure>
         </div>
@@ -232,28 +232,28 @@
     <section class="story" id="story" aria-label="Bildwelten">
       <div class="story__stage" id="storyStage">
         <div class="story__sticky" aria-hidden="true">
-          <div class="story__frame is-active" data-frame="1"><img src="portraet-goldene-stunde-strohballen.jpeg" alt=""></div>
-          <div class="story__frame" data-frame="2"><img src="studioportrait-schwarzer-hut-lederstuhl.jpeg" alt=""></div>
-          <div class="story__frame" data-frame="3"><img src="familienportrait-mutter-tochter-see-abendlicht.jpeg" alt=""></div>
+          <div class="story__frame is-active" data-frame="1"><img src="img/portraet-goldene-stunde-strohballen.jpeg" alt=""></div>
+          <div class="story__frame" data-frame="2"><img src="img/studioportrait-schwarzer-hut-lederstuhl.jpeg" alt=""></div>
+          <div class="story__frame" data-frame="3"><img src="img/familienportrait-mutter-tochter-see-abendlicht.jpeg" alt=""></div>
         </div>
         <div class="story__panels">
           <div class="story__panel" data-panel="1">
             <span class="num">Draußen</span>
             <h3>Wo das Licht die Regie führt.</h3>
             <p>Die Natur schafft die perfekte Kulisse, ob im Kornfeld, zwischen blühender Glyzinie oder am See zur goldenen Stunde. Wir nehmen uns Zeit für das schönste Licht und halten echte Momente fest, ganz ohne Hektik.</p>
-            <figure class="story__panel-img"><picture><source type="image/webp" srcset="portraet-goldene-stunde-strohballen-800.webp"><img src="portraet-goldene-stunde-strohballen-800.jpg" alt="Naturportrait in der goldenen Stunde am Strohballen" loading="lazy" decoding="async"></picture></figure>
+            <figure class="story__panel-img"><picture><source type="image/webp" srcset="img/portraet-goldene-stunde-strohballen-800.webp"><img src="img/portraet-goldene-stunde-strohballen-800.jpg" alt="Naturportrait in der goldenen Stunde am Strohballen" loading="lazy" decoding="async"></picture></figure>
           </div>
           <div class="story__panel" data-panel="2">
             <span class="num">Indoor</span>
             <h3>Wo wir das Licht gestalten.</h3>
             <p>Nicht jedes Shooting braucht die Natur als Kulisse. In Innenräumen entstehen ruhige, zeitlose und professionelle Aufnahmen, ob für Business, Portraits oder kreative Ideen. Gemeinsam schaffen wir genau die Atmosphäre, die zu Ihnen und Ihrer Geschichte passt.</p>
-            <figure class="story__panel-img"><picture><source type="image/webp" srcset="studioportrait-schwarzer-hut-lederstuhl-800.webp"><img src="studioportrait-schwarzer-hut-lederstuhl-800.jpg" alt="Studioporträt mit Hut auf dem Lederstuhl" loading="lazy" decoding="async"></picture></figure>
+            <figure class="story__panel-img"><picture><source type="image/webp" srcset="img/studioportrait-schwarzer-hut-lederstuhl-800.webp"><img src="img/studioportrait-schwarzer-hut-lederstuhl-800.jpg" alt="Studioporträt mit Hut auf dem Lederstuhl" loading="lazy" decoding="async"></picture></figure>
           </div>
           <div class="story__panel" data-panel="3">
             <span class="num">Zusammen</span>
             <h3>Familie, Paar, Freundinnen.</h3>
             <p>Bei mir muss niemand perfekt posieren. Wir verbringen einfach eine schöne Zeit zusammen, unterhalten uns und genießen den Moment. Genau dann entstehen die Bilder, die sich echt anfühlen und lange in Erinnerung bleiben.</p>
-            <figure class="story__panel-img"><picture><source type="image/webp" srcset="familienportrait-mutter-tochter-see-abendlicht-800.webp"><img src="familienportrait-mutter-tochter-see-abendlicht-800.jpg" alt="Familienporträt von Mutter und Tochter am See im Abendlicht" loading="lazy" decoding="async"></picture></figure>
+            <figure class="story__panel-img"><picture><source type="image/webp" srcset="img/familienportrait-mutter-tochter-see-abendlicht-800.webp"><img src="img/familienportrait-mutter-tochter-see-abendlicht-800.jpg" alt="Familienporträt von Mutter und Tochter am See im Abendlicht" loading="lazy" decoding="async"></picture></figure>
           </div>
         </div>
       </div>
@@ -278,8 +278,8 @@
           </div>
           <figure class="tilt-photo tilt-photo--flat reveal" aria-hidden="true">
             <picture>
-              <source type="image/webp" srcset="outdoor-portrait-glyzinien-natursteinmauer-800.webp">
-              <img src="outdoor-portrait-glyzinien-natursteinmauer-800.jpg" alt="" width="800" height="1000" loading="lazy" decoding="async">
+              <source type="image/webp" srcset="img/outdoor-portrait-glyzinien-natursteinmauer-800.webp">
+              <img src="img/outdoor-portrait-glyzinien-natursteinmauer-800.jpg" alt="" width="800" height="1200" loading="lazy" decoding="async">
             </picture>
           </figure>
         </div>
@@ -345,8 +345,8 @@
           </div>
           <figure class="tilt-photo tilt-photo--flat reveal" aria-hidden="true">
             <picture>
-              <source type="image/webp" srcset="portraitfotografin-weizenfeld-sonnenuntergang-800.webp">
-              <img src="portraitfotografin-weizenfeld-sonnenuntergang-800.jpg" alt="" width="800" height="1000" loading="lazy" decoding="async">
+              <source type="image/webp" srcset="img/portraitfotografin-weizenfeld-sonnenuntergang-800.webp">
+              <img src="img/portraitfotografin-weizenfeld-sonnenuntergang-800.jpg" alt="" width="800" height="1201" loading="lazy" decoding="async">
             </picture>
           </figure>
         </div>
@@ -375,442 +375,442 @@
         </div>
         <div class="work__grid" id="workGrid">
 
-          <a class="card reveal" data-type="business" href="businessportrait-weisse-bluse-grauer-hintergrund.jpeg"
+          <a class="card reveal" data-type="business" href="img/businessportrait-weisse-bluse-grauer-hintergrund.jpeg"
              data-title="Businessportrait vor grauem Hintergrund"
              data-cat="Business · Studio">
             <picture class="viewfinder">
-              <source type="image/webp" srcset="businessportrait-weisse-bluse-grauer-hintergrund-800.webp">
-              <img src="businessportrait-weisse-bluse-grauer-hintergrund-800.jpg" alt="Businessportrait in weißer Bluse vor grauem Hintergrund" width="800" height="1077" loading="lazy" decoding="async">
+              <source type="image/webp" srcset="img/businessportrait-weisse-bluse-grauer-hintergrund-800.webp">
+              <img src="img/businessportrait-weisse-bluse-grauer-hintergrund-800.jpg" alt="Businessportrait in weißer Bluse vor grauem Hintergrund" width="800" height="1077" loading="lazy" decoding="async">
             </picture>
             <div class="card__meta"><h3>Business</h3><p>Business · Studio</p></div>
           </a>
 
-          <a class="card reveal" data-type="business" href="businessportrait-nahaufnahme-weisse-bluse.jpeg"
+          <a class="card reveal" data-type="business" href="img/businessportrait-nahaufnahme-weisse-bluse.jpeg"
              data-title="Businessportrait in Nahaufnahme"
              data-cat="Business · Studio">
             <picture class="viewfinder">
-              <source type="image/webp" srcset="businessportrait-nahaufnahme-weisse-bluse-800.webp">
-              <img src="businessportrait-nahaufnahme-weisse-bluse-800.jpg" alt="Nahaufnahme eines Businessportraits in weißer Bluse" width="800" height="1200" loading="lazy" decoding="async">
+              <source type="image/webp" srcset="img/businessportrait-nahaufnahme-weisse-bluse-800.webp">
+              <img src="img/businessportrait-nahaufnahme-weisse-bluse-800.jpg" alt="Nahaufnahme eines Businessportraits in weißer Bluse" width="800" height="1200" loading="lazy" decoding="async">
             </picture>
             <div class="card__meta"><h3>Nah dran</h3><p>Business · Studio</p></div>
           </a>
 
-          <a class="card reveal" data-type="business" href="businessportrait-winkend-grauer-hintergrund.jpeg"
+          <a class="card reveal" data-type="business" href="img/businessportrait-winkend-grauer-hintergrund.jpeg"
              data-title="Businessportrait mit Gruß in die Kamera"
              data-cat="Business · Studio">
             <picture class="viewfinder">
-              <source type="image/webp" srcset="businessportrait-winkend-grauer-hintergrund-800.webp">
-              <img src="businessportrait-winkend-grauer-hintergrund-800.jpg" alt="Winkendes Businessportrait vor grauem Hintergrund" width="800" height="1200" loading="lazy" decoding="async">
+              <source type="image/webp" srcset="img/businessportrait-winkend-grauer-hintergrund-800.webp">
+              <img src="img/businessportrait-winkend-grauer-hintergrund-800.jpg" alt="Winkendes Businessportrait vor grauem Hintergrund" width="800" height="1200" loading="lazy" decoding="async">
             </picture>
             <div class="card__meta"><h3>Hallo!</h3><p>Business · Studio</p></div>
           </a>
 
-          <a class="card reveal" data-type="business" href="businessportrait-blumenbluse-grauer-hintergrund.jpeg"
+          <a class="card reveal" data-type="business" href="img/businessportrait-blumenbluse-grauer-hintergrund.jpeg"
              data-title="Businessportrait in Blumenbluse"
              data-cat="Business · Studio">
             <picture class="viewfinder">
-              <source type="image/webp" srcset="businessportrait-blumenbluse-grauer-hintergrund-800.webp">
-              <img src="businessportrait-blumenbluse-grauer-hintergrund-800.jpg" alt="Businessportrait in bunter Blumenbluse vor grauem Hintergrund" width="800" height="1200" loading="lazy" decoding="async">
+              <source type="image/webp" srcset="img/businessportrait-blumenbluse-grauer-hintergrund-800.webp">
+              <img src="img/businessportrait-blumenbluse-grauer-hintergrund-800.jpg" alt="Businessportrait in bunter Blumenbluse vor grauem Hintergrund" width="800" height="1200" loading="lazy" decoding="async">
             </picture>
             <div class="card__meta"><h3>Farbenfroh</h3><p>Business · Studio</p></div>
           </a>
 
-          <a class="card reveal" data-type="business" href="businessportrait-brille-bleistiftrock.jpeg"
+          <a class="card reveal" data-type="business" href="img/businessportrait-brille-bleistiftrock.jpeg"
              data-title="Businessportrait mit Brille"
              data-cat="Business · Studio">
             <picture class="viewfinder">
-              <source type="image/webp" srcset="businessportrait-brille-bleistiftrock-800.webp">
-              <img src="businessportrait-brille-bleistiftrock-800.jpg" alt="Businessportrait mit Brille in Bluse und Bleistiftrock" width="800" height="1200" loading="lazy" decoding="async">
+              <source type="image/webp" srcset="img/businessportrait-brille-bleistiftrock-800.webp">
+              <img src="img/businessportrait-brille-bleistiftrock-800.jpg" alt="Businessportrait mit Brille in Bluse und Bleistiftrock" width="800" height="1200" loading="lazy" decoding="async">
             </picture>
             <div class="card__meta"><h3>Souverän</h3><p>Business · Studio</p></div>
           </a>
 
-          <a class="card reveal" data-type="business" href="portraetshooting-pink-sneaker-sitzend.jpeg"
+          <a class="card reveal" data-type="business" href="img/portraetshooting-pink-sneaker-sitzend.jpeg"
              data-title="Portraitshooting in Pink"
              data-cat="Portrait · Studio">
             <picture class="viewfinder">
-              <source type="image/webp" srcset="portraetshooting-pink-sneaker-sitzend-800.webp">
-              <img src="portraetshooting-pink-sneaker-sitzend-800.jpg" alt="Sitzendes Portrait in pinkem Shirt und bemalter Jeans" width="800" height="1200" loading="lazy" decoding="async">
+              <source type="image/webp" srcset="img/portraetshooting-pink-sneaker-sitzend-800.webp">
+              <img src="img/portraetshooting-pink-sneaker-sitzend-800.jpg" alt="Sitzendes Portrait in pinkem Shirt und bemalter Jeans" width="800" height="1200" loading="lazy" decoding="async">
             </picture>
             <div class="card__meta"><h3>Pink</h3><p>Portrait · Studio</p></div>
           </a>
 
-          <a class="card reveal" data-type="business" href="businessportrait-laptop-pflanzen.jpeg"
+          <a class="card reveal" data-type="business" href="img/businessportrait-laptop-pflanzen.jpeg"
              data-title="Businessportrait am Laptop"
              data-cat="Business · Branding">
             <picture class="viewfinder">
-              <source type="image/webp" srcset="businessportrait-laptop-pflanzen-800.webp">
-              <img src="businessportrait-laptop-pflanzen-800.jpg" alt="Businessportrait mit Laptop vor großen Grünpflanzen" width="800" height="1200" loading="lazy" decoding="async">
+              <source type="image/webp" srcset="img/businessportrait-laptop-pflanzen-800.webp">
+              <img src="img/businessportrait-laptop-pflanzen-800.jpg" alt="Businessportrait mit Laptop vor großen Grünpflanzen" width="800" height="1200" loading="lazy" decoding="async">
             </picture>
             <div class="card__meta"><h3>Am Laptop</h3><p>Business · Branding</p></div>
           </a>
 
-          <a class="card reveal" data-type="business" href="businessportrait-im-gruenen-gartenhecke.jpeg"
+          <a class="card reveal" data-type="business" href="img/businessportrait-im-gruenen-gartenhecke.jpeg"
              data-title="Businessportrait im Grünen"
              data-cat="Business · Outdoor">
             <picture class="viewfinder">
-              <source type="image/webp" srcset="businessportrait-im-gruenen-gartenhecke-800.webp">
-              <img src="businessportrait-im-gruenen-gartenhecke-800.jpg" alt="Businessportrait an einer Gartenhecke im Sonnenlicht" width="800" height="1200" loading="lazy" decoding="async">
+              <source type="image/webp" srcset="img/businessportrait-im-gruenen-gartenhecke-800.webp">
+              <img src="img/businessportrait-im-gruenen-gartenhecke-800.jpg" alt="Businessportrait an einer Gartenhecke im Sonnenlicht" width="800" height="1200" loading="lazy" decoding="async">
             </picture>
             <div class="card__meta"><h3>Im Grünen</h3><p>Business · Outdoor</p></div>
           </a>
 
-          <a class="card reveal" data-type="business" href="businessportrait-schwarzes-kleid-perlenkette.jpeg"
+          <a class="card reveal" data-type="business" href="img/businessportrait-schwarzes-kleid-perlenkette.jpeg"
              data-title="Businessportrait im schwarzen Kleid"
              data-cat="Business · Branding">
             <picture class="viewfinder">
-              <source type="image/webp" srcset="businessportrait-schwarzes-kleid-perlenkette-800.webp">
-              <img src="businessportrait-schwarzes-kleid-perlenkette-800.jpg" alt="Businessportrait im schwarzen Kleid mit Perlenkette am Laptop" width="800" height="1200" loading="lazy" decoding="async">
+              <source type="image/webp" srcset="img/businessportrait-schwarzes-kleid-perlenkette-800.webp">
+              <img src="img/businessportrait-schwarzes-kleid-perlenkette-800.jpg" alt="Businessportrait im schwarzen Kleid mit Perlenkette am Laptop" width="800" height="1200" loading="lazy" decoding="async">
             </picture>
             <div class="card__meta"><h3>Perlenkette</h3><p>Business · Branding</p></div>
           </a>
 
-          <a class="card reveal" data-type="business" href="businessportrait-spiegel-perlenkette.jpeg"
+          <a class="card reveal" data-type="business" href="img/businessportrait-spiegel-perlenkette.jpeg"
              data-title="Businessportrait am Spiegel"
              data-cat="Business · Branding">
             <picture class="viewfinder">
-              <source type="image/webp" srcset="businessportrait-spiegel-perlenkette-800.webp">
-              <img src="businessportrait-spiegel-perlenkette-800.jpg" alt="Businessportrait mit Perlenkette vor einem Spiegel" width="800" height="1200" loading="lazy" decoding="async">
+              <source type="image/webp" srcset="img/businessportrait-spiegel-perlenkette-800.webp">
+              <img src="img/businessportrait-spiegel-perlenkette-800.jpg" alt="Businessportrait mit Perlenkette vor einem Spiegel" width="800" height="1200" loading="lazy" decoding="async">
             </picture>
             <div class="card__meta"><h3>Spiegelblick</h3><p>Business · Branding</p></div>
           </a>
 
-          <a class="card reveal" data-type="business" href="businessportrait-laptop-stuhl-weiss.jpeg"
+          <a class="card reveal" data-type="business" href="img/businessportrait-laptop-stuhl-weiss.jpeg"
              data-title="Businessportrait am Laptop auf Weiß"
              data-cat="Business · Studio">
             <picture class="viewfinder">
-              <source type="image/webp" srcset="businessportrait-laptop-stuhl-weiss-800.webp">
-              <img src="businessportrait-laptop-stuhl-weiss-800.jpg" alt="Businessportrait mit Laptop auf einem Stuhl vor weißem Hintergrund" width="800" height="1200" loading="lazy" decoding="async">
+              <source type="image/webp" srcset="img/businessportrait-laptop-stuhl-weiss-800.webp">
+              <img src="img/businessportrait-laptop-stuhl-weiss-800.jpg" alt="Businessportrait mit Laptop auf einem Stuhl vor weißem Hintergrund" width="800" height="1200" loading="lazy" decoding="async">
             </picture>
             <div class="card__meta"><h3>Homeoffice</h3><p>Business · Studio</p></div>
           </a>
 
-          <a class="card reveal" data-type="business" href="fashionportrait-hocker-hemd-jeans.jpeg"
+          <a class="card reveal" data-type="business" href="img/fashionportrait-hocker-hemd-jeans.jpeg"
              data-title="Fashionportrait am Hocker"
              data-cat="Fashion · Studio">
             <picture class="viewfinder">
-              <source type="image/webp" srcset="fashionportrait-hocker-hemd-jeans-800.webp">
-              <img src="fashionportrait-hocker-hemd-jeans-800.jpg" alt="Fashionportrait in Hemd und Jeans an einem Holzhocker" width="800" height="1169" loading="lazy" decoding="async">
+              <source type="image/webp" srcset="img/fashionportrait-hocker-hemd-jeans-800.webp">
+              <img src="img/fashionportrait-hocker-hemd-jeans-800.jpg" alt="Fashionportrait in Hemd und Jeans an einem Holzhocker" width="800" height="1169" loading="lazy" decoding="async">
             </picture>
             <div class="card__meta"><h3>Am Hocker</h3><p>Fashion · Studio</p></div>
           </a>
 
-          <a class="card reveal is-hidden" data-type="business" href="victoria-friseur-salon-shooting.jpeg"
+          <a class="card reveal is-hidden" data-type="business" href="img/victoria-friseur-salon-shooting.jpeg"
              data-title="Businessshooting im Friseursalon"
              data-cat="Studio · Business">
             <picture class="viewfinder">
-              <source type="image/webp" srcset="victoria-friseur-salon-shooting-800.webp">
-              <img src="victoria-friseur-salon-shooting-800.jpg" alt="Victoria im Friseursalon" width="800" height="1238" loading="lazy" decoding="async">
+              <source type="image/webp" srcset="img/victoria-friseur-salon-shooting-800.webp">
+              <img src="img/victoria-friseur-salon-shooting-800.jpg" alt="Victoria im Friseursalon" width="800" height="1238" loading="lazy" decoding="async">
             </picture>
             <div class="card__meta"><h3>Im Salon</h3><p>Business · Friseursalon</p></div>
           </a>
 
-          <a class="card reveal is-hidden" data-type="business" href="businessportrait-bluse-floral-modern.jpeg"
+          <a class="card reveal is-hidden" data-type="business" href="img/businessportrait-bluse-floral-modern.jpeg"
              data-title="Businessportrait in floraler Bluse"
              data-cat="Business · Studio">
             <picture class="viewfinder">
-              <source type="image/webp" srcset="businessportrait-bluse-floral-modern-800.webp">
-              <img src="businessportrait-bluse-floral-modern-800.jpg" alt="Businessportrait in floraler Bluse vor heller Wand" width="800" height="1200" loading="lazy" decoding="async">
+              <source type="image/webp" srcset="img/businessportrait-bluse-floral-modern-800.webp">
+              <img src="img/businessportrait-bluse-floral-modern-800.jpg" alt="Businessportrait in floraler Bluse vor heller Wand" width="800" height="1200" loading="lazy" decoding="async">
             </picture>
             <div class="card__meta"><h3>Klare Linie</h3><p>Business · Studio</p></div>
           </a>
 
-          <a class="card reveal is-hidden" data-type="natur" href="naturshooting-rapsfeld-jeansjacke.jpeg"
+          <a class="card reveal is-hidden" data-type="natur" href="img/naturshooting-rapsfeld-jeansjacke.jpeg"
              data-title="Naturshooting im blühenden Rapsfeld"
              data-cat="Naturportrait · Rapsfeld">
             <picture class="viewfinder">
-              <source type="image/webp" srcset="naturshooting-rapsfeld-jeansjacke-800.webp">
-              <img src="naturshooting-rapsfeld-jeansjacke-800.jpg" alt="Frau in bestickter Jeansjacke im blühenden Rapsfeld" width="800" height="1000" loading="lazy" decoding="async">
+              <source type="image/webp" srcset="img/naturshooting-rapsfeld-jeansjacke-800.webp">
+              <img src="img/naturshooting-rapsfeld-jeansjacke-800.jpg" alt="Frau in bestickter Jeansjacke im blühenden Rapsfeld" width="800" height="1000" loading="lazy" decoding="async">
             </picture>
             <div class="card__meta"><h3>Rapsfeld</h3><p>Naturportrait · Rapsfeld</p></div>
           </a>
 
-          <a class="card reveal is-hidden" data-type="natur" href="rapsfeld-shooting-fruehling-portraet.jpeg"
+          <a class="card reveal is-hidden" data-type="natur" href="img/rapsfeld-shooting-fruehling-portraet.jpeg"
              data-title="Portrait im Rapsfeld im Frühling"
              data-cat="Naturportrait · Rapsfeld">
             <picture class="viewfinder">
-              <source type="image/webp" srcset="rapsfeld-shooting-fruehling-portraet-800.webp">
-              <img src="rapsfeld-shooting-fruehling-portraet-800.jpg" alt="Portrait zwischen gelben Rapsblüten im Frühling" width="800" height="1000" loading="lazy" decoding="async">
+              <source type="image/webp" srcset="img/rapsfeld-shooting-fruehling-portraet-800.webp">
+              <img src="img/rapsfeld-shooting-fruehling-portraet-800.jpg" alt="Portrait zwischen gelben Rapsblüten im Frühling" width="800" height="1000" loading="lazy" decoding="async">
             </picture>
             <div class="card__meta"><h3>Frühlingsgelb</h3><p>Naturportrait · Rapsfeld</p></div>
           </a>
 
-          <a class="card reveal is-hidden" data-type="natur" href="rapsfeld-shooting-blumen-liegend.jpeg"
+          <a class="card reveal is-hidden" data-type="natur" href="img/rapsfeld-shooting-blumen-liegend.jpeg"
              data-title="Shooting liegend im Rapsfeld"
              data-cat="Naturshooting · Rapsfeld">
             <picture class="viewfinder">
-              <source type="image/webp" srcset="rapsfeld-shooting-blumen-liegend-800.webp">
-              <img src="rapsfeld-shooting-blumen-liegend-800.jpg" alt="Frau liegt lachend zwischen Rapsblüten" width="800" height="1000" loading="lazy" decoding="async">
+              <source type="image/webp" srcset="img/rapsfeld-shooting-blumen-liegend-800.webp">
+              <img src="img/rapsfeld-shooting-blumen-liegend-800.jpg" alt="Frau liegt lachend zwischen Rapsblüten" width="800" height="1000" loading="lazy" decoding="async">
             </picture>
             <div class="card__meta"><h3>Mitten im Feld</h3><p>Naturshooting · Rapsfeld</p></div>
           </a>
 
-          <a class="card reveal is-hidden" data-type="natur" href="outdoor-portrait-birkenstamm-jeansjacke.jpeg"
+          <a class="card reveal is-hidden" data-type="natur" href="img/outdoor-portrait-birkenstamm-jeansjacke.jpeg"
              data-title="Outdoor-Portrait an der Birke"
              data-cat="Outdoor · Frühling">
             <picture class="viewfinder">
-              <source type="image/webp" srcset="outdoor-portrait-birkenstamm-jeansjacke-800.webp">
-              <img src="outdoor-portrait-birkenstamm-jeansjacke-800.jpg" alt="Portrait an einem Birkenstamm in bestickter Jeansjacke" width="800" height="1200" loading="lazy" decoding="async">
+              <source type="image/webp" srcset="img/outdoor-portrait-birkenstamm-jeansjacke-800.webp">
+              <img src="img/outdoor-portrait-birkenstamm-jeansjacke-800.jpg" alt="Portrait an einem Birkenstamm in bestickter Jeansjacke" width="800" height="1200" loading="lazy" decoding="async">
             </picture>
             <div class="card__meta"><h3>An der Birke</h3><p>Outdoor · Frühling</p></div>
           </a>
 
-          <a class="card reveal is-hidden" data-type="natur" href="portraetshooting-allee-strasse-sitzend.jpeg"
+          <a class="card reveal is-hidden" data-type="natur" href="img/portraetshooting-allee-strasse-sitzend.jpeg"
              data-title="Portraitshooting auf der Allee"
              data-cat="Outdoor · Allee">
             <picture class="viewfinder">
-              <source type="image/webp" srcset="portraetshooting-allee-strasse-sitzend-800.webp">
-              <img src="portraetshooting-allee-strasse-sitzend-800.jpg" alt="Frau sitzt auf einer leeren Allee im Sonnenlicht" width="800" height="1200" loading="lazy" decoding="async">
+              <source type="image/webp" srcset="img/portraetshooting-allee-strasse-sitzend-800.webp">
+              <img src="img/portraetshooting-allee-strasse-sitzend-800.jpg" alt="Frau sitzt auf einer leeren Allee im Sonnenlicht" width="800" height="1200" loading="lazy" decoding="async">
             </picture>
             <div class="card__meta"><h3>Auf der Allee</h3><p>Outdoor · Allee</p></div>
           </a>
 
-          <a class="card reveal is-hidden" data-type="natur" href="naturshooting-blumenwiese-portraet.jpeg"
+          <a class="card reveal is-hidden" data-type="natur" href="img/naturshooting-blumenwiese-portraet.jpeg"
              data-title="Naturshooting auf der Blumenwiese"
              data-cat="Naturportrait · Blumenwiese">
             <picture class="viewfinder">
-              <source type="image/webp" srcset="naturshooting-blumenwiese-portraet-800.webp">
-              <img src="naturshooting-blumenwiese-portraet-800.jpg" alt="Naturshooting auf der Blumenwiese" width="800" height="1000" loading="lazy" decoding="async">
+              <source type="image/webp" srcset="img/naturshooting-blumenwiese-portraet-800.webp">
+              <img src="img/naturshooting-blumenwiese-portraet-800.jpg" alt="Naturshooting auf der Blumenwiese" width="800" height="534" loading="lazy" decoding="async">
             </picture>
             <div class="card__meta"><h3>Blumenwiese</h3><p>Naturportrait · Frühling</p></div>
           </a>
 
-          <a class="card reveal is-hidden" data-type="natur" href="outdoor-portrait-glyzinien-fruehling.jpeg"
+          <a class="card reveal is-hidden" data-type="natur" href="img/outdoor-portrait-glyzinien-fruehling.jpeg"
              data-title="Outdoor-Portrait unter Glyzinien"
              data-cat="Outdoor · Frühling">
             <picture class="viewfinder">
-              <source type="image/webp" srcset="outdoor-portrait-glyzinien-fruehling-800.webp">
-              <img src="outdoor-portrait-glyzinien-fruehling-800.jpg" alt="Portrait unter blühenden Glyzinien im Frühling" width="800" height="1200" loading="lazy" decoding="async">
+              <source type="image/webp" srcset="img/outdoor-portrait-glyzinien-fruehling-800.webp">
+              <img src="img/outdoor-portrait-glyzinien-fruehling-800.jpg" alt="Portrait unter blühenden Glyzinien im Frühling" width="800" height="1200" loading="lazy" decoding="async">
             </picture>
             <div class="card__meta"><h3>Glyzinien</h3><p>Outdoor · Frühling</p></div>
           </a>
 
-          <a class="card reveal is-hidden" data-type="natur" href="outdoor-portrait-kunstjacke-gruen.jpeg"
+          <a class="card reveal is-hidden" data-type="natur" href="img/outdoor-portrait-kunstjacke-gruen.jpeg"
              data-title="Outdoor-Portrait mit Statement-Jacke"
              data-cat="Outdoor · Portrait">
             <picture class="viewfinder">
-              <source type="image/webp" srcset="outdoor-portrait-kunstjacke-gruen-800.webp">
-              <img src="outdoor-portrait-kunstjacke-gruen-800.jpg" alt="Portrait mit gemusterter Statement-Jacke im Grünen" width="800" height="1200" loading="lazy" decoding="async">
+              <source type="image/webp" srcset="img/outdoor-portrait-kunstjacke-gruen-800.webp">
+              <img src="img/outdoor-portrait-kunstjacke-gruen-800.jpg" alt="Portrait mit gemusterter Statement-Jacke im Grünen" width="800" height="1200" loading="lazy" decoding="async">
             </picture>
             <div class="card__meta"><h3>Statement</h3><p>Outdoor · Portrait</p></div>
           </a>
 
-          <a class="card reveal is-hidden" data-type="business" href="studio-portraet-ledersessel.jpeg"
-             data-title="Studioporträt auf Ledersessel"
-             data-cat="Studio · Editorial">
-            <picture class="viewfinder">
-              <source type="image/webp" srcset="studio-portraet-ledersessel-800.webp">
-              <img src="studio-portraet-ledersessel-800.jpg" alt="Studioporträt auf Ledersessel" width="800" height="1000" loading="lazy" decoding="async">
-            </picture>
-            <div class="card__meta"><h3>Editorial im Studio</h3><p>Studio · Editorial</p></div>
-          </a>
-
-          <a class="card reveal is-hidden" data-type="business" href="studio-portraet-schlapphut-weisses-hemd.jpeg"
-             data-title="Studioporträt mit Schlapphut"
-             data-cat="Studio · Editorial">
-            <picture class="viewfinder">
-              <source type="image/webp" srcset="studio-portraet-schlapphut-weisses-hemd-800.webp">
-              <img src="studio-portraet-schlapphut-weisses-hemd-800.jpg" alt="Studioporträt mit schwarzem Schlapphut und weißem Hemd" width="800" height="1200" loading="lazy" decoding="async">
-            </picture>
-            <div class="card__meta"><h3>Schlapphut</h3><p>Studio · Editorial</p></div>
-          </a>
-
-          <a class="card reveal is-hidden" data-type="business" href="studio-fashion-shooting-weiss.jpeg"
-             data-title="Fashion-Shooting im Studio auf Weiß"
-             data-cat="Studio · Fashion">
-            <picture class="viewfinder">
-              <source type="image/webp" srcset="studio-fashion-shooting-weiss-800.webp">
-              <img src="studio-fashion-shooting-weiss-800.jpg" alt="Fashion-Shooting im Studio auf Weiß" width="800" height="1000" loading="lazy" decoding="async">
-            </picture>
-            <div class="card__meta"><h3>Fashion auf Weiß</h3><p>Studio · Editorial</p></div>
-          </a>
-
-          <a class="card reveal is-hidden" data-type="natur" href="portraetshooting-rapsfeld.jpeg"
-             data-title="Portraitshooting im Rapsfeld"
-             data-cat="Naturportrait · Rapsfeld">
-            <picture class="viewfinder">
-              <source type="image/webp" srcset="portraetshooting-rapsfeld-800.webp">
-              <img src="portraetshooting-rapsfeld-800.jpg" alt="Portraitshooting im leuchtend gelben Rapsfeld" width="800" height="1000" loading="lazy" decoding="async">
-            </picture>
-            <div class="card__meta"><h3>Rapsfeld</h3><p>Naturportrait · Frühling</p></div>
-          </a>
-
-          <a class="card reveal is-hidden" data-type="natur" href="naturportraet-rapsfeld-junge-frau.jpeg"
-             data-title="Naturportrait im Rapsfeld"
-             data-cat="Naturportrait · Rapsfeld">
-            <picture class="viewfinder">
-              <source type="image/webp" srcset="naturportraet-rapsfeld-junge-frau-800.webp">
-              <img src="naturportraet-rapsfeld-junge-frau-800.jpg" alt="Junge Frau im blühenden Rapsfeld" width="800" height="1200" loading="lazy" decoding="async">
-            </picture>
-            <div class="card__meta"><h3>Sommerblick</h3><p>Naturportrait · Rapsfeld</p></div>
-          </a>
-
-          <a class="card reveal is-hidden" data-type="natur" href="portraetshooting-waldweg-sitzend.jpeg"
-             data-title="Portraitshooting am Waldweg"
-             data-cat="Outdoor · Waldweg">
-            <picture class="viewfinder">
-              <source type="image/webp" srcset="portraetshooting-waldweg-sitzend-800.webp">
-              <img src="portraetshooting-waldweg-sitzend-800.jpg" alt="Junge Frau sitzt auf einem sonnigen Waldweg" width="800" height="1200" loading="lazy" decoding="async">
-            </picture>
-            <div class="card__meta"><h3>Waldweg</h3><p>Outdoor · Waldweg</p></div>
-          </a>
-
-          <a class="card reveal is-hidden" data-type="natur" href="portraet-goldene-stunde-strohballen.jpeg"
+          <a class="card reveal is-hidden" data-type="natur" href="img/portraet-goldene-stunde-strohballen.jpeg"
              data-title="Naturportrait in der goldenen Stunde"
              data-cat="Naturportrait · Strohballen">
             <picture class="viewfinder">
-              <source type="image/webp" srcset="portraet-goldene-stunde-strohballen-800.webp">
-              <img src="portraet-goldene-stunde-strohballen-800.jpg" alt="Naturportrait auf dem Feld in der goldenen Stunde" width="800" height="1000" loading="lazy" decoding="async">
+              <source type="image/webp" srcset="img/portraet-goldene-stunde-strohballen-800.webp">
+              <img src="img/portraet-goldene-stunde-strohballen-800.jpg" alt="Naturportrait auf dem Feld in der goldenen Stunde" width="800" height="1200" loading="lazy" decoding="async">
             </picture>
             <div class="card__meta"><h3>Goldene Stunde</h3><p>Naturportrait · Strohballen</p></div>
           </a>
 
-          <a class="card reveal is-hidden" data-type="natur" href="cowgirl-shooting-strohballen-feld.jpeg"
+          <a class="card reveal is-hidden" data-type="natur" href="img/cowgirl-shooting-strohballen-feld.jpeg"
              data-title="Cowgirl-Shooting am Strohballenfeld"
              data-cat="Kreativshooting · Cowgirl">
             <picture class="viewfinder">
-              <source type="image/webp" srcset="cowgirl-shooting-strohballen-feld-800.webp">
-              <img src="cowgirl-shooting-strohballen-feld-800.jpg" alt="Cowgirl-Shooting im Strohballenfeld" width="800" height="1000" loading="lazy" decoding="async">
+              <source type="image/webp" srcset="img/cowgirl-shooting-strohballen-feld-800.webp">
+              <img src="img/cowgirl-shooting-strohballen-feld-800.jpg" alt="Cowgirl-Shooting im Strohballenfeld" width="800" height="534" loading="lazy" decoding="async">
             </picture>
             <div class="card__meta"><h3>Cowgirl im Feld</h3><p>Kreativshooting</p></div>
           </a>
 
-          <a class="card reveal is-hidden" data-type="natur" href="blaue-stunde-shooting-strohballen.jpeg"
+          <a class="card reveal is-hidden" data-type="natur" href="img/blaue-stunde-shooting-strohballen.jpeg"
              data-title="Blaue Stunde am Strohballenfeld"
              data-cat="Naturportrait · Blaue Stunde">
             <picture class="viewfinder">
-              <source type="image/webp" srcset="blaue-stunde-shooting-strohballen-800.webp">
-              <img src="blaue-stunde-shooting-strohballen-800.jpg" alt="Portrait in der blauen Stunde am Strohballen" width="800" height="1000" loading="lazy" decoding="async">
+              <source type="image/webp" srcset="img/blaue-stunde-shooting-strohballen-800.webp">
+              <img src="img/blaue-stunde-shooting-strohballen-800.jpg" alt="Portrait in der blauen Stunde am Strohballen" width="800" height="1200" loading="lazy" decoding="async">
             </picture>
             <div class="card__meta"><h3>Blaue Stunde</h3><p>Naturportrait · Strohballen</p></div>
           </a>
 
-          <a class="card reveal is-hidden" data-type="natur" href="sommershooting-getreidefeld-lachen.jpeg"
+          <a class="card reveal is-hidden" data-type="natur" href="img/sommershooting-getreidefeld-lachen.jpeg"
              data-title="Sommershooting im Getreidefeld"
              data-cat="Naturportrait · Sommer">
             <picture class="viewfinder">
-              <source type="image/webp" srcset="sommershooting-getreidefeld-lachen-800.webp">
-              <img src="sommershooting-getreidefeld-lachen-800.jpg" alt="Lachendes Sommershooting im Getreidefeld" width="800" height="1000" loading="lazy" decoding="async">
+              <source type="image/webp" srcset="img/sommershooting-getreidefeld-lachen-800.webp">
+              <img src="img/sommershooting-getreidefeld-lachen-800.jpg" alt="Lachendes Sommershooting im Getreidefeld" width="800" height="1200" loading="lazy" decoding="async">
             </picture>
             <div class="card__meta"><h3>Sommer, laut</h3><p>Naturportrait · Getreidefeld</p></div>
           </a>
 
-          <a class="card reveal is-hidden" data-type="natur" href="schwarzweiss-shooting-feld-portraet.jpeg"
+          <a class="card reveal is-hidden" data-type="natur" href="img/schwarzweiss-shooting-feld-portraet.jpeg"
              data-title="Schwarz-Weiß-Portrait am Feld"
              data-cat="Naturportrait · Schwarz-Weiß">
             <picture class="viewfinder">
-              <source type="image/webp" srcset="schwarzweiss-shooting-feld-portraet-800.webp">
-              <img src="schwarzweiss-shooting-feld-portraet-800.jpg" alt="Schwarz-Weiß-Portrait am Feld" width="800" height="1000" loading="lazy" decoding="async">
+              <source type="image/webp" srcset="img/schwarzweiss-shooting-feld-portraet-800.webp">
+              <img src="img/schwarzweiss-shooting-feld-portraet-800.jpg" alt="Schwarz-Weiß-Portrait am Feld" width="800" height="1200" loading="lazy" decoding="async">
             </picture>
             <div class="card__meta"><h3>Schwarz &amp; Weiß</h3><p>Naturportrait · Feldmark</p></div>
           </a>
 
-          <a class="card reveal is-hidden" data-type="natur" href="portraetshooting-strohballen-abendlicht.jpeg"
+          <a class="card reveal is-hidden" data-type="natur" href="img/portraetshooting-strohballen-abendlicht.jpeg"
              data-title="Portrait im Abendlicht"
              data-cat="Strohballen · Feldmark">
             <picture class="viewfinder">
-              <source type="image/webp" srcset="portraetshooting-strohballen-abendlicht-800.webp">
-              <img src="portraetshooting-strohballen-abendlicht-800.jpg" alt="Portrait im Abendlicht am Strohballen" width="800" height="1000" loading="lazy" decoding="async">
+              <source type="image/webp" srcset="img/portraetshooting-strohballen-abendlicht-800.webp">
+              <img src="img/portraetshooting-strohballen-abendlicht-800.jpg" alt="Portrait im Abendlicht am Strohballen" width="800" height="1200" loading="lazy" decoding="async">
             </picture>
             <div class="card__meta"><h3>Abendlicht</h3><p>Strohballen · Feldmark</p></div>
           </a>
 
-          <a class="card reveal is-hidden" data-type="natur" href="kreatives-shooting-cowboyhut-stroh.jpeg"
+          <a class="card reveal is-hidden" data-type="natur" href="img/kreatives-shooting-cowboyhut-stroh.jpeg"
              data-title="Kreativshooting mit Cowboyhut"
              data-cat="Kreativshooting · Stroh">
             <picture class="viewfinder">
-              <source type="image/webp" srcset="kreatives-shooting-cowboyhut-stroh-800.webp">
-              <img src="kreatives-shooting-cowboyhut-stroh-800.jpg" alt="Kreativshooting mit Cowboyhut" width="800" height="1000" loading="lazy" decoding="async">
+              <source type="image/webp" srcset="img/kreatives-shooting-cowboyhut-stroh-800.webp">
+              <img src="img/kreatives-shooting-cowboyhut-stroh-800.jpg" alt="Kreativshooting mit Cowboyhut" width="800" height="1200" loading="lazy" decoding="async">
             </picture>
             <div class="card__meta"><h3>Cowboyhut</h3><p>Kreativshooting · Stroh</p></div>
           </a>
 
-          <a class="card reveal is-hidden" data-type="natur" href="fotoshooting-cowgirl-stroh.jpeg"
+          <a class="card reveal is-hidden" data-type="natur" href="img/fotoshooting-cowgirl-stroh.jpeg"
              data-title="Cowgirl-Shooting im Stroh"
              data-cat="Kreativshooting · Cowgirl">
             <picture class="viewfinder">
-              <source type="image/webp" srcset="fotoshooting-cowgirl-stroh-800.webp">
-              <img src="fotoshooting-cowgirl-stroh-800.jpg" alt="Cowgirl-Shooting im Stroh" width="800" height="1000" loading="lazy" decoding="async">
+              <source type="image/webp" srcset="img/fotoshooting-cowgirl-stroh-800.webp">
+              <img src="img/fotoshooting-cowgirl-stroh-800.jpg" alt="Cowgirl-Shooting im Stroh" width="800" height="1200" loading="lazy" decoding="async">
             </picture>
             <div class="card__meta"><h3>Cowgirl im Stroh</h3><p>Kreativshooting</p></div>
           </a>
 
-          <a class="card reveal is-hidden" data-type="natur" href="portraetshooting-kornfeld-cowboyhut.jpeg"
+          <a class="card reveal is-hidden" data-type="natur" href="img/portraetshooting-kornfeld-cowboyhut.jpeg"
              data-title="Portrait im Kornfeld mit Cowboyhut"
              data-cat="Kornfeld · Cowboyhut">
             <picture class="viewfinder">
-              <source type="image/webp" srcset="portraetshooting-kornfeld-cowboyhut-800.webp">
-              <img src="portraetshooting-kornfeld-cowboyhut-800.jpg" alt="Portrait im Kornfeld mit Cowboyhut" width="800" height="1000" loading="lazy" decoding="async">
+              <source type="image/webp" srcset="img/portraetshooting-kornfeld-cowboyhut-800.webp">
+              <img src="img/portraetshooting-kornfeld-cowboyhut-800.jpg" alt="Portrait im Kornfeld mit Cowboyhut" width="800" height="1200" loading="lazy" decoding="async">
             </picture>
             <div class="card__meta"><h3>Kornfeld</h3><p>Naturportrait · Cowboyhut</p></div>
           </a>
 
-          <a class="card reveal is-hidden" data-type="natur" href="naturshooting-strohballen-nachdenklich.jpeg"
+          <a class="card reveal is-hidden" data-type="natur" href="img/naturshooting-strohballen-nachdenklich.jpeg"
              data-title="Nachdenklicher Blick am Strohballen"
              data-cat="Naturshooting · Stroh">
             <picture class="viewfinder">
-              <source type="image/webp" srcset="naturshooting-strohballen-nachdenklich-800.webp">
-              <img src="naturshooting-strohballen-nachdenklich-800.jpg" alt="Nachdenklicher Blick am Strohballen" width="800" height="1000" loading="lazy" decoding="async">
+              <source type="image/webp" srcset="img/naturshooting-strohballen-nachdenklich-800.webp">
+              <img src="img/naturshooting-strohballen-nachdenklich-800.jpg" alt="Nachdenklicher Blick am Strohballen" width="800" height="1200" loading="lazy" decoding="async">
             </picture>
             <div class="card__meta"><h3>Nachdenklich</h3><p>Naturshooting · Stroh</p></div>
           </a>
 
-          <a class="card reveal is-hidden" data-type="natur" href="fotoshooting-strohballen-rollen.jpeg"
+          <a class="card reveal is-hidden" data-type="natur" href="img/fotoshooting-strohballen-rollen.jpeg"
              data-title="Strohballen im Feld"
              data-cat="Naturshooting · Feldmark">
             <picture class="viewfinder">
-              <source type="image/webp" srcset="fotoshooting-strohballen-rollen-800.webp">
-              <img src="fotoshooting-strohballen-rollen-800.jpg" alt="Strohballen im Feld" width="800" height="1000" loading="lazy" decoding="async">
+              <source type="image/webp" srcset="img/fotoshooting-strohballen-rollen-800.webp">
+              <img src="img/fotoshooting-strohballen-rollen-800.jpg" alt="Strohballen im Feld" width="800" height="534" loading="lazy" decoding="async">
             </picture>
             <div class="card__meta"><h3>Strohballen</h3><p>Naturshooting · Feldmark</p></div>
           </a>
 
-          <a class="card reveal is-hidden" data-type="natur" href="sommershooting-am-see-abendlicht.jpeg"
+          <a class="card reveal is-hidden" data-type="business" href="img/studio-portraet-ledersessel.jpeg"
+             data-title="Studioporträt auf Ledersessel"
+             data-cat="Studio · Editorial">
+            <picture class="viewfinder">
+              <source type="image/webp" srcset="img/studio-portraet-ledersessel-800.webp">
+              <img src="img/studio-portraet-ledersessel-800.jpg" alt="Studioporträt auf Ledersessel" width="800" height="1200" loading="lazy" decoding="async">
+            </picture>
+            <div class="card__meta"><h3>Editorial im Studio</h3><p>Studio · Editorial</p></div>
+          </a>
+
+          <a class="card reveal is-hidden" data-type="business" href="img/studio-portraet-schlapphut-weisses-hemd.jpeg"
+             data-title="Studioporträt mit Schlapphut"
+             data-cat="Studio · Editorial">
+            <picture class="viewfinder">
+              <source type="image/webp" srcset="img/studio-portraet-schlapphut-weisses-hemd-800.webp">
+              <img src="img/studio-portraet-schlapphut-weisses-hemd-800.jpg" alt="Studioporträt mit schwarzem Schlapphut und weißem Hemd" width="800" height="1200" loading="lazy" decoding="async">
+            </picture>
+            <div class="card__meta"><h3>Schlapphut</h3><p>Studio · Editorial</p></div>
+          </a>
+
+          <a class="card reveal is-hidden" data-type="business" href="img/studio-fashion-shooting-weiss.jpeg"
+             data-title="Fashion-Shooting im Studio auf Weiß"
+             data-cat="Studio · Fashion">
+            <picture class="viewfinder">
+              <source type="image/webp" srcset="img/studio-fashion-shooting-weiss-800.webp">
+              <img src="img/studio-fashion-shooting-weiss-800.jpg" alt="Fashion-Shooting im Studio auf Weiß" width="800" height="441" loading="lazy" decoding="async">
+            </picture>
+            <div class="card__meta"><h3>Fashion auf Weiß</h3><p>Studio · Editorial</p></div>
+          </a>
+
+          <a class="card reveal is-hidden" data-type="natur" href="img/portraetshooting-rapsfeld.jpeg"
+             data-title="Portraitshooting im Rapsfeld"
+             data-cat="Naturportrait · Rapsfeld">
+            <picture class="viewfinder">
+              <source type="image/webp" srcset="img/portraetshooting-rapsfeld-800.webp">
+              <img src="img/portraetshooting-rapsfeld-800.jpg" alt="Portraitshooting im leuchtend gelben Rapsfeld" width="800" height="1200" loading="lazy" decoding="async">
+            </picture>
+            <div class="card__meta"><h3>Rapsfeld</h3><p>Naturportrait · Frühling</p></div>
+          </a>
+
+          <a class="card reveal is-hidden" data-type="natur" href="img/naturportraet-rapsfeld-junge-frau.jpeg"
+             data-title="Naturportrait im Rapsfeld"
+             data-cat="Naturportrait · Rapsfeld">
+            <picture class="viewfinder">
+              <source type="image/webp" srcset="img/naturportraet-rapsfeld-junge-frau-800.webp">
+              <img src="img/naturportraet-rapsfeld-junge-frau-800.jpg" alt="Junge Frau im blühenden Rapsfeld" width="800" height="1200" loading="lazy" decoding="async">
+            </picture>
+            <div class="card__meta"><h3>Sommerblick</h3><p>Naturportrait · Rapsfeld</p></div>
+          </a>
+
+          <a class="card reveal is-hidden" data-type="natur" href="img/portraetshooting-waldweg-sitzend.jpeg"
+             data-title="Portraitshooting am Waldweg"
+             data-cat="Outdoor · Waldweg">
+            <picture class="viewfinder">
+              <source type="image/webp" srcset="img/portraetshooting-waldweg-sitzend-800.webp">
+              <img src="img/portraetshooting-waldweg-sitzend-800.jpg" alt="Junge Frau sitzt auf einem sonnigen Waldweg" width="800" height="1200" loading="lazy" decoding="async">
+            </picture>
+            <div class="card__meta"><h3>Waldweg</h3><p>Outdoor · Waldweg</p></div>
+          </a>
+
+          <a class="card reveal is-hidden" data-type="natur" href="img/sommershooting-am-see-abendlicht.jpeg"
              data-title="Sommershooting am See im Abendlicht"
              data-cat="Sommershooting · See">
             <picture class="viewfinder">
-              <source type="image/webp" srcset="sommershooting-am-see-abendlicht-800.webp">
-              <img src="sommershooting-am-see-abendlicht-800.jpg" alt="Lachendes Portrait am See im Abendlicht" width="800" height="1000" loading="lazy" decoding="async">
+              <source type="image/webp" srcset="img/sommershooting-am-see-abendlicht-800.webp">
+              <img src="img/sommershooting-am-see-abendlicht-800.jpg" alt="Lachendes Portrait am See im Abendlicht" width="800" height="1000" loading="lazy" decoding="async">
             </picture>
             <div class="card__meta"><h3>Am See</h3><p>Sommershooting · See</p></div>
           </a>
 
-          <a class="card reveal is-hidden" data-type="natur" href="shooting-am-see-sonnenuntergang-wasser.jpeg"
+          <a class="card reveal is-hidden" data-type="natur" href="img/shooting-am-see-sonnenuntergang-wasser.jpeg"
              data-title="Kreativshooting auf dem Wasser im Sonnenuntergang"
              data-cat="Kreativshooting · See">
             <picture class="viewfinder">
-              <source type="image/webp" srcset="shooting-am-see-sonnenuntergang-wasser-800.webp">
-              <img src="shooting-am-see-sonnenuntergang-wasser-800.jpg" alt="Frau im Sommerkleid auf dem Wasser bei Sonnenuntergang" width="800" height="1200" loading="lazy" decoding="async">
+              <source type="image/webp" srcset="img/shooting-am-see-sonnenuntergang-wasser-800.webp">
+              <img src="img/shooting-am-see-sonnenuntergang-wasser-800.jpg" alt="Frau im Sommerkleid auf dem Wasser bei Sonnenuntergang" width="800" height="1200" loading="lazy" decoding="async">
             </picture>
             <div class="card__meta"><h3>Auf dem Wasser</h3><p>Kreativshooting · See</p></div>
           </a>
 
-          <a class="card reveal is-hidden" data-type="natur" href="naturportraet-am-see-strauss-abendlicht.jpeg"
+          <a class="card reveal is-hidden" data-type="natur" href="img/naturportraet-am-see-strauss-abendlicht.jpeg"
              data-title="Naturportrait mit Strauß am See"
              data-cat="Naturportrait · See">
             <picture class="viewfinder">
-              <source type="image/webp" srcset="naturportraet-am-see-strauss-abendlicht-800.webp">
-              <img src="naturportraet-am-see-strauss-abendlicht-800.jpg" alt="Portrait mit grünem Strauß am See im Abendlicht" width="800" height="1200" loading="lazy" decoding="async">
+              <source type="image/webp" srcset="img/naturportraet-am-see-strauss-abendlicht-800.webp">
+              <img src="img/naturportraet-am-see-strauss-abendlicht-800.jpg" alt="Portrait mit grünem Strauß am See im Abendlicht" width="800" height="1200" loading="lazy" decoding="async">
             </picture>
             <div class="card__meta"><h3>Grünes Bouquet</h3><p>Naturportrait · See</p></div>
           </a>
 
-          <a class="card reveal is-hidden" data-type="familie" href="familienshooting-sonnenuntergang-see.jpeg"
+          <a class="card reveal is-hidden" data-type="familie" href="img/familienshooting-sonnenuntergang-see.jpeg"
              data-title="Familienshooting am See im Sonnenuntergang"
              data-cat="Familie · See">
             <picture class="viewfinder">
-              <source type="image/webp" srcset="familienshooting-sonnenuntergang-see.webp">
-              <img src="familienshooting-sonnenuntergang-see.jpeg" alt="Familienshooting am See im Sonnenuntergang" width="800" height="1000" loading="lazy" decoding="async">
+              <source type="image/webp" srcset="img/familienshooting-sonnenuntergang-see.webp">
+              <img src="img/familienshooting-sonnenuntergang-see.jpeg" alt="Familienshooting am See im Sonnenuntergang" width="561" height="841" loading="lazy" decoding="async">
             </picture>
             <div class="card__meta"><h3>Familie am See</h3><p>Familie · Draußen</p></div>
           </a>
 
-          <a class="card reveal is-hidden" data-type="familie" href="freundinnen-shooting-see-sonnenuntergang.jpeg"
+          <a class="card reveal is-hidden" data-type="familie" href="img/freundinnen-shooting-see-sonnenuntergang.jpeg"
              data-title="Freundinnen-Shooting am See im Sonnenuntergang"
              data-cat="Freundinnen · Sonnenuntergang">
             <picture class="viewfinder">
-              <source type="image/webp" srcset="freundinnen-shooting-see-sonnenuntergang-800.webp">
-              <img src="freundinnen-shooting-see-sonnenuntergang-800.jpg" alt="Zwei Frauen am See im Gegenlicht des Sonnenuntergangs" width="800" height="1000" loading="lazy" decoding="async">
+              <source type="image/webp" srcset="img/freundinnen-shooting-see-sonnenuntergang-800.webp">
+              <img src="img/freundinnen-shooting-see-sonnenuntergang-800.jpg" alt="Zwei Frauen am See im Gegenlicht des Sonnenuntergangs" width="800" height="1000" loading="lazy" decoding="async">
             </picture>
             <div class="card__meta"><h3>Zu zweit</h3><p>Freundinnen · Sonnenuntergang</p></div>
           </a>
@@ -833,8 +833,8 @@
       <div class="container quote__wrap">
         <figure class="quote__photo reveal" aria-hidden="true">
           <picture>
-            <source type="image/webp" srcset="nahportraet-getreidefeld-800.webp">
-            <img src="nahportraet-getreidefeld-800.jpg" alt="" width="600" height="800" loading="lazy" decoding="async">
+            <source type="image/webp" srcset="img/nahportraet-getreidefeld-800.webp">
+            <img src="img/nahportraet-getreidefeld-800.jpg" alt="" width="800" height="1200" loading="lazy" decoding="async">
           </picture>
           <figcaption>Anastasia, Kundin</figcaption>
         </figure>
@@ -855,8 +855,8 @@
     <section class="cta-banner" aria-labelledby="cta-mid-title">
       <div class="cta-banner__bg" aria-hidden="true">
         <picture>
-          <source type="image/webp" srcset="fotoshooting-strohballen-sonnenuntergang-800.webp">
-          <img src="fotoshooting-strohballen-sonnenuntergang-800.jpg" alt="" loading="lazy" decoding="async">
+          <source type="image/webp" srcset="img/fotoshooting-strohballen-sonnenuntergang-800.webp">
+          <img src="img/fotoshooting-strohballen-sonnenuntergang-800.jpg" alt="" loading="lazy" decoding="async">
         </picture>
       </div>
       <div class="container cta-banner__inner">
@@ -872,12 +872,12 @@
     <section class="about section" id="ueber-mich" aria-labelledby="ueber-title">
       <div class="container about__grid">
         <a class="about__img lb-item reveal viewfinder viewfinder--static"
-           href="maria-portraet-ueber-mich.jpeg"
+           href="img/maria-portraet-ueber-mich.jpeg"
            data-title="Maria im Studio"
            data-cat="Über mich">
           <picture>
-            <source type="image/webp" srcset="maria-portraet-ueber-mich-500.webp">
-            <img src="maria-portraet-ueber-mich-500.jpg" alt="Maria, Fotografin und Videografin" width="500" height="739" loading="lazy" decoding="async">
+            <source type="image/webp" srcset="img/maria-portraet-ueber-mich-500.webp">
+            <img src="img/maria-portraet-ueber-mich-500.jpg" alt="Maria, Fotografin und Videografin" width="500" height="739" loading="lazy" decoding="async">
           </picture>
         </a>
         <div class="about__text">
@@ -983,8 +983,8 @@
 
           <figure class="tilt-photo tilt-photo--faq tilt-photo--right reveal" aria-hidden="true">
             <picture>
-              <source type="image/webp" srcset="naturshooting-strohballen-nachdenklich-800.webp">
-              <img src="naturshooting-strohballen-nachdenklich-800.jpg" alt="" width="800" height="1000" loading="lazy" decoding="async">
+              <source type="image/webp" srcset="img/naturshooting-strohballen-nachdenklich-800.webp">
+              <img src="img/naturshooting-strohballen-nachdenklich-800.jpg" alt="" width="800" height="1200" loading="lazy" decoding="async">
             </picture>
             <figcaption>Fragen? Wir klären das vorab.</figcaption>
           </figure>
@@ -1062,7 +1062,7 @@
   <footer class="footer">
     <div class="container footer__inner">
       <a href="#top" class="nav__logo footer__logo" aria-label="Maria Visuals · nach oben">
-        <img src="Maria-Visuals-Logo-1-480.png" alt="Maria Visuals" width="240" height="86" decoding="async">
+        <img src="img/Maria-Visuals-Logo-1-480.png" alt="Maria Visuals" width="240" height="86" decoding="async">
       </a>
       <nav class="footer__links" aria-label="Fußzeile">
         <a href="#leistungen">Leistungen</a>
