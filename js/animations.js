@@ -113,10 +113,12 @@
     gsap.utils.toArray(".card").forEach(function (card) {
       var img = card.querySelector("img");
       if (!img) return;
+      // ±4 % passen in den Überstand aus style.css (Bild 110 % hoch, -5 % oben).
+      // Ein größerer Weg schöbe im Masonry die Bildkante ins Bild.
       gsap.fromTo(img,
-        { yPercent: -6 },
+        { yPercent: -4 },
         {
-          yPercent: 6,
+          yPercent: 4,
           ease: "none",
           scrollTrigger: {
             trigger: card,

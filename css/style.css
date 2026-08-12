@@ -890,6 +890,29 @@ body.is-ready .hero__title .line:nth-child(2) span { transition-delay: 80ms; }
 
 .work__grid .card { width: 100%; margin: 0; }
 
+/* ---------- Masonry ----------
+   Standard bleibt das gleichmäßige Raster oben: ohne JavaScript stehen alle
+   Karten im 4:5-Format und nichts kann überlappen. Läuft JS, setzt
+   js/main.js die Klasse .is-masonry, gibt jeder Karte ihr echtes
+   Seitenverhältnis (--ar aus width/height des Bildes) und die Zahl der
+   Rasterzeilen, die sie belegt (--span). Querformate bleiben dann quer und
+   werden nicht mehr auf Hochformat beschnitten. */
+.work__grid.is-masonry {
+  grid-auto-rows: 8px;
+  align-items: start;   /* Karten behalten ihre Inhaltshöhe, sonst misst der Span sich selbst */
+}
+
+.work__grid.is-masonry .card { grid-row-end: span var(--span, 40); }
+
+.work__grid.is-masonry .card picture { aspect-ratio: var(--ar, 4 / 5); }
+
+/* Eine Karte pro Zeile: der Höhenausgleich entfällt, das Raster stapelt
+   ohnehin. Spans würden hier nur Lücken erzeugen. */
+@media (max-width: 520px) {
+  .work__grid.is-masonry { grid-auto-rows: auto; }
+  .work__grid.is-masonry .card { grid-row-end: auto; }
+}
+
 /* Warten auf neue Bilder: das Raster tritt kurz zurück, statt leere
    Kästen zu zeigen. Bedienbar bleibt es, nur der Zeiger meldet Arbeit. */
 .work__grid.is-switching {
@@ -923,12 +946,15 @@ body.is-ready .hero__title .line:nth-child(2) span { transition-delay: 80ms; }
   aspect-ratio: 4 / 5;
 }
 
+/* Der Überstand ist der Spielraum für den Parallax in js/animations.js
+   (±4 %). Er war früher doppelt so groß – im Masonry zeigt jede Karte ihr
+   echtes Seitenverhältnis, da soll so wenig wie möglich vom Bild wegfallen. */
 .card img {
   position: absolute;
-  top: -10%;
+  top: -5%;
   left: 0;
   width: 100%;
-  height: 120%;
+  height: 110%;
   object-fit: cover;
   display: block;
   transition: opacity 700ms var(--ease-out);
