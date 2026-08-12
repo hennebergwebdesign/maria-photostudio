@@ -956,6 +956,34 @@ body.is-ready .hero__title .line:nth-child(2) span { transition-delay: 80ms; }
   color: var(--accent);
 }
 
+/* Seitennavigation unter dem Raster. Die Knöpfe nutzen bewusst dieselbe
+   .chip-Optik wie die Filter darüber – zwei Bedienleisten in einem Bild. */
+.work__pager {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: var(--sp-8);
+}
+
+.work__pager[hidden] { display: none; }
+
+.chip--page {
+  min-width: 44px;
+  justify-content: center;
+  padding: 0 var(--sp-3);
+  font-variant-numeric: tabular-nums;
+}
+
+.chip--step { padding: 0 var(--sp-4); }
+
+.chip:disabled {
+  opacity: 0.4;
+  cursor: default;
+  pointer-events: none;
+}
+
 .work__note {
   margin: var(--sp-8) auto 0;
   display: flex;

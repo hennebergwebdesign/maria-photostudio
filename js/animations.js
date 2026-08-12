@@ -279,6 +279,23 @@
     var stateBefore = null;
     var heightBefore = 0;
 
+    // Karten auf einer späteren Seite haben ihren Reveal-Trigger nie erreicht
+    // und stehen deshalb noch auf opacity 0 / visibility hidden. Nach jedem
+    // Filter- oder Seitenwechsel gilt: was im Raster steht, ist auch sichtbar.
+    // visibility wird bewusst ausgeschrieben statt über autoAlpha gesetzt –
+    // autoAlpha merkt sich den Ausgangswert und stellt sonst "hidden" wieder her.
+    function showCurrentCards() {
+      var shown = grid.querySelectorAll(".card:not(.is-hidden)");
+      if (shown.length) gsap.set(shown, { opacity: 1, visibility: "inherit", y: 0 });
+    }
+
+    document.addEventListener("maria:filter", function () {
+      showCurrentCards();
+      // Bei aktiver Flip-Animation räumt deren onComplete auf; ohne sie
+      // müssen die Scroll-Trigger hier neu vermessen werden.
+      if (reduced()) ScrollTrigger.refresh();
+    });
+
     document.addEventListener("maria:filter-before", function () {
       if (reduced()) return;
       stateBefore = Flip.getState(grid.querySelectorAll(".card"));
@@ -302,15 +319,18 @@
         stagger: 0.03,
         onEnter: function (els) {
           return gsap.fromTo(els,
-            { autoAlpha: 0, scale: 0.92 },
-            { autoAlpha: 1, scale: 1, duration: 0.45 }
+            { opacity: 0, scale: 0.92, visibility: "inherit" },
+            { opacity: 1, scale: 1, duration: 0.45 }
           );
         },
         onLeave: function (els) {
-          return gsap.to(els, { autoAlpha: 0, scale: 0.92, duration: 0.3 });
+          // Nur ausblenden, nicht verstecken: dieselben Karten kommen beim
+          // Zurückblättern wieder und dürfen kein visibility:hidden behalten.
+          return gsap.to(els, { opacity: 0, scale: 0.92, duration: 0.3 });
         },
         onComplete: function () {
           gsap.set(grid, { clearProps: "height" });
+          showCurrentCards();
           ScrollTrigger.refresh();
         }
       });

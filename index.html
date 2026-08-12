@@ -54,8 +54,10 @@
   <link rel="preconnect" href="https://p.typekit.net" crossorigin>
   <link rel="stylesheet" href="https://use.typekit.net/afi5tod.css">
 
-  <link rel="stylesheet" href="css/style.min.css?v=20260805f">
-  <noscript><style>.reveal { opacity: 1; transform: none; }</style></noscript>
+  <link rel="stylesheet" href="css/style.min.css?v=20260812a">
+  <noscript><style>.reveal { opacity: 1; transform: none; }
+    /* Ohne JS gibt es kein Blättern – dann steht das gesamte Portfolio auf einer Seite. */
+    .work__grid .card.is-hidden { display: inline-block; }</style></noscript>
 
   <!-- Consent Mode v2 Default + Cookie-Banner: bewusst so früh wie möglich
        geladen, damit der "denied"-Default steht, bevor irgendein anderes
@@ -493,7 +495,7 @@
             <div class="card__meta"><h3>Cowboyhut</h3><p>Kreativshooting · Stroh</p></div>
           </a>
 
-          <a class="card reveal" data-type="natur" href="fotoshooting-cowgirl-stroh.jpeg"
+          <a class="card reveal is-hidden" data-type="natur" href="fotoshooting-cowgirl-stroh.jpeg"
              data-title="Cowgirl-Shooting im Stroh"
              data-cat="Kreativshooting · Cowgirl">
             <picture class="viewfinder">
@@ -503,7 +505,7 @@
             <div class="card__meta"><h3>Cowgirl im Stroh</h3><p>Kreativshooting</p></div>
           </a>
 
-          <a class="card reveal" data-type="natur" href="portraetshooting-kornfeld-cowboyhut.jpeg"
+          <a class="card reveal is-hidden" data-type="natur" href="portraetshooting-kornfeld-cowboyhut.jpeg"
              data-title="Portrait im Kornfeld mit Cowboyhut"
              data-cat="Kornfeld · Cowboyhut">
             <picture class="viewfinder">
@@ -513,7 +515,7 @@
             <div class="card__meta"><h3>Kornfeld</h3><p>Naturportrait · Cowboyhut</p></div>
           </a>
 
-          <a class="card reveal" data-type="natur" href="naturshooting-strohballen-nachdenklich.jpeg"
+          <a class="card reveal is-hidden" data-type="natur" href="naturshooting-strohballen-nachdenklich.jpeg"
              data-title="Nachdenklicher Blick am Strohballen"
              data-cat="Naturshooting · Stroh">
             <picture class="viewfinder">
@@ -523,7 +525,7 @@
             <div class="card__meta"><h3>Nachdenklich</h3><p>Naturshooting · Stroh</p></div>
           </a>
 
-          <a class="card reveal" data-type="natur" href="fotoshooting-strohballen-rollen.jpeg"
+          <a class="card reveal is-hidden" data-type="natur" href="fotoshooting-strohballen-rollen.jpeg"
              data-title="Strohballen im Feld"
              data-cat="Naturshooting · Feldmark">
             <picture class="viewfinder">
@@ -533,7 +535,7 @@
             <div class="card__meta"><h3>Strohballen</h3><p>Naturshooting · Feldmark</p></div>
           </a>
 
-          <a class="card reveal" data-type="studio" href="victoria-friseur-salon-shooting.jpeg"
+          <a class="card reveal is-hidden" data-type="studio" href="victoria-friseur-salon-shooting.jpeg"
              data-title="Businessshooting im Friseursalon"
              data-cat="Studio · Business">
             <picture class="viewfinder">
@@ -543,7 +545,7 @@
             <div class="card__meta"><h3>Im Salon</h3><p>Business · Friseursalon</p></div>
           </a>
 
-          <a class="card reveal" data-type="natur" href="naturshooting-rapsfeld-jeansjacke.jpeg"
+          <a class="card reveal is-hidden" data-type="natur" href="naturshooting-rapsfeld-jeansjacke.jpeg"
              data-title="Naturshooting im blühenden Rapsfeld"
              data-cat="Naturportrait · Rapsfeld">
             <picture class="viewfinder">
@@ -553,7 +555,7 @@
             <div class="card__meta"><h3>Rapsfeld</h3><p>Naturportrait · Rapsfeld</p></div>
           </a>
 
-          <a class="card reveal" data-type="natur" href="rapsfeld-shooting-fruehling-portraet.jpeg"
+          <a class="card reveal is-hidden" data-type="natur" href="rapsfeld-shooting-fruehling-portraet.jpeg"
              data-title="Portrait im Rapsfeld im Frühling"
              data-cat="Naturportrait · Rapsfeld">
             <picture class="viewfinder">
@@ -563,7 +565,7 @@
             <div class="card__meta"><h3>Frühlingsgelb</h3><p>Naturportrait · Rapsfeld</p></div>
           </a>
 
-          <a class="card reveal" data-type="natur" href="rapsfeld-shooting-blumen-liegend.jpeg"
+          <a class="card reveal is-hidden" data-type="natur" href="rapsfeld-shooting-blumen-liegend.jpeg"
              data-title="Shooting liegend im Rapsfeld"
              data-cat="Naturshooting · Rapsfeld">
             <picture class="viewfinder">
@@ -573,7 +575,7 @@
             <div class="card__meta"><h3>Mitten im Feld</h3><p>Naturshooting · Rapsfeld</p></div>
           </a>
 
-          <a class="card reveal" data-type="natur" href="outdoor-portrait-birkenstamm-jeansjacke.jpeg"
+          <a class="card reveal is-hidden" data-type="natur" href="outdoor-portrait-birkenstamm-jeansjacke.jpeg"
              data-title="Outdoor-Portrait an der Birke"
              data-cat="Outdoor · Frühling">
             <picture class="viewfinder">
@@ -583,7 +585,7 @@
             <div class="card__meta"><h3>An der Birke</h3><p>Outdoor · Frühling</p></div>
           </a>
 
-          <a class="card reveal" data-type="natur" href="portraetshooting-allee-strasse-sitzend.jpeg"
+          <a class="card reveal is-hidden" data-type="natur" href="portraetshooting-allee-strasse-sitzend.jpeg"
              data-title="Portraitshooting auf der Allee"
              data-cat="Outdoor · Allee">
             <picture class="viewfinder">
@@ -593,7 +595,7 @@
             <div class="card__meta"><h3>Auf der Allee</h3><p>Outdoor · Allee</p></div>
           </a>
 
-          <a class="card reveal" data-type="studio" href="studio-portraet-schlapphut-weisses-hemd.jpeg"
+          <a class="card reveal is-hidden" data-type="studio" href="studio-portraet-schlapphut-weisses-hemd.jpeg"
              data-title="Studioporträt mit Schlapphut"
              data-cat="Studio · Editorial">
             <picture class="viewfinder">
@@ -603,7 +605,7 @@
             <div class="card__meta"><h3>Schlapphut</h3><p>Studio · Editorial</p></div>
           </a>
 
-          <a class="card reveal" data-type="natur" href="naturportraet-rapsfeld-junge-frau.jpeg"
+          <a class="card reveal is-hidden" data-type="natur" href="naturportraet-rapsfeld-junge-frau.jpeg"
              data-title="Naturportrait im Rapsfeld"
              data-cat="Naturportrait · Rapsfeld">
             <picture class="viewfinder">
@@ -613,7 +615,7 @@
             <div class="card__meta"><h3>Sommerblick</h3><p>Naturportrait · Rapsfeld</p></div>
           </a>
 
-          <a class="card reveal" data-type="natur" href="portraetshooting-waldweg-sitzend.jpeg"
+          <a class="card reveal is-hidden" data-type="natur" href="portraetshooting-waldweg-sitzend.jpeg"
              data-title="Portraitshooting am Waldweg"
              data-cat="Outdoor · Waldweg">
             <picture class="viewfinder">
@@ -623,7 +625,7 @@
             <div class="card__meta"><h3>Waldweg</h3><p>Outdoor · Waldweg</p></div>
           </a>
 
-          <a class="card reveal" data-type="natur" href="sommershooting-am-see-abendlicht.jpeg"
+          <a class="card reveal is-hidden" data-type="natur" href="sommershooting-am-see-abendlicht.jpeg"
              data-title="Sommershooting am See im Abendlicht"
              data-cat="Sommershooting · See">
             <picture class="viewfinder">
@@ -633,7 +635,7 @@
             <div class="card__meta"><h3>Am See</h3><p>Sommershooting · See</p></div>
           </a>
 
-          <a class="card reveal" data-type="natur" href="shooting-am-see-sonnenuntergang-wasser.jpeg"
+          <a class="card reveal is-hidden" data-type="natur" href="shooting-am-see-sonnenuntergang-wasser.jpeg"
              data-title="Kreativshooting auf dem Wasser im Sonnenuntergang"
              data-cat="Kreativshooting · See">
             <picture class="viewfinder">
@@ -643,7 +645,7 @@
             <div class="card__meta"><h3>Auf dem Wasser</h3><p>Kreativshooting · See</p></div>
           </a>
 
-          <a class="card reveal" data-type="natur" href="naturportraet-am-see-strauss-abendlicht.jpeg"
+          <a class="card reveal is-hidden" data-type="natur" href="naturportraet-am-see-strauss-abendlicht.jpeg"
              data-title="Naturportrait mit Strauß am See"
              data-cat="Naturportrait · See">
             <picture class="viewfinder">
@@ -653,7 +655,7 @@
             <div class="card__meta"><h3>Grünes Bouquet</h3><p>Naturportrait · See</p></div>
           </a>
 
-          <a class="card reveal" data-type="familie" href="freundinnen-shooting-see-sonnenuntergang.jpeg"
+          <a class="card reveal is-hidden" data-type="familie" href="freundinnen-shooting-see-sonnenuntergang.jpeg"
              data-title="Freundinnen-Shooting am See im Sonnenuntergang"
              data-cat="Freundinnen · Sonnenuntergang">
             <picture class="viewfinder">
@@ -663,7 +665,7 @@
             <div class="card__meta"><h3>Zu zweit</h3><p>Freundinnen · Sonnenuntergang</p></div>
           </a>
 
-          <a class="card reveal" data-type="studio" href="businessportrait-weisse-bluse-grauer-hintergrund.jpeg"
+          <a class="card reveal is-hidden" data-type="studio" href="businessportrait-weisse-bluse-grauer-hintergrund.jpeg"
              data-title="Businessportrait vor grauem Hintergrund"
              data-cat="Business · Studio">
             <picture class="viewfinder">
@@ -673,7 +675,7 @@
             <div class="card__meta"><h3>Business</h3><p>Business · Studio</p></div>
           </a>
 
-          <a class="card reveal" data-type="studio" href="businessportrait-nahaufnahme-weisse-bluse.jpeg"
+          <a class="card reveal is-hidden" data-type="studio" href="businessportrait-nahaufnahme-weisse-bluse.jpeg"
              data-title="Businessportrait in Nahaufnahme"
              data-cat="Business · Studio">
             <picture class="viewfinder">
@@ -683,7 +685,7 @@
             <div class="card__meta"><h3>Nah dran</h3><p>Business · Studio</p></div>
           </a>
 
-          <a class="card reveal" data-type="studio" href="businessportrait-winkend-grauer-hintergrund.jpeg"
+          <a class="card reveal is-hidden" data-type="studio" href="businessportrait-winkend-grauer-hintergrund.jpeg"
              data-title="Businessportrait mit Gruß in die Kamera"
              data-cat="Business · Studio">
             <picture class="viewfinder">
@@ -693,7 +695,7 @@
             <div class="card__meta"><h3>Hallo!</h3><p>Business · Studio</p></div>
           </a>
 
-          <a class="card reveal" data-type="studio" href="businessportrait-laptop-pflanzen.jpeg"
+          <a class="card reveal is-hidden" data-type="studio" href="businessportrait-laptop-pflanzen.jpeg"
              data-title="Businessportrait am Laptop"
              data-cat="Business · Branding">
             <picture class="viewfinder">
@@ -703,7 +705,7 @@
             <div class="card__meta"><h3>Am Laptop</h3><p>Business · Branding</p></div>
           </a>
 
-          <a class="card reveal" data-type="natur" href="businessportrait-im-gruenen-gartenhecke.jpeg"
+          <a class="card reveal is-hidden" data-type="natur" href="businessportrait-im-gruenen-gartenhecke.jpeg"
              data-title="Businessportrait im Grünen"
              data-cat="Business · Outdoor">
             <picture class="viewfinder">
@@ -713,7 +715,7 @@
             <div class="card__meta"><h3>Im Grünen</h3><p>Business · Outdoor</p></div>
           </a>
 
-          <a class="card reveal" data-type="studio" href="businessportrait-blumenbluse-grauer-hintergrund.jpeg"
+          <a class="card reveal is-hidden" data-type="studio" href="businessportrait-blumenbluse-grauer-hintergrund.jpeg"
              data-title="Businessportrait in Blumenbluse"
              data-cat="Business · Studio">
             <picture class="viewfinder">
@@ -723,7 +725,7 @@
             <div class="card__meta"><h3>Farbenfroh</h3><p>Business · Studio</p></div>
           </a>
 
-          <a class="card reveal" data-type="studio" href="businessportrait-brille-bleistiftrock.jpeg"
+          <a class="card reveal is-hidden" data-type="studio" href="businessportrait-brille-bleistiftrock.jpeg"
              data-title="Businessportrait mit Brille"
              data-cat="Business · Studio">
             <picture class="viewfinder">
@@ -733,7 +735,7 @@
             <div class="card__meta"><h3>Souverän</h3><p>Business · Studio</p></div>
           </a>
 
-          <a class="card reveal" data-type="studio" href="portraetshooting-pink-sneaker-sitzend.jpeg"
+          <a class="card reveal is-hidden" data-type="studio" href="portraetshooting-pink-sneaker-sitzend.jpeg"
              data-title="Portraitshooting in Pink"
              data-cat="Portrait · Studio">
             <picture class="viewfinder">
@@ -743,7 +745,7 @@
             <div class="card__meta"><h3>Pink</h3><p>Portrait · Studio</p></div>
           </a>
 
-          <a class="card reveal" data-type="studio" href="businessportrait-schwarzes-kleid-perlenkette.jpeg"
+          <a class="card reveal is-hidden" data-type="studio" href="businessportrait-schwarzes-kleid-perlenkette.jpeg"
              data-title="Businessportrait im schwarzen Kleid"
              data-cat="Business · Branding">
             <picture class="viewfinder">
@@ -753,7 +755,7 @@
             <div class="card__meta"><h3>Perlenkette</h3><p>Business · Branding</p></div>
           </a>
 
-          <a class="card reveal" data-type="studio" href="businessportrait-spiegel-perlenkette.jpeg"
+          <a class="card reveal is-hidden" data-type="studio" href="businessportrait-spiegel-perlenkette.jpeg"
              data-title="Businessportrait am Spiegel"
              data-cat="Business · Branding">
             <picture class="viewfinder">
@@ -763,7 +765,7 @@
             <div class="card__meta"><h3>Spiegelblick</h3><p>Business · Branding</p></div>
           </a>
 
-          <a class="card reveal" data-type="studio" href="businessportrait-laptop-stuhl-weiss.jpeg"
+          <a class="card reveal is-hidden" data-type="studio" href="businessportrait-laptop-stuhl-weiss.jpeg"
              data-title="Businessportrait am Laptop auf Weiß"
              data-cat="Business · Studio">
             <picture class="viewfinder">
@@ -773,7 +775,7 @@
             <div class="card__meta"><h3>Homeoffice</h3><p>Business · Studio</p></div>
           </a>
 
-          <a class="card reveal" data-type="studio" href="fashionportrait-hocker-hemd-jeans.jpeg"
+          <a class="card reveal is-hidden" data-type="studio" href="fashionportrait-hocker-hemd-jeans.jpeg"
              data-title="Fashionportrait am Hocker"
              data-cat="Fashion · Studio">
             <picture class="viewfinder">
@@ -783,7 +785,7 @@
             <div class="card__meta"><h3>Am Hocker</h3><p>Fashion · Studio</p></div>
           </a>
 
-          <a class="card reveal" data-type="studio" href="businessportrait-bluse-floral-modern.jpeg"
+          <a class="card reveal is-hidden" data-type="studio" href="businessportrait-bluse-floral-modern.jpeg"
              data-title="Businessportrait in floraler Bluse"
              data-cat="Business · Studio">
             <picture class="viewfinder">
@@ -793,7 +795,7 @@
             <div class="card__meta"><h3>Klare Linie</h3><p>Business · Studio</p></div>
           </a>
 
-          <a class="card reveal" data-type="natur" href="outdoor-portrait-glyzinien-fruehling.jpeg"
+          <a class="card reveal is-hidden" data-type="natur" href="outdoor-portrait-glyzinien-fruehling.jpeg"
              data-title="Outdoor-Portrait unter Glyzinien"
              data-cat="Outdoor · Frühling">
             <picture class="viewfinder">
@@ -803,7 +805,7 @@
             <div class="card__meta"><h3>Glyzinien</h3><p>Outdoor · Frühling</p></div>
           </a>
 
-          <a class="card reveal" data-type="natur" href="outdoor-portrait-kunstjacke-gruen.jpeg"
+          <a class="card reveal is-hidden" data-type="natur" href="outdoor-portrait-kunstjacke-gruen.jpeg"
              data-title="Outdoor-Portrait mit Statement-Jacke"
              data-cat="Outdoor · Portrait">
             <picture class="viewfinder">
@@ -814,6 +816,9 @@
           </a>
 
         </div>
+        <!-- Seitennavigation: von js/main.js gefüllt, sobald mehr als eine Seite nötig ist -->
+        <nav class="work__pager" id="workPager" aria-label="Portfolio-Seiten" hidden></nav>
+        <p class="sr-only" id="workStatus" role="status" aria-live="polite"></p>
         <div class="work__note reveal">
           <p>
             Sie haben eine Idee? Erzählen Sie mir davon. Gemeinsam finden wir heraus,
@@ -1206,7 +1211,7 @@
   <script src="js/vendor/gsap.min.js" defer></script>
   <script src="js/vendor/ScrollTrigger.min.js" defer></script>
   <script src="js/vendor/Flip.min.js" defer></script>
-  <script src="js/animations.js?v=20260729l" defer></script>
-  <script src="js/main.js?v=20260805d" defer></script>
+  <script src="js/animations.js?v=20260812a" defer></script>
+  <script src="js/main.js?v=20260812a" defer></script>
 </body>
 </html>

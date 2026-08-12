@@ -71,7 +71,7 @@ wrangler pages deploy . --project-name=maria-photostudio --branch=main
 
 1. **Hero** – Keyword + Nutzenversprechen + zwei CTAs + Vertrauens-Zeile
 2. **Warum ich** (`#warum`) – USP nach Formel *Ergebnis / Methode / Sicherheit*
-3. **Portfolio** (`#portfolio`) – Filter + Lightbox
+3. **Portfolio** (`#portfolio`) – Filter + Seiten (12 Bilder je Seite) + Lightbox
 4. **Leistungen** (`#leistungen`) – 6 Leistungen, je mit konkretem Ergebnis
 5. **Ablauf** (`#ablauf`) – 4 Schritte gegen den Einwand „Wie läuft das ab?“
 6. **Über mich** (`#ueber-mich`) – lokale Verankerung in Sassenberg
@@ -79,9 +79,28 @@ wrangler pages deploy . --project-name=maria-photostudio --branch=main
 8. **FAQ** (`#faq`) – 10 Fragen, die Einwände vorwegnehmen (Preis, Termin, Rechte …)
 9. **Kontakt** (`#kontakt`) – NAP-Daten, Erreichbarkeit, Formular
 
+#### Portfolio: Filter und Seiten
+
+Das Raster zeigt höchstens **12 Bilder gleichzeitig** (`PAGE_SIZE` in `js/main.js`).
+Der Filter bestimmt, welche Karten überhaupt in Frage kommen, die Seitenzahl
+schneidet daraus den sichtbaren Ausschnitt – ein Filterwechsel springt deshalb
+immer zurück auf Seite eins. Die Seitennavigation unter dem Raster wird von
+`js/main.js` erzeugt und blendet sich aus, solange eine Seite reicht
+(z. B. beim Filter „Familie & Paar“).
+
+Zwei Punkte, an denen es sonst hakt:
+
+- Karten auf späteren Seiten erreichen ihren Scroll-Reveal nie und blieben
+  unsichtbar. Nach jedem Filter- oder Seitenwechsel setzt `js/animations.js`
+  alle Karten im Raster wieder auf sichtbar. `visibility` wird dort bewusst
+  ausgeschrieben statt über `autoAlpha` gesetzt – GSAP merkt sich sonst den
+  Ausgangswert und stellt `hidden` wieder her.
+- Ohne JavaScript gibt es kein Blättern. Die `<noscript>`-Regel in `index.html`
+  hebt `.is-hidden` deshalb auf und zeigt das gesamte Portfolio auf einer Seite.
+
 - `css/style.css` – helles, bildzentriertes Design (Design-Tokens, siehe unten)
 - `css/fonts.css` + `fonts/` – Manrope und Caveat selbst gehostet (Variable Fonts)
-- `js/main.js` – Zustand: Menü, Filter, Lightbox, Formular
+- `js/main.js` – Zustand: Menü, Filter, Portfolio-Seiten, Lightbox, Formular
 - `js/animations.js` + `js/vendor/` – Bewegung mit GSAP, ScrollTrigger und Flip
 
 ### Eingangsanimation
@@ -245,7 +264,7 @@ miteinander. Läuft GSAP nicht, greifen die CSS-Fallbacks.
 | Portfolio | leichter Parallax im Bildausschnitt (nur ab 769 px) |
 | Kennzahlen | zählen beim Erscheinen hoch |
 | Laufband | Tempo und Richtung folgen der Scrollgeschwindigkeit, Hover bremst |
-| Filter | `Flip` sortiert das Raster um, die Rasterhöhe wird mitanimiert |
+| Filter / Seitenwechsel | `Flip` sortiert das Raster um, die Rasterhöhe wird mitanimiert |
 | Lightbox | wächst aus der angeklickten Karte heraus |
 | FAQ | Höhe wird weich auf- und zugeklappt |
 | Mobilmenü | Links laufen gestaffelt ein |

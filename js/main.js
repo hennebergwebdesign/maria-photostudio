@@ -144,30 +144,137 @@
     });
   });
 
-  /* ---------- Portfolio-Filter ---------- */
-  var chips = document.querySelectorAll(".chip");
+  /* ---------- Portfolio: Filter + Seiten ----------
+     Das Raster zeigt immer höchstens PAGE_SIZE Bilder. Der Filter bestimmt,
+     welche Karten überhaupt in Frage kommen, die Seitenzahl schneidet daraus
+     den sichtbaren Ausschnitt. Beide Schritte laufen über dieselben Events
+     wie zuvor der Filter, damit die Flip-Animation weiter greift. */
+  var PAGE_SIZE = 12;
+  var filterChips = document.querySelectorAll(".work__filter .chip");
   var cards = document.querySelectorAll(".card");
+  var workGrid = document.getElementById("workGrid");
+  var workPager = document.getElementById("workPager");
+  var workStatus = document.getElementById("workStatus");
+  var activeFilter = "all";
+  var currentPage = 1;
 
-  chips.forEach(function (chip) {
+  function matchingCards() {
+    return Array.prototype.filter.call(cards, function (card) {
+      return activeFilter === "all" || card.dataset.type === activeFilter;
+    });
+  }
+
+  function pageCount() {
+    return Math.max(1, Math.ceil(matchingCards().length / PAGE_SIZE));
+  }
+
+  function renderGrid(initial) {
+    var matches = matchingCards();
+    var from = (currentPage - 1) * PAGE_SIZE;
+    var onPage = matches.slice(from, from + PAGE_SIZE);
+
+    cards.forEach(function (card) {
+      card.classList.toggle("is-hidden", onPage.indexOf(card) === -1);
+    });
+
+    // Ohne GSAP blendet CSS die Karten über .is-in ein. Karten auf späteren
+    // Seiten haben ihren Scroll-Trigger nie erreicht und blieben sonst leer.
+    // Beim ersten Aufbau bleibt der Eintritt dem Scroll-Reveal überlassen.
+    if (!initial) onPage.forEach(function (card) { card.classList.add("is-in"); });
+  }
+
+  function pagerButton(label, aria) {
+    var button = document.createElement("button");
+    button.type = "button";
+    button.className = "chip";
+    button.textContent = label;
+    if (aria) button.setAttribute("aria-label", aria);
+    return button;
+  }
+
+  function renderPager() {
+    if (!workPager) return;
+    var total = pageCount();
+
+    workPager.textContent = "";
+    workPager.hidden = total < 2;
+    if (workStatus) {
+      workStatus.textContent = total < 2
+        ? ""
+        : "Seite " + currentPage + " von " + total;
+    }
+    if (total < 2) return;
+
+    var prev = pagerButton("← Zurück", "Vorherige Seite");
+    prev.classList.add("chip--step");
+    prev.disabled = currentPage === 1;
+    prev.addEventListener("click", function () { goToPage(currentPage - 1); });
+    workPager.appendChild(prev);
+
+    for (var i = 1; i <= total; i++) {
+      (function (page) {
+        var button = pagerButton(String(page), "Seite " + page);
+        button.classList.add("chip--page");
+        if (page === currentPage) {
+          button.classList.add("is-active");
+          button.setAttribute("aria-current", "true");
+        }
+        button.addEventListener("click", function () { goToPage(page); });
+        workPager.appendChild(button);
+      })(i);
+    }
+
+    var next = pagerButton("Weiter →", "Nächste Seite");
+    next.classList.add("chip--step");
+    next.disabled = currentPage === total;
+    next.addEventListener("click", function () { goToPage(currentPage + 1); });
+    workPager.appendChild(next);
+  }
+
+  function update() {
+    emit("maria:filter-before");
+    renderGrid();
+    renderPager();
+    emit("maria:filter", { filter: activeFilter, page: currentPage });
+  }
+
+  function goToPage(page) {
+    var total = pageCount();
+    page = Math.min(Math.max(page, 1), total);
+    if (page === currentPage) return;
+    currentPage = page;
+    update();
+
+    // Nach dem Blättern oben im Raster anfangen, sonst steht man
+    // mitten in den neuen Bildern.
+    var head = document.querySelector(".work__filter") || workGrid;
+    if (head) {
+      head.scrollIntoView({
+        behavior: prefersReducedMotion ? "auto" : "smooth",
+        block: "start"
+      });
+    }
+  }
+
+  filterChips.forEach(function (chip) {
     chip.addEventListener("click", function () {
-      chips.forEach(function (c) {
+      filterChips.forEach(function (c) {
         c.classList.remove("is-active");
         c.setAttribute("aria-pressed", "false");
       });
       chip.classList.add("is-active");
       chip.setAttribute("aria-pressed", "true");
 
-      emit("maria:filter-before");
-
-      var filter = chip.dataset.filter;
-      cards.forEach(function (card) {
-        var show = filter === "all" || card.dataset.type === filter;
-        card.classList.toggle("is-hidden", !show);
-      });
-
-      emit("maria:filter", { filter: filter });
+      activeFilter = chip.dataset.filter;
+      currentPage = 1;   // ein neuer Filter beginnt wieder auf Seite eins
+      update();
     });
   });
+
+  if (workGrid) {
+    renderGrid(true);
+    renderPager();
+  }
 
   /* ---------- Lightbox ---------- */
   var lightbox = document.getElementById("lightbox");
