@@ -157,6 +157,72 @@
   var workStatus = document.getElementById("workStatus");
   var activeFilter = "all";
   var currentPage = 1;
+  var switchToken = 0;
+
+  /* ---------- Bilder: Ladezustand am Platzhalter ----------
+     Solange ein Bild lädt, steht ein ruhiger Platzhalter im Raster; erst
+     danach blendet das Bild auf. Die Klassen setzt bewusst JavaScript –
+     ohne JS bleiben die Bilder ganz normal sichtbar. */
+  function isLoaded(img) {
+    return !!img && img.complete && img.naturalWidth > 0;
+  }
+
+  function trackMedia(img) {
+    var frame = img && img.parentNode;
+    if (!frame || frame.tagName !== "PICTURE" || frame.dataset.tracked) return;
+    frame.dataset.tracked = "1";
+
+    function ready() {
+      frame.classList.remove("is-loading");
+      frame.classList.add("is-ready");
+    }
+
+    if (isLoaded(img)) {
+      frame.classList.add("is-ready");
+      return;
+    }
+
+    frame.classList.add("is-loading");
+    img.addEventListener("load", ready, { once: true });
+    // Auch ein fehlendes Bild darf den Platzhalter nicht dauerhaft festhalten
+    img.addEventListener("error", ready, { once: true });
+  }
+
+  Array.prototype.forEach.call(cards, function (card) {
+    var img = card.querySelector("img");
+    if (img) trackMedia(img);
+  });
+
+  /* Bilder einer Karten-Liste anstoßen und auf sie warten. Nach spätestens
+     `timeout` ms geht es weiter – ein langsames Bild darf das Blättern nicht
+     blockieren, der Platzhalter fängt es dann auf. */
+  function preloadCards(list, timeout) {
+    var pending = [];
+
+    list.forEach(function (card) {
+      var img = card.querySelector("img");
+      if (!img) return;
+      // Karten außerhalb des Sichtfelds sind lazy und laden sonst nie,
+      // solange sie über display:none aus dem Layout genommen sind.
+      if (img.loading === "lazy") img.loading = "eager";
+      if ("fetchPriority" in img) img.fetchPriority = "high";
+      if (!isLoaded(img)) pending.push(img);
+    });
+
+    if (!pending.length) return Promise.resolve();
+
+    var all = Promise.all(pending.map(function (img) {
+      return new Promise(function (resolve) {
+        img.addEventListener("load", resolve, { once: true });
+        img.addEventListener("error", resolve, { once: true });
+      });
+    }));
+
+    return Promise.race([
+      all,
+      new Promise(function (resolve) { window.setTimeout(resolve, timeout || 1200); })
+    ]);
+  }
 
   function matchingCards() {
     return Array.prototype.filter.call(cards, function (card) {
@@ -169,9 +235,7 @@
   }
 
   function renderGrid(initial) {
-    var matches = matchingCards();
-    var from = (currentPage - 1) * PAGE_SIZE;
-    var onPage = matches.slice(from, from + PAGE_SIZE);
+    var onPage = pageCards();
 
     cards.forEach(function (card) {
       card.classList.toggle("is-hidden", onPage.indexOf(card) === -1);
@@ -231,11 +295,89 @@
     workPager.appendChild(next);
   }
 
-  function update() {
+  // Karten, die die aktuelle Auswahl zeigen würde – auch bevor das Raster
+  // umgebaut ist. Grundlage für das Vorladen.
+  function pageCards() {
+    var matches = matchingCards();
+    var from = (currentPage - 1) * PAGE_SIZE;
+    return matches.slice(from, from + PAGE_SIZE);
+  }
+
+  function setBusy(busy) {
+    if (!workGrid) return;
+    workGrid.classList.toggle("is-switching", busy);
+    if (busy) workGrid.setAttribute("aria-busy", "true");
+    else workGrid.removeAttribute("aria-busy");
+  }
+
+  function commit() {
     emit("maria:filter-before");
     renderGrid();
     renderPager();
     emit("maria:filter", { filter: activeFilter, page: currentPage });
+  }
+
+  // Wer Daten sparen will oder auf einer schmalen Leitung sitzt, bekommt
+  // keine Bilder auf Vorrat – das Vorladen ist Komfort, keine Grundfunktion.
+  function saveData() {
+    var net = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+    if (!net) return false;
+    if (net.saveData) return true;
+    return /2g/.test(net.effectiveType || "");
+  }
+
+  // Die Bilder der Folgeseite in einer ruhigen Minute holen, damit
+  // Weiterblättern sich sofort anfühlt.
+  function preloadAhead() {
+    if (saveData()) return;
+    var matches = matchingCards();
+    var from = currentPage * PAGE_SIZE;
+    var next = matches.slice(from, from + PAGE_SIZE);
+    if (!next.length) return;
+
+    var run = function () {
+      next.forEach(function (card) {
+        var img = card.querySelector("img");
+        if (!img || isLoaded(img)) return;
+        if (img.loading === "lazy") img.loading = "eager";
+        if ("fetchPriority" in img) img.fetchPriority = "low";
+      });
+    };
+
+    if (window.requestIdleCallback) window.requestIdleCallback(run, { timeout: 2000 });
+    else window.setTimeout(run, 900);
+  }
+
+  /* Erst die Bilder der neuen Auswahl holen, dann umbauen. Vorher flogen
+     leere Kästen ins Raster und füllten sich Sekunden später einzeln. */
+  function update(options) {
+    var token = ++switchToken;
+    var upcoming = pageCards();
+
+    // Ist alles schon da, kommt es gar nicht erst zum Wartezustand.
+    var slow = window.setTimeout(function () {
+      if (token === switchToken) setBusy(true);
+    }, 120);
+
+    preloadCards(upcoming, 1400).then(function () {
+      window.clearTimeout(slow);
+      if (token !== switchToken) return;   // inzwischen wurde weitergeklickt
+      setBusy(false);
+      commit();
+      if (options && options.scrollToTop) scrollToGridHead();
+      preloadAhead();
+    });
+  }
+
+  function scrollToGridHead() {
+    // Nach dem Blättern oben im Raster anfangen, sonst steht man
+    // mitten in den neuen Bildern.
+    var head = document.querySelector(".work__filter") || workGrid;
+    if (!head) return;
+    head.scrollIntoView({
+      behavior: prefersReducedMotion ? "auto" : "smooth",
+      block: "start"
+    });
   }
 
   function goToPage(page) {
@@ -243,17 +385,7 @@
     page = Math.min(Math.max(page, 1), total);
     if (page === currentPage) return;
     currentPage = page;
-    update();
-
-    // Nach dem Blättern oben im Raster anfangen, sonst steht man
-    // mitten in den neuen Bildern.
-    var head = document.querySelector(".work__filter") || workGrid;
-    if (head) {
-      head.scrollIntoView({
-        behavior: prefersReducedMotion ? "auto" : "smooth",
-        block: "start"
-      });
-    }
+    update({ scrollToTop: true });
   }
 
   filterChips.forEach(function (chip) {
@@ -274,11 +406,21 @@
   if (workGrid) {
     renderGrid(true);
     renderPager();
+    // Die zweite Seite liegt bereit, bevor jemand darauf klickt
+    if ("IntersectionObserver" in window) {
+      var aheadWatch = new IntersectionObserver(function (entries, obs) {
+        if (!entries.some(function (e) { return e.isIntersecting; })) return;
+        obs.disconnect();
+        preloadAhead();
+      }, { rootMargin: "300px 0px" });
+      aheadWatch.observe(workGrid);
+    }
   }
 
   /* ---------- Lightbox ---------- */
   var lightbox = document.getElementById("lightbox");
   var lightboxImg = document.getElementById("lightboxImg");
+  var lightboxStage = document.getElementById("lightboxStage");
   var lightboxCaption = document.getElementById("lightboxCaption");
   var lightboxClose = document.getElementById("lightboxClose");
   var lightboxPrev = document.getElementById("lightboxPrev");
@@ -314,11 +456,70 @@
     lightboxClose.focus();
   }
 
+  /* Der Weg vom Rasterbild zum großen Bild ---------------------------------
+     Das kleine Bild ist längst geladen. Es liefert Seitenverhältnis und eine
+     unscharfe Vorschau, damit der Rahmen sofort steht und gefüllt ist, statt
+     erst leer zu sein und dann zu springen. Ein Zähler sorgt dafür, dass ein
+     spät eintreffendes Bild nicht ein inzwischen weitergeblättertes überschreibt. */
+  var lightboxToken = 0;
+
   function showLightbox(card) {
-    lightboxImg.src = card.getAttribute("href");
-    lightboxImg.alt = card.dataset.title || "";
+    var token = ++lightboxToken;
+    var thumb = card.querySelector("img");
+    var full = card.getAttribute("href");
+
     lightboxCaption.textContent =
       (card.dataset.title || "") + " · " + (card.dataset.cat || "");
+
+    if (lightboxStage) {
+      lightboxStage.classList.remove("is-ready");
+      // Nur ein fertig geladenes Rasterbild taugt als Vorschau – ein halb
+      // aufgebautes würde im Rahmen sichtbar nachladen.
+      var preview = isLoaded(thumb) ? (thumb.currentSrc || thumb.src) : "";
+      lightboxStage.style.setProperty(
+        "--lb-thumb",
+        preview ? 'url("' + preview + '")' : "none"
+      );
+    }
+
+    // Maße aus dem Rasterbild: gleiches Motiv, gleiches Seitenverhältnis
+    if (thumb && thumb.naturalWidth) {
+      lightboxImg.width = thumb.naturalWidth;
+      lightboxImg.height = thumb.naturalHeight;
+    } else {
+      lightboxImg.removeAttribute("width");
+      lightboxImg.removeAttribute("height");
+    }
+
+    lightboxImg.alt = card.dataset.title || "";
+
+    var loader = new Image();
+    loader.decoding = "async";
+
+    function done() {
+      if (token !== lightboxToken) return;   // längst ein anderes Bild im Rahmen
+      lightboxImg.src = full;
+      if (lightboxStage) lightboxStage.classList.add("is-ready");
+      preloadNeighbours();
+    }
+
+    loader.addEventListener("load", done, { once: true });
+    // Auch ein Fehlschlag muss den Spinner beenden – sonst dreht er ewig
+    loader.addEventListener("error", done, { once: true });
+    loader.src = full;
+
+    // Bereits im Cache: dann gar nicht erst blenden lassen
+    if (loader.complete) done();
+  }
+
+  function preloadNeighbours() {
+    var list = currentGroup && currentGroup.length ? currentGroup : visibleCards();
+    if (list.length < 2) return;
+    [1, -1].forEach(function (dir) {
+      var item = list[(currentIndex + dir + list.length) % list.length];
+      var href = item && item.getAttribute("href");
+      if (href) new Image().src = href;
+    });
   }
 
   function closeLightbox() {
@@ -351,6 +552,30 @@
   lightbox.addEventListener("click", function (e) {
     if (e.target === lightbox) closeLightbox();
   });
+
+  /* Wischen am Telefon: die Pfeile sitzen in der Daumenzone, aber
+     die naheliegende Geste soll trotzdem funktionieren. */
+  var touchStartX = 0;
+  var touchStartY = 0;
+  var touching = false;
+
+  lightbox.addEventListener("touchstart", function (e) {
+    if (e.touches.length !== 1) { touching = false; return; }
+    touching = true;
+    touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
+  }, { passive: true });
+
+  lightbox.addEventListener("touchend", function (e) {
+    if (!touching) return;
+    touching = false;
+    var touch = e.changedTouches[0];
+    var dx = touch.clientX - touchStartX;
+    var dy = touch.clientY - touchStartY;
+    // Nur eindeutig waagerechte Gesten, sonst kollidiert es mit dem Scrollen
+    if (Math.abs(dx) < 45 || Math.abs(dx) < Math.abs(dy) * 1.5) return;
+    stepLightbox(dx < 0 ? 1 : -1);
+  }, { passive: true });
 
   document.addEventListener("keydown", function (e) {
     if (!lightbox.classList.contains("is-open")) return;

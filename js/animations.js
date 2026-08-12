@@ -129,6 +129,31 @@
     });
   }
 
+  /* Der Zoom beim Überfahren gehört hierher, sobald GSAP läuft: der Parallax
+     schreibt eine eigene transform auf dasselbe Bild, eine zweite Quelle in
+     CSS würde sie überschreiben. overwrite:"auto" räumt nur die Skalierung
+     weg, der laufende Parallax bleibt unangetastet.
+     Einmalig registriert – die Prüfung auf echte Zeigergeräte passiert erst
+     beim Ereignis, sonst hingen die Listener am Breakpoint. */
+  function cardHover() {
+    var pointer = window.matchMedia("(hover: hover) and (pointer: fine)");
+
+    gsap.utils.toArray(".card").forEach(function (card) {
+      var img = card.querySelector("img");
+      if (!img) return;
+
+      function zoom(scale) {
+        if (!pointer.matches || reduced()) return;
+        gsap.to(img, { scale: scale, duration: 0.6, ease: "power2.out", overwrite: "auto" });
+      }
+
+      card.addEventListener("mouseenter", function () { zoom(1.04); });
+      card.addEventListener("mouseleave", function () { zoom(1); });
+      card.addEventListener("focusin", function () { zoom(1.04); });
+      card.addEventListener("focusout", function () { zoom(1); });
+    });
+  }
+
   /* ============================================================
      5. Kennzahlen – zählen beim Erscheinen hoch
      ============================================================ */
@@ -549,6 +574,7 @@
   releasePage();
   faq();
   filterFlip();
+  cardHover();
   lightbox();
   menu();
 

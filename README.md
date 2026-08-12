@@ -98,6 +98,37 @@ Zwei Punkte, an denen es sonst hakt:
 - Ohne JavaScript gibt es kein Blättern. Die `<noscript>`-Regel in `index.html`
   hebt `.is-hidden` deshalb auf und zeigt das gesamte Portfolio auf einer Seite.
 
+#### Portfolio: Ladeübergänge
+
+Das Raster ist ein echtes CSS-Grid (`repeat(3, …)`, ab 900 px zwei, ab 520 px
+eine Spalte). Vorher war es ein Spaltensatz über `column-count`: der füllte
+erst Spalte eins von oben nach unten, die Lesereihenfolge stimmte also nicht
+mit der Bildfolge überein, und `Flip` konnte beim Filtern nicht verlässlich
+messen. Waagerecht wird das Raster beschnitten (`overflow-x: clip` mit
+`overflow-clip-margin`), weil `Flip` die Karten während des Wechsels kurz
+absolut stellt – ohne Beschnitt rutschten sie seitlich aus dem Container.
+
+Drei Stellen, an denen früher Leere zu sehen war:
+
+- **Beim Blättern und Filtern** lud `js/main.js` das Raster sofort um. Die
+  Bilder der neuen Seite sind `loading="lazy"` und waren noch gar nicht
+  angefragt – man sah für Sekunden leere Kästen. Jetzt werden sie erst
+  angestoßen (`loading="eager"`) und abgewartet; erst danach baut das Raster
+  um. Dauert das länger als 120 ms, tritt das Raster sichtbar zurück
+  (`.is-switching`, `aria-busy`). Nach spätestens 1,4 s geht es in jedem Fall
+  weiter – ein hängendes Bild darf das Blättern nicht blockieren.
+- **Beim ersten Erscheinen** steht unter jedem Bild ein ruhiger Platzhalter
+  (`picture.is-loading`), das Bild blendet darüber auf (`picture.is-ready`).
+  Die Klassen setzt JavaScript – ohne JS bleibt alles wie gehabt sichtbar.
+- **In der Lightbox** wurde die große Datei (bis ~1 MB) in einen leeren Rahmen
+  geladen. Jetzt liefert das bereits geladene Rasterbild Seitenverhältnis und
+  eine unscharfe Vorschau, ein Spinner zeigt die Arbeit an, und das große Bild
+  löst die Vorschau auf. Nachbarbilder werden danach vorgeladen, Wischgesten
+  blättern am Telefon.
+
+Die Folgeseite wird in einer ruhigen Minute vorgeladen (`requestIdleCallback`),
+außer bei `saveData` oder einer 2G-Verbindung.
+
 - `css/style.css` – helles, bildzentriertes Design (Design-Tokens, siehe unten)
 - `css/fonts.css` + `fonts/` – Manrope und Caveat selbst gehostet (Variable Fonts)
 - `js/main.js` – Zustand: Menü, Filter, Portfolio-Seiten, Lightbox, Formular
@@ -261,7 +292,7 @@ miteinander. Läuft GSAP nicht, greifen die CSS-Fallbacks.
 | Intro | Timeline statt `setTimeout`-Kette; Überspringen beschleunigt die Timeline (`timeScale`), statt sie abzuschneiden |
 | Hero | Zeilen laufen aus der Maske ein, danach gestaffelt Text, Buttons, Vertrauenszeile |
 | Abschnitte | `ScrollTrigger.batch()` blendet je Sichtbarkeits-Gruppe gestaffelt ein |
-| Portfolio | leichter Parallax im Bildausschnitt (nur ab 769 px) |
+| Portfolio | leichter Parallax im Bildausschnitt (nur ab 769 px); der Zoom beim Überfahren läuft ebenfalls über GSAP, weil der Parallax dieselbe `transform` schreibt – in CSS bliebe nur eine der beiden übrig |
 | Kennzahlen | zählen beim Erscheinen hoch |
 | Laufband | Tempo und Richtung folgen der Scrollgeschwindigkeit, Hover bremst |
 | Filter / Seitenwechsel | `Flip` sortiert das Raster um, die Rasterhöhe wird mitanimiert |
@@ -344,5 +375,18 @@ EOF
 python3 -m http.server 8000
 # http://localhost:8000
 ```
+
+### CSS neu minifizieren
+
+`index.html` lädt `css/style.min.css`. Gepflegt wird aber `css/style.css` –
+nach jeder Änderung dort muss die minifizierte Datei neu erzeugt werden,
+sonst sieht die Seite live noch alt aus:
+
+```bash
+npx --yes clean-css-cli@5 -o css/style.min.css css/style.css
+```
+
+Danach den Cache-Parameter `?v=` an `<link>` und `<script>` in `index.html`
+hochzählen.
 
 `_headers` und `_redirects` wirken nur auf Cloudflare Pages, nicht im lokalen Server.
