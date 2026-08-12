@@ -890,41 +890,6 @@ body.is-ready .hero__title .line:nth-child(2) span { transition-delay: 80ms; }
 
 .work__grid .card { width: 100%; margin: 0; }
 
-/* ---------- Masonry ----------
-   Standard bleibt das gleichmäßige Raster oben: ohne JavaScript stehen alle
-   Karten im 4:5-Format und nichts kann überlappen. Läuft JS, setzt
-   js/main.js die Klasse .is-masonry, gibt jeder Karte ihr echtes
-   Seitenverhältnis (--ar aus width/height des Bildes) und die Zahl der
-   Rasterzeilen, die sie belegt (--span). Querformate bleiben dann quer und
-   werden nicht mehr auf Hochformat beschnitten. */
-.work__grid.is-masonry {
-  grid-auto-rows: 8px;
-  align-items: start;   /* Karten behalten ihre Inhaltshöhe, sonst misst der Span sich selbst */
-}
-
-.work__grid.is-masonry .card { grid-row-end: span var(--span, 40); }
-
-.work__grid.is-masonry .card picture { aspect-ratio: var(--ar, 4 / 5); }
-
-/* Der Rahmen hat jetzt exakt das Seitenverhältnis des Bildes – das Bild darf
-   ihn also vollständig ausfüllen. Kein Überstand, kein object-fit-Beschnitt:
-   im Masonry ist jedes Foto vollständig zu sehen, Querformate eingeschlossen.
-   (Der Überstand oben war nur Spielraum für den Parallax; der ruht hier,
-   siehe js/animations.js.) */
-.work__grid.is-masonry .card img {
-  position: static;
-  width: 100%;
-  height: auto;
-  object-fit: fill;
-}
-
-/* Eine Karte pro Zeile: der Höhenausgleich entfällt, das Raster stapelt
-   ohnehin. Spans würden hier nur Lücken erzeugen. */
-@media (max-width: 520px) {
-  .work__grid.is-masonry { grid-auto-rows: auto; }
-  .work__grid.is-masonry .card { grid-row-end: auto; }
-}
-
 /* Warten auf neue Bilder: das Raster tritt kurz zurück, statt leere
    Kästen zu zeigen. Bedienbar bleibt es, nur der Zeiger meldet Arbeit. */
 .work__grid.is-switching {

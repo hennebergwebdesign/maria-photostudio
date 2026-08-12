@@ -234,49 +234,6 @@
     return Math.max(1, Math.ceil(matchingCards().length / PAGE_SIZE));
   }
 
-  /* ---------- Masonry ----------
-     Querformate im 4:5-Rahmen verloren fast die Hälfte des Bildes. Jede Karte
-     bekommt deshalb ihr echtes Seitenverhältnis und belegt so viele Zeilen des
-     8px-Rasters, wie sie hoch ist. Die Maße stehen als width/height am Bild,
-     die Höhe steht also schon vor dem Laden fest – kein Nachrutschen.
-     Ohne JavaScript bleibt das gleichmäßige Raster aus dem CSS stehen. */
-  function cardRatio(card) {
-    var img = card.querySelector("img");
-    if (!img) return 0;
-    var w = Number(img.getAttribute("width")) || img.naturalWidth;
-    var h = Number(img.getAttribute("height")) || img.naturalHeight;
-    return w > 0 && h > 0 ? w / h : 0;
-  }
-
-  function setRatios() {
-    Array.prototype.forEach.call(cards, function (card) {
-      var ratio = cardRatio(card);
-      if (ratio) card.style.setProperty("--ar", String(ratio));
-    });
-  }
-
-  function layoutMasonry() {
-    if (!workGrid || !workGrid.classList.contains("is-masonry")) return;
-
-    var styles = window.getComputedStyle(workGrid);
-    var row = parseFloat(styles.gridAutoRows);
-    var gap = parseFloat(styles.rowGap) || 0;
-    // Einspaltig (grid-auto-rows: auto) rechnet das CSS selbst.
-    if (!row) return;
-
-    Array.prototype.forEach.call(cards, function (card) {
-      if (card.classList.contains("is-hidden")) return;
-      // Ohne eigenen Span misst die Karte ihre Inhaltshöhe (align-items: start).
-      card.style.removeProperty("--span");
-      // offsetHeight statt getBoundingClientRect: die Reveal-Animation legt
-      // während des Einblendens ein scale/translate auf die Karte, das in der
-      // gemessenen Höhe stecken würde.
-      var height = card.offsetHeight;
-      var span = Math.max(1, Math.round((height + gap) / (row + gap)));
-      card.style.setProperty("--span", String(span));
-    });
-  }
-
   function renderGrid(initial) {
     var onPage = pageCards();
 
@@ -288,8 +245,6 @@
     // Seiten haben ihren Scroll-Trigger nie erreicht und blieben sonst leer.
     // Beim ersten Aufbau bleibt der Eintritt dem Scroll-Reveal überlassen.
     if (!initial) onPage.forEach(function (card) { card.classList.add("is-in"); });
-
-    layoutMasonry();
   }
 
   function pagerButton(label, aria) {
@@ -449,26 +404,9 @@
   });
 
   if (workGrid) {
-    setRatios();
-    workGrid.classList.add("is-masonry");
     renderGrid(true);
     renderPager();
 
-    // Spaltenbreite ändert sich, Kartenhöhe auch – neu vermessen. resize
-    // feuert beim Drehen und beim Ein-/Ausblenden der Browserleisten oft
-    // hintereinander, deshalb gebündelt im nächsten Frame.
-    var relayout = null;
-    window.addEventListener("resize", function () {
-      if (relayout) window.cancelAnimationFrame(relayout);
-      relayout = window.requestAnimationFrame(function () {
-        relayout = null;
-        layoutMasonry();
-      });
-    });
-
-    // Schriften und späte Bilder verschieben die Meta-Zeile unter dem Bild.
-    if (document.fonts && document.fonts.ready) document.fonts.ready.then(layoutMasonry);
-    window.addEventListener("load", layoutMasonry);
     // Die zweite Seite liegt bereit, bevor jemand darauf klickt
     if ("IntersectionObserver" in window) {
       var aheadWatch = new IntersectionObserver(function (entries, obs) {
