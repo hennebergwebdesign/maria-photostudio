@@ -113,8 +113,13 @@
     gsap.utils.toArray(".card").forEach(function (card) {
       var img = card.querySelector("img");
       if (!img) return;
+      // Karten im Portfolio-Raster füllen ihren Rahmen im Masonry exakt aus –
+      // es gibt keinen Überstand, in dem sich etwas verschieben könnte. Ein
+      // Parallax würde dort nur eine Kante freilegen. Geprüft wird das Raster
+      // selbst, nicht die Klasse .is-masonry: die setzt js/main.js erst nach
+      // dieser Datei. Karten außerhalb des Rasters behalten den Parallax.
+      if (card.closest("#workGrid")) return;
       // ±4 % passen in den Überstand aus style.css (Bild 110 % hoch, -5 % oben).
-      // Ein größerer Weg schöbe im Masonry die Bildkante ins Bild.
       gsap.fromTo(img,
         { yPercent: -4 },
         {

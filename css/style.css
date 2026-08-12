@@ -906,6 +906,18 @@ body.is-ready .hero__title .line:nth-child(2) span { transition-delay: 80ms; }
 
 .work__grid.is-masonry .card picture { aspect-ratio: var(--ar, 4 / 5); }
 
+/* Der Rahmen hat jetzt exakt das Seitenverhältnis des Bildes – das Bild darf
+   ihn also vollständig ausfüllen. Kein Überstand, kein object-fit-Beschnitt:
+   im Masonry ist jedes Foto vollständig zu sehen, Querformate eingeschlossen.
+   (Der Überstand oben war nur Spielraum für den Parallax; der ruht hier,
+   siehe js/animations.js.) */
+.work__grid.is-masonry .card img {
+  position: static;
+  width: 100%;
+  height: auto;
+  object-fit: fill;
+}
+
 /* Eine Karte pro Zeile: der Höhenausgleich entfällt, das Raster stapelt
    ohnehin. Spans würden hier nur Lücken erzeugen. */
 @media (max-width: 520px) {
