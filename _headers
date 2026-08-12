@@ -44,19 +44,9 @@
 /fonts/*
   Cache-Control: public, max-age=31536000, immutable
 
-# Bilder: 30 Tage
+# Bilder: 30 Tage. Alle Fotos (Vollformat, -800-Varianten, webp) und die
+# Logos liegen in /img/; im Root stehen nur noch Favicon und Touch-Icon.
 /img/*
-  Cache-Control: public, max-age=2592000
-
-# Shooting-Fotos im Root (jpeg/jpg-Vollformat, -800-Varianten, webp):
-# ebenfalls 30 Tage, gleiche Regel wie /img/*
-/*.jpeg
-  Cache-Control: public, max-age=2592000
-
-/*.jpg
-  Cache-Control: public, max-age=2592000
-
-/*.webp
   Cache-Control: public, max-age=2592000
 
 # CSS/JS: der Browser fragt jedes Mal kurz nach (ETag → 304, wenige Byte).
