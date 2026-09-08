@@ -31,4 +31,10 @@
       <image:title>Naturportrait in der blauen Stunde</image:title>
     </image:image>
   </url>
+  <url>
+    <loc>https://mariavisuals.de/portfolio.html</loc>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
