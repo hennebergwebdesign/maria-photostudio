@@ -1065,6 +1065,90 @@ html:not(.gsap) .card:hover img { transform: scale(1.04); }
   font-size: var(--fs-base);
 }
 
+/* ---------- Portfolio: Kategorie-Teaser ----------
+   Startseite zeigt nur die vier Kategorien mit je einem Bild, das gesamte
+   Portfolio liegt auf einer eigenen Unterseite und wird erst per Klick
+   geladen. */
+.work__categories {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.6rem;
+  margin-bottom: 3rem;
+}
+
+@media (max-width: 900px) {
+  .work__categories { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.2rem; }
+}
+
+@media (max-width: 520px) {
+  .work__categories { grid-template-columns: minmax(0, 1fr); gap: 1.4rem; }
+}
+
+.cat-card {
+  position: relative;
+  display: block;
+  border-radius: 0;
+  background: var(--surface);
+  padding: 12px 12px 0;
+  box-shadow: var(--elev-1);
+  color: var(--text);
+  transition: box-shadow var(--dur-slow), transform var(--dur-slow) var(--ease-out);
+}
+
+.cat-card:hover { box-shadow: var(--elev-2); transform: translateY(-4px); }
+.cat-card:active { transform: translateY(-1px) scale(0.995); }
+
+.cat-card picture {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: 0;
+  background: var(--bg-soft);
+  aspect-ratio: 4 / 5;
+}
+
+.cat-card img {
+  position: absolute;
+  top: -5%;
+  left: 0;
+  width: 100%;
+  height: 110%;
+  object-fit: cover;
+  display: block;
+  transition: transform 600ms var(--ease-out);
+}
+
+.cat-card:hover img { transform: scale(1.04); }
+
+.cat-card__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: var(--sp-3) var(--sp-1) var(--sp-4);
+}
+
+.cat-card__meta h3 { font-size: var(--fs-base); font-weight: 700; line-height: 1.35; }
+
+.cat-card__meta p {
+  font-family: var(--font-script);
+  font-size: 1.2rem;
+  line-height: 1.2;
+  color: var(--accent);
+}
+
+.work__all {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-6);
+  text-align: center;
+  max-width: 68ch;
+  width: 100%;
+  margin: 0 auto var(--sp-8);
+}
+
+.work__all p { color: var(--text-dim); font-size: var(--fs-base); }
+
 /* ---------- Leistungen ---------- */
 .services { background: var(--bg-soft); }
 

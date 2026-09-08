@@ -403,6 +403,24 @@
     });
   });
 
+  // Ein Kategorie-Teaser verlinkt z. B. auf portfolio.html#business – der
+  // passende Filter-Chip übernimmt das gleich beim Laden der Seite.
+  if (workGrid && location.hash) {
+    var hashFilter = location.hash.slice(1);
+    var matchingChip = Array.prototype.filter.call(filterChips, function (chip) {
+      return chip.dataset.filter === hashFilter;
+    })[0];
+    if (matchingChip) {
+      filterChips.forEach(function (c) {
+        c.classList.remove("is-active");
+        c.setAttribute("aria-pressed", "false");
+      });
+      matchingChip.classList.add("is-active");
+      matchingChip.setAttribute("aria-pressed", "true");
+      activeFilter = hashFilter;
+    }
+  }
+
   if (workGrid) {
     renderGrid(true);
     renderPager();
