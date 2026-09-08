@@ -9,9 +9,11 @@
 /startseite   /   301
 /kontakt      /#kontakt      301
 /leistungen   /#leistungen   301
-/portfolio    /#portfolio    301
 /faq          /#faq          301
-# /impressum und /datenschutz braucht KEINE Regel: Cloudflare Pages
-# liefert bei extensionslosen URLs automatisch die passende .html aus.
+# /portfolio, /impressum und /datenschutz brauchen KEINE eigene Regel:
+# Cloudflare Pages liefert bei extensionslosen URLs automatisch die
+# passende .html aus (portfolio.html, impressum.html, datenschutz.html).
 # Eigene Regeln würden mit dieser Pretty-URL-Weiterleitung kollidieren
-# (ERR_TOO_MANY_REDIRECTS).
+# (ERR_TOO_MANY_REDIRECTS) – so ist /portfolio bis eben versehentlich
+# auf den alten Anker "/#portfolio" zurückgeleitet worden, statt die
+# neue Portfolio-Unterseite zu zeigen.
