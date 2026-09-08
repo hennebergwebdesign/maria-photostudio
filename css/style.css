@@ -1065,6 +1065,12 @@ html:not(.gsap) .card:hover img { transform: scale(1.04); }
   font-size: var(--fs-base);
 }
 
+/* Eigene Unterseite: die Sektion steht direkt unter der fixen Navigation,
+   ohne vorausgehenden Hero, deshalb mehr Luft oben als der Standardwert von
+   .section. (War versehentlich als style-Attribut gesetzt und dadurch von
+   der CSP blockiert – style-src erlaubt kein unsafe-inline.) */
+.work--sub { padding-top: clamp(7rem, 14vw, 10.5rem); }
+
 /* ---------- Portfolio: Kategorie-Teaser ----------
    Startseite zeigt nur die vier Kategorien mit je einem Bild, das gesamte
    Portfolio liegt auf einer eigenen Unterseite und wird erst per Klick
