@@ -67,3 +67,11 @@
 # Die GSAP-Dateien sind versioniert und ändern sich nie
 /js/vendor/*
   Cache-Control: public, max-age=31536000, immutable
+
+# Sitemap + ihr Branding-Stylesheet: ändern sich mit dem Seiteninhalt
+/sitemap.xml
+  Cache-Control: public, max-age=0, must-revalidate
+
+/sitemap.xsl
+  Cache-Control: public, max-age=0, must-revalidate
+  Content-Type: application/xslt+xml; charset=UTF-8
