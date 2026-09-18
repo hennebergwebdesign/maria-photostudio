@@ -25,7 +25,7 @@
 
   /* ---------- Alte Sprungmarken auf neue umleiten (Links von außen bleiben gültig) ---------- */
   var legacyHashes = {
-    "#arbeiten": "#portfolio",
+    "#portfolio": "#arbeiten",
     "#ueber": "#ueber-mich",
     "#about": "#ueber-mich",
     "#services": "#leistungen",

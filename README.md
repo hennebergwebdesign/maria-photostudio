@@ -71,7 +71,8 @@ wrangler pages deploy . --project-name=maria-photostudio --branch=main
 
 1. **Hero** – Keyword + Nutzenversprechen + zwei CTAs + Vertrauens-Zeile
 2. **Warum ich** (`#warum`) – USP nach Formel *Ergebnis / Methode / Sicherheit*
-3. **Portfolio** (`#portfolio`) – Filter + Seiten (12 Bilder je Seite) + Lightbox
+3. **Arbeiten** (`#arbeiten`) – Teaser mit vier Kategorie-Karten (Schwangerschaft,
+   Business, Natur, Familie), verlinkt auf die eigene Unterseite `portfolio.html`
 4. **Leistungen** (`#leistungen`) – 6 Leistungen, je mit konkretem Ergebnis
 5. **Ablauf** (`#ablauf`) – 4 Schritte gegen den Einwand „Wie läuft das ab?“
 6. **Über mich** (`#ueber-mich`) – lokale Verankerung in Sassenberg
@@ -79,10 +80,17 @@ wrangler pages deploy . --project-name=maria-photostudio --branch=main
 8. **FAQ** (`#faq`) – 10 Fragen, die Einwände vorwegnehmen (Preis, Termin, Rechte …)
 9. **Kontakt** (`#kontakt`) – NAP-Daten, Erreichbarkeit, Formular
 
-#### Portfolio: Filter und Seiten
+#### Portfolio-Unterseite: Tabs, Filter und Seiten
+
+`portfolio.html` ist eine eigene Unterseite (kein Anker auf `index.html`) mit
+Tabs für „Alle“, „Schwangerschaft“, „Business“, „Natur“ und „Familie“
+(`.work__filter .chip`, `data-filter`). Jede Kategorie-Karte auf der Startseite
+verlinkt auf `/portfolio#<kategorie>` – `js/main.js` liest beim Laden
+`location.hash` aus und aktiviert automatisch den passenden Tab, sodass man
+direkt in der gewählten Kategorie landet statt auf „Alle“.
 
 Das Raster zeigt höchstens **12 Bilder gleichzeitig** (`PAGE_SIZE` in `js/main.js`).
-Der Filter bestimmt, welche Karten überhaupt in Frage kommen, die Seitenzahl
+Der Filter/Tab bestimmt, welche Karten überhaupt in Frage kommen, die Seitenzahl
 schneidet daraus den sichtbaren Ausschnitt – ein Filterwechsel springt deshalb
 immer zurück auf Seite eins. Die Seitennavigation unter dem Raster wird von
 `js/main.js` erzeugt und blendet sich aus, solange eine Seite reicht
@@ -165,7 +173,7 @@ Systemeinstellung „Bewegung reduzieren“ wird sie komplett ausgelassen.
 - **JSON-LD** als `@graph`: `ProfessionalService`/`LocalBusiness` (Adresse 48336 Sassenberg,
   Koordinaten, Öffnungszeiten, `areaServed`, Leistungskatalog), `WebSite`, `WebPage`
   und `FAQPage` mit allen 10 Fragen (Chance auf FAQ-Snippets in den Suchergebnissen).
-- Saubere, sprechende Sprungmarken (`#portfolio`, `#ueber-mich`, `#einzugsgebiet` …);
+- Saubere, sprechende Sprungmarken (`#arbeiten`, `#ueber-mich`, `#einzugsgebiet` …);
   alte Anker (`#arbeiten`, `#ueber`) werden per JS umgeleitet, alte Pfade per 301.
 - Eine H1, darunter eine saubere H2/H3-Hierarchie; `aria-labelledby` je Sektion.
 - Alle Bilder mit beschreibendem `alt`-Text inkl. Ort, `width`/`height` gegen Layout-Sprünge,
