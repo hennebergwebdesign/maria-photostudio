@@ -7,8 +7,8 @@
    - Zeigt einen Cookie-Banner (1. Ebene) und einen Einstellungen-Dialog
      (2. Ebene) passend zum bestehenden Corporate Design.
    - Speichert die Entscheidung datensparsam in localStorage.
-   - Stellt ein sticky Widget bereit, über das die Auswahl jederzeit
-     erneut geöffnet werden kann (zusätzlich zum Footer-Link).
+   - Kein dauerhaft sichtbares Widget: Die Auswahl lässt sich jederzeit
+     über den Footer-Link „Cookie-Einstellungen“ erneut öffnen.
    - Stellt eine kleine, wiederverwendbare API bereit, über die künftige
      Drittanbieter-Skripte/-Embeds (Google Analytics, Google Ads, Google
      Maps, Calendly, ein WhatsApp-Widget o. ä.) an die jeweilige
@@ -288,7 +288,7 @@ gtag("consent", "default", {
   /* ============================================================
      DOM: Banner (1. Ebene) – nicht-modale Leiste, Seite bleibt bedienbar
      ============================================================ */
-  var banner, modal, widget;
+  var banner, modal;
   var lastFocused = null;
 
   function renderServiceList(services) {
@@ -349,21 +349,28 @@ gtag("consent", "default", {
     el.setAttribute("aria-label", "Cookie-Hinweis");
     el.hidden = true;
     el.innerHTML =
+      '<button type="button" class="cookie-banner__close" data-consent-action="hide-banner" aria-label="Hinweis schließen">' +
+      '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" ' +
+      'stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>' +
+      "</button>" +
       '<div class="cookie-banner__inner">' +
       '<div class="cookie-banner__text">' +
       '<p class="cookie-banner__title">Wir respektieren Ihre Privatsphäre</p>' +
       "<p>Diese Website nutzt nur technisch notwendige Funktionen von " +
-      "der eigenen Domain. Optionale Kategorien (z. B. für künftige " +
-      "Statistik-, Marketing- oder Medien-Einbindungen) sind so lange " +
-      "deaktiviert, bis Sie ihnen aktiv zustimmen. Mehr dazu in der " +
-      '<a href="' + CONFIG.privacyUrl + '">Datenschutzerklärung</a> und im ' +
-      '<a href="' + CONFIG.imprintUrl + '">Impressum</a>.</p>' +
+      "der eigenen Domain. Optionale Kategorien sind so lange deaktiviert, " +
+      "bis Sie ihnen aktiv zustimmen. Ihre Auswahl können Sie jederzeit " +
+      "ändern. Mehr dazu in der " +
+      '<a href="' + CONFIG.privacyUrl + '">Datenschutzerklärung</a>.</p>' +
       "</div>" +
       '<div class="cookie-banner__actions">' +
-      '<button type="button" class="btn btn--ghost" data-consent-action="open-settings">Einstellungen</button>' +
-      '<button type="button" class="btn btn--ghost" data-consent-action="reject-all">Alle ablehnen</button>' +
       '<button type="button" class="btn btn--primary" data-consent-action="accept-all">Alle akzeptieren</button>' +
+      '<button type="button" class="btn btn--ghost" data-consent-action="reject-all">Alle ablehnen</button>' +
       "</div>" +
+      "</div>" +
+      '<div class="cookie-banner__meta">' +
+      '<a href="' + CONFIG.imprintUrl + '">Impressum</a>' +
+      '<a href="' + CONFIG.privacyUrl + '">Datenschutz</a>' +
+      '<button type="button" data-consent-action="open-settings">Einstellungen</button>' +
       "</div>";
     body.appendChild(el);
     return el;
@@ -390,8 +397,7 @@ gtag("consent", "default", {
       "Wählen Sie aus, welche Kategorien Sie zulassen möchten. „Technisch " +
       "notwendig“ ist immer aktiv, alle anderen Kategorien sind bis zu " +
       "Ihrer Zustimmung deaktiviert. Ihre Auswahl können Sie jederzeit über " +
-      "den Link „Cookie-Einstellungen“ im Footer oder über das Symbol " +
-      "unten rechts wieder ändern." +
+      "den Link „Cookie-Einstellungen“ im Footer wieder ändern." +
       "</p>" +
       '<div class="cookie-modal__categories">' +
       CONFIG.categories.map(renderCategory).join("") +
@@ -403,24 +409,6 @@ gtag("consent", "default", {
       '<button type="button" class="btn btn--primary" data-consent-action="save-settings">Auswahl speichern</button>' +
       "</div>" +
       "</div>";
-    body.appendChild(el);
-    return el;
-  }
-
-  function buildWidget() {
-    var el = doc.createElement("button");
-    el.type = "button";
-    el.id = "cookieWidget";
-    el.className = "cookie-widget";
-    el.setAttribute("aria-label", "Cookie-Einstellungen öffnen");
-    el.setAttribute("data-consent-action", "open-settings");
-    el.hidden = true;
-    el.innerHTML =
-      '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" ' +
-      'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
-      '<path d="M12 3a9 9 0 1 0 9 9c0-.5-.04-1-.11-1.47a3 3 0 0 1-3.89-3.89A9 9 0 0 0 12 3Z"/>' +
-      '<circle cx="8.5" cy="10.5" r="1"/><circle cx="12" cy="15" r="1"/><circle cx="15.5" cy="9" r="1"/>' +
-      "</svg>";
     body.appendChild(el);
     return el;
   }
@@ -465,12 +453,10 @@ gtag("consent", "default", {
   function showBanner() {
     if (!needsBanner()) return;
     banner.hidden = false;
-    widget.hidden = true;
   }
 
   function hideBanner() {
     banner.hidden = true;
-    widget.hidden = false;
   }
 
   function openModal() {
@@ -526,6 +512,10 @@ gtag("consent", "default", {
       applyDecision(readCheckedCategories());
       closeModal();
       hideBanner();
+    } else if (action === "hide-banner") {
+      // Schließen per X ist keine Entscheidung: nur für diese Sitzung
+      // ausblenden, beim nächsten Besuch erscheint der Banner erneut.
+      banner.hidden = true;
     } else if (action === "dismiss") {
       closeModal();
     }
@@ -537,7 +527,6 @@ gtag("consent", "default", {
   function init() {
     banner = buildBanner();
     modal = buildModal();
-    widget = buildWidget();
 
     doc.addEventListener("click", function (e) {
       var trigger = e.target.closest("[data-consent-action], [data-cookie-settings]");
@@ -556,11 +545,7 @@ gtag("consent", "default", {
       trapFocus(e, modal.querySelector(".cookie-modal__dialog"));
     });
 
-    if (needsBanner()) {
-      showBanner();
-    } else {
-      widget.hidden = false;
-    }
+    if (needsBanner()) showBanner();
   }
 
   if (doc.body) {
