@@ -9,21 +9,50 @@
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <meta name="theme-color" content="#fcf6f0">
-  <link rel="stylesheet" href="/css/style.min.css?v=20260812d">
-  <script src="/js/consent.js?v=20260730a" defer></script>
+  <link rel="stylesheet" href="/css/style.min.css?v=20261011b">
+  <script src="/js/consent.js?v=20261011b" defer></script>
   <style>
-    .error { min-height: 100svh; display: grid; place-items: center; text-align: center; }
-    .error__code { font-size: clamp(4rem, 14vw, 9rem); font-weight: 800; line-height: 1; color: var(--accent); }
-    .error p { color: var(--text-dim); max-width: 34rem; margin-inline: auto; }
-    .error__links { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; margin-top: 2rem; }
+    body.error-page { min-height: 100svh; display: flex; flex-direction: column; background: var(--bg); }
+    .error-page__top { padding: var(--sp-6) 0; border-bottom: 1px solid var(--line); }
+    .error-page__top img { display: block; height: 52px; width: auto; }
+    .error { flex: 1; display: grid; place-items: center; padding: var(--sp-16) 0; text-align: center; }
+    .error__code {
+      font-family: var(--font-display);
+      font-size: clamp(5rem, 18vw, 10rem);
+      font-weight: 700;
+      line-height: 1;
+      color: var(--gold);
+    }
+    .error__title { margin: var(--sp-4) auto var(--sp-4); max-width: 22ch; }
+    .error__lead { color: var(--text-dim); max-width: 36rem; margin: 0 auto; font-size: var(--fs-lg); }
+    .error__links { display: flex; gap: var(--sp-4); flex-wrap: wrap; justify-content: center; margin-top: var(--sp-8); }
+    .error__more {
+      display: flex; gap: var(--sp-2) var(--sp-8); flex-wrap: wrap; justify-content: center;
+      margin: var(--sp-12) auto 0; padding-top: var(--sp-6); max-width: 36rem;
+      border-top: 1px solid var(--line); font-size: var(--fs-sm);
+    }
+    .error__more a { color: var(--text-dim); padding: var(--sp-2) 0; transition: color var(--dur); }
+    .error__more a:hover { color: var(--accent); }
+    .error-page__foot { padding: var(--sp-6) 0; border-top: 1px solid var(--line); font-size: var(--fs-label); color: var(--text-dim); }
+    .error-page__foot .container { display: flex; gap: var(--sp-2) var(--sp-6); flex-wrap: wrap; justify-content: space-between; }
+    .error-page__foot a:hover,
+    .error-page__cookie:hover { color: var(--accent); }
+    .error-page__cookie { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; transition: color var(--dur); }
+    @media (max-width: 480px) { .error__links .btn { width: 100%; } }
   </style>
 </head>
-<body class="is-ready">
+<body class="is-ready error-page">
+  <header class="error-page__top">
+    <div class="container">
+      <a href="/" aria-label="Maria Visuals · Startseite"><img src="/img/Maria-Visuals-Logo-schwarz-1.png" alt="Maria Visuals" width="139" height="52"></a>
+    </div>
+  </header>
+
   <main class="error">
     <div class="container">
-      <p class="error__code">404</p>
-      <h1 class="section__title">Diese Seite gibt es nicht (mehr)</h1>
-      <p>
+      <p class="error__code" aria-hidden="true">404</p>
+      <h1 class="section__title error__title">Diese Seite gibt es nicht (mehr)</h1>
+      <p class="error__lead">
         Vielleicht hat sich die Adresse geändert oder ein Tippfehler eingeschlichen.
         Die Startseite hilft weiter, oder Sie schreiben mir direkt, was Sie gesucht haben.
       </p>
@@ -31,7 +60,24 @@
         <a class="btn btn--primary" href="/">Zur Startseite</a>
         <a class="btn btn--ghost" href="/#kontakt">Kontakt aufnehmen</a>
       </div>
+      <nav class="error__more" aria-label="Beliebte Seiten">
+        <a href="/#leistungen">Leistungen</a>
+        <a href="/portfolio.html">Portfolio</a>
+        <a href="/#ueber-mich">Über mich</a>
+        <a href="/#faq">FAQ</a>
+      </nav>
     </div>
   </main>
+
+  <footer class="error-page__foot">
+    <div class="container">
+      <p>© 2026 Maria Visuals</p>
+      <p>
+        <a href="/impressum.html">Impressum</a> ·
+        <a href="/datenschutz.html">Datenschutz</a> ·
+        <button type="button" class="error-page__cookie" data-cookie-settings>Cookie-Einstellungen</button>
+      </p>
+    </div>
+  </footer>
 </body>
 </html>
